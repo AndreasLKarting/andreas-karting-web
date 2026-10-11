@@ -1,468 +1,229 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Andreas Lazaridis | Karting</title>
-	<meta name="description" content="Andreas Lazaridis, Greek junior karting driver racing in the Netherlands and across Europe. Open to sponsorship partners.">
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;800&family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@500;700&family=Anton&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Andreas Lazaridis | Karting</title>
+<meta name="description" content="Andreas Lazaridis, Greek junior karting driver racing in the Netherlands and across Europe. Open to sponsorship partners.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;800&family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@500;700&family=Anton&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-	<header>
-		<div class="wrap">
-			<a class="logo" href="#top">ANDREAS LAZARIDIS</a>
-			<nav>
-				<a href="#profile">Profile</a>
-				<a href="#achievements">Achievements</a>
-				<a href="#calendar">Results Calendar</a>
-				<a href="#media">Media</a>
-				<a href="#social">Social</a>
-				<a href="#sponsoring">Sponsoring</a>
-			</nav>
-			<a class="btn" data-mail href="#">Work together</a>
-		</div>
-	</header>
+<header><div class="wrap"><a class="logo" href="#top">ANDREAS LAZARIDIS</a>
+<nav><a href="#profile">Profile</a><a href="#achievements">Achievements</a><a href="#calendar">Results Calendar</a><a href="#media">Media</a><a href="#social">Social</a><a href="#sponsoring">Sponsoring</a></nav>
+<a class="btn" data-mail href="#">Work together</a></div></header>
 
-	<main id="top" class="wrap">
-		<div class="hero">
-			<div>
-				<h1>Andreas <span>Lazaridis</span></h1>
-				<p class="tag">Driving with passion.</p>
-				<blockquote class="quote">
-					<p>I'm here to show what's possible, pushing every limit on the track, and inspiring the next generation of racers.</p>
-					<div class="sig" aria-label="Andreas Lazaridis">Andreas Lazaridis</div>
-				</blockquote>
-				<div class="cta">
-					<a class="btn" data-mail href="#">Work together</a>
-					<a class="btn ghost" href="mediakit.pdf">View media kit</a>
-				</div>
-			</div>
-			<div class="portrait">
-				<img src="images/portrait.jpg" alt="Andreas Lazaridis holding his helmet" onerror="this.style.display='none'">
-			</div>
-		</div>
+<main id="top" class="wrap">
+<div class="hero"><div>
+<h1>Andreas <span>Lazaridis</span></h1><p class="tag">Driving with passion.</p>
+<blockquote class="quote"><p>I'm here to show what's possible, pushing every limit on the track, and inspiring the next generation of racers.</p>
+<div class="sig" aria-label="Andreas Lazaridis">Andreas Lazaridis</div></blockquote>
+<div class="cta"><a class="btn" data-mail href="#">Work together</a><a class="btn ghost" href="mediakit.pdf">View media kit</a></div></div>
+<div class="portrait"><img src="images/portrait.jpg" alt="Andreas Lazaridis holding his helmet" onerror="this.style.display='none'"></div></div>
 
-		<div class="strip">
-			<div class="stats">
-				<div class="stat"><span class="mono">Wins</span><b>3</b></div>
-				<div class="stat"><span class="mono">Podiums</span><b>22</b></div>
-				<div class="stat"><span class="mono">Races</span><b>100+</b></div>
-				<div class="stat"><span class="mono">Dreams</span><b>∞</b></div>
-			</div>
-			<div class="next" id="next" hidden>
-				<div>
-					<span class="mono">Next race</span>
-					<h3 id="nName"></h3>
-					<small id="nMeta"></small>
-				</div>
-				<div class="cd" id="cd">
-					<div><b id="d">00</b><span>Days</span></div>
-					<div><b id="h">00</b><span>Hours</span></div>
-					<div><b id="m">00</b><span>Minutes</span></div>
-				</div>
-			</div>
-		</div>
-	</main>
+<div class="strip">
+<div class="stats"><div class="stat"><span class="mono">Wins</span><b>3</b></div><div class="stat"><span class="mono">Podiums</span><b>22</b></div><div class="stat"><span class="mono">Races</span><b>100+</b></div><div class="stat"><span class="mono">Dreams</span><b>∞</b></div></div>
+<div class="next" id="next" hidden><div><span class="mono">Next race</span><h3 id="nName"></h3><small id="nMeta"></small></div>
+<div class="cd" id="cd"><div><b id="d">00</b><span>Days</span></div><div><b id="h">00</b><span>Hours</span></div><div><b id="m">00</b><span>Minutes</span></div></div></div></div>
+</main>
 
-	<section id="profile">
-		<div class="wrap">
-			<span class="mono">01 — Profile</span>
-			<h2>Who is Andreas?</h2>
-			<div class="two">
-				<div>
-					<p>Andreas started karting in 2023 with <b>KWM Racing</b> and since 2026 trains and races with <b>Den Hartog Racing</b>.</p>
-					<p>In 2026 he competes in the <b>NK Huurkarten</b> (Junior/Mini), <b>FK Huurkarten</b> (Light/Pupilen) and the <b>Dutch Racing Series - DRS</b> (Junior), <b>Sodi World Series - SWS</b> and <b>Dutch Outdoor Karting Championship (DOKC)</b> with podiums at Circuit Park Berghem, Euro Indoor Karting Swalmen and the SWS Series in Thessaloniki.</p>
-					<p>His goal is to fight at the front every weekend and keep improving his race craft. He films his onboard sessions and shares them with a growing audience of racing fans.</p>
-				</div>
-				<div class="tiles" id="logos"></div>
-			</div>
-		</div>
-	</section>
+<section id="profile"><div class="wrap"><span class="mono">01 — Profile</span><h2>Who is Andreas?</h2>
+<div class="two"><div>
+<p>Andreas started karting in 2023 with <b>KWM Racing</b> and since 2026 trains and races with <b>Den Hartog Racing</b>.</p>
+<p>In 2026 he competes in the <b>NK Huurkarten</b> (Junior/Mini), <b>FK Huurkarten</b> (Light/Pupilen) and the <b>Dutch Racing Series - DRS</b> (Junior), <b>Sodi World Series - SWS</b> and <b>Dutch Outdoor Karting Championship (DOKC)</b> with podiums at Circuit Park Berghem, Euro Indoor Karting Swalmen and the SWS Series in Thessaloniki.</p>
+<p>His goal is to fight at the front every weekend and keep improving his race craft. He films his onboard sessions and shares them with a growing audience of racing fans.</p></div>
+<div class="tiles" id="logos"></div></div></div></section>
 
-	<section id="achievements">
-		<div class="wrap">
-			<span class="mono">02 — Achievements</span>
-			<h2>Results so far</h2>
-			<div class="ach">
-				<div>
-					<h3 class="mono">KNAF Karting Clubsport licence</h3>
-					<div class="lic">
-						<span>
-							KNAF
-							<br><small>Knac Nationale Autosport Federatie</small>
-							<br><small>Clubsport Karting</small>
-						</span>
-					</div>
-				</div>
-				<div class="col">
-					<h3 class="mono">Championships</h3>
-					<div class="card">
-						<div><b>FK NEDERLAND 2025</b><i>3rd - Pupilen 🥉</i></div>
-					</div>
-					<div class="card">
-						<div><b>DOKC 2026</b><i>2nd - Future Stars 🥈</i></div>
-					</div>
-				</div>
-				<div class="col">
-					<h3 class="mono">2026 Highlights</h3>
-					<div class="card">
-						<div><b>FK NEDERLAND 2026</b><i>4 Silver 🥈 &amp; 3 Bronze 🥉</i></div>
-					</div>
-					<div class="card">
-						<div><b>NK HUURKARTEN 2026</b><i>2 Silver 🥈 &amp; 2 Bronze 🥉</i></div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+<section id="achievements"><div class="wrap"><span class="mono">02 — Achievements</span><h2>Results so far</h2>
+<div class="ach">
+<div><h3 class="mono">KNAF Karting Clubsport licence</h3><div class="lic"><span>KNAF<br><small>Knac Nationale Autosport Federatie</small><br><small>Clubsport Karting</small></span></div></div>
+<div class="col"><h3 class="mono">Championships</h3>
+<div class="card"><div><b>FK NEDERLAND 2025</b><i>3rd - Pupilen 🥉</i></div></div>
+<div class="card"><div><b>DOKC 2026</b><i>2nd - Future Stars 🥈</i></div></div></div>
+<div class="col"><h3 class="mono">2026 Highlights</h3>
+<div class="card"><div><b>FK NEDERLAND 2026</b><i>4 Silver 🥈 &amp; 3 Bronze 🥉</i></div></div>
+<div class="card"><div><b>NK HUURKARTEN 2026</b><i>2 Silver 🥈 &amp; 2 Bronze 🥉</i></div></div></div>
+</div></div></section>
 
-	<section id="calendar">
-		<div class="wrap">
-			<span class="mono">03 — Results Calendar</span>
-			<h2>Race Calendar</h2>
-			<div class="filters">
-				<label>Status<select id="fStatus"></select></label>
-				<label>Year<select id="fYear"></select></label>
-				<label>Venue<select id="fVenue"></select></label>
-				<label>Race<select id="fRace"></select></label>
-			</div>
-			<div class="scroll">
-				<table>
-					<thead>
-						<tr>
-							<th>Date</th>
-							<th>Race</th>
-							<th>Venue</th>
-							<th>Country</th>
-							<th>Category</th>
-							<th style="text-align:center">Result</th>
-						</tr>
-					</thead>
-					<tbody id="rows"></tbody>
-				</table>
-			</div>
-			<p class="mono" id="note"></p>
-		</div>
-	</section>
+<section id="calendar"><div class="wrap"><span class="mono">03 — Results Calendar</span><h2>Race Calendar</h2>
+<div class="filters">
+<label>Status<select id="fStatus"></select></label><label>Year<select id="fYear"></select></label>
+<label>Venue<select id="fVenue"></select></label><label>Race<select id="fRace"></select></label></div>
+<div class="scroll"><table><thead><tr><th>Date</th><th>Race</th><th>Venue</th><th>Country</th><th>Category</th><th style="text-align:center">Result</th></tr></thead><tbody id="rows"></tbody></table></div>
+<div class="pager" id="pager"></div>
+<p class="mono" id="note"></p></div></section>
 
-	<section id="media">
-		<div class="wrap">
-			<span class="mono">04 — Media</span>
-			<h2>Videos</h2>
-			<p style="max-width:720px;color:#cfcdc8;margin-top:-12px">Welcome to my racing journey. Through these videos, you get a front-row seat to my practice sessions, championship races, and new track explorations across the Netherlands, Greece, and wherever my wheels take me.</p>
-			<div class="vids" id="vids"></div>
-			<h2>Photos</h2>
-			<div class="photos" id="photos"></div>
-		</div>
-	</section>
+<section id="media"><div class="wrap"><span class="mono">04 — Media</span><h2>Videos</h2>
+<p style="max-width:720px;color:#cfcdc8;margin-top:-12px">Welcome to my racing journey. Through these videos, you get a front-row seat to my practice sessions, championship races, and new track explorations across the Netherlands, Greece, and wherever my wheels take me.</p>
+<div class="vids" id="vids"></div><h2>Photos</h2><div class="photos" id="photos"></div></div></section>
 
-	<section id="social">
-		<div class="wrap">
-			<span class="mono">05 — Social</span>
-			<h2>Audience</h2>
-			<div class="soc" id="soc"></div>
-		</div>
-	</section>
+<section id="social"><div class="wrap"><span class="mono">05 — Social</span><h2>Audience</h2><div class="soc" id="soc"></div></div></section>
 
-	<section id="sponsoring">
-		<div class="wrap">
-			<span class="mono">06 — Sponsoring</span>
-			<h2>Become a partner</h2>
-			<div class="pk" id="packages">
-				<div>
-					<h3>Supporter</h3>
-					<span class="mono">Investment on request</span>
-					<ul>
-						<li>Logo in the Partners section</li>
-						<li>Thank-you Story and tag</li>
-					</ul>
-				</div>
-				<div class="hot">
-					<h3>Partner</h3>
-					<span class="mono">Investment on request</span>
-					<ul>
-						<li>Everything in Supporter</li>
-						<li>Small logo on race suit</li>
-						<li>1 dedicated Reel per season</li>
-						<li>Season results report</li>
-					</ul>
-				</div>
-				<div>
-					<h3>Main Partner</h3>
-					<span class="mono">Investment on request</span>
-					<ul>
-						<li>Everything in Partner</li>
-						<li>Prominent logo on suit and helmet</li>
-						<li>1 dedicated post per month</li>
-						<li>Invitation to a race day</li>
-					</ul>
-				</div>
-			</div>
-			<p style="color:#cfcdc8">Custom packages and product partnerships (equipment, tyres, apparel, services) are welcome.</p>
-			<div class="cta">
-				<a class="btn" data-mail href="#">Contact</a>
-				<a class="btn ghost" href="mediakit.pdf">Download media kit</a>
-			</div>
-		</div>
-	</section>
+<section id="sponsoring"><div class="wrap"><span class="mono">06 — Sponsoring</span><h2>Become a partner</h2>
+<div class="pk" id="packages">
+<div><h3>Supporter</h3><span class="mono">Investment on request</span><ul><li>Logo in the Partners section</li><li>Thank-you Story and tag</li></ul></div>
+<div class="hot"><h3>Partner</h3><span class="mono">Investment on request</span><ul><li>Everything in Supporter</li><li>Small logo on race suit</li><li>1 dedicated Reel per season</li><li>Season results report</li></ul></div>
+<div><h3>Main Partner</h3><span class="mono">Investment on request</span><ul><li>Everything in Partner</li><li>Prominent logo on suit and helmet</li><li>1 dedicated post per month</li><li>Invitation to a race day</li></ul></div></div>
+<p style="color:#cfcdc8">Custom packages and product partnerships (equipment, tyres, apparel, services) are welcome.</p>
+<div class="cta"><a class="btn" data-mail href="#">Contact</a><a class="btn ghost" href="mediakit.pdf">Download media kit</a></div></div></section>
 
-	<footer>
-		<div class="wrap">
-			<div class="fgrid">
-				<div>
-					<div class="logo">ANDREAS LAZARIDIS</div>
-					<p>Karting Driver<br><br>Social Media, Web and Communication are maintained by parents.</p>
-				</div>
-				<div class="fcols">
-					<div>
-						<span class="mono">Explore</span>
-						<a href="#calendar">Calendar</a>
-					</div>
-					<div>
-						<span class="mono">Partner</span>
-						<a href="#sponsoring">Packages</a>
-						<a href="mediakit.pdf">Media kit</a>
-					</div>
-					<div>
-						<span class="mono">Social</span>
-						<a data-k="instagram" href="#">Instagram</a>
-						<a data-k="tiktok" href="#">TikTok</a>
-						<a data-k="youtube" href="#">YouTube</a>
-						<a data-mail href="#">Email</a>
-					</div>
-				</div>
-			</div>
-			<div class="copy mono">
-				<span>© 2026 Andreas Lazaridis. All rights reserved.</span>
-				<span>Media kit — 2026</span>
-			</div>
-		</div>
-	</footer>
+<footer><div class="wrap"><div class="fgrid"><div><div class="logo">ANDREAS LAZARIDIS</div><p>Karting Driver<br><br>Social Media, Web and Communication are maintained by parents.</p></div>
+<div class="fcols"><div><span class="mono">Explore</span><a href="#calendar">Calendar</a></div>
+<div><span class="mono">Partner</span><a href="#sponsoring">Packages</a><a href="mediakit.pdf">Media kit</a></div>
+<div><span class="mono">Social</span><a data-k="instagram" href="#">Instagram</a><a data-k="tiktok" href="#">TikTok</a><a data-k="youtube" href="#">YouTube</a><a data-mail href="#">Email</a></div></div></div>
+<div class="copy mono"><span>© 2026 Andreas Lazaridis. All rights reserved.</span><span>Media kit — 2026</span></div></div></footer>
 
-	<script>
-		/* ============ EDIT THIS BLOCK ============ */
-		const CFG = {
-			email: "andreasl.karting@gmail.com", // sponsor contact (parent/manager)
-			sheet: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTrQTYaoqWvwmPKYbInqhbu4hII_DbV8_bhokbmEGP2MNCJb8efUMAeSUDZZZQDEM2u_l4HOSiRgwo5/pub?gid=0&single=true&output=csv", // paste the Google Sheet "Publish to web" CSV link here
-			links: {
-				instagram: "https://www.instagram.com/andreas.lazaridis.karting/",
-				tiktok: "https://www.tiktok.com/@andreas.lazaridis.karting",
-				youtube: "https://www.youtube.com/@AndreasLazaridis.Karting"
-			},
-			defaultTime: "10:00" // used when a race row has no time
-		};
+<script>
+/* ============ EDIT THIS BLOCK ============ */
+const CFG={
+  email:"andreasl.karting@gmail.com",               // sponsor contact (parent/manager)
+  sheet:"https://docs.google.com/spreadsheets/d/e/2PACX-1vTrQTYaoqWvwmPKYbInqhbu4hII_DbV8_bhokbmEGP2MNCJb8efUMAeSUDZZZQDEM2u_l4HOSiRgwo5/pub?gid=0&single=true&output=csv",                                       // paste the Google Sheet "Publish to web" CSV link here
+  links:{instagram:"https://www.instagram.com/andreas.lazaridis.karting/",
+         tiktok:"https://www.tiktok.com/@andreas.lazaridis.karting",
+         youtube:"https://www.youtube.com/@AndreasLazaridis.Karting"},
+  defaultTime:"10:00"                             // used when a race row has no time
+};
+const LOGO_DIR="images/logos/";   // folder that holds the logo files
+const LOGOS=[ // [name, file, link]
+ ["Den Hartog Racing","denhartoglogo.png","https://denhartogracing.com/"],
+ ["SWS","swslogo.png","https://www.sodiwseries.com/en-gb/drivers/lazaridis-andreas-116849.html"],
+ ["FK Nederland","fklogo.png","https://www.fknederland.nl/"],
+ ["NK Huurkarten","nklogo.png","https://www.nkhuurkarten.nl/"],
+ ["DRS","drs.png","https://www.dutchracingseries.nl/"],
+ ["KNAF","knaflogo.png","https://www.dutchracingseries.nl/"]];
+const VIDEOS=[ // id = the part after v= in the YouTube link
+ {t:"Hitting 110km/h at Circuit 27 (GR)",id:"Q9MOau-zC30"},{t:"P2 to heartbreak: DRS 2025 - Kerpen (DE)",id:"OmETofpXb9M"},
+ {t:"Onboard lap Franciacorta (IT)",id:"ucps9gld80k"},{t:"P10 to P5, 49th Junior SWS (GR)",id:"KW5FUVxNH4U"}];
+const PHOTOS=[["Circuit 27 (GR), 2026","circuit27"],["Spa (BE), 2026","spa"],["Oldenzaal (NL), 2026","oldenzaal"],["SFI Athens (GR), 2026","sfi-athens"],["Genk (BE), 2026","genk"]]; // images/<name>.jpg
+const SOCIAL=[["YouTube","AndreasLazaridis.Karting",[["Subscribers","134"],["Views","165.3K"],["Watch time (hours)","1.2K"],["Videos","147"]]],
+ ["Instagram","andreas.lazaridis.karting",[["Followers","753"],["Posts","167"],["Profile activity (month)","480"],["Views (month)","33.4K"]]],
+ ["TikTok","andreas.lazaridis.karting",[["Followers","466"],["Posts","36"],["Profile views (month)","215"],["Views (month)","8.8K"]]]];
+/* Fallback data, used if the Sheet is empty or can't be loaded. Columns: date,race,venue,country,category,result */
+const FALLBACK=[["2026-02-22","FK Netherland","Euro Indoor Karting Swalmen","NL","Lightweight","9"],
+["2026-02-22","FK Netherland","Euro Indoor Karting Swalmen","NL","Pupilen","3"],
+["2026-03-15","DRS Nationals","Karting Genk","BE","Pro Light","21"],
+["2026-03-29","FK Netherland","Karting Spa Francorchamps","BE","Lightweight","11"],
+["2026-03-29","FK Netherland","Karting Spa Francorchamps","BE","Pupilen","6"],
+["2026-04-11","NK Huurkarten","Circuit Park Berghem","NL","Junior","8"],
+["2026-04-11","NK Huurkarten","Circuit Park Berghem","NL","Mini","4"],
+["2026-04-12","FK Netherland","Circuit Park Berghem","NL","Lightweight","2"],
+["2026-04-12","FK Netherland","Circuit Park Berghem","NL","Pupilen","2"],
+["2026-04-30","SWS Series","Drivepark Thessaloniki","GR","Junior","2"],
+["2026-05-10","DRS Nationals","KCNN, Vledderveen","NL","Junior","9"],
+["2026-05-17","Oldenzaal Junior","Kartbaan Oldenzaal","NL","Junior","1"],
+["2026-05-31","DRS Nationals","Kartcentrum Zwolle/Karba","NL","Junior","11"],
+["2026-06-06","NK Huurkarten","Kartbaan Oldenzaal","NL","Junior","3"],
+["2026-06-06","NK Huurkarten","Kartbaan Oldenzaal","NL","Mini","2"],
+["2026-06-07","FK Netherland","Kartbaan Oldenzaal","NL","Lightweight","2"],
+["2026-06-07","FK Netherland","Kartbaan Oldenzaal","NL","Pupilen","2"],
+["2026-06-13","DRS Nationals","Karting Emmen","NL","3H Endurance","18"],
+["2026-06-14","DRS Nationals","Karting Emmen","NL","Junior","18"],
+["2026-06-20","NK Huurkarten","Kartfabrique Utrecht","NL","Junior","4"],
+["2026-06-20","NK Huurkarten","Kartfabrique Utrecht","NL","Mini","3"],
+["2026-06-21","FK Netherland","Kartfabrique Utrecht","NL","Lightweight","7"],
+["2026-06-21","FK Netherland","Kartfabrique Utrecht","NL","Pupilen","4"],
+["2026-07-25","SWS Series","Go Kart Center","GR","Junior","3"],
+["2026-08-29","SWS Series","Go Kart Center","GR","Junior","2"],
+["2026-09-05","NK Huurkarten","Kartcircuit de Landsard","NL","Junior","5"],
+["2026-09-05","NK Huurkarten","Kartcircuit de Landsard","NL","Mini","14"],
+["2026-09-06","FK Netherland","Kartcircuit de Landsard","NL","Lightweight","4"],
+["2026-09-06","FK Netherland","Kartcircuit de Landsard","NL","Pupilen","3"],
+["2026-09-13","DRS Nationals","Kartcentrum Lelystad","NL","Junior","15"],
+["2026-09-19","NK Huurkarten","Karting Spa Francorchamps","BE","Junior","5"],
+["2026-09-19","NK Huurkarten","Karting Spa Francorchamps","BE","Mini","2"],
+["2026-10-03","DOCK","Kartbaan Oldenzaal","NL","Overall","22"],
+["2026-10-03","DOCK","Kartbaan Oldenzaal","NL","Future Stars","2"],
+["2026-10-04","FK Netherland","Kartbaan Oldenzaal","NL","Lightweight","3"],
+["2026-10-04","FK Netherland","Kartbaan Oldenzaal","NL","Pupilen","4"],
+["2026-10-17","NK Huurkarten","Indoorkarting Antwerpen","BE","Junior",""],
+["2026-10-17","NK Huurkarten","Indoorkarting Antwerpen","BE","Mini",""],
+["2026-11-01","DRS Nationals","Karting Spa Francorchamps","BE","Junior",""],
+["2026-11-08","FK Netherland","Karting Spa Francorchamps","BE","Lightweight",""],
+["2026-11-08","FK Netherland","Karting Spa Francorchamps","BE","Pupilen",""],
+["2026-11-15","DRS Nationals","TT Junior Track, Assen","NL","Junior",""],
+["2026-11-28","NK Huurkarten","Adventure Eefde","NL","Junior",""],
+["2026-11-28","NK Huurkarten","Adventure Eefde","NL","Mini",""],
+["2026-11-29","FK Netherland","Adventure Eefde","NL","Lightweight",""],
+["2026-11-29","FK Netherland","Adventure Eefde","NL","Pupilen",""],
+["2026-12-12","NK Huurkarten","Kartcentrum Lelystad","NL","Junior",""],
+["2026-12-12","NK Huurkarten","Kartcentrum Lelystad","NL","Mini",""],
+["2026-12-13","FK Netherland","Kartcentrum Lelystad","NL","Lightweight",""],
+["2026-12-13","FK Netherland","Kartcentrum Lelystad","NL","Pupilen",""]];
+/* ========================================= */
 
-		const LOGO_DIR = "images/logos/"; // folder that holds the logo files
-		const LOGOS = [ // [name, file, link]
-			["Den Hartog Racing", "denhartoglogo.png", "https://denhartogracing.com/"],
-			["SWS", "swslogo.png", "https://www.sodiwseries.com/en-gb/drivers/lazaridis-andreas-116849.html"],
-			["FK Nederland", "fklogo.png", "https://www.fknederland.nl/"],
-			["NK Huurkarten", "nklogo.png", "https://www.nkhuurkarten.nl/"],
-			["DRS", "drs.png", "https://www.dutchracingseries.nl/"],
-			["KNAF", "knaflogo.png", "https://www.dutchracingseries.nl/"]
-		];
+const iso=d=>{const m=d.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/);return m?m[3]+"-"+m[2].padStart(2,"0")+"-"+m[1].padStart(2,"0"):d},$=id=>document.getElementById(id), K=["date","race","venue","country","category","result","time"];
+document.querySelectorAll("[data-mail]").forEach(a=>a.href="mailto:"+CFG.email+"?subject=Sponsorship%20enquiry%20-%20Andreas%20Lazaridis");
+document.querySelectorAll("[data-k]").forEach(a=>{a.href=CFG.links[a.dataset.k];a.target="_blank";a.rel="noopener"});
 
-		const VIDEOS = [ // id = the part after v= in the YouTube link
-			{ t: "Hitting 110km/h at Circuit 27 (GR)", id: "Q9MOau-zC30" },
-			{ t: "P2 to heartbreak: DRS 2025 - Kerpen (DE)", id: "OmETofpXb9M" },
-			{ t: "Onboard lap Franciacorta (IT)", id: "ucps9gld80k" },
-			{ t: "P10 to P5, 49th Junior SWS (GR)", id: "KW5FUVxNH4U" }
-		];
+// static blocks
+$("logos").innerHTML=LOGOS.map(l=>`<a class="tile" href="${l[2]}" target="_blank" rel="noopener noreferrer" aria-label="${l[0]} (opens in a new tab)"><span>${l[0]}</span><img src="${LOGO_DIR}${l[1]}" alt="" onload="this.previousElementSibling.hidden=true" onerror="this.remove()"></a>`).join("");
+$("vids").innerHTML=VIDEOS.map(v=>`<a class="vid" target="_blank" rel="noopener" href="${v.id?"https://www.youtube.com/watch?v="+v.id:CFG.links.youtube}"><span class="mono">${v.t}</span><div class="ph ${v.id?"play":""}">${v.id?`<img loading="lazy" src="https://i.ytimg.com/vi/${v.id}/hqdefault.jpg" alt="${v.t}">`:"Add the YouTube video ID"}</div></a>`).join("");
+$("photos").innerHTML=PHOTOS.map(p=>`<figure><span class="mono">${p[0]}</span><div class="ph"><img loading="lazy" src="images/${p[1]}.jpg" alt="${p[0]}" onerror="this.remove()">Add images/${p[1]}.jpg</div></figure>`).join("");
+$("soc").innerHTML=SOCIAL.map(s=>`<div><h3>${s[0]} · ${s[1]}</h3><div class="row">${s[2].map(x=>`<div><span class="mono">${x[0]}</span><b>${x[1]}</b></div>`).join("")}</div></div>`).join("");
 
-		const PHOTOS = [
-			["Circuit 27 (GR), 2026", "circuit27"],
-			["Spa (BE), 2026", "spa"],
-			["Oldenzaal (NL), 2026", "oldenzaal"],
-			["SFI Athens (GR), 2026", "sfi-athens"],
-			["Genk (BE), 2026", "genk"]
-		]; // images/<name>.jpg
+// data
+function csv(t){const r=[];let w=[],c="",q=0;for(let i=0;i<t.length;i++){const h=t[i];if(q){if(h=='"'&&t[i+1]=='"'){c+='"';i++}else if(h=='"')q=0;else c+=h}else if(h=='"')q=1;else if(h==","){w.push(c);c=""}else if(h=="\n"){w.push(c);r.push(w);w=[];c=""}else if(h!="\r")c+=h}w.push(c);r.push(w);return r}
+const toObj=a=>Object.fromEntries(K.map((k,i)=>[k,(a[i]||"").trim()]));
+async function load(){
+  if(CFG.sheet){try{const t=await (await fetch(CFG.sheet)).text();const r=csv(t);const hd=r[0].map(x=>{x=x.trim().toLowerCase();return x=="title"||x=="name"?"race":x=="country flag"?"country":x});
+    const rows=r.slice(1).filter(x=>x[0]&&x[0].trim()).map(x=>{const o=Object.fromEntries(K.map(k=>[k,(x[hd.indexOf(k)]||"").trim()]));o.date=iso(o.date);return o});
+    if(rows.length)return rows}catch(e){}}
+  $("note").textContent=CFG.sheet?"Live data unavailable, showing saved results.":"";
+  return FALLBACK.map(toObj);
+}
+const when=r=>new Date(r.date+"T"+(r.time||CFG.defaultTime)+":00");
+const fmt=d=>d.split("-").reverse().join("/");
 
-		const SOCIAL = [
-			["YouTube", "AndreasLazaridis.Karting", [["Subscribers", "134"], ["Views", "165.3K"], ["Watch time (hours)", "1.2K"], ["Videos", "147"]]],
-			["Instagram", "andreas.lazaridis.karting", [["Followers", "753"], ["Posts", "167"], ["Profile activity (month)", "480"], ["Views (month)", "33.4K"]]],
-			["TikTok", "andreas.lazaridis.karting", [["Followers", "466"], ["Posts", "36"], ["Profile views (month)", "215"], ["Views (month)", "8.8K"]]]
-		];
-
-		/* Fallback data, used if the Sheet is empty or can't be loaded. Columns: date,race,venue,country,category,result */
-		const FALLBACK = [
-			["2026-02-22", "FK Netherland", "Euro Indoor Karting Swalmen", "NL", "Lightweight", "9"],
-			["2026-02-22", "FK Netherland", "Euro Indoor Karting Swalmen", "NL", "Pupilen", "3"],
-			["2026-03-15", "DRS Nationals", "Karting Genk", "BE", "Pro Light", "21"],
-			["2026-03-29", "FK Netherland", "Karting Spa Francorchamps", "BE", "Lightweight", "11"],
-			["2026-03-29", "FK Netherland", "Karting Spa Francorchamps", "BE", "Pupilen", "6"],
-			["2026-04-11", "NK Huurkarten", "Circuit Park Berghem", "NL", "Junior", "8"],
-			["2026-04-11", "NK Huurkarten", "Circuit Park Berghem", "NL", "Mini", "4"],
-			["2026-04-12", "FK Netherland", "Circuit Park Berghem", "NL", "Lightweight", "2"],
-			["2026-04-12", "FK Netherland", "Circuit Park Berghem", "NL", "Pupilen", "2"],
-			["2026-04-30", "SWS Series", "Drivepark Thessaloniki", "GR", "Junior", "2"],
-			["2026-05-10", "DRS Nationals", "KCNN, Vledderveen", "NL", "Junior", "9"],
-			["2026-05-17", "Oldenzaal Junior", "Kartbaan Oldenzaal", "NL", "Junior", "1"],
-			["2026-05-31", "DRS Nationals", "Kartcentrum Zwolle/Karba", "NL", "Junior", "11"],
-			["2026-06-06", "NK Huurkarten", "Kartbaan Oldenzaal", "NL", "Junior", "3"],
-			["2026-06-06", "NK Huurkarten", "Kartbaan Oldenzaal", "NL", "Mini", "2"],
-			["2026-06-07", "FK Netherland", "Kartbaan Oldenzaal", "NL", "Lightweight", "2"],
-			["2026-06-07", "FK Netherland", "Kartbaan Oldenzaal", "NL", "Pupilen", "2"],
-			["2026-06-13", "DRS Nationals", "Karting Emmen", "NL", "3H Endurance", "18"],
-			["2026-06-14", "DRS Nationals", "Karting Emmen", "NL", "Junior", "18"],
-			["2026-06-20", "NK Huurkarten", "Kartfabrique Utrecht", "NL", "Junior", "4"],
-			["2026-06-20", "NK Huurkarten", "Kartfabrique Utrecht", "NL", "Mini", "3"],
-			["2026-06-21", "FK Netherland", "Kartfabrique Utrecht", "NL", "Lightweight", "7"],
-			["2026-06-21", "FK Netherland", "Kartfabrique Utrecht", "NL", "Pupilen", "4"],
-			["2026-07-25", "SWS Series", "Go Kart Center", "GR", "Junior", "3"],
-			["2026-08-29", "SWS Series", "Go Kart Center", "GR", "Junior", "2"],
-			["2026-09-05", "NK Huurkarten", "Kartcircuit de Landsard", "NL", "Junior", "5"],
-			["2026-09-05", "NK Huurkarten", "Kartcircuit de Landsard", "NL", "Mini", "14"],
-			["2026-09-06", "FK Netherland", "Kartcircuit de Landsard", "NL", "Lightweight", "4"],
-			["2026-09-06", "FK Netherland", "Kartcircuit de Landsard", "NL", "Pupilen", "3"],
-			["2026-09-13", "DRS Nationals", "Kartcentrum Lelystad", "NL", "Junior", "15"],
-			["2026-09-19", "NK Huurkarten", "Karting Spa Francorchamps", "BE", "Junior", "5"],
-			["2026-09-19", "NK Huurkarten", "Karting Spa Francorchamps", "BE", "Mini", "2"],
-			["2026-10-03", "DOCK", "Kartbaan Oldenzaal", "NL", "Overall", "22"],
-			["2026-10-03", "DOCK", "Kartbaan Oldenzaal", "NL", "Future Stars", "2"],
-			["2026-10-04", "FK Netherland", "Kartbaan Oldenzaal", "NL", "Lightweight", "3"],
-			["2026-10-04", "FK Netherland", "Kartbaan Oldenzaal", "NL", "Pupilen", "4"],
-			["2026-10-17", "NK Huurkarten", "Indoorkarting Antwerpen", "BE", "Junior", ""],
-			["2026-10-17", "NK Huurkarten", "Indoorkarting Antwerpen", "BE", "Mini", ""],
-			["2026-11-01", "DRS Nationals", "Karting Spa Francorchamps", "BE", "Junior", ""],
-			["2026-11-08", "FK Netherland", "Karting Spa Francorchamps", "BE", "Lightweight", ""],
-			["2026-11-08", "FK Netherland", "Karting Spa Francorchamps", "BE", "Pupilen", ""],
-			["2026-11-15", "DRS Nationals", "TT Junior Track, Assen", "NL", "Junior", ""],
-			["2026-11-28", "NK Huurkarten", "Adventure Eefde", "NL", "Junior", ""],
-			["2026-11-28", "NK Huurkarten", "Adventure Eefde", "NL", "Mini", ""],
-			["2026-11-29", "FK Netherland", "Adventure Eefde", "NL", "Lightweight", ""],
-			["2026-11-29", "FK Netherland", "Adventure Eefde", "NL", "Pupilen", ""],
-			["2026-12-12", "NK Huurkarten", "Kartcentrum Lelystad", "NL", "Junior", ""],
-			["2026-12-12", "NK Huurkarten", "Kartcentrum Lelystad", "NL", "Mini", ""],
-			["2026-12-13", "FK Netherland", "Kartcentrum Lelystad", "NL", "Lightweight", ""],
-			["2026-12-13", "FK Netherland", "Kartcentrum Lelystad", "NL", "Pupilen", ""]
-		];
-		/* ========================================= */
-
-		const iso = d => {
-			const m = d.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/);
-			return m ? m[3] + "-" + m[2].padStart(2, "0") + "-" + m[1].padStart(2, "0") : d;
-		};
-		const $ = id => document.getElementById(id);
-		const K = ["date", "race", "venue", "country", "category", "result", "time"];
-
-		document.querySelectorAll("[data-mail]").forEach(a => a.href = "mailto:" + CFG.email + "?subject=Sponsorship%20enquiry%20-%20Andreas%20Lazaridis");
-		document.querySelectorAll("[data-k]").forEach(a => {
-			a.href = CFG.links[a.dataset.k];
-			a.target = "_blank";
-			a.rel = "noopener";
-		});
-
-		// static blocks
-		$("logos").innerHTML = LOGOS.map(l => `<a class="tile" href="${l[2]}" target="_blank" rel="noopener noreferrer" aria-label="${l[0]} (opens in a new tab)"><span>${l[0]}</span><img src="${LOGO_DIR}${l[1]}" alt="" onload="this.previousElementSibling.hidden=true" onerror="this.remove()"></a>`).join("");
-		$("vids").innerHTML = VIDEOS.map(v => `<a class="vid" target="_blank" rel="noopener" href="${v.id ? "https://www.youtube.com/watch?v=" + v.id : CFG.links.youtube}"><span class="mono">${v.t}</span><div class="ph ${v.id ? "play" : ""}">${v.id ? `<img loading="lazy" src="https://i.ytimg.com/vi/${v.id}/hqdefault.jpg" alt="${v.t}">` : "Add the YouTube video ID"}</div></a>`).join("");
-		$("photos").innerHTML = PHOTOS.map(p => `<figure><span class="mono">${p[0]}</span><div class="ph"><img loading="lazy" src="images/${p[1]}.jpg" alt="${p[0]}" onerror="this.remove()">Add images/${p[1]}.jpg</div></figure>`).join("");
-		$("soc").innerHTML = SOCIAL.map(s => `<div><h3>${s[0]} · ${s[1]}</h3><div class="row">${s[2].map(x => `<div><span class="mono">${x[0]}</span><b>${x[1]}</b></div>`).join("")}</div></div>`).join("");
-
-		// data
-		function csv(t) {
-			const r = [];
-			let w = [], c = "", q = 0;
-			for (let i = 0; i < t.length; i++) {
-				const h = t[i];
-				if (q) {
-					if (h == '"' && t[i + 1] == '"') {
-						c += '"';
-						i++;
-					} else if (h == '"') q = 0;
-					else c += h;
-				} else if (h == '"') q = 1;
-				else if (h == ",") {
-					w.push(c);
-					c = "";
-				} else if (h == "\n") {
-					w.push(c);
-					r.push(w);
-					w = [];
-					c = "";
-				} else if (h != "\r") c += h;
-			}
-			w.push(c);
-			r.push(w);
-			return r;
-		}
-
-		const toObj = a => Object.fromEntries(K.map((k, i) => [k, (a[i] || "").trim()]));
-
-		async function load() {
-			if (CFG.sheet) {
-				try {
-					const t = await (await fetch(CFG.sheet)).text();
-					const r = csv(t);
-					const hd = r[0].map(x => {
-						x = x.trim().toLowerCase();
-						return x == "title" || x == "name" ? "race" : x == "country flag" ? "country" : x;
-					});
-					const rows = r.slice(1).filter(x => x[0] && x[0].trim()).map(x => {
-						const o = Object.fromEntries(K.map(k => [k, (x[hd.indexOf(k)] || "").trim()]));
-						o.date = iso(o.date);
-						return o;
-					});
-					if (rows.length) return rows;
-				} catch (e) {}
-			}
-			$("note").textContent = CFG.sheet ? "Live data unavailable, showing saved results." : "";
-			return FALLBACK.map(toObj);
-		}
-
-		const when = r => new Date(r.date + "T" + (r.time || CFG.defaultTime) + ":00");
-		const fmt = d => d.split("-").reverse().join("/");
-
-		load().then(all => {
-			all.sort((a, b) => when(a) - when(b));
-			const now = new Date(), done = r => new Date(r.date + "T23:59:59") < now;
-			
-			// calendar
-			const sel = {
-				fStatus: ["All", "Upcoming", "Completed"],
-				fYear: ["All", ...new Set(all.map(r => r.date.slice(0, 4)))],
-				fVenue: ["All", ...new Set(all.map(r => r.venue))],
-				fRace: ["All", ...new Set(all.map(r => r.race))]
-			};
-			for (const id in sel) {
-				$(id).innerHTML = sel[id].map(v => `<option>${v}</option>`).join("");
-				$(id).onchange = draw;
-			}
-			function draw() {
-				const s = $("fStatus").value, y = $("fYear").value, v = $("fVenue").value, rc = $("fRace").value;
-				const list = all.filter(r => (s == "All" || (s == "Completed") == done(r)) && (y == "All" || r.date.startsWith(y)) && (v == "All" || r.venue == v) && (rc == "All" || r.race == rc));
-				$("rows").innerHTML = list.length ? list.map(r => {
-					const n = parseInt(r.result);
-					const c = n == 1 ? "r1" : n == 2 ? "r2" : n == 3 ? "r3" : "";
-					return `<tr><td class="d">${fmt(r.date)}</td><td>${r.race}</td><td>${r.venue}</td><td>${r.country}</td><td>${r.category}</td><td class="r ${c}">${r.result || (done(r) ? "–" : "Upcoming")}</td></tr>`;
-				}).join("") : `<tr><td class="empty" colspan="6">No races match these filters.</td></tr>`;
-			}
-			draw();
-
-			// next race + countdown
-			const nx = all.find(r => !done(r));
-			if (nx) {
-				$("next").hidden = false;
-				$("nName").textContent = nx.race + " · " + nx.venue;
-				const cats = all.filter(r => r.date == nx.date && r.venue == nx.venue && r.race == nx.race).map(r => r.category).join(", ");
-				$("nMeta").textContent = when(nx).toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "long", year: "numeric" }).toUpperCase() + " | " + cats.toUpperCase();
-				const p = n => String(n).padStart(2, "0"),
-					tick = () => {
-						const d = when(nx) - new Date();
-						if (d <= 0) {
-							$("cd").innerHTML = "<span class='mono'>Race weekend</span>";
-							return;
-						}
-						$("d").textContent = p(Math.floor(d / 864e5));
-						$("h").textContent = p(Math.floor(d % 864e5 / 36e5));
-						$("m").textContent = p(Math.floor(d % 36e5 / 6e4));
-					};
-				tick();
-				setInterval(tick, 30000);
-			}
-		});
-	</script>
+load().then(all=>{
+  all.sort((a,b)=>when(a)-when(b));
+  const now=new Date(), done=r=>new Date(r.date+"T23:59:59")<now;
+  // calendar
+  const sel={fStatus:["All","Upcoming","Completed"],fYear:["All",...new Set(all.map(r=>r.date.slice(0,4)))],fVenue:["All",...new Set(all.map(r=>r.venue))],fRace:["All",...new Set(all.map(r=>r.race))]};
+      const PER = 15;
+      let page = 1;
+      const firstUp = all.findIndex(r => !done(r));
+      page = firstUp < 0 ? Math.ceil(all.length / PER) : Math.floor(firstUp / PER) + 1;
+      for (const id in sel) {
+        $(id).innerHTML = sel[id].map(v => `<option>${v}</option>`).join("");
+        $(id).onchange = () => { page = 1; draw(); };
+      }
+      function draw() {
+        const s = $("fStatus").value, y = $("fYear").value, v = $("fVenue").value, rc = $("fRace").value;
+        const list = all.filter(r => (s == "All" || (s == "Completed") == done(r)) && (y == "All" || r.date.startsWith(y)) && (v == "All" || r.venue == v) && (rc == "All" || r.race == rc));
+        const pages = Math.max(1, Math.ceil(list.length / PER));
+        if (page > pages) page = pages;
+        const start = (page - 1) * PER;
+        $("rows").innerHTML = list.length ? list.slice(start, start + PER).map(r => {
+          const n = parseInt(r.result);
+          const c = n == 1 ? "r1" : n == 2 ? "r2" : n == 3 ? "r3" : "";
+          return `<tr><td class="d">${fmt(r.date)}</td><td>${r.race}</td><td>${r.venue}</td><td>${r.country}</td><td>${r.category}</td><td class="r ${c}">${r.result || (done(r) ? "–" : "Upcoming")}</td></tr>`;
+        }).join("") : `<tr><td class="empty" colspan="6">No races match these filters.</td></tr>`;
+        let nav = "";
+        if (pages > 1) {
+          nav = `<button data-p="${page - 1}" ${page == 1 ? "disabled" : ""} aria-label="Previous page">‹ Prev</button>`;
+          for (let i = 1; i <= pages; i++) nav += `<button data-p="${i}" ${i == page ? 'aria-current="page"' : ""}>${i}</button>`;
+          nav += `<button data-p="${page + 1}" ${page == pages ? "disabled" : ""} aria-label="Next page">Next ›</button>`;
+          nav += `<span class="info">${start + 1}–${Math.min(start + PER, list.length)} of ${list.length}</span>`;
+        }
+        $("pager").innerHTML = nav;
+      }
+      $("pager").onclick = e => {
+        const b = e.target.closest("button[data-p]");
+        if (!b || b.disabled) return;
+        page = +b.dataset.p;
+        draw();
+        document.querySelector(".filters").scrollIntoView({ behavior: "smooth", block: "start" });
+      };
+      draw();
+  // next race + countdown
+  const nx=all.find(r=>!done(r));
+  if(nx){$("next").hidden=false;$("nName").textContent=nx.race+" · "+nx.venue;const cats=all.filter(r=>r.date==nx.date&&r.venue==nx.venue&&r.race==nx.race).map(r=>r.category).join(", ");
+    $("nMeta").textContent=when(nx).toLocaleDateString("en-GB",{weekday:"long",day:"numeric",month:"long",year:"numeric"}).toUpperCase()+" | "+cats.toUpperCase();
+    const p=n=>String(n).padStart(2,"0"),tick=()=>{const d=when(nx)-new Date();if(d<=0){$("cd").innerHTML="<span class='mono'>Race weekend</span>";return}
+      $("d").textContent=p(Math.floor(d/864e5));$("h").textContent=p(Math.floor(d%864e5/36e5));$("m").textContent=p(Math.floor(d%36e5/6e4))};
+    tick();setInterval(tick,30000)}
+});
+</script>
 </body>
 </html>

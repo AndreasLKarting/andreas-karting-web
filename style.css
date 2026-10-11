@@ -674,3 +674,97 @@ footer {
     text-align: center;
   }
 }
+
+/* ---- Calendar paging ---- */
+.pager {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 18px;
+}
+
+.pager button {
+  background: var(--panel);
+  color: var(--text);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  min-width: 40px;
+  height: 40px;
+  padding: 0 12px;
+  font: 700 13px var(--mono);
+  cursor: pointer;
+}
+
+.pager button[aria-current="page"] {
+  background: var(--blue);
+  border-color: var(--blue);
+}
+
+.pager button:disabled {
+  opacity: .4;
+  cursor: default;
+}
+
+.pager .info {
+  color: var(--muted);
+  font: 500 12px var(--mono);
+  margin-left: 8px;
+}
+
+/* ---- Photos: tall photo on the left, 2x2 grid on the right ---- */
+.photos {
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+.photos figure {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+.photos .mono {
+  text-align: center;
+}
+
+.photos .ph {
+  aspect-ratio: 3/2;
+}
+
+.photos figure:first-child {
+  grid-row: 1 / span 2;
+  align-self: stretch;
+}
+
+.photos figure:first-child .ph {
+  aspect-ratio: auto;
+  flex: 1;
+  min-height: 240px;
+}
+
+.photos figure:first-child .ph img {
+  position: absolute;
+  inset: 0;
+}
+
+@media (max-width: 700px) {
+  .photos { grid-template-columns: 1fr 1fr; }
+  .photos figure:first-child {
+    grid-column: 1 / -1;
+    grid-row: auto;
+    max-width: 320px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  .photos figure:first-child .ph {
+    flex: none;
+    aspect-ratio: 3/4;
+  }
+}
+
+@media (max-width: 480px) {
+  .photos { grid-template-columns: 1fr; }
+}
