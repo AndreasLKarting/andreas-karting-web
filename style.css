@@ -314,6 +314,22 @@ nav a {
   text-align: center;
   padding: 6px;
   overflow: hidden;
+  text-decoration: none;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+/* magnify on hover (and when reached with the keyboard) */
+.tile:hover,
+.tile:focus-visible {
+  transform: scale(1.08);
+  box-shadow: 0 8px 24px rgba(0,0,0,.5);
+  z-index: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tile { transition: none; }
+  .tile:hover,
+  .tile:focus-visible { transform: none; }
 }
 
 .tile img {

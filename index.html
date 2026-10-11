@@ -84,7 +84,14 @@ const CFG={
          youtube:"https://www.youtube.com/@AndreasLazaridis.Karting"},
   defaultTime:"10:00"                             // used when a race row has no time
 };
-const LOGOS=[["Den Hartog Racing","denhartog"],["SWS","sws"],["FK Nederland","fknl"],["NK Huurkarten","nk"],["DOKC","dokc"],["DRS","drs"]];   // images/logos/<name>.png
+const LOGO_DIR="images/logos/";   // folder that holds the logo files
+const LOGOS=[ // [name, file, link]
+ ["Den Hartog Racing","denhartoglogo.png","https://denhartogracing.com/"],
+ ["SWS","swslogo.png","https://www.sodiwseries.com/en-gb/drivers/lazaridis-andreas-116849.html"],
+ ["FK Nederland","fklogo.png","https://www.fknederland.nl/"],
+ ["NK Huurkarten","nklogo.png","https://www.nkhuurkarten.nl/"],
+ ["DRS","drs.png","https://www.dutchracingseries.nl/"],
+ ["KNAF","knaflogo.png","https://www.dutchracingseries.nl/"]];
 const VIDEOS=[ // id = the part after v= in the YouTube link
  {t:"Hitting 110km/h at Circuit 27 (GR)",id:""},{t:"P2 to heartbreak: DRS 2025 - Kerpen (DE)",id:""},
  {t:"Onboard lap Franciacorta (IT)",id:""},{t:"P10 to P5, 49th Junior SWS (GR)",id:""}];
@@ -150,7 +157,7 @@ document.querySelectorAll("[data-mail]").forEach(a=>a.href="mailto:"+CFG.email+"
 document.querySelectorAll("[data-k]").forEach(a=>{a.href=CFG.links[a.dataset.k];a.target="_blank";a.rel="noopener"});
 
 // static blocks
-$("logos").innerHTML=LOGOS.map(l=>`<div class="tile"><span>${l[0]}</span><img src="images/logos/${l[1]}.png" alt="${l[0]}" onload="this.previousElementSibling.hidden=true" onerror="this.remove()"></div>`).join("");
+$("logos").innerHTML=LOGOS.map(l=>`<a class="tile" href="${l[2]}" target="_blank" rel="noopener noreferrer" aria-label="${l[0]} (opens in a new tab)"><span>${l[0]}</span><img src="${LOGO_DIR}${l[1]}" alt="" onload="this.previousElementSibling.hidden=true" onerror="this.remove()"></a>`).join("");
 $("vids").innerHTML=VIDEOS.map(v=>`<a class="vid" target="_blank" rel="noopener" href="${v.id?"https://www.youtube.com/watch?v="+v.id:CFG.links.youtube}"><span class="mono">${v.t}</span><div class="ph ${v.id?"play":""}">${v.id?`<img loading="lazy" src="https://i.ytimg.com/vi/${v.id}/hqdefault.jpg" alt="${v.t}">`:"Add the YouTube video ID"}</div></a>`).join("");
 $("photos").innerHTML=PHOTOS.map(p=>`<figure><span class="mono">${p[0]}</span><div class="ph"><img loading="lazy" src="images/${p[1]}.jpg" alt="${p[0]}" onerror="this.remove()">Add images/${p[1]}.jpg</div></figure>`).join("");
 $("soc").innerHTML=SOCIAL.map(s=>`<div><h3>${s[0]} · ${s[1]}</h3><div class="row">${s[2].map(x=>`<div><span class="mono">${x[0]}</span><b>${x[1]}</b></div>`).join("")}</div></div>`).join("");
