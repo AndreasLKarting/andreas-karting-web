@@ -61,8 +61,8 @@
 <section id="sponsoring"><div class="wrap"><span class="mono">06 — Sponsoring</span><h2>Become a partner</h2>
 <div class="pk" id="packages">
 <div><h3>Supporter</h3><span class="mono">Investment on request</span><ul><li>Logo in the Partners section</li><li>Thank-you Story and tag</li></ul></div>
-<div class="hot"><h3>Partner</h3><span class="mono">Investment on request</span><ul><li>Everything in Supporter</li><li>Small logo on race suit</li><li>1 dedicated Reel per season</li><li>Season results report</li></ul></div>
-<div><h3>Main Partner</h3><span class="mono">Investment on request</span><ul><li>Everything in Partner</li><li>Prominent logo on suit and helmet</li><li>1 dedicated post per month</li><li>Invitation to a race day</li></ul></div></div>
+<div class="hot"><h3>Partner</h3><span class="mono">Investment on request</span><ul><li>Everything in Supporter</li><li>Small logo on kart or race suit</li><li>1 dedicated Reel per season</li><li>Season results report</li></ul></div>
+<div><h3>Main Partner</h3><span class="mono">Investment on request</span><ul><li>Everything in Partner</li><li>Prominent logo on kart, suit and helmet</li><li>1 dedicated post per month</li><li>Invitation to a race day</li></ul></div></div>
 <p style="color:#cfcdc8">Custom packages and product partnerships (equipment, tyres, apparel, services) are welcome.</p>
 <div class="cta"><a class="btn" data-mail href="#">Contact</a><a class="btn ghost" href="mediakit.pdf">Download media kit</a></div></div></section>
 
@@ -76,7 +76,7 @@
 /* ============ EDIT THIS BLOCK ============ */
 const CFG={
   email:"parent-email@example.com",               // sponsor contact (parent/manager)
-  sheet:"",                                       // paste the Google Sheet "Publish to web" CSV link here
+  sheet:"https://docs.google.com/spreadsheets/d/e/2PACX-1vTrQTYaoqWvwmPKYbInqhbu4hII_DbV8_bhokbmEGP2MNCJb8efUMAeSUDZZZQDEM2u_l4HOSiRgwo5/pub?gid=0&single=true&output=csv",                                       // paste the Google Sheet "Publish to web" CSV link here
   links:{instagram:"https://www.instagram.com/andreas.lazaridis.karting/",
          tiktok:"https://www.tiktok.com/@andreas.lazaridis.karting",
          youtube:"https://www.youtube.com/@AndreasLazaridis.Karting"},
@@ -90,16 +90,60 @@ const PHOTOS=[["Circuit 27 (GR), 2026","circuit27"],["Spa (BE), 2026","spa"],["O
 const SOCIAL=[["YouTube","AndreasLazaridis.Karting",[["Subscribers","134"],["Views","165.3K"],["Watch time (hours)","1.2K"],["Videos","147"]]],
  ["Instagram","andreas.lazaridis.karting",[["Followers","753"],["Posts","167"],["Profile activity (month)","480"],["Views (month)","33.4K"]]],
  ["TikTok","andreas.lazaridis.karting",[["Followers","466"],["Posts","36"],["Profile views (month)","215"],["Views (month)","8.8K"]]]];
-/* Fallback data, used if the Sheet is empty or can't be loaded. Columns: date,race,venue,country,category,result,time */
-const FALLBACK=[
-["2026-02-22","FK Netherland","Euro Indoor Karting Swalmen","NL","Lightweight","9"],["2026-02-22","FK Netherland","Euro Indoor Karting Swalmen","NL","Pupilen","3"],
-["2026-03-29","FK Netherland","Euro Indoor Karting Swalmen","BE","Lightweight","11"],["2026-03-29","FK Netherland","Euro Indoor Karting Swalmen","BE","Pupilen","6"],
-["2026-04-12","FK Netherland","Euro Indoor Karting Swalmen","NL","Lightweight","2"],["2026-04-12","FK Netherland","Euro Indoor Karting Swalmen","NL","Pupilen","2"],
-["2026-06-07","FK Netherland","Euro Indoor Karting Swalmen","NL","Lightweight","2"],["2026-06-07","FK Netherland","Euro Indoor Karting Swalmen","NL","Pupilen","2"],
-["2026-10-17","NK Huurkarten","Indoorkarting Antwerpen","BE","Junior","","10:00"]];
+/* Fallback data, used if the Sheet is empty or can't be loaded. Columns: date,race,venue,country,category,result */
+const FALLBACK=[["2026-02-22","FK Netherland","Euro Indoor Karting Swalmen","NL","Lightweight","9"],
+["2026-02-22","FK Netherland","Euro Indoor Karting Swalmen","NL","Pupilen","3"],
+["2026-03-15","DRS Nationals","Karting Genk","BE","Pro Light","21"],
+["2026-03-29","FK Netherland","Karting Spa Francorchamps","BE","Lightweight","11"],
+["2026-03-29","FK Netherland","Karting Spa Francorchamps","BE","Pupilen","6"],
+["2026-04-11","NK Huurkarten","Circuit Park Berghem","NL","Junior","8"],
+["2026-04-11","NK Huurkarten","Circuit Park Berghem","NL","Mini","4"],
+["2026-04-12","FK Netherland","Circuit Park Berghem","NL","Lightweight","2"],
+["2026-04-12","FK Netherland","Circuit Park Berghem","NL","Pupilen","2"],
+["2026-04-30","SWS Series","Drivepark Thessaloniki","GR","Junior","2"],
+["2026-05-10","DRS Nationals","KCNN, Vledderveen","NL","Junior","9"],
+["2026-05-17","Oldenzaal Junior","Kartbaan Oldenzaal","NL","Junior","1"],
+["2026-05-31","DRS Nationals","Kartcentrum Zwolle/Karba","NL","Junior","11"],
+["2026-06-06","NK Huurkarten","Kartbaan Oldenzaal","NL","Junior","3"],
+["2026-06-06","NK Huurkarten","Kartbaan Oldenzaal","NL","Mini","2"],
+["2026-06-07","FK Netherland","Kartbaan Oldenzaal","NL","Lightweight","2"],
+["2026-06-07","FK Netherland","Kartbaan Oldenzaal","NL","Pupilen","2"],
+["2026-06-13","DRS Nationals","Karting Emmen","NL","3H Endurance","18"],
+["2026-06-14","DRS Nationals","Karting Emmen","NL","Junior","18"],
+["2026-06-20","NK Huurkarten","Kartfabrique Utrecht","NL","Junior","4"],
+["2026-06-20","NK Huurkarten","Kartfabrique Utrecht","NL","Mini","3"],
+["2026-06-21","FK Netherland","Kartfabrique Utrecht","NL","Lightweight","7"],
+["2026-06-21","FK Netherland","Kartfabrique Utrecht","NL","Pupilen","4"],
+["2026-07-25","SWS Series","Go Kart Center","GR","Junior","3"],
+["2026-08-29","SWS Series","Go Kart Center","GR","Junior","2"],
+["2026-09-05","NK Huurkarten","Kartcircuit de Landsard","NL","Junior","5"],
+["2026-09-05","NK Huurkarten","Kartcircuit de Landsard","NL","Mini","14"],
+["2026-09-06","FK Netherland","Kartcircuit de Landsard","NL","Lightweight","4"],
+["2026-09-06","FK Netherland","Kartcircuit de Landsard","NL","Pupilen","3"],
+["2026-09-13","DRS Nationals","Kartcentrum Lelystad","NL","Junior","15"],
+["2026-09-19","NK Huurkarten","Karting Spa Francorchamps","BE","Junior","5"],
+["2026-09-19","NK Huurkarten","Karting Spa Francorchamps","BE","Mini","2"],
+["2026-10-03","DOCK","Kartbaan Oldenzaal","NL","Overall","22"],
+["2026-10-03","DOCK","Kartbaan Oldenzaal","NL","Future Stars","2"],
+["2026-10-04","FK Netherland","Kartbaan Oldenzaal","NL","Lightweight","3"],
+["2026-10-04","FK Netherland","Kartbaan Oldenzaal","NL","Pupilen","4"],
+["2026-10-17","NK Huurkarten","Indoorkarting Antwerpen","BE","Junior",""],
+["2026-10-17","NK Huurkarten","Indoorkarting Antwerpen","BE","Mini",""],
+["2026-11-01","DRS Nationals","Karting Spa Francorchamps","BE","Junior",""],
+["2026-11-08","FK Netherland","Karting Spa Francorchamps","BE","Lightweight",""],
+["2026-11-08","FK Netherland","Karting Spa Francorchamps","BE","Pupilen",""],
+["2026-11-15","DRS Nationals","TT Junior Track, Assen","NL","Junior",""],
+["2026-11-28","NK Huurkarten","Adventure Eefde","NL","Junior",""],
+["2026-11-28","NK Huurkarten","Adventure Eefde","NL","Mini",""],
+["2026-11-29","FK Netherland","Adventure Eefde","NL","Lightweight",""],
+["2026-11-29","FK Netherland","Adventure Eefde","NL","Pupilen",""],
+["2026-12-12","NK Huurkarten","Kartcentrum Lelystad","NL","Junior",""],
+["2026-12-12","NK Huurkarten","Kartcentrum Lelystad","NL","Mini",""],
+["2026-12-13","FK Netherland","Kartcentrum Lelystad","NL","Lightweight",""],
+["2026-12-13","FK Netherland","Kartcentrum Lelystad","NL","Pupilen",""]];
 /* ========================================= */
 
-const $=id=>document.getElementById(id), K=["date","race","venue","country","category","result","time"];
+const iso=d=>{const m=d.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/);return m?m[3]+"-"+m[2].padStart(2,"0")+"-"+m[1].padStart(2,"0"):d},$=id=>document.getElementById(id), K=["date","race","venue","country","category","result","time"];
 document.querySelectorAll("[data-mail]").forEach(a=>a.href="mailto:"+CFG.email+"?subject=Sponsorship%20enquiry%20-%20Andreas%20Lazaridis");
 document.querySelectorAll("[data-k]").forEach(a=>{a.href=CFG.links[a.dataset.k];a.target="_blank";a.rel="noopener"});
 
@@ -113,8 +157,8 @@ $("soc").innerHTML=SOCIAL.map(s=>`<div><h3>${s[0]} · ${s[1]}</h3><div class="ro
 function csv(t){const r=[];let w=[],c="",q=0;for(let i=0;i<t.length;i++){const h=t[i];if(q){if(h=='"'&&t[i+1]=='"'){c+='"';i++}else if(h=='"')q=0;else c+=h}else if(h=='"')q=1;else if(h==","){w.push(c);c=""}else if(h=="\n"){w.push(c);r.push(w);w=[];c=""}else if(h!="\r")c+=h}w.push(c);r.push(w);return r}
 const toObj=a=>Object.fromEntries(K.map((k,i)=>[k,(a[i]||"").trim()]));
 async function load(){
-  if(CFG.sheet){try{const t=await (await fetch(CFG.sheet)).text();const r=csv(t);const hd=r[0].map(x=>x.trim().toLowerCase());
-    const rows=r.slice(1).filter(x=>x[0]&&x[0].trim()).map(x=>Object.fromEntries(K.map(k=>[k,(x[hd.indexOf(k)]||"").trim()])));
+  if(CFG.sheet){try{const t=await (await fetch(CFG.sheet)).text();const r=csv(t);const hd=r[0].map(x=>{x=x.trim().toLowerCase();return x=="title"||x=="name"?"race":x=="country flag"?"country":x});
+    const rows=r.slice(1).filter(x=>x[0]&&x[0].trim()).map(x=>{const o=Object.fromEntries(K.map(k=>[k,(x[hd.indexOf(k)]||"").trim()]));o.date=iso(o.date);return o});
     if(rows.length)return rows}catch(e){}}
   $("note").textContent=CFG.sheet?"Live data unavailable, showing saved results.":"";
   return FALLBACK.map(toObj);
@@ -124,7 +168,7 @@ const fmt=d=>d.split("-").reverse().join("/");
 
 load().then(all=>{
   all.sort((a,b)=>when(a)-when(b));
-  const now=new Date(), done=r=>when(r)<now;
+  const now=new Date(), done=r=>new Date(r.date+"T23:59:59")<now;
   // calendar
   const sel={fStatus:["All","Upcoming","Completed"],fYear:["All",...new Set(all.map(r=>r.date.slice(0,4)))],fVenue:["All",...new Set(all.map(r=>r.venue))],fRace:["All",...new Set(all.map(r=>r.race))]};
   for(const id in sel){$(id).innerHTML=sel[id].map(v=>`<option>${v}</option>`).join("");$(id).onchange=draw}
@@ -137,8 +181,8 @@ load().then(all=>{
   draw();
   // next race + countdown
   const nx=all.find(r=>!done(r));
-  if(nx){$("next").hidden=false;$("nName").textContent=nx.race+" · "+nx.venue;
-    $("nMeta").textContent=when(nx).toLocaleDateString("en-GB",{weekday:"long",day:"numeric",month:"long",year:"numeric"}).toUpperCase();
+  if(nx){$("next").hidden=false;$("nName").textContent=nx.race+" · "+nx.venue;const cats=all.filter(r=>r.date==nx.date&&r.venue==nx.venue&&r.race==nx.race).map(r=>r.category).join(", ");
+    $("nMeta").textContent=when(nx).toLocaleDateString("en-GB",{weekday:"long",day:"numeric",month:"long",year:"numeric"}).toUpperCase()+" | "+cats.toUpperCase();
     const p=n=>String(n).padStart(2,"0"),tick=()=>{const d=when(nx)-new Date();if(d<=0){$("cd").innerHTML="<span class='mono'>Race weekend</span>";return}
       $("d").textContent=p(Math.floor(d/864e5));$("h").textContent=p(Math.floor(d%864e5/36e5));$("m").textContent=p(Math.floor(d%36e5/6e4))};
     tick();setInterval(tick,30000)}
