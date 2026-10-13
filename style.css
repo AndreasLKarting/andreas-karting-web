@@ -787,7 +787,12 @@ footer {
   .photos { grid-template-columns: 1fr; }
 }
 
-/* ---- 2027 Status: championship standings cards ---- */
+/* ---- 2026 Results: championship standings cards (inside Achievements) ---- */
+.sub {
+  margin: 56px 0 24px;
+  font: 800 clamp(24px,3.4vw,40px)/1.1 var(--wide);
+}
+
 .stand {
   display: grid;
   grid-template-columns: repeat(4,1fr);
