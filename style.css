@@ -786,3 +786,69 @@ footer {
 @media (max-width: 480px) {
   .photos { grid-template-columns: 1fr; }
 }
+
+/* ---- 2026 Results: championship standings cards (inside Achievements) ---- */
+.sub {
+  margin: 56px 0 24px;
+  font: 800 clamp(24px,3.4vw,40px)/1.1 var(--wide);
+}
+
+.stand {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 18px;
+}
+
+.sc {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 22px 20px 18px;
+  min-height: 210px;
+  border: 2px solid var(--blue);
+  border-radius: 12px;
+  background: linear-gradient(#f4f6fb,#d7dded);
+  color: #1c2b4a;
+}
+
+.sc h3 {
+  margin: 0 36px 10px 0;
+  font: 700 clamp(22px,2.4vw,30px)/1.15 "Space Grotesk",system-ui,sans-serif;
+  color: var(--blue);
+}
+
+.sc p {
+  margin: 0;
+  font: 500 clamp(18px,1.9vw,24px)/1.25 "Space Grotesk",system-ui,sans-serif;
+}
+
+.sc small {
+  margin-top: auto;
+  padding-top: 14px;
+  font: 400 13px/1.3 "Space Grotesk",system-ui,sans-serif;
+  color: #4a5675;
+}
+
+.sc .rib {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 24px;
+  height: 30px;
+}
+
+.sc .rib svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+@media (max-width: 1000px) {
+  .stand { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 560px) {
+  .stand { grid-template-columns: 1fr; }
+  .sc { min-height: 0; }
+}
