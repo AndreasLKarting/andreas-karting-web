@@ -327,7 +327,17 @@ td.r {
 .vid .mono {
   display: block;
   margin-bottom: 8px;
+  min-height: 2.8em;   /* keeps thumbnails level when a title wraps to two lines */
+  line-height: 1.4;
   color: var(--text);
+}
+
+/* images fill their frame (videos 16:9, photos) without stretching */
+.ph img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .ph {
@@ -500,7 +510,7 @@ footer {
 /* ---- Photos: tall photo on the left, 2x2 grid on the right ---- */
 .photos {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: .72fr 1fr 1fr;   /* narrow left column: the tall Circuit 27 photo shows (almost) in full */
   gap: 20px;
   align-items: start;
 }
