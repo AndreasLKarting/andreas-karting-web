@@ -510,7 +510,7 @@ footer {
 /* ---- Photos: tall photo on the left, 2x2 grid on the right ---- */
 .photos {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: .72fr 1fr 1fr;   /* narrow left column: the tall Circuit 27 photo shows (almost) in full */
   gap: 20px;
   align-items: start;
 }
