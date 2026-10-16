@@ -1072,4 +1072,7 @@ select,
   clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 78%, 0 100%);
 }
 
+.rib.p1 { background: linear-gradient(#ffe27a, #d9a521); }
+.rib.p2 { background: linear-gradient(#e6edf6, #9fb0c6); }
+.rib.p3 { background: linear-gradient(#f0b07c, #b9692f); }
 
