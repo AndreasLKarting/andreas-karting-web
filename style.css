@@ -641,7 +641,7 @@ header .wrap {
 .logo i {
   display: grid;
   place-items: center;
-  width: 28px;
+  width: 40px;
   height: 28px;
   border: 1.5px solid var(--blue);
   background: rgba(35,64,255,.14);
@@ -649,7 +649,8 @@ header .wrap {
 }
 
 .logo i b {
-  font: italic 700 15px "Space Grotesk",sans-serif;
+  font: italic 700 14px "Space Grotesk",sans-serif;
+  letter-spacing: .02em;
   color: #7f95ff;
   transform: skewX(12deg);
 }
@@ -709,16 +710,6 @@ header .btn {
   pointer-events: none;
 }
 
-.portrait .chip {
-  position: absolute;
-  z-index: 2;
-  top: 18px;
-  left: 18px;
-  padding: 10px 14px;
-  background: rgba(30,32,40,.88);
-  color: #c9ccd6;
-}
-
 .mantra {
   position: absolute;
   z-index: 2;
@@ -738,50 +729,12 @@ header .btn {
   line-height: 1.5;
 }
 
-.study {
-  position: absolute;
-  z-index: 2;
-  left: 0;
-  bottom: 22%;
-  width: min(46%,230px);
-  background: rgba(24,26,33,.94);
-  border: 1px solid var(--edge);
-  border-left: 0;
-  padding: 12px 14px 12px;
-}
-
-.study .st-h,
-.study .st-f {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 10px;
-}
-
-.study .st-h i {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--accent);
-}
-
-.study svg {
-  display: block;
-  width: 100%;
-  margin: 8px 0;
-}
-
-.study .st-f {
-  display: block;
-  font-size: 9px;
-  line-height: 1.4;
-}
-
 /* ---- stats strip ---- */
 .strip {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 24px;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: stretch;
   padding-bottom: 64px;
 }
 
@@ -793,7 +746,7 @@ header .btn {
 }
 
 .stat {
-  padding: 22px 24px 18px;
+  padding: 18px 16px 14px;
   border-left: 1px solid var(--edge);
 }
 
@@ -811,13 +764,16 @@ header .btn {
 .stat b {
   display: block;
   margin-top: 6px;
-  font: 400 clamp(54px,8vw,104px)/1 var(--disp);
+  font: 400 clamp(36px,4.6vw,66px)/1 var(--disp);
 }
 
 /* next race bar */
 .next {
   border-radius: 2px;
   background: rgba(26,27,34,.9);
+  border-top: 1px solid var(--edge);
+  border-bottom: 1px solid var(--edge);
+  align-self: stretch;
 }
 
 .cd div {
@@ -828,13 +784,12 @@ header .btn {
 .two p {
   margin: 0 0 18px;
   color: #cfcdc8;
-  max-width: 780px;
 }
 
 .chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(150px,1fr));
+  gap: 12px;
   margin-top: 36px;
 }
 
@@ -848,18 +803,52 @@ header .btn {
 
 a.chip,
 span.chip.pl {
-  padding: 14px 20px;
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  height: 52px;
+  padding: 0 14px;
+  font-size: 11px;
+  text-align: center;
   border: 1px solid var(--edge);
   color: #e6e7ee;
   background: rgba(255,255,255,.02);
-  transition: border-color .15s, background .15s, transform .15s;
+  overflow: hidden;
+  transition: border-color .2s, background .2s, transform .2s;
 }
 
-a.chip:hover,
-a.chip:focus-visible {
+.chip em {
+  font-style: normal;
+  transition: opacity .2s;
+}
+
+.chip img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 7px 12px;
+  opacity: 0;
+  transition: opacity .2s;
+}
+
+/* on hover (or keyboard focus) the name gives way to the logo */
+.chip:hover,
+.chip:focus-visible {
   border-color: var(--accent);
-  background: rgba(91,124,255,.12);
+  background: linear-gradient(#f3f5f8,#aab4c2);
   transform: translateY(-2px);
+}
+
+.chip:hover em,
+.chip:focus-visible em {
+  opacity: 0;
+}
+
+.chip:hover img,
+.chip:focus-visible img {
+  opacity: 1;
 }
 
 /* ---- results rows ---- */
@@ -909,14 +898,10 @@ a.chip:focus-visible {
 }
 
 .sub {
-  margin: 56px 0 18px;
+  margin: 104px 0 24px;
   font: 400 clamp(28px,3.6vw,44px)/1 var(--disp);
   letter-spacing: .02em;
   text-transform: uppercase;
-}
-
-.sub:first-of-type {
-  margin-top: 0;
 }
 
 /* ---- sponsoring ---- */
