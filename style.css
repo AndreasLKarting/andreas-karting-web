@@ -1035,3 +1035,13 @@ select,
     text-align: left;
   }
 }
+
+/* last race card */
+.next[hidden] { display: none; }            /* .next sets display:flex, which would otherwise override [hidden] */
+.next.last { border-left-color: #e0a82e; }
+.next.last .mono { color: #e0a82e; }
+.next.last .cd { flex-wrap: wrap; justify-content: flex-end; }
+.next.last .cd span { display: block; max-width: 96px; line-height: 1.25; }
+.cd .p1 b { color: #f5c542; }               /* same colors as the calendar table */
+.cd .p2 b { color: #b9c8dc; }
+.cd .p3 b { color: #d98e5a; }
