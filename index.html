@@ -183,11 +183,10 @@ $("vids").innerHTML=VIDEOS.map(v=>`<a class="vid" target="_blank" rel="noopener"
 $("photos").innerHTML=PHOTOS.map(p=>`<figure><span class="mono">${p[0]}</span><div class="ph"><img loading="lazy" src="images/race/${p[1]}.jpg" alt="${p[0]}" onerror="this.remove()">Add images/race/${p[1]}.jpg</div></figure>`).join("");
 const ord=s=>{const m=String(s).match(/^(\d+)(?:st|nd|rd|th)\b/i);return m?+m[1]:0};
 const rowHTML=(t,c,o)=>{
-  const best=Math.min(99,...o.map(ord).filter(n=>n>0));
-  const pod=best<=3?best:0;
-  const rib=pod?`<i class="rib p${pod}" role="img" aria-label="Podium: ${pod}${["st","nd","rd"][pod-1]} place">${pod}</i>`:"";
+  const pods=o.map(ord).filter(n=>n>0&&n<4);
+  const rib=pods.length?`<span class="ribs">${pods.map(n=>`<i class="rib p${n}" role="img" aria-label="Podium: ${n}${["st","nd","rd"][n-1]} place">${n}</i>`).join("")}</span>`:"";
   const lines=o.map(x=>{const n=ord(x);return `<span${n>0&&n<4?` class="p${n}"`:""}>${x}</span>`}).join("");
-  return `<div class="row${pod?" pod":""}">${rib}<div><h3>${t}</h3>${c?`<small>${c}</small>`:""}</div><div class="out">${lines}</div></div>`};
+  return `<div class="row">${rib}<div><h3>${t}</h3>${c?`<small>${c}</small>`:""}</div><div class="out">${lines}</div></div>`};
 $("ach").innerHTML=ACH.map(a=>rowHTML(a[0],a[1],[a[2]])).join("");
 $("standings").innerHTML=STANDINGS.map(x=>rowHTML(x[0],x[2],x[1])).join("");
 $("soc").innerHTML=SOCIAL.map(s=>`<div class="plat"><a class="ico" href="${CFG.links[s[0].toLowerCase()]}" target="_blank" rel="noopener noreferrer" aria-label="${s[0]} (opens in a new tab)">${ICONS[s[0]]}</a><div><h3>${s[0]} · ${s[1]}</h3><div class="row">${s[2].map(x=>`<div><span class="mono">${x[0]}</span><b>${x[1]}</b></div>`).join("")}</div></div></div>`).join("");
