@@ -1052,10 +1052,15 @@ select,
 .res .out .p2 { color: #b9c8dc; }
 .res .out .p3 { color: #d98e5a; }
 
-.rib {
+.ribs {
   position: absolute;
   top: 0;
   right: 0;
+  display: flex;
+  gap: 5px;
+}
+
+.rib {
   width: 24px;
   height: 26px;
   padding-top: 4px;
@@ -1066,6 +1071,5 @@ select,
   color: #15151a;
   clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 78%, 0 100%);
 }
-.rib.p1 { background: linear-gradient(#ffe27a, #d9a521); }
-.rib.p2 { background: linear-gradient(#e6edf6, #9fb0c6); }
-.rib.p3 { background: linear-gradient(#f0b07c, #b9692f); }
+
+
