@@ -12,7 +12,8 @@
  *  The key is stored in Script properties, never in this code or on the website.
  */
 
-const HANDLE = '@AndreasLazaridis.Karting';   // YouTube channel handle
+const HANDLE = '@AndreasLazaridis.Karting';   // YouTube channel handle (used only if CHANNEL_ID is empty)
+const CHANNEL_ID = '';                         // paste the channel ID (UC...) here: more reliable than the handle
 const TAB = 'Social';
 const HEADER = ['platform', 'metric', 'value', 'updated'];
 
@@ -26,11 +27,12 @@ function setup() {
 function updateYouTube() {
   const key = PropertiesService.getScriptProperties().getProperty('YT_API_KEY');
   if (!key) throw new Error('Add the script property YT_API_KEY first (Project Settings > Script properties).');
-  const url = 'https://www.googleapis.com/youtube/v3/channels?part=statistics&forHandle=' + encodeURIComponent(HANDLE) + '&key=' + encodeURIComponent(key);
+  const url = 'https://www.googleapis.com/youtube/v3/channels?part=statistics&key=' + encodeURIComponent(key) +
+    (CHANNEL_ID ? '&id=' + encodeURIComponent(CHANNEL_ID) : '&forHandle=' + encodeURIComponent(HANDLE));
   const res = UrlFetchApp.fetch(url, { muteHttpExceptions: true });
   if (res.getResponseCode() !== 200) throw new Error('YouTube API error ' + res.getResponseCode() + ': ' + res.getContentText());
   const items = JSON.parse(res.getContentText()).items || [];
-  if (!items.length) throw new Error('No channel found for ' + HANDLE);
+  if (!items.length) throw new Error('No channel found for ' + (CHANNEL_ID || HANDLE));
   const st = items[0].statistics;
   const rows = [];
   if (st.hiddenSubscriberCount !== true) rows.push(['Subscribers', Number(st.subscriberCount)]);

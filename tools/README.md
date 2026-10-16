@@ -22,6 +22,7 @@ one row each) until they are automated.
    enable *YouTube Data API v3* > Credentials > Create API key. Restrict the key to the YouTube Data API.
 2. In the Sheet: **Extensions > Apps Script**. Paste `social-metrics.gs`, replacing the existing code.
 3. **Project Settings > Script properties**: add `YT_API_KEY` with the key. (Never put it in the code or the website.)
+3b. Find the channel ID (YouTube Studio > Settings > Channel > Advanced settings) and paste it into `CHANNEL_ID` at the top of the script. The `@handle` lookup can fail for handles that contain a dot.
 4. Run `setup()` once and accept the permissions. It creates the `Social` tab and a daily trigger.
 5. **File > Share > Publish to web**: choose the `Social` tab and format **CSV**, then Publish. Copy the link.
 6. In `index.html`, paste that link into `socialSheet:"..."` inside `CFG`. Commit it.
