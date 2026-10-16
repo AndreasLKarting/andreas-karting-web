@@ -28,9 +28,9 @@
 <div class="loc mono">Netherlands<br>Greece · Europe</div></div></div>
 
 <div class="strip">
-<div class="stats"><div class="stat"><span class="mono">Wins</span><b>03</b></div><div class="stat"><span class="mono">Podiums</span><b>22</b></div><div class="stat"><span class="mono">Races</span><b>100+</b></div><div class="stat"><span class="mono">Since</span><b>2023</b></div></div>
-<div class="next" id="next" hidden><div><span class="mono">Next race</span><h3 id="nName"></h3><small id="nMeta"></small></div>
-<div class="cd" id="cd"><div><b id="d">00</b><span>Days</span></div><div><b id="h">00</b><span>Hours</span></div><div><b id="m">00</b><span>Minutes</span></div></div></div></div>
+<div class="next last" id="last" hidden><div><span class="mono">Last race</span><h3 id="lName"></h3><small id="lMeta"></small></div>
+<div class="cd" id="lRes"></div></div>
+</div>
 </main>
 
 <section id="profile"><div class="wrap"><span class="eyebrow">01 / Driver profile</span><h2>Who is Andreas?</h2>
@@ -245,6 +245,15 @@ load().then(all=>{
     const p=n=>String(n).padStart(2,"0"),tick=()=>{const d=when(nx)-new Date();if(d<=0){$("cd").innerHTML="<span class='mono'>Race weekend</span>";return}
       $("d").textContent=p(Math.floor(d/864e5));$("h").textContent=p(Math.floor(d%864e5/36e5));$("m").textContent=p(Math.floor(d%36e5/6e4))};
     tick();setInterval(tick,30000)}
+   // last race + results
+  const pv=[...all].reverse().find(r=>done(r)&&r.result);
+  if(pv){
+    const grp=all.filter(r=>r.date==pv.date&&r.venue==pv.venue&&r.race==pv.race&&r.result);
+    $("last").hidden=false;
+    $("lName").textContent=pv.race+" · "+pv.venue;
+    $("lMeta").textContent=when(pv).toLocaleDateString("en-GB",{weekday:"long",day:"numeric",month:"long",year:"numeric"}).toUpperCase();
+    $("lRes").innerHTML=grp.map(r=>{const n=parseInt(r.result);
+      return `<div class="${n>0&&n<4?"p"+n:""}"><b>${isNaN(n)?r.result:"P"+n}</b><span>${r.category}</span></div>`}).join("");
 });
 </script>
 </body>
