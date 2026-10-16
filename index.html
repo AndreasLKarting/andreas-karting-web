@@ -28,9 +28,11 @@
 <div class="loc mono">Netherlands<br>Greece · Europe</div></div></div>
 
 <div class="strip">
-<div class="stats"><div class="stat"><span class="mono">Wins</span><b>03</b></div><div class="stat"><span class="mono">Podiums</span><b>22</b></div><div class="stat"><span class="mono">Races</span><b>100+</b></div><div class="stat"><span class="mono">Since</span><b>2023</b></div></div>
+<div class="next last" id="last" hidden><div><span class="mono">Last race</span><h3 id="lName"></h3><small id="lMeta"></small></div>
+<div class="cd" id="lRes"></div></div>
 <div class="next" id="next" hidden><div><span class="mono">Next race</span><h3 id="nName"></h3><small id="nMeta"></small></div>
-<div class="cd" id="cd"><div><b id="d">00</b><span>Days</span></div><div><b id="h">00</b><span>Hours</span></div><div><b id="m">00</b><span>Minutes</span></div></div></div></div>
+<div class="cd" id="cd"><div><b id="d">00</b><span>Days</span></div><div><b id="h">00</b><span>Hours</span></div><div><b id="m">00</b><span>Minutes</span></div></div></div>
+</div>
 </main>
 
 <section id="profile"><div class="wrap"><span class="eyebrow">01 / Driver profile</span><h2>Who is Andreas?</h2>
@@ -83,7 +85,7 @@ const CFG={
   links:{instagram:"https://www.instagram.com/andreas.lazaridis.karting/",
          tiktok:"https://www.tiktok.com/@andreas.lazaridis.karting",
          youtube:"https://www.youtube.com/@AndreasLazaridis.Karting"},
-  socialSheet:"",   // "Social" tab of the same Google Sheet, published as CSV (see tools/README.md). Leave "" to use the numbers below.
+  socialSheet:"https://docs.google.com/spreadsheets/d/e/2PACX-1vTrQTYaoqWvwmPKYbInqhbu4hII_DbV8_bhokbmEGP2MNCJb8efUMAeSUDZZZQDEM2u_l4HOSiRgwo5/pub?gid=1383239317&single=true&output=csv",   // "Social" tab of the same Google Sheet, published as CSV (see tools/README.md). Leave "" to use the numbers below.
   defaultTime:"10:00"                             // used when a race row has no time
 };
 const LOGO_DIR="images/logos/";   // folder that holds the logo files (shown when you hover a link)
@@ -105,10 +107,10 @@ const ICONS={ // simple inline logos, shown left of each metric row
  TikTok:'<svg viewBox="0 0 64 64" aria-hidden="true"><rect x="4" y="4" width="56" height="56" rx="14" fill="#000" stroke="#3a3a44" stroke-width="2"/><g fill="none" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M34 16v24.5a6.5 6.5 0 1 1-6.5-6.5M34 16c.8 6 5 10 11 10.5" stroke="#25f4ee" transform="translate(-2 -1.5)"/><path d="M34 16v24.5a6.5 6.5 0 1 1-6.5-6.5M34 16c.8 6 5 10 11 10.5" stroke="#fe2c55" transform="translate(2 1.5)"/><path d="M34 16v24.5a6.5 6.5 0 1 1-6.5-6.5M34 16c.8 6 5 10 11 10.5" stroke="#fff"/></g></svg>'
 };
 const STANDINGS=[ // [title, [result lines], small note]
- ["FK Light 2026",["3rd Overall","2nd in Pupilen"],"Raced 7 of 7 completed (10 races in total)"],
- ["NK Junior 2026",["14th Overall","6th in Mini"],"Raced 5 of 7 completed, 2 missed (10 races in total)"],
- ["DRS Junior 2026",["22nd Overall"],"Raced 5 of 8 completed, 3 missed (10 races in total)"],
- ["SWS Series 2026",["8th (NL)","514th World"],""]];
+ ["FK Light 2026",["3rd (Overall)","2nd (Pupilen)"],"Raced 7 of 7 completed (10 races in total)"],
+ ["NK Junior 2026",["14th (Overall)","6th (Mini)"],"Raced 5 of 7 completed, 2 missed (10 races in total)"],
+ ["DRS Junior 2026",["22nd (Overall)"],"Raced 5 of 8 completed, 3 missed (10 races in total)"],
+ ["SWS Series 2026",["8th (NL)","514th (World)"],""]];
 const ACH=[ // [title, caption, result]
  ["FK Nederland · 2025","Pupilen championship","3rd"],
  ["DOKC · 2026","Future Stars championship","2nd"],
@@ -180,12 +182,18 @@ $("logos").innerHTML=CHIPS.map(c=>{const inner=`<em>${c[0]}</em><img src="${LOGO
   return c[2]?`<a class="chip" href="${c[2]}" target="_blank" rel="noopener noreferrer" aria-label="${c[0]} (opens in a new tab)">${inner}</a>`:`<span class="chip pl">${inner}</span>`}).join("");
 $("vids").innerHTML=VIDEOS.map(v=>`<a class="vid" target="_blank" rel="noopener" href="${v.id?"https://www.youtube.com/watch?v="+v.id:CFG.links.youtube}"><span class="mono">${v.t}</span><div class="ph ${v.id?"play":""}">${v.id?`<img loading="lazy" src="https://i.ytimg.com/vi/${v.id}/hqdefault.jpg" alt="${v.t}">`:"Add the YouTube video ID"}</div></a>`).join("");
 $("photos").innerHTML=PHOTOS.map(p=>`<figure><span class="mono">${p[0]}</span><div class="ph"><img loading="lazy" src="images/race/${p[1]}.jpg" alt="${p[0]}" onerror="this.remove()">Add images/race/${p[1]}.jpg</div></figure>`).join("");
-const rowHTML=(t,c,o)=>`<div class="row"><div><h3>${t}</h3>${c?`<small>${c}</small>`:""}</div><div class="out">${o.map(x=>`<span>${x}</span>`).join("")}</div></div>`;
+const ord=s=>{const m=String(s).match(/^(\d+)(?:st|nd|rd|th)\b/i);return m?+m[1]:0};
+const rowHTML=(t,c,o)=>{
+  const pods=o.map(ord).filter(n=>n>0&&n<4);
+  const rib=pods.length?`<span class="ribs">${pods.map(n=>`<i class="rib p${n}" role="img" aria-label="Podium: ${n}${["st","nd","rd"][n-1]} place">${n}</i>`).join("")}</span>`:"";
+  const lines=o.map(x=>{const n=ord(x);return `<span${n>0&&n<4?` class="p${n}"`:""}>${x}</span>`}).join("");
+  return `<div class="row">${rib}<div><h3>${t}</h3>${c?`<small>${c}</small>`:""}</div><div class="out">${lines}</div></div>`};
 $("ach").innerHTML=ACH.map(a=>rowHTML(a[0],a[1],[a[2]])).join("");
 $("standings").innerHTML=STANDINGS.map(x=>rowHTML(x[0],x[2],x[1])).join("");
 const fmtNum=v=>{const n=Number(String(v).replace(/[ ,]/g,""));if(v===""||isNaN(n))return v;return n>=1e6?(n/1e6).toFixed(1).replace(/\.0$/,"")+"M":n>=1e4?(n/1e3).toFixed(1).replace(/\.0$/,"")+"K":n>=1e3?(n/1e3).toFixed(1).replace(/\.0$/,"")+"K":String(n)};
 function renderSocial(sheet){ // sheet = {platform(lowercase): [[metric,value],...]}; falls back to SOCIAL above
-  $("soc").innerHTML=SOCIAL.map(s=>{const m=(sheet&&sheet[s[0].toLowerCase()])||s[2].map(x=>[x[0],x[1]]);
+  $("soc").innerHTML=SOCIAL.map(s=>{const sh=(sheet&&sheet[s[0].toLowerCase()])||[],m=s[2].map(x=>{const f=sh.find(y=>y[0].toLowerCase()==x[0].toLowerCase());return [x[0],f?f[1]:x[1]]});
+    sh.forEach(y=>{if(!m.some(x=>x[0].toLowerCase()==y[0].toLowerCase()))m.push(y)});
     return `<div class="plat"><a class="ico" href="${CFG.links[s[0].toLowerCase()]}" target="_blank" rel="noopener noreferrer" aria-label="${s[0]} (opens in a new tab)">${ICONS[s[0]]}</a><div><h3>${s[0]} · ${s[1]}</h3><div class="row">${m.map(x=>`<div><span class="mono">${x[0]}</span><b>${fmtNum(x[1])}</b></div>`).join("")}</div></div></div>`}).join("")}
 renderSocial();
 async function loadSocial(){ // numbers come from the Google Sheet "Social" tab: platform, metric, value, updated
@@ -259,7 +267,18 @@ load().then(all=>{
     const p=n=>String(n).padStart(2,"0"),tick=()=>{const d=when(nx)-new Date();if(d<=0){$("cd").innerHTML="<span class='mono'>Race weekend</span>";return}
       $("d").textContent=p(Math.floor(d/864e5));$("h").textContent=p(Math.floor(d%864e5/36e5));$("m").textContent=p(Math.floor(d%36e5/6e4))};
     tick();setInterval(tick,30000)}
+  // last race + results
+  const pv=[...all].reverse().find(r=>done(r)&&r.result);
+  if(pv){
+    const grp=all.filter(r=>r.date==pv.date&&r.venue==pv.venue&&r.race==pv.race&&r.result);
+    $("last").hidden=false;
+    $("lName").textContent=pv.race+" · "+pv.venue;
+    $("lMeta").textContent=when(pv).toLocaleDateString("en-GB",{weekday:"long",day:"numeric",month:"long",year:"numeric"}).toUpperCase();
+    $("lRes").innerHTML=grp.map(r=>{const n=parseInt(r.result);
+      return `<div class="${n>0&&n<4?"p"+n:""}"><b>${isNaN(n)?r.result:"P"+n}</b><span>${r.category}</span></div>`}).join("");
+  }
 });
 </script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "407db4d2324c4c7baa1e4178b2cdfec7"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>

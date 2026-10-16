@@ -1035,3 +1035,44 @@ select,
     text-align: left;
   }
 }
+
+/* last race card */
+.next[hidden] { display: none; }            /* .next sets display:flex, which would otherwise override [hidden] */
+.next.last { border-left-color: #e0a82e; }
+.next.last .mono { color: #e0a82e; }
+.next.last .cd { flex-wrap: wrap; justify-content: flex-end; }
+.next.last .cd span { display: block; max-width: 96px; line-height: 1.25; }
+.cd .p1 b { color: #f5c542; }               /* same colors as the calendar table */
+.cd .p2 b { color: #b9c8dc; }
+.cd .p3 b { color: #d98e5a; }
+
+/* podium colors + medal ribbon */
+.res .row { position: relative; }
+.res .out .p1 { color: #f5c542; }
+.res .out .p2 { color: #b9c8dc; }
+.res .out .p3 { color: #d98e5a; }
+
+.ribs {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  gap: 5px;
+}
+
+.rib {
+  width: 24px;
+  height: 26px;
+  padding-top: 4px;
+  display: grid;
+  place-items: start center;
+  font: 400 15px/1 var(--disp);
+  font-style: normal;
+  color: #15151a;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 78%, 0 100%);
+}
+
+.rib.p1 { background: linear-gradient(#ffe27a, #d9a521); }
+.rib.p2 { background: linear-gradient(#e6edf6, #9fb0c6); }
+.rib.p3 { background: linear-gradient(#f0b07c, #b9692f); }
+
