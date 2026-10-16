@@ -85,7 +85,7 @@ const CFG={
   links:{instagram:"https://www.instagram.com/andreas.lazaridis.karting/",
          tiktok:"https://www.tiktok.com/@andreas.lazaridis.karting",
          youtube:"https://www.youtube.com/@AndreasLazaridis.Karting"},
-  socialSheet:"",   // "Social" tab of the same Google Sheet, published as CSV (see tools/README.md). Leave "" to use the numbers below.
+  socialSheet:"https://docs.google.com/spreadsheets/d/e/2PACX-1vTrQTYaoqWvwmPKYbInqhbu4hII_DbV8_bhokbmEGP2MNCJb8efUMAeSUDZZZQDEM2u_l4HOSiRgwo5/pub?gid=1383239317&single=true&output=csv",   // "Social" tab of the same Google Sheet, published as CSV (see tools/README.md). Leave "" to use the numbers below.
   defaultTime:"10:00"                             // used when a race row has no time
 };
 const LOGO_DIR="images/logos/";   // folder that holds the logo files (shown when you hover a link)
@@ -192,7 +192,8 @@ $("ach").innerHTML=ACH.map(a=>rowHTML(a[0],a[1],[a[2]])).join("");
 $("standings").innerHTML=STANDINGS.map(x=>rowHTML(x[0],x[2],x[1])).join("");
 const fmtNum=v=>{const n=Number(String(v).replace(/[ ,]/g,""));if(v===""||isNaN(n))return v;return n>=1e6?(n/1e6).toFixed(1).replace(/\.0$/,"")+"M":n>=1e4?(n/1e3).toFixed(1).replace(/\.0$/,"")+"K":n>=1e3?(n/1e3).toFixed(1).replace(/\.0$/,"")+"K":String(n)};
 function renderSocial(sheet){ // sheet = {platform(lowercase): [[metric,value],...]}; falls back to SOCIAL above
-  $("soc").innerHTML=SOCIAL.map(s=>{const m=(sheet&&sheet[s[0].toLowerCase()])||s[2].map(x=>[x[0],x[1]]);
+  $("soc").innerHTML=SOCIAL.map(s=>{const sh=(sheet&&sheet[s[0].toLowerCase()])||[],m=s[2].map(x=>{const f=sh.find(y=>y[0].toLowerCase()==x[0].toLowerCase());return [x[0],f?f[1]:x[1]]});
+    sh.forEach(y=>{if(!m.some(x=>x[0].toLowerCase()==y[0].toLowerCase()))m.push(y)});
     return `<div class="plat"><a class="ico" href="${CFG.links[s[0].toLowerCase()]}" target="_blank" rel="noopener noreferrer" aria-label="${s[0]} (opens in a new tab)">${ICONS[s[0]]}</a><div><h3>${s[0]} · ${s[1]}</h3><div class="row">${m.map(x=>`<div><span class="mono">${x[0]}</span><b>${fmtNum(x[1])}</b></div>`).join("")}</div></div></div>`}).join("")}
 renderSocial();
 async function loadSocial(){ // numbers come from the Google Sheet "Social" tab: platform, metric, value, updated
