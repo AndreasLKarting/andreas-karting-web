@@ -58,7 +58,7 @@
 <section id="media"><div class="wrap"><span class="eyebrow">04 / Media</span><h2>Videos</h2>
 <p style="color:#cfcdc8;margin-top:-12px">Welcome to my racing journey. Through these videos, you get a front-row seat to my practice sessions, championship races, and new track explorations across the Netherlands, Greece, and wherever my wheels take me.</p>
 <div class="vids" id="vids"></div><h2>Photos</h2><div class="photos" id="photos"></div></div></section>
-<div class="pc" id="pc" hidden role="dialog" aria-modal="true" aria-label="Photo gallery"><button type="button" class="pc-x" id="pcClose" aria-label="Close">&times;</button><div class="pc-stage"><button type="button" class="pc-a" id="pcPrev" aria-label="Previous photo">&#8249;</button><img id="pcImg" alt=""><button type="button" class="pc-a" id="pcNext" aria-label="Next photo">&#8250;</button></div><div class="pc-cap"><span class="mono" id="pcDate"></span><h3 id="pcTitle"></h3><p id="pcDesc"></p><div class="pc-nav"><span class="mono" id="pcCount"></span><div class="pc-dots" id="pcDots"></div></div></div></div>
+<div class="pc" id="pc" hidden role="dialog" aria-modal="true" aria-label="Photo gallery"><button type="button" class="pc-x" id="pcClose" aria-label="Close">&times;</button><div class="pc-stage"><button type="button" class="pc-a" id="pcPrev" aria-label="Previous photo">&#8249;</button><img id="pcImg" alt=""><button type="button" class="pc-a" id="pcNext" aria-label="Next photo">&#8250;</button></div><div class="pc-cap"><span class="mono" id="pcDate"></span><h3 id="pcTitle"></h3><p id="pcDesc"></p><span class="mono pc-credit" id="pcCredit"></span><div class="pc-nav"><span class="mono" id="pcCount"></span><div class="pc-dots" id="pcDots"></div></div></div></div>
 
 <section id="social"><div class="wrap"><span class="eyebrow">05 / Social</span><h2>Audience</h2><div class="soc" id="soc"></div><p class="mono" id="socNote"></p></div></section>
 
@@ -87,7 +87,7 @@ const CFG={
          tiktok:"https://www.tiktok.com/@andreas.lazaridis.karting",
          youtube:"https://www.youtube.com/@AndreasLazaridis.Karting"},
   socialSheet:"https://docs.google.com/spreadsheets/d/e/2PACX-1vTrQTYaoqWvwmPKYbInqhbu4hII_DbV8_bhokbmEGP2MNCJb8efUMAeSUDZZZQDEM2u_l4HOSiRgwo5/pub?gid=1383239317&single=true&output=csv",   // "Social" tab of the same Google Sheet, published as CSV (see tools/README.md). Leave "" to use the numbers below.
-  photosSheet:"",   // "Photos" tab of the same Google Sheet, published as CSV (columns: file,date,title,description; see tools/README.md). Leave "" to use the PHOTOS list below.
+  photosSheet:"",   // "Photos" tab of the same Google Sheet, published as CSV (columns: file,date,title,description,credit; see tools/README.md). Leave "" to use the PHOTOS list below.
   defaultTime:"10:00"                             // used when a race row has no time
 };
 const LOGO_DIR="images/logos/";   // folder that holds the logo files (shown when you hover a link)
@@ -102,7 +102,7 @@ const CHIPS=[ // [label, logo file, link]  leave the link "" for no link
 const VIDEOS=[ // id = the part after v= in the YouTube link
  {t:"Hitting 110km/h at Circuit 27 (GR)",id:"Q9MOau-zC30"},{t:"P2 to heartbreak: DRS 2025 - Kerpen (DE)",id:"OmETofpXb9M"},
  {t:"Onboard lap Franciacorta (IT)",id:"ucps9gld80k"},{t:"P10 to P5, 49th Junior SWS (GR)",id:"KW5FUVxNH4U"}];
-const PHOTOS=[["Circuit 27 (GR), 2026","circuit27","",""],["Spa (BE), 2026","spa","",""],["Oldenzaal (NL), 2026","oldenzaal","",""],["SFI Athens (GR), 2026","sfi-athens","",""],["Genk (BE), 2026","genk","",""]]; // [title, file in images/race/, date, description]; used until the Photos tab of the Sheet is set up
+const PHOTOS=[["Circuit 27 (GR), 2026","circuit27","","",""],["Spa (BE), 2026","spa","","",""],["Oldenzaal (NL), 2026","oldenzaal","","",""],["SFI Athens (GR), 2026","sfi-athens","","",""],["Genk (BE), 2026","genk","","",""]]; // [title, file in images/race/, date, description, credit]; used until the Photos tab of the Sheet is set up
 const ICONS={ // simple inline logos, shown left of each metric row
  YouTube:'<svg viewBox="0 0 64 64" aria-hidden="true"><rect x="2" y="14" width="60" height="36" rx="11" fill="#f00"/><path d="M26 23v18l16-9z" fill="#fff"/></svg>',
  Instagram:'<svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="ig" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#feda75"/><stop offset=".35" stop-color="#fa7e1e"/><stop offset=".6" stop-color="#d62976"/><stop offset=".85" stop-color="#962fbf"/><stop offset="1" stop-color="#4f5bd5"/></linearGradient></defs><rect x="4" y="4" width="56" height="56" rx="16" fill="url(#ig)"/><circle cx="32" cy="32" r="12.5" fill="none" stroke="#fff" stroke-width="4"/><circle cx="46" cy="18" r="3.2" fill="#fff"/></svg>',
@@ -282,7 +282,7 @@ load().then(all=>{
 });
 
 // photos: grid + carousel. Data from the Sheet "Photos" tab (file, date, title, description) or the PHOTOS list
-let phList=PHOTOS.map(p=>({title:p[0],file:p[1],date:p[2],desc:p[3]})),phIdx=0;
+let phList=PHOTOS.map(p=>({title:p[0],file:p[1],date:p[2],desc:p[3],credit:p[4]})),phIdx=0;
 const phSrc=f=>"images/race/"+(/\.(jpe?g|png|webp)$/i.test(f)?f:f+".jpg"),phDate=d=>/^\d{4}-\d{2}-\d{2}$/.test(d)?new Date(d+"T12:00:00").toLocaleDateString("en-GB",{day:"numeric",month:"long",year:"numeric"}):d;
 function renderPhotos(){
   $("photos").innerHTML=phList.map((p,i)=>`<figure><span class="mono">${esc(p.title)}${p.date?" · "+esc(phDate(p.date)):""}</span><button type="button" class="ph" data-i="${i}" aria-label="Open photo: ${esc(p.title)}"><img loading="lazy" src="${esc(phSrc(p.file))}" alt="${esc(p.title)}" onload="this.nextElementSibling.remove()" onerror="this.remove()"><span class="ph-t">Add ${esc(phSrc(p.file))}</span></button></figure>`).join("");
@@ -290,7 +290,7 @@ function renderPhotos(){
 function showPhoto(i){
   phIdx=(i+phList.length)%phList.length;const p=phList[phIdx];
   $("pcImg").src=phSrc(p.file);$("pcImg").alt=p.title;
-  $("pcTitle").textContent=p.title;$("pcDate").textContent=phDate(p.date);$("pcDesc").textContent=p.desc;
+  $("pcTitle").textContent=p.title;$("pcDate").textContent=phDate(p.date);$("pcDesc").textContent=p.desc;$("pcCredit").textContent=p.credit?"Photo: "+p.credit:"";
   $("pcCount").textContent=(phIdx+1)+" / "+phList.length;
   $("pcDots").innerHTML=phList.map((_,k)=>`<button type="button" data-k="${k}" aria-label="Photo ${k+1}"${k==phIdx?' class="on"':""}></button>`).join("");
 }
@@ -308,7 +308,7 @@ async function loadPhotos(){
   if(!CFG.photosSheet)return;
   try{const r=csv(await (await fetch(CFG.photosSheet)).text()),hd=r[0].map(x=>x.trim().toLowerCase()),ix=n=>hd.indexOf(n);
     if(ix("file")<0)return;
-    const rows=r.slice(1).filter(x=>(x[ix("file")]||"").trim()).map(x=>{const g=n=>ix(n)<0?"":(x[ix(n)]||"").trim();return {file:g("file"),date:iso(g("date")),title:g("title")||g("file"),desc:g("description")}});
+    const rows=r.slice(1).filter(x=>(x[ix("file")]||"").trim()).map(x=>{const g=n=>ix(n)<0?"":(x[ix(n)]||"").trim();return {file:g("file"),date:iso(g("date")),title:g("title")||g("file"),desc:g("description"),credit:g("credit")}});
     if(rows.length){phList=rows;renderPhotos()}}catch(e){}
 }
 loadPhotos();

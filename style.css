@@ -1110,6 +1110,13 @@ button.ph:focus-visible {
   color: var(--muted);
 }
 
+.pc-cap .pc-credit {
+  display: block;
+  margin: -4px 0 12px;
+  color: var(--muted);
+  font-size: 11px;
+}
+
 .pc-nav {
   display: flex;
   flex-direction: column;
