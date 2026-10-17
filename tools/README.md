@@ -35,3 +35,28 @@ written in `index.html`.
 Add a function like `updateYouTube()` that calls the platform's API and uses `setMetric_()` to write rows.
 Instagram needs a Creator or Business account linked to a Facebook Page, a Meta app and a token that is
 renewed about every 60 days. TikTok needs an approved developer app.
+
+# Photos: titles, dates and descriptions from the Sheet
+
+The Photos section and its carousel (click a photo to open it, then swipe, use the arrows or the
+keyboard) can read from a **"Photos"** tab in the same Google Sheet.
+
+## Sheet layout (tab name: `Photos`)
+
+| file | date | title | description |
+|---|---|---|---|
+| circuit27 | 2026-09-12 | Circuit 27 (GR) | Optional text shown under the photo |
+
+* `file` is the name of the picture in `images/race/` (with or without `.jpg`). Only `file` is required.
+* `date` as `2026-09-12` or `12/09/2026`. `title` falls back to the file name.
+* Row order is the order on the site. The first photo is shown tall on the left, so use a portrait photo first, or change the style.
+* `photos-template.csv` is an example of the layout.
+
+## Set up
+
+1. Add a tab named `Photos` with the four column headers above.
+2. **File > Share > Publish to web**: choose the `Photos` tab and format **CSV**, then Publish. Copy the link.
+3. In `index.html`, paste the link into `photosSheet:"..."` inside `CFG`. Commit it.
+4. Upload each new picture to `images/race/` on GitHub, then add its row to the tab.
+
+Until `photosSheet` is set, the site uses the `PHOTOS` list in `index.html`.

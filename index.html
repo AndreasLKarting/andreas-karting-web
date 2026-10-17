@@ -58,6 +58,7 @@
 <section id="media"><div class="wrap"><span class="eyebrow">04 / Media</span><h2>Videos</h2>
 <p style="color:#cfcdc8;margin-top:-12px">Welcome to my racing journey. Through these videos, you get a front-row seat to my practice sessions, championship races, and new track explorations across the Netherlands, Greece, and wherever my wheels take me.</p>
 <div class="vids" id="vids"></div><h2>Photos</h2><div class="photos" id="photos"></div></div></section>
+<div class="pc" id="pc" hidden role="dialog" aria-modal="true" aria-label="Photo gallery"><button type="button" class="pc-x" id="pcClose" aria-label="Close">&times;</button><div class="pc-stage"><button type="button" class="pc-a" id="pcPrev" aria-label="Previous photo">&#8249;</button><img id="pcImg" alt=""><button type="button" class="pc-a" id="pcNext" aria-label="Next photo">&#8250;</button></div><div class="pc-cap"><span class="mono" id="pcDate"></span><h3 id="pcTitle"></h3><p id="pcDesc"></p><div class="pc-nav"><span class="mono" id="pcCount"></span><div class="pc-dots" id="pcDots"></div></div></div></div>
 
 <section id="social"><div class="wrap"><span class="eyebrow">05 / Social</span><h2>Audience</h2><div class="soc" id="soc"></div><p class="mono" id="socNote"></p></div></section>
 
@@ -86,6 +87,7 @@ const CFG={
          tiktok:"https://www.tiktok.com/@andreas.lazaridis.karting",
          youtube:"https://www.youtube.com/@AndreasLazaridis.Karting"},
   socialSheet:"https://docs.google.com/spreadsheets/d/e/2PACX-1vTrQTYaoqWvwmPKYbInqhbu4hII_DbV8_bhokbmEGP2MNCJb8efUMAeSUDZZZQDEM2u_l4HOSiRgwo5/pub?gid=1383239317&single=true&output=csv",   // "Social" tab of the same Google Sheet, published as CSV (see tools/README.md). Leave "" to use the numbers below.
+  photosSheet:"",   // "Photos" tab of the same Google Sheet, published as CSV (columns: file,date,title,description; see tools/README.md). Leave "" to use the PHOTOS list below.
   defaultTime:"10:00"                             // used when a race row has no time
 };
 const LOGO_DIR="images/logos/";   // folder that holds the logo files (shown when you hover a link)
@@ -100,7 +102,7 @@ const CHIPS=[ // [label, logo file, link]  leave the link "" for no link
 const VIDEOS=[ // id = the part after v= in the YouTube link
  {t:"Hitting 110km/h at Circuit 27 (GR)",id:"Q9MOau-zC30"},{t:"P2 to heartbreak: DRS 2025 - Kerpen (DE)",id:"OmETofpXb9M"},
  {t:"Onboard lap Franciacorta (IT)",id:"ucps9gld80k"},{t:"P10 to P5, 49th Junior SWS (GR)",id:"KW5FUVxNH4U"}];
-const PHOTOS=[["Circuit 27 (GR), 2026","circuit27"],["Spa (BE), 2026","spa"],["Oldenzaal (NL), 2026","oldenzaal"],["SFI Athens (GR), 2026","sfi-athens"],["Genk (BE), 2026","genk"]]; // images/race/<name>.jpg
+const PHOTOS=[["Circuit 27 (GR), 2026","circuit27","",""],["Spa (BE), 2026","spa","",""],["Oldenzaal (NL), 2026","oldenzaal","",""],["SFI Athens (GR), 2026","sfi-athens","",""],["Genk (BE), 2026","genk","",""]]; // [title, file in images/race/, date, description]; used until the Photos tab of the Sheet is set up
 const ICONS={ // simple inline logos, shown left of each metric row
  YouTube:'<svg viewBox="0 0 64 64" aria-hidden="true"><rect x="2" y="14" width="60" height="36" rx="11" fill="#f00"/><path d="M26 23v18l16-9z" fill="#fff"/></svg>',
  Instagram:'<svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="ig" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#feda75"/><stop offset=".35" stop-color="#fa7e1e"/><stop offset=".6" stop-color="#d62976"/><stop offset=".85" stop-color="#962fbf"/><stop offset="1" stop-color="#4f5bd5"/></linearGradient></defs><rect x="4" y="4" width="56" height="56" rx="16" fill="url(#ig)"/><circle cx="32" cy="32" r="12.5" fill="none" stroke="#fff" stroke-width="4"/><circle cx="46" cy="18" r="3.2" fill="#fff"/></svg>',
@@ -181,7 +183,6 @@ document.querySelectorAll("[data-k]").forEach(a=>{a.href=CFG.links[a.dataset.k];
 $("logos").innerHTML=CHIPS.map(c=>{const inner=`<em>${c[0]}</em><img src="${LOGO_DIR}${c[1]}" alt="" onerror="this.remove()">`;
   return c[2]?`<a class="chip" href="${c[2]}" target="_blank" rel="noopener noreferrer" aria-label="${c[0]} (opens in a new tab)">${inner}</a>`:`<span class="chip pl">${inner}</span>`}).join("");
 $("vids").innerHTML=VIDEOS.map(v=>`<a class="vid" target="_blank" rel="noopener" href="${v.id?"https://www.youtube.com/watch?v="+v.id:CFG.links.youtube}"><span class="mono">${v.t}</span><div class="ph ${v.id?"play":""}">${v.id?`<img loading="lazy" src="https://i.ytimg.com/vi/${v.id}/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/${v.id}/mqdefault.jpg'" alt="${v.t}">`:"Add the YouTube video ID"}</div></a>`).join("");
-$("photos").innerHTML=PHOTOS.map(p=>`<figure><span class="mono">${p[0]}</span><div class="ph"><img loading="lazy" src="images/race/${p[1]}.jpg" alt="${p[0]}" onload="this.nextElementSibling.remove()" onerror="this.remove()"><span class="ph-t">Add images/race/${p[1]}.jpg</span></div></figure>`).join("");
 const ord=s=>{const m=String(s).match(/^(\d+)(?:st|nd|rd|th)\b/i);return m?+m[1]:0};
 const rowHTML=(t,c,o)=>{
   const pods=o.map(ord).filter(n=>n>0&&n<4);
@@ -279,6 +280,38 @@ load().then(all=>{
       return `<div class="${n>0&&n<4?"p"+n:""}"><b>${isNaN(n)?r.result:"P"+n}</b><span>${r.category}</span></div>`}).join("");
   }
 });
+
+// photos: grid + carousel. Data from the Sheet "Photos" tab (file, date, title, description) or the PHOTOS list
+let phList=PHOTOS.map(p=>({title:p[0],file:p[1],date:p[2],desc:p[3]})),phIdx=0;
+const phSrc=f=>"images/race/"+(/\.(jpe?g|png|webp)$/i.test(f)?f:f+".jpg"),phDate=d=>/^\d{4}-\d{2}-\d{2}$/.test(d)?new Date(d+"T12:00:00").toLocaleDateString("en-GB",{day:"numeric",month:"long",year:"numeric"}):d;
+function renderPhotos(){
+  $("photos").innerHTML=phList.map((p,i)=>`<figure><span class="mono">${esc(p.title)}${p.date?" · "+esc(phDate(p.date)):""}</span><button type="button" class="ph" data-i="${i}" aria-label="Open photo: ${esc(p.title)}"><img loading="lazy" src="${esc(phSrc(p.file))}" alt="${esc(p.title)}" onload="this.nextElementSibling.remove()" onerror="this.remove()"><span class="ph-t">Add ${esc(phSrc(p.file))}</span></button></figure>`).join("");
+}
+function showPhoto(i){
+  phIdx=(i+phList.length)%phList.length;const p=phList[phIdx];
+  $("pcImg").src=phSrc(p.file);$("pcImg").alt=p.title;
+  $("pcTitle").textContent=p.title;$("pcDate").textContent=phDate(p.date);$("pcDesc").textContent=p.desc;
+  $("pcCount").textContent=(phIdx+1)+" / "+phList.length;
+  $("pcDots").innerHTML=phList.map((_,k)=>`<button type="button" data-k="${k}" aria-label="Photo ${k+1}"${k==phIdx?' class="on"':""}></button>`).join("");
+}
+function openPhotos(i){$("pc").hidden=false;document.body.style.overflow="hidden";showPhoto(i);$("pcClose").focus()}
+function closePhotos(){$("pc").hidden=true;document.body.style.overflow=""}
+$("photos").addEventListener("click",e=>{const b=e.target.closest("[data-i]");if(b)openPhotos(+b.dataset.i)});
+$("pcPrev").onclick=()=>showPhoto(phIdx-1);$("pcNext").onclick=()=>showPhoto(phIdx+1);$("pcClose").onclick=closePhotos;
+$("pcDots").addEventListener("click",e=>{const b=e.target.closest("[data-k]");if(b)showPhoto(+b.dataset.k)});
+$("pc").addEventListener("click",e=>{if(e.target.id=="pc"||e.target.classList.contains("pc-stage"))closePhotos()});
+document.addEventListener("keydown",e=>{if($("pc").hidden)return;if(e.key=="Escape")closePhotos();else if(e.key=="ArrowLeft")showPhoto(phIdx-1);else if(e.key=="ArrowRight")showPhoto(phIdx+1)});
+let pcX=null;$("pc").addEventListener("touchstart",e=>{pcX=e.touches[0].clientX},{passive:true});
+$("pc").addEventListener("touchend",e=>{if(pcX===null)return;const d=e.changedTouches[0].clientX-pcX;pcX=null;if(Math.abs(d)>50)showPhoto(phIdx+(d<0?1:-1))});
+renderPhotos();
+async function loadPhotos(){
+  if(!CFG.photosSheet)return;
+  try{const r=csv(await (await fetch(CFG.photosSheet)).text()),hd=r[0].map(x=>x.trim().toLowerCase()),ix=n=>hd.indexOf(n);
+    if(ix("file")<0)return;
+    const rows=r.slice(1).filter(x=>(x[ix("file")]||"").trim()).map(x=>{const g=n=>ix(n)<0?"":(x[ix(n)]||"").trim();return {file:g("file"),date:iso(g("date")),title:g("title")||g("file"),desc:g("description")}});
+    if(rows.length){phList=rows;renderPhotos()}}catch(e){}
+}
+loadPhotos();
 </script>
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "407db4d2324c4c7baa1e4178b2cdfec7"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
