@@ -61,3 +61,27 @@ keyboard) can read from a **"Photos"** tab in the same Google Sheet.
 4. Upload each new picture to `images/race/` on GitHub, then add its row to the tab.
 
 Until `photosSheet` is set, the site uses the `PHOTOS` list in `index.html`.
+
+# Videos: carousel from the Sheet
+
+The Videos row scrolls sideways (arrow buttons or swipe). Clicking a video plays it in a pop-up on the
+site, with arrows, dots and the keyboard to move to the next one. It reads a **"Videos"** tab in the same Sheet.
+
+## Sheet layout (tab name: `Videos`)
+
+| id | title | date | location | credits |
+|---|---|---|---|---|
+| Q9MOau-zC30 | Hitting 110km/h at Circuit 27 (GR) | 2026-09-12 | Athens, Greece | Andreas Lazaridis Karting |
+
+* `id` is the part after `v=` in the YouTube link (for a Short, the part after `/shorts/`). Only `id` is required.
+* `title` falls back to "Video". `date` as `2026-09-12` or `12/09/2026`.
+* `location` is shown next to the date in the pop-up, `credits` as "Video: ...".
+* Row order is the order on the site. `videos-template.csv` is an example.
+
+## Set up
+
+1. Add a tab named `Videos` with the five headers above.
+2. **File > Share > Publish to web**: choose the `Videos` tab, format **CSV**, Publish. Copy the link.
+3. In `index.html`, paste it into `videosSheet:"..."` inside `CFG`. Commit it.
+
+Until `videosSheet` is set, the site uses the `VIDEOS` list in `index.html`.

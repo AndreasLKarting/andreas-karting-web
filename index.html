@@ -57,8 +57,8 @@
 
 <section id="media"><div class="wrap"><span class="eyebrow">04 / Media</span><h2>Videos</h2>
 <p style="color:#cfcdc8;margin-top:-12px">Welcome to my racing journey. Through these videos, you get a front-row seat to my practice sessions, championship races, and new track explorations across the Netherlands, Greece, and wherever my wheels take me.</p>
-<div class="vids" id="vids"></div><h2>Photos</h2><div class="photos" id="photos"></div></div></section>
-<div class="pc" id="pc" hidden role="dialog" aria-modal="true" aria-label="Photo gallery"><button type="button" class="pc-x" id="pcClose" aria-label="Close">&times;</button><div class="pc-stage"><button type="button" class="pc-a" id="pcPrev" aria-label="Previous photo">&#8249;</button><img id="pcImg" alt=""><button type="button" class="pc-a" id="pcNext" aria-label="Next photo">&#8250;</button></div><div class="pc-cap"><span class="mono" id="pcDate"></span><h3 id="pcTitle"></h3><span class="mono pc-credit" id="pcCredit"></span><div class="pc-nav"><span class="mono" id="pcCount"></span><div class="pc-dots" id="pcDots"></div></div></div></div>
+<div class="vrow"><button type="button" class="va" id="vPrev" aria-label="Scroll videos left">&#8249;</button><div class="vids" id="vids"></div><button type="button" class="va" id="vNext" aria-label="Scroll videos right">&#8250;</button></div><h2>Photos</h2><div class="photos" id="photos"></div></div></section>
+<div class="pc" id="pc" hidden role="dialog" aria-modal="true" aria-label="Photo gallery"><button type="button" class="pc-x" id="pcClose" aria-label="Close">&times;</button><div class="pc-stage"><button type="button" class="pc-a" id="pcPrev" aria-label="Previous photo">&#8249;</button><img id="pcImg" alt=""><button type="button" class="pc-a" id="pcNext" aria-label="Next photo">&#8250;</button></div><div class="pc-cap"><span class="mono" id="pcDate"></span><h3 id="pcTitle"></h3><span class="mono pc-credit" id="pcCredit"></span><div class="pc-nav"><span class="mono" id="pcCount"></span><div class="pc-dots" id="pcDots"></div></div></div></div><div class="pc" id="vc" hidden role="dialog" aria-modal="true" aria-label="Video gallery"><button type="button" class="pc-x" id="vcClose" aria-label="Close">&times;</button><div class="pc-stage"><button type="button" class="pc-a" id="vcPrev" aria-label="Previous video">&#8249;</button><div class="vc-frame" id="vcFrame"></div><button type="button" class="pc-a" id="vcNext" aria-label="Next video">&#8250;</button></div><div class="pc-cap"><span class="mono" id="vcDate"></span><h3 id="vcTitle"></h3><span class="mono pc-credit" id="vcCredit"></span><div class="pc-nav"><span class="mono" id="vcCount"></span><div class="pc-dots" id="vcDots"></div></div></div></div>
 
 <section id="social"><div class="wrap"><span class="eyebrow">05 / Social</span><h2>Audience</h2><div class="soc" id="soc"></div><p class="mono" id="socNote"></p></div></section>
 
@@ -87,6 +87,7 @@ const CFG={
          tiktok:"https://www.tiktok.com/@andreas.lazaridis.karting",
          youtube:"https://www.youtube.com/@AndreasLazaridis.Karting"},
   socialSheet:"https://docs.google.com/spreadsheets/d/e/2PACX-1vTrQTYaoqWvwmPKYbInqhbu4hII_DbV8_bhokbmEGP2MNCJb8efUMAeSUDZZZQDEM2u_l4HOSiRgwo5/pub?gid=1383239317&single=true&output=csv",   // "Social" tab of the same Google Sheet, published as CSV (see tools/README.md). Leave "" to use the numbers below.
+  videosSheet:"",   // "Videos" tab of the same Google Sheet, published as CSV (columns: id,title,date,location,credits; see tools/README.md). Leave "" to use the VIDEOS list below.
   photosSheet:"https://docs.google.com/spreadsheets/d/e/2PACX-1vTrQTYaoqWvwmPKYbInqhbu4hII_DbV8_bhokbmEGP2MNCJb8efUMAeSUDZZZQDEM2u_l4HOSiRgwo5/pub?gid=930260858&single=true&output=csv",   // "Photos" tab of the same Google Sheet, published as CSV (columns: file,title,date,location,credits; see tools/README.md). Leave "" to use the PHOTOS list below.
   defaultTime:"10:00"                             // used when a race row has no time
 };
@@ -99,7 +100,7 @@ const CHIPS=[ // [label, logo file, link]  leave the link "" for no link
  ["Dutch Racing Series","drs.png","https://www.dutchracingseries.nl/"],
  ["Sodi World Series","swslogo.png","https://www.sodiwseries.com/en-gb/drivers/lazaridis-andreas-116849.html"],
  ["DOKC","docklogo.png","https://www.ecrentalkarting.eu/dokc/"]];
-const VIDEOS=[ // id = the part after v= in the YouTube link
+const VIDEOS=[ // id = the part after v= in the YouTube link; used until the Videos tab of the Sheet is set up
  {t:"Hitting 110km/h at Circuit 27 (GR)",id:"Q9MOau-zC30"},{t:"P2 to heartbreak: DRS 2025 - Kerpen (DE)",id:"OmETofpXb9M"},
  {t:"Onboard lap Franciacorta (IT)",id:"ucps9gld80k"},{t:"P10 to P5, 49th Junior SWS (GR)",id:"KW5FUVxNH4U"}];
 const PHOTOS=[["Circuit 27 (GR), 2026","circuit27","","",""],["Spa (BE), 2026","spa","","",""],["Oldenzaal (NL), 2026","oldenzaal","","",""],["SFI Athens (GR), 2026","sfi-athens","","",""],["Genk (BE), 2026","genk","","",""]]; // [title, file in images/race/, date, location, credit]; used until the Photos tab of the Sheet is set up
@@ -182,7 +183,6 @@ document.querySelectorAll("[data-k]").forEach(a=>{a.href=CFG.links[a.dataset.k];
 // static blocks
 $("logos").innerHTML=CHIPS.map(c=>{const inner=`<em>${c[0]}</em><img src="${LOGO_DIR}${c[1]}" alt="" onerror="this.remove()">`;
   return c[2]?`<a class="chip" href="${c[2]}" target="_blank" rel="noopener noreferrer" aria-label="${c[0]} (opens in a new tab)">${inner}</a>`:`<span class="chip pl">${inner}</span>`}).join("");
-$("vids").innerHTML=VIDEOS.map(v=>`<a class="vid" target="_blank" rel="noopener" href="${v.id?"https://www.youtube.com/watch?v="+v.id:CFG.links.youtube}"><span class="mono">${v.t}</span><div class="ph ${v.id?"play":""}">${v.id?`<img loading="lazy" src="https://i.ytimg.com/vi/${v.id}/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/${v.id}/mqdefault.jpg'" alt="${v.t}">`:"Add the YouTube video ID"}</div></a>`).join("");
 const ord=s=>{const m=String(s).match(/^(\d+)(?:st|nd|rd|th)\b/i);return m?+m[1]:0};
 const rowHTML=(t,c,o)=>{
   const pods=o.map(ord).filter(n=>n>0&&n<4);
@@ -312,6 +312,38 @@ async function loadPhotos(){
     if(rows.length){phList=rows;renderPhotos()}}catch(e){}
 }
 loadPhotos();
+
+// videos: scrolling row + carousel. Data from the Sheet "Videos" tab (id, title, date, location, credits) or the VIDEOS list
+let vList=VIDEOS.map(v=>({id:v.id||"",title:v.t,date:v.date||"",loc:v.loc||"",credit:v.credit||""})),vIdx=0;
+const vOk=id=>/^[\w-]{6,20}$/.test(id);
+function renderVideos(){
+  $("vids").innerHTML=vList.map((v,i)=>`<button type="button" class="vid" data-v="${i}" aria-label="Play video: ${esc(v.title)}"><span class="mono">${esc(v.title)}</span><div class="ph ${vOk(v.id)?"play":""}">${vOk(v.id)?`<img loading="lazy" src="https://i.ytimg.com/vi/${v.id}/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/${v.id}/mqdefault.jpg'" alt="${esc(v.title)}">`:"Add the YouTube video ID"}</div></button>`).join("");
+}
+const vStep=d=>{const s=$("vids");s.scrollBy({left:d*Math.max(240,s.clientWidth*.8),behavior:"smooth"})};
+$("vPrev").onclick=()=>vStep(-1);$("vNext").onclick=()=>vStep(1);
+function showVideo(i){
+  vIdx=(i+vList.length)%vList.length;const v=vList[vIdx];
+  $("vcFrame").innerHTML=vOk(v.id)?`<iframe src="https://www.youtube-nocookie.com/embed/${v.id}?autoplay=1&rel=0" title="${esc(v.title)}" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>`:`<p class="mono">Video ID missing</p>`;
+  $("vcTitle").textContent=v.title;$("vcDate").textContent=[phDate(v.date),v.loc].filter(Boolean).join(" · ");$("vcCredit").textContent=v.credit?"Video: "+v.credit:"";
+  $("vcCount").textContent=(vIdx+1)+" / "+vList.length;
+  $("vcDots").innerHTML=vList.map((_,k)=>`<button type="button" data-k="${k}" aria-label="Video ${k+1}"${k==vIdx?' class="on"':""}></button>`).join("");
+}
+function openVideos(i){$("vc").hidden=false;document.body.style.overflow="hidden";showVideo(i);$("vcClose").focus()}
+function closeVideos(){$("vc").hidden=true;$("vcFrame").innerHTML="";document.body.style.overflow=""}
+$("vids").addEventListener("click",e=>{const b=e.target.closest("[data-v]");if(b)openVideos(+b.dataset.v)});
+$("vcPrev").onclick=()=>showVideo(vIdx-1);$("vcNext").onclick=()=>showVideo(vIdx+1);$("vcClose").onclick=closeVideos;
+$("vcDots").addEventListener("click",e=>{const b=e.target.closest("[data-k]");if(b)showVideo(+b.dataset.k)});
+$("vc").addEventListener("click",e=>{if(e.target.id=="vc"||e.target.classList.contains("pc-stage"))closeVideos()});
+document.addEventListener("keydown",e=>{if($("vc").hidden)return;if(e.key=="Escape")closeVideos();else if(e.key=="ArrowLeft")showVideo(vIdx-1);else if(e.key=="ArrowRight")showVideo(vIdx+1)});
+renderVideos();
+async function loadVideos(){
+  if(!CFG.videosSheet)return;
+  try{const r=csv(await (await fetch(CFG.videosSheet)).text()),hd=r[0].map(x=>x.trim().toLowerCase()),ix=n=>hd.indexOf(n);
+    if(ix("id")<0)return;
+    const rows=r.slice(1).filter(x=>(x[ix("id")]||"").trim()).map(x=>{const g=n=>ix(n)<0?"":(x[ix(n)]||"").trim();return {id:g("id"),title:g("title")||"Video",date:iso(g("date")),loc:g("location"),credit:g("credits")||g("credit")}});
+    if(rows.length){vList=rows;renderVideos()}}catch(e){}
+}
+loadVideos();
 </script>
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "407db4d2324c4c7baa1e4178b2cdfec7"}'></script><!-- End Cloudflare Web Analytics -->
 </body>

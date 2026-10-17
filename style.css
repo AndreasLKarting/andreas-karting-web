@@ -313,15 +313,68 @@ td.r {
 
 
 /* media */
-.vids {
-  display: grid;
-  grid-template-columns: repeat(auto-fill,minmax(240px,1fr));
-  gap: 20px;
+.vrow {
+  position: relative;
   margin-bottom: 56px;
 }
 
+.vids {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.vids::-webkit-scrollbar {
+  display: none;
+}
+
 .vid {
-  text-decoration: none;
+  flex: 0 0 calc((100% - 60px) / 4);   /* four across on desktop, the rest scroll */
+  min-width: 240px;
+  scroll-snap-align: start;
+  padding: 0;
+  font: inherit;
+  text-align: left;
+  color: inherit;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.vid:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+.va {
+  position: absolute;
+  top: calc(50% + 1.4em);
+  transform: translateY(-50%);
+  z-index: 2;
+  width: 44px;
+  height: 44px;
+  font-size: 30px;
+  line-height: 1;
+  color: var(--text);
+  background: rgba(10,10,12,.82);
+  border: 1px solid var(--edge);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.va:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+#vPrev {
+  left: -14px;
+}
+
+#vNext {
+  right: -14px;
 }
 
 .vid .mono {
@@ -1155,11 +1208,41 @@ button.ph:focus-visible {
   .pc-stage {
     padding: 52px 8px 0;
   }
-  #pcPrev {
+  #pcPrev,
+  #vcPrev {
     left: 12px;
   }
-  #pcNext {
+  #pcNext,
+  #vcNext {
     right: 12px;
+  }
+}
+
+.vc-frame {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vc-frame iframe {
+  width: min(100%, calc((100vh - 230px) * 16 / 9));
+  aspect-ratio: 16/9;
+  border: 0;
+  border-radius: 10px;
+  background: #000;
+}
+
+@media (max-width: 700px) {
+  .vid {
+    flex-basis: 78%;
+  }
+  #vPrev {
+    left: 4px;
+  }
+  #vNext {
+    right: 4px;
   }
 }
 
