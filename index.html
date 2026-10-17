@@ -57,7 +57,7 @@
 
 <section id="media"><div class="wrap"><span class="eyebrow">04 / Media</span><h2>Videos</h2>
 <p style="color:#cfcdc8;margin-top:-12px">Welcome to my racing journey. Through these videos, you get a front-row seat to my practice sessions, championship races, and new track explorations across the Netherlands, Greece, and wherever my wheels take me.</p>
-<div class="vrow"><button type="button" class="va" id="vPrev" aria-label="Scroll videos left">&#8249;</button><div class="vids" id="vids"></div><button type="button" class="va" id="vNext" aria-label="Scroll videos right">&#8250;</button></div><h2>Photos</h2><div class="photos" id="photos"></div></div></section>
+<div class="vrow"><button type="button" class="va" id="vPrev" aria-label="Scroll videos left">&#8249;</button><div class="vids" id="vids"></div><button type="button" class="va" id="vNext" aria-label="Scroll videos right">&#8250;</button></div><h2>Photos</h2><div class="photos" id="photos"></div><p class="more" id="phMore" hidden><button type="button" class="btn ghost" id="phAll"></button></p></div></section>
 <div class="pc" id="pc" hidden role="dialog" aria-modal="true" aria-label="Photo gallery"><button type="button" class="pc-x" id="pcClose" aria-label="Close">&times;</button><div class="pc-stage"><button type="button" class="pc-a" id="pcPrev" aria-label="Previous photo">&#8249;</button><img id="pcImg" alt=""><button type="button" class="pc-a" id="pcNext" aria-label="Next photo">&#8250;</button></div><div class="pc-cap"><span class="mono" id="pcDate"></span><h3 id="pcTitle"></h3><span class="mono pc-credit" id="pcCredit"></span><div class="pc-nav"><span class="mono" id="pcCount"></span><div class="pc-dots" id="pcDots"></div></div></div></div><div class="pc" id="vc" hidden role="dialog" aria-modal="true" aria-label="Video gallery"><button type="button" class="pc-x" id="vcClose" aria-label="Close">&times;</button><div class="pc-stage"><button type="button" class="pc-a" id="vcPrev" aria-label="Previous video">&#8249;</button><div class="vc-frame" id="vcFrame"></div><button type="button" class="pc-a" id="vcNext" aria-label="Next video">&#8250;</button></div><div class="pc-cap"><span class="mono" id="vcDate"></span><h3 id="vcTitle"></h3><span class="mono pc-credit" id="vcCredit"></span><div class="pc-nav"><span class="mono" id="vcCount"></span><div class="pc-dots" id="vcDots"></div></div></div></div>
 
 <section id="social"><div class="wrap"><span class="eyebrow">05 / Social</span><h2>Audience</h2><div class="soc" id="soc"></div><p class="mono" id="socNote"></p></div></section>
@@ -284,8 +284,10 @@ load().then(all=>{
 // photos: grid + carousel. Data from the Sheet "Photos" tab (file, title, date, location, credits) or the PHOTOS list
 let phList=PHOTOS.map(p=>({title:p[0],file:p[1],date:p[2],loc:p[3],credit:p[4]})),phIdx=0;
 const phSrc=f=>"images/race/"+(/\.(jpe?g|png|webp)$/i.test(f)?f:f+".jpg"),phDate=d=>/^\d{4}-\d{2}-\d{2}$/.test(d)?new Date(d+"T12:00:00").toLocaleDateString("en-GB",{day:"numeric",month:"long",year:"numeric"}):d;
+const PH_SHOWN=5; // the grid shows the first 5 (1 tall + 4 wide); the rest are only in the carousel
 function renderPhotos(){
-  $("photos").innerHTML=phList.map((p,i)=>`<figure><span class="mono">${esc(p.title)}${p.date?" · "+esc(phDate(p.date)):""}</span><button type="button" class="ph" data-i="${i}" aria-label="Open photo: ${esc(p.title)}"><img loading="lazy" src="${esc(phSrc(p.file))}" alt="${esc(p.title)}" onload="this.nextElementSibling.remove()" onerror="this.remove()"><span class="ph-t">Add ${esc(phSrc(p.file))}</span></button></figure>`).join("");
+  $("photos").innerHTML=phList.slice(0,PH_SHOWN).map((p,i)=>`<figure><span class="mono">${esc(p.title)}${p.date?" · "+esc(phDate(p.date)):""}</span><button type="button" class="ph" data-i="${i}" aria-label="Open photo: ${esc(p.title)}"><img loading="lazy" src="${esc(phSrc(p.file))}" alt="${esc(p.title)}" onload="this.nextElementSibling.remove()" onerror="this.remove()"><span class="ph-t">Add ${esc(phSrc(p.file))}</span></button></figure>`).join("");
+  const extra=phList.length-PH_SHOWN;$("phMore").hidden=extra<=0;if(extra>0)$("phAll").textContent="View all "+phList.length+" photos";
 }
 function showPhoto(i){
   phIdx=(i+phList.length)%phList.length;const p=phList[phIdx];
@@ -297,6 +299,7 @@ function showPhoto(i){
 function openPhotos(i){$("pc").hidden=false;document.body.style.overflow="hidden";showPhoto(i);$("pcClose").focus()}
 function closePhotos(){$("pc").hidden=true;document.body.style.overflow=""}
 $("photos").addEventListener("click",e=>{const b=e.target.closest("[data-i]");if(b)openPhotos(+b.dataset.i)});
+$("phAll").onclick=()=>openPhotos(0);
 $("pcPrev").onclick=()=>showPhoto(phIdx-1);$("pcNext").onclick=()=>showPhoto(phIdx+1);$("pcClose").onclick=closePhotos;
 $("pcDots").addEventListener("click",e=>{const b=e.target.closest("[data-k]");if(b)showPhoto(+b.dataset.k)});
 $("pc").addEventListener("click",e=>{if(e.target.id=="pc"||e.target.classList.contains("pc-stage"))closePhotos()});
