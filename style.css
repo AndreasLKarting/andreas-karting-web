@@ -334,6 +334,8 @@ td.r {
 
 /* images fill their frame (videos 16:9, photos) without stretching */
 .ph img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
