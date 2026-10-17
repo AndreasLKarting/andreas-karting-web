@@ -1,6 +1,6 @@
-file,date,title,description,credit
-circuit27,2026-09-12,Circuit 27 (GR),Short description of the day. Leave any cell empty if not needed.,Photographer or source
-spa,,Spa (BE),,
-oldenzaal,,Oldenzaal (NL),,
-sfi-athens,,SFI Athens (GR),,
-genk,,Genk (BE),,
+file,title,date,location,credits
+circuit27,Circuit 27,2026-09-12,"Athens, Greece",Photographer or source
+spa,Spa,,"Spa-Francorchamps, Belgium",
+oldenzaal,Oldenzaal,,"Oldenzaal, Netherlands",
+sfi-athens,SFI Athens,,"Athens, Greece",
+genk,Genk,,"Genk, Belgium",

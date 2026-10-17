@@ -43,18 +43,19 @@ keyboard) can read from a **"Photos"** tab in the same Google Sheet.
 
 ## Sheet layout (tab name: `Photos`)
 
-| file | date | title | description | credit |
+| file | title | date | location | credits |
 |---|---|---|---|---|
-| circuit27 | 2026-09-12 | Circuit 27 (GR) | Optional text shown under the photo | Photographer or source |
+| circuit27 | Circuit 27 | 2026-09-12 | Athens, Greece | Photographer or source |
 
 * `file` is the name of the picture in `images/race/` (with or without `.jpg`). Only `file` is required.
-* `date` as `2026-09-12` or `12/09/2026`. `title` falls back to the file name. `credit` is shown in the carousel as "Photo: ...".
+* `title` falls back to the file name. `date` as `2026-09-12` or `12/09/2026`.
+* `location` is shown next to the date in the carousel, `credits` as "Photo: ...".
 * Row order is the order on the site. The first photo is shown tall on the left, so use a portrait photo first, or change the style.
 * `photos-template.csv` is an example of the layout.
 
 ## Set up
 
-1. Add a tab named `Photos` with the five column headers above.
+1. Add a tab named `Photos` with the five column headers above (file, title, date, location, credits).
 2. **File > Share > Publish to web**: choose the `Photos` tab and format **CSV**, then Publish. Copy the link.
 3. In `index.html`, paste the link into `photosSheet:"..."` inside `CFG`. Commit it.
 4. Upload each new picture to `images/race/` on GitHub, then add its row to the tab.

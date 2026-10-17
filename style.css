@@ -1105,14 +1105,9 @@ button.ph:focus-visible {
   text-transform: uppercase;
 }
 
-.pc-cap p {
-  margin: 0 0 10px;
-  color: var(--muted);
-}
-
 .pc-cap .pc-credit {
   display: block;
-  margin: -4px 0 12px;
+  margin: 2px 0 12px;
   color: var(--muted);
   font-size: 11px;
 }
