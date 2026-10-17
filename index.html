@@ -184,8 +184,11 @@ document.querySelectorAll("[data-k]").forEach(a=>{a.href=CFG.links[a.dataset.k];
 $("logos").innerHTML=CHIPS.map(c=>{const inner=`<em>${c[0]}</em><img src="${LOGO_DIR}${c[1]}" alt="" onerror="this.remove()">`;
   return c[2]?`<a class="chip" href="${c[2]}" target="_blank" rel="noopener noreferrer" aria-label="${c[0]} (opens in a new tab)">${inner}</a>`:`<span class="chip pl">${inner}</span>`}).join("");
 const ord=s=>{const m=String(s).match(/^(\d+)(?:st|nd|rd|th)\b/i);return m?+m[1]:0};
+const NUMW={one:1,two:2,three:3,four:4,five:5,six:6,seven:7,eight:8,nine:9,ten:10};
+const MEDALS={gold:1,silver:2,bronze:3};
+const podsFromCaption=c=>{const p=[];String(c||"").replace(/(\d+|one|two|three|four|five|six|seven|eight|nine|ten)\s+(gold|silver|bronze)\b/gi,(m,n,k)=>{const q=NUMW[n.toLowerCase()]||+n;for(let i=0;i<q;i++)p.push(MEDALS[k.toLowerCase()])});return p.sort()}; // "Four silver · three bronze" -> [2,2,2,2,3,3,3]
 const rowHTML=(t,c,o)=>{
-  const pods=o.map(ord).filter(n=>n>0&&n<4);
+  let pods=o.map(ord).filter(n=>n>0&&n<4);if(!pods.length)pods=podsFromCaption(c).slice(0,12);
   const rib=pods.length?`<span class="ribs">${pods.map(n=>`<i class="rib p${n}" role="img" aria-label="Podium: ${n}${["st","nd","rd"][n-1]} place">${n}</i>`).join("")}</span>`:"";
   const lines=o.map(x=>{const n=ord(x);return `<span${n>0&&n<4?` class="p${n}"`:""}>${x}</span>`}).join("");
   return `<div class="row">${rib}<div><h3>${t}</h3>${c?`<small>${c}</small>`:""}</div><div class="out">${lines}</div></div>`};
