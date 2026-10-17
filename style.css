@@ -1350,7 +1350,10 @@ button.ph:focus-visible {
   top: 0;
   right: 0;
   display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
   gap: 5px;
+  max-width: 60%;
 }
 
 .rib {
@@ -1363,6 +1366,18 @@ button.ph:focus-visible {
   font-style: normal;
   color: #15151a;
   clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 78%, 0 100%);
+}
+
+@media (max-width: 700px) {
+  .rib {
+    width: 20px;
+    height: 22px;
+    padding-top: 3px;
+    font-size: 13px;
+  }
+  .ribs {
+    gap: 4px;
+  }
 }
 
 .rib.p1 { background: linear-gradient(#ffe27a, #d9a521); }
