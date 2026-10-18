@@ -85,3 +85,11 @@ site, with arrows, dots and the keyboard to move to the next one. It reads a **"
 3. In `index.html`, paste it into `videosSheet:"..."` inside `CFG`. Commit it.
 
 Until `videosSheet` is set, the site uses the `VIDEOS` list in `index.html`.
+
+# Countries of your YouTube videos
+
+`video-countries.gs` lists which countries your videos are from, using the "Video location" set in
+YouTube Studio. Add it to the same Apps Script project as `social-metrics.gs`, run
+`listVideoCountries()` once and accept the permissions. It creates the tabs `Video countries`
+(one row per video) and `Video countries summary` (videos per country). Videos without a location
+show as "(no location set)". These tabs are not published and the website does not use them.
