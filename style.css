@@ -456,10 +456,19 @@ td.r {
   border-bottom: 1px solid var(--edge);
 }
 
+.soc .avatar {
+  flex: none;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: var(--panel);
+}
+
 .soc .ico {
   flex: none;
-  width: 44px;
-  height: 44px;
+  width: 22px;
+  height: 22px;
 }
 
 .soc .ico svg {
@@ -469,6 +478,9 @@ td.r {
 }
 
 .soc h3 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   margin: 0;
   font: 700 26px/1.1 var(--cond);
   letter-spacing: .03em;
@@ -1063,6 +1075,24 @@ select,
 }
 
 /* ---- photo carousel ---- */
+.more {
+  margin: 28px 0 0;
+  text-align: center;
+}
+
+.more[hidden] {
+  display: none;
+}
+
+.more .btn {
+  cursor: pointer;
+  color: var(--text);
+}
+
+.more .btn::after {
+  content: "\2192";
+}
+
 button.ph {
   padding: 0;
   font: inherit;
@@ -1332,7 +1362,10 @@ button.ph:focus-visible {
   top: 0;
   right: 0;
   display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
   gap: 5px;
+  max-width: 60%;
 }
 
 .rib {
@@ -1345,6 +1378,18 @@ button.ph:focus-visible {
   font-style: normal;
   color: #15151a;
   clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 78%, 0 100%);
+}
+
+@media (max-width: 700px) {
+  .rib {
+    width: 20px;
+    height: 22px;
+    padding-top: 3px;
+    font-size: 13px;
+  }
+  .ribs {
+    gap: 4px;
+  }
 }
 
 .rib.p1 { background: linear-gradient(#ffe27a, #d9a521); }
