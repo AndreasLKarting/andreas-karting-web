@@ -85,3 +85,30 @@ site, with arrows, dots and the keyboard to move to the next one. It reads a **"
 3. In `index.html`, paste it into `videosSheet:"..."` inside `CFG`. Commit it.
 
 Until `videosSheet` is set, the site uses the `VIDEOS` list in `index.html`.
+
+# Partners: logos in the Sponsoring section
+
+The "Our partners" area shows each partner's logo by tier (Main Partner large, Partner medium,
+Supporter small). A logo links to the partner's website and shows in colour on hover. While there are
+no partners it shows three open "Your logo here" slots that open an email.
+
+## Sheet layout (tab name: `Partners`)
+
+| name | tier | logo | link |
+|---|---|---|---|
+| Acme Racing | Main Partner | acme.png | https://www.acme.example |
+
+* `name` is required (it is also the text shown if the logo file is missing).
+* `tier`: `Main Partner`, `Partner` or `Supporter`.
+* `logo` is the file name in `images/partners/` (PNG, SVG, JPG or WebP; a transparent PNG or SVG works best).
+* `link` is the partner's website (must start with `https://`). Leave empty for no link.
+* `partners-template.csv` is an example.
+
+## Set up
+
+1. Upload the logo files to `images/partners/` on GitHub.
+2. Add a `Partners` tab with the four headers above and one row per partner.
+3. **File > Share > Publish to web**: the `Partners` tab, format **CSV**. Copy the link.
+4. In `index.html`, paste it into `partnersSheet:"..."` inside `CFG`. Commit it.
+
+Only add a partner's logo once they have agreed to appear on the site.
