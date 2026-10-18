@@ -103,7 +103,7 @@ const CFG={
          youtube:"https://www.youtube.com/@AndreasLazaridis.Karting"},
   socialSheet:"https://docs.google.com/spreadsheets/d/e/2PACX-1vTrQTYaoqWvwmPKYbInqhbu4hII_DbV8_bhokbmEGP2MNCJb8efUMAeSUDZZZQDEM2u_l4HOSiRgwo5/pub?gid=1383239317&single=true&output=csv",   // "Social" tab of the same Google Sheet, published as CSV (see tools/README.md). Leave "" to use the numbers below.
   avatars:{},   // optional profile picture per platform, e.g. {youtube:"images/avatar-yt.png"}; empty = images/avatar.png for all
-  videosSheet:"https://docs.google.com/spreadsheets/d/e/2PACX-1vTrQTYaoqWvwmPKYbInqhbu4hII_DbV8_bhokbmEGP2MNCJb8efUMAeSUDZZZQDEM2u_l4HOSiRgwo5/pub?gid=261061846&single=true&output=csv",   // "Videos" tab of the same Google Sheet, published as CSV (columns: id,title,date,location,credits; see tools/README.md). Leave "" to use the VIDEOS list below.
+  videosSheet:"https://docs.google.com/spreadsheets/d/e/2PACX-1vTrQTYaoqWvwmPKYbInqhbu4hII_DbV8_bhokbmEGP2MNCJb8efUMAeSUDZZZQDEM2u_l4HOSiRgwo5/pub?gid=261061846&single=true&output=csv",   // "Videos" tab of the same Google Sheet, published as CSV (columns: id,title,date,track,location,country,credits; see tools/README.md). Leave "" to use the VIDEOS list below.
   partnersSheet:"",   // "Partners" tab of the same Google Sheet, published as CSV (columns: name,tier,logo,link; see tools/README.md). Leave "" to use the PARTNERS list below.
   photosSheet:"https://docs.google.com/spreadsheets/d/e/2PACX-1vTrQTYaoqWvwmPKYbInqhbu4hII_DbV8_bhokbmEGP2MNCJb8efUMAeSUDZZZQDEM2u_l4HOSiRgwo5/pub?gid=930260858&single=true&output=csv",   // "Photos" tab of the same Google Sheet, published as CSV (columns: file,title,date,location,credits; see tools/README.md). Leave "" to use the PHOTOS list below.
   defaultTime:"10:00"                             // used when a race row has no time
@@ -361,8 +361,8 @@ async function loadPhotos(){
 }
 loadPhotos();
 
-// videos: scrolling row + carousel. Data from the Sheet "Videos" tab (id, title, date, location, credits) or the VIDEOS list
-let vList=VIDEOS.map(v=>({id:v.id||"",title:v.t,date:v.date||"",loc:v.loc||"",credit:v.credit||""})),vIdx=0;
+// videos: scrolling row + carousel. Data from the Sheet "Videos" tab (id, title, date, track, location, country, credits) or the VIDEOS list
+let vList=VIDEOS.map(v=>({id:v.id||"",title:v.t,date:v.date||"",track:v.track||"",loc:v.loc||"",country:v.country||"",credit:v.credit||""})),vIdx=0;
 const vOk=id=>/^[\w-]{6,20}$/.test(id);
 function renderVideos(){
   $("vids").innerHTML=vList.map((v,i)=>`<button type="button" class="vid" data-v="${i}" aria-label="Play video: ${esc(v.title)}"><span class="mono">${esc(v.title)}</span><div class="ph ${vOk(v.id)?"play":""}">${vOk(v.id)?`<img loading="lazy" src="https://i.ytimg.com/vi/${v.id}/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/${v.id}/mqdefault.jpg'" alt="${esc(v.title)}">`:"Add the YouTube video ID"}</div></button>`).join("");
@@ -372,7 +372,7 @@ $("vPrev").onclick=()=>vStep(-1);$("vNext").onclick=()=>vStep(1);
 function showVideo(i){
   vIdx=(i+vList.length)%vList.length;const v=vList[vIdx];
   $("vcFrame").innerHTML=vOk(v.id)?`<iframe src="https://www.youtube-nocookie.com/embed/${v.id}?autoplay=1&rel=0" title="${esc(v.title)}" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>`:`<p class="mono">Video ID missing</p>`;
-  $("vcTitle").textContent=v.title;$("vcDate").textContent=[phDate(v.date),v.loc].filter(Boolean).join(" · ");$("vcCredit").textContent=v.credit?"Video: "+v.credit:"";
+  $("vcTitle").textContent=v.title;$("vcDate").textContent=[phDate(v.date),v.track,[v.loc,v.country].filter(Boolean).join(", ")].filter(Boolean).join(" · ");$("vcCredit").textContent=v.credit?"Video: "+v.credit:"";
   $("vcCount").textContent=(vIdx+1)+" / "+vList.length;
   $("vcDots").innerHTML=vList.map((_,k)=>`<button type="button" data-k="${k}" aria-label="Video ${k+1}"${k==vIdx?' class="on"':""}></button>`).join("");
 }
@@ -388,7 +388,7 @@ async function loadVideos(){
   if(!CFG.videosSheet)return;
   try{const r=csv(await (await fetch(CFG.videosSheet)).text()),hd=r[0].map(x=>x.trim().toLowerCase()),ix=n=>hd.indexOf(n);
     if(ix("id")<0)return;
-    const rows=r.slice(1).filter(x=>(x[ix("id")]||"").trim()).map(x=>{const g=n=>ix(n)<0?"":(x[ix(n)]||"").trim();return {id:g("id"),title:g("title")||"Video",date:iso(g("date")),loc:g("location"),credit:g("credits")||g("credit")}});
+    const rows=r.slice(1).filter(x=>(x[ix("id")]||"").trim()).map(x=>{const g=n=>ix(n)<0?"":(x[ix(n)]||"").trim();return {id:g("id"),title:g("title")||"Video",date:iso(g("date")),track:g("track"),loc:g("location"),country:g("country"),credit:g("credits")||g("credit")}});
     if(rows.length){vList=rows;renderVideos()}}catch(e){}
 }
 loadVideos();
