@@ -33,6 +33,8 @@
 <div class="next" id="next" hidden><div><span class="mono">Next race</span><h3 id="nName"></h3><small id="nMeta"></small></div>
 <div class="cd" id="cd"><div><b id="d">00</b><span>Days</span></div><div><b id="h">00</b><span>Hours</span></div><div><b id="m">00</b><span>Minutes</span></div></div></div>
 </div>
+<div class="spons" aria-label="Partners"><div class="sp-head"><span class="mono">Our partners</span><a class="mono" href="#sponsoring">Become a partner &rarr;</a></div>
+<div class="sp-view" id="spView" tabindex="0"><div class="sp-track" id="spTrack"></div></div></div>
 </main>
 
 <section id="profile"><div class="wrap"><span class="eyebrow">01 / Driver profile</span><h2>Who is Andreas?</h2>
@@ -389,6 +391,7 @@ async function loadVideos(){
 loadVideos();
 
 // partners: logos by tier, from the Sheet "Partners" tab (name, tier, logo, link) or the PARTNERS list
+let spTimer=null;
 let pList=PARTNERS.map(p=>({name:p[0],tier:p[1],logo:p[2],link:p[3]}));
 const pTier=t=>/main/i.test(t||"")?"main":/support/i.test(t||"")?"sup":"part";
 const pLogo=f=>/^[\w .\-]+$/.test(f||"")?"images/partners/"+encodeURIComponent(f)+(/\.(png|jpe?g|svg|webp)$/i.test(f)?"":".png"):"";
@@ -399,6 +402,7 @@ function renderPartners(){
   let out="";
   if(!pList.length){ // no partners yet: three open slots
     $("partners").innerHTML=`<div class="prow slots">${["main","part","sup"].map(t=>`<a class="plogo slot" href="${MAILTO}"><span>${names[t]}<br>Your logo here</span></a>`).join("")}</div>`;
+    renderHeroPartners();
     return;
   }
   ["main","part","sup"].forEach(t=>{
@@ -411,8 +415,27 @@ function renderPartners(){
   });
   $("partners").innerHTML=out;
   $("partnersHead").hidden=false;
+  renderHeroPartners();
 }
 renderPartners();
+// hero partner carousel: 4 tiles in view, free slots show "Your logo can be here", auto-advances (pauses on hover/touch/focus)
+function renderHeroPartners(){
+  const ord={main:0,part:1,sup:2},items=[...pList].sort((a,b)=>ord[pTier(a.tier)]-ord[pTier(b.tier)]);
+  const slot=`<a class="sp slot" href="${MAILTO}" aria-label="Your logo can be here: contact us"><img src="images/partners/your-logo-here.svg" alt="Your logo can be here" loading="lazy"></a>`;
+  let html=items.map(p=>{const src=pLogo(p.logo),lk=pLink(p.link),img=src?`<img src="${src}" alt="${esc(p.name)}" loading="lazy" onerror="this.replaceWith(document.createTextNode(this.alt))">`:esc(p.name);
+    return lk?`<a class="sp" href="${esc(lk)}" target="_blank" rel="noopener noreferrer" aria-label="${esc(p.name)} (opens in a new tab)">${img}</a>`:`<span class="sp">${img}</span>`}).join("");
+  for(let i=items.length;i<4;i++)html+=slot;
+  if(items.length>=4)html+=slot;
+  $("spTrack").innerHTML=html;$("spView").scrollLeft=0;
+  clearInterval(spTimer);
+  if(matchMedia("(prefers-reduced-motion: reduce)").matches)return;
+  const v=$("spView");let paused=false;
+  const stop=()=>{paused=true},go=()=>{paused=false};
+  if(!v.dataset.bound){v.dataset.bound=1;["mouseenter","focusin","touchstart"].forEach(e=>v.addEventListener(e,stop,{passive:true}));["mouseleave","focusout","touchend"].forEach(e=>v.addEventListener(e,go,{passive:true}))}
+  spTimer=setInterval(()=>{if(paused||document.hidden)return;if(v.scrollWidth<=v.clientWidth+4)return;
+    const t=v.querySelector(".sp"),w=t.offsetWidth+16;
+    if(v.scrollLeft+v.clientWidth>=v.scrollWidth-4)v.scrollTo({left:0,behavior:"smooth"});else v.scrollBy({left:w,behavior:"smooth"})},3500);
+}
 async function loadPartners(){
   if(!CFG.partnersSheet)return;
   try{const r=csv(await (await fetch(CFG.partnersSheet)).text()),hd=r[0].map(x=>x.trim().toLowerCase()),ix=n=>hd.indexOf(n);
