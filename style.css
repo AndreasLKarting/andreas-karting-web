@@ -1343,7 +1343,7 @@ button.ph:focus-visible {
 
 /* last race card */
 .next[hidden] { display: none; }            /* .next sets display:flex, which would otherwise override [hidden] */
-.next.last { border-left-color: #e0a82e; }
+.next.last { border-left-color: #e0a82e; position: relative; }
 .next.last .mono { color: #e0a82e; }
 .next.last .cd { flex-wrap: wrap; justify-content: flex-end; }
 .next.last .cd span { display: block; max-width: 96px; line-height: 1.25; }
