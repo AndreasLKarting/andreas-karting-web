@@ -29,7 +29,7 @@
 
 <div class="strip">
 <div class="next last" id="last" hidden><div><span class="mono">Last race</span><h3 id="lName"></h3><small id="lMeta"></small></div>
-<div class="cd" id="lRes"></div></div>
+<div class="cd" id="lRes"></div><span class="ribs" id="lRibs"></span></div>
 <div class="next" id="next" hidden><div><span class="mono">Next race</span><h3 id="nName"></h3><small id="nMeta"></small></div>
 <div class="cd" id="cd"><div><b id="d">00</b><span>Days</span></div><div><b id="h">00</b><span>Hours</span></div><div><b id="m">00</b><span>Minutes</span></div></div></div>
 </div>
@@ -282,6 +282,7 @@ load().then(all=>{
     $("lMeta").textContent=when(pv).toLocaleDateString("en-GB",{weekday:"long",day:"numeric",month:"long",year:"numeric"}).toUpperCase();
     $("lRes").innerHTML=grp.map(r=>{const n=parseInt(r.result);
       return `<div class="${n>0&&n<4?"p"+n:""}"><b>${isNaN(n)?r.result:"P"+n}</b><span>${r.category}</span></div>`}).join("");
+    $("lRibs").innerHTML=grp.map(r=>parseInt(r.result)).filter(n=>n>0&&n<4).sort().map(n=>`<i class="rib p${n}" role="img" aria-label="Podium: ${n}${["st","nd","rd"][n-1]} place">${n}</i>`).join("");
   }
 });
 
