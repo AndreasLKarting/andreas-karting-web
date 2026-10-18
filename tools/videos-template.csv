@@ -1,5 +1,5 @@
-id,title,date,location,credits
-Q9MOau-zC30,Hitting 110km/h at Circuit 27 (GR),2026-09-12,"Athens, Greece",Andreas Lazaridis Karting
-OmETofpXb9M,P2 to heartbreak: DRS 2025 - Kerpen (DE),,"Kerpen, Germany",
-ucps9gld80k,Onboard lap Franciacorta (IT),,"Franciacorta, Italy",
-KW5FUVxNH4U,"P10 to P5, 49th Junior SWS (GR)",,"Athens, Greece",
+id,title,date,track,location,country,credits
+Q9MOau-zC30,Hitting 110km/h at Circuit 27 (GR),2026-09-12,Circuit 27,Athens,Greece,Andreas Lazaridis Karting
+OmETofpXb9M,P2 to heartbreak: DRS 2025 - Kerpen (DE),,Erftlandring,Kerpen,Germany,
+ucps9gld80k,Onboard lap Franciacorta (IT),,Franciacorta Karting Track,Franciacorta,Italy,
+KW5FUVxNH4U,"P10 to P5, 49th Junior SWS (GR)",,,Athens,Greece,

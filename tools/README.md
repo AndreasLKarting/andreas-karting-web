@@ -69,18 +69,18 @@ site, with arrows, dots and the keyboard to move to the next one. It reads a **"
 
 ## Sheet layout (tab name: `Videos`)
 
-| id | title | date | location | credits |
-|---|---|---|---|---|
-| Q9MOau-zC30 | Hitting 110km/h at Circuit 27 (GR) | 2026-09-12 | Athens, Greece | Andreas Lazaridis Karting |
+| id | title | date | track | location | country | credits |
+|---|---|---|---|---|---|---|
+| Q9MOau-zC30 | Hitting 110km/h at Circuit 27 (GR) | 2026-09-12 | Circuit 27 | Athens | Greece | Andreas Lazaridis Karting |
 
 * `id` is the part after `v=` in the YouTube link (for a Short, the part after `/shorts/`). Only `id` is required.
 * `title` falls back to "Video". `date` as `2026-09-12` or `12/09/2026`.
-* `location` is shown next to the date in the pop-up, `credits` as "Video: ...".
+* `track`, `location` (town) and `country` are shown next to the date in the pop-up as "Track · Location, Country"; each is optional. `credits` is shown as "Video: ...". (An older sheet with only a `location` column still works.)
 * Row order is the order on the site. `videos-template.csv` is an example.
 
 ## Set up
 
-1. Add a tab named `Videos` with the five headers above.
+1. Add a tab named `Videos` with the seven headers above (id, title, date, track, location, country, credits).
 2. **File > Share > Publish to web**: choose the `Videos` tab, format **CSV**, Publish. Copy the link.
 3. In `index.html`, paste it into `videosSheet:"..."` inside `CFG`. Commit it.
 
