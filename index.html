@@ -197,6 +197,29 @@ $("ach").innerHTML=ACH.map(a=>rowHTML(a[0],a[1],[a[2]])).join("");
 $("standings").innerHTML=STANDINGS.map(x=>rowHTML(x[0],x[2],x[1])).join("");
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"})[c]);
 const fmtNum=v=>{const n=Number(String(v).replace(/[ ,]/g,""));if(v===""||isNaN(n))return v;return n>=1e6?(n/1e6).toFixed(1).replace(/\.0$/,"")+"M":n>=1e4?(n/1e3).toFixed(1).replace(/\.0$/,"")+"K":n>=1e3?(n/1e3).toFixed(1).replace(/\.0$/,"")+"K":String(n)};
+// country flags for the calendar table: small built-in SVGs, so they show on every device (emoji flags do not show on Windows)
+const FLAGS={ // code: [name, svg shapes on a 30x20 canvas]
+ NL:["Netherlands",'<path fill="#AE1C28" d="M0 0h30v7H0z"/><path fill="#fff" d="M0 7h30v6.7H0z"/><path fill="#21468B" d="M0 13.3h30V20H0z"/>'],
+ BE:["Belgium",'<path fill="#000" d="M0 0h10v20H0z"/><path fill="#FAE042" d="M10 0h10v20H10z"/><path fill="#ED2939" d="M20 0h10v20H20z"/>'],
+ DE:["Germany",'<path fill="#000" d="M0 0h30v6.7H0z"/><path fill="#DD0000" d="M0 6.7h30v6.7H0z"/><path fill="#FFCE00" d="M0 13.3h30V20H0z"/>'],
+ IT:["Italy",'<path fill="#009246" d="M0 0h10v20H0z"/><path fill="#fff" d="M10 0h10v20H10z"/><path fill="#CE2B37" d="M20 0h10v20H20z"/>'],
+ FR:["France",'<path fill="#002654" d="M0 0h10v20H0z"/><path fill="#fff" d="M10 0h10v20H10z"/><path fill="#CE1126" d="M20 0h10v20H20z"/>'],
+ AT:["Austria",'<path fill="#ED2939" d="M0 0h30v6.7H0z"/><path fill="#fff" d="M0 6.7h30v6.7H0z"/><path fill="#ED2939" d="M0 13.3h30V20H0z"/>'],
+ LU:["Luxembourg",'<path fill="#EF3340" d="M0 0h30v6.7H0z"/><path fill="#fff" d="M0 6.7h30v6.7H0z"/><path fill="#00A3E0" d="M0 13.3h30V20H0z"/>'],
+ IE:["Ireland",'<path fill="#169B62" d="M0 0h10v20H0z"/><path fill="#fff" d="M10 0h10v20H10z"/><path fill="#FF883E" d="M20 0h10v20H20z"/>'],
+ PL:["Poland",'<path fill="#fff" d="M0 0h30v10H0z"/><path fill="#DC143C" d="M0 10h30v10H0z"/>'],
+ CZ:["Czechia",'<path fill="#fff" d="M0 0h30v10H0z"/><path fill="#D7141A" d="M0 10h30v10H0z"/><path fill="#11457E" d="M0 0l15 10L0 20z"/>'],
+ HU:["Hungary",'<path fill="#CD2A3E" d="M0 0h30v6.7H0z"/><path fill="#fff" d="M0 6.7h30v6.7H0z"/><path fill="#436F4D" d="M0 13.3h30V20H0z"/>'],
+ ES:["Spain",'<path fill="#AA151B" d="M0 0h30v20H0z"/><path fill="#F1BF00" d="M0 5h30v10H0z"/>'],
+ PT:["Portugal",'<path fill="#006600" d="M0 0h12v20H0z"/><path fill="#FF0000" d="M12 0h18v20H12z"/><circle cx="12" cy="10" r="3.6" fill="#FFE000"/>'],
+ CH:["Switzerland",'<path fill="#DA291C" d="M0 0h30v20H0z"/><path fill="#fff" d="M13 4h4v12h-4z"/><path fill="#fff" d="M9 8h12v4H9z"/>'],
+ GR:["Greece",'<path fill="#0D5EAF" d="M0 0h30v20H0z"/><path fill="#fff" d="M0 2.22h30v2.22H0zM0 6.67h30v2.22H0zM0 11.1h30v2.22H0zM0 15.56h30v2.22H0z"/><path fill="#0D5EAF" d="M0 0h11.1v11.1H0z"/><path fill="#fff" d="M4.44 0h2.22v11.1H4.44zM0 4.44h11.1v2.22H0z"/>'],
+ GB:["United Kingdom",'<path fill="#012169" d="M0 0h30v20H0z"/><path stroke="#fff" stroke-width="4" d="M0 0l30 20M30 0L0 20"/><path stroke="#C8102E" stroke-width="1.8" d="M0 0l30 20M30 0L0 20"/><path stroke="#fff" stroke-width="6.7" d="M15 0v20M0 10h30"/><path stroke="#C8102E" stroke-width="4" d="M15 0v20M0 10h30"/>']
+};
+const CNAMES={netherlands:"NL",holland:"NL",belgium:"BE",germany:"DE",deutschland:"DE",italy:"IT",france:"FR",austria:"AT",luxembourg:"LU",ireland:"IE",poland:"PL",czechia:"CZ","czech republic":"CZ",hungary:"HU",spain:"ES",portugal:"PT",switzerland:"CH",greece:"GR","united kingdom":"GB",uk:"GB",england:"GB",gb:"GB"};
+const flagCode=v=>{v=String(v||"").trim();const re=[...v].filter(ch=>{const c=ch.codePointAt(0);return c>=0x1F1E6&&c<=0x1F1FF}).map(ch=>String.fromCharCode(ch.codePointAt(0)-0x1F1E6+65)).join("");
+  return re.length==2?re:(/^[A-Za-z]{2}$/.test(v)&&!CNAMES[v.toLowerCase()]?v.toUpperCase():CNAMES[v.toLowerCase()]||v.toUpperCase())};
+const flagHTML=v=>{const c=flagCode(v),f=FLAGS[c];return f?`<span class="flag" role="img" aria-label="${f[0]}" title="${f[0]}"><svg viewBox="0 0 30 20" aria-hidden="true">${f[1]}</svg></span>`:esc(v||"")}; // unknown country: show the text as typed
 function renderSocial(sheet){ // sheet = {platform(lowercase): [[metric,value],...]}; falls back to SOCIAL above
   $("soc").innerHTML=SOCIAL.map(s=>{const sh=(sheet&&sheet[s[0].toLowerCase()])||[],m=s[2].map(x=>{const f=sh.find(y=>y[0].toLowerCase()==x[0].toLowerCase());return [x[0],f?f[1]:x[1]]});
     sh.forEach(y=>{if(!m.some(x=>x[0].toLowerCase()==y[0].toLowerCase()))m.push(y)});
@@ -247,7 +270,7 @@ load().then(all=>{
         $("rows").innerHTML = list.length ? list.slice(start, start + PER).map(r => {
           const n = parseInt(r.result);
           const c = n == 1 ? "r1" : n == 2 ? "r2" : n == 3 ? "r3" : "";
-          return `<tr><td class="d">${fmt(r.date)}</td><td>${r.race}</td><td>${r.venue}</td><td>${r.country}</td><td>${r.category}</td><td class="r ${c}">${r.result || (done(r) ? "–" : "Upcoming")}</td></tr>`;
+          return `<tr><td class="d">${fmt(r.date)}</td><td>${r.race}</td><td>${r.venue}</td><td>${flagHTML(r.country)}</td><td>${r.category}</td><td class="r ${c}">${r.result || (done(r) ? "–" : "Upcoming")}</td></tr>`;
         }).join("") : `<tr><td class="empty" colspan="6">No races match these filters.</td></tr>`;
         let nav = "";
         if (pages > 1) {
