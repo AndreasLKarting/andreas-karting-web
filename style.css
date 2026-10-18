@@ -456,10 +456,19 @@ td.r {
   border-bottom: 1px solid var(--edge);
 }
 
+.soc .avatar {
+  flex: none;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: var(--panel);
+}
+
 .soc .ico {
   flex: none;
-  width: 44px;
-  height: 44px;
+  width: 22px;
+  height: 22px;
 }
 
 .soc .ico svg {
@@ -469,6 +478,9 @@ td.r {
 }
 
 .soc h3 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   margin: 0;
   font: 700 26px/1.1 var(--cond);
   letter-spacing: .03em;
