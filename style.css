@@ -1783,3 +1783,22 @@ a.sp:focus-visible img {
     scroll-behavior: auto !important;
   }
 }
+
+/* ---- Consistent blue hover/focus outline for grey-bordered buttons ---- */
+.btn.ghost:hover,
+.btn.ghost:focus-visible,
+.pager button:hover,
+.pager button:focus-visible,
+.va:hover,
+.va:focus-visible,
+.pc-x:hover,
+.pc-x:focus-visible,
+.pc-a:hover,
+.pc-a:focus-visible,
+button.ph:hover,
+button.ph:focus-visible,
+.pc-dots button:hover,
+.pc-dots button:focus-visible {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent), 0 8px 30px rgba(91,124,255,.22);
+}
