@@ -1064,7 +1064,7 @@ span.chip.pl {
 }
 
 .pk .hot {
-  border-color: var(--accent);
+  border-color: var(--edge);
 }
 
 .scroll,
