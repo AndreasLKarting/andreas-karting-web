@@ -1622,10 +1622,11 @@ a.sp:focus-visible img {
 #sponsoring .wrap > .cta {
   grid-column: 2;
   grid-row: 2;
-  align-self: end;
+  align-self: stretch;
   flex-direction: column;
+  justify-content: space-between;
   align-items: stretch;
-  margin-bottom: 8px;
+  margin: 14px 0 0;
 }
 
 #sponsoring .wrap > .lead {
@@ -1638,13 +1639,13 @@ a.sp:focus-visible img {
 
 @media (max-width: 900px) {
   #sponsoring .wrap { display: block; }
-  #sponsoring .wrap > .cta { flex-direction: row; margin-bottom: 0; }
+  #sponsoring .wrap > .cta { flex-direction: row; justify-content: flex-start; margin: 0; }
   #sponsoring .wrap > .lead { max-width: 520px; }
 }
 
 #sponsoring .wrap > .eyebrow { grid-column: 1; grid-row: 1; }
-#sponsoring .wrap > .side { grid-column: 2; grid-row: 1; position: static; align-self: start; margin: 0; }
+#sponsoring .wrap > .side { grid-column: 1 / -1; grid-row: 1; justify-self: end; position: static; align-self: start; margin: 0; white-space: nowrap; }
 
 @media (max-width: 900px) {
-  #sponsoring .wrap > .side { text-align: left; margin-top: 28px; }
+  #sponsoring .wrap > .side { text-align: left; margin-top: 28px; white-space: normal; }
 }
