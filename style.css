@@ -1649,3 +1649,17 @@ a.sp:focus-visible img {
 @media (max-width: 900px) {
   #sponsoring .wrap > .side { text-align: left; margin-top: 28px; white-space: normal; }
 }
+
+/* ---- hero: portrait spans from the title down to the buttons ---- */
+@media (min-width: 901px) {
+  .hero { align-items: start; gap: 0 48px; }
+  .hero > div:first-child { display: contents; }
+  .hero h1 { grid-column: 1; grid-row: 1; }
+  .hero .tag { grid-column: 1; grid-row: 2; }
+  .hero .quote { grid-column: 1; grid-row: 3; margin-bottom: 0; }
+  .hero .cta { grid-column: 1; grid-row: 4; margin-top: 32px; }
+  .hero .portrait { grid-column: 2; grid-row: 1 / 5; aspect-ratio: auto; align-self: stretch; min-height: 0; }
+  .hero .portrait img { position: absolute; inset: 0; object-position: 50% 22%; }
+  .hero .portrait .loc { bottom: auto; top: 18px; }
+  .hero .portrait::after { inset: 40% 0 0; }
+}
