@@ -313,7 +313,8 @@ load().then(all=>{
         if (page > pages) page = pages;
         const start = (page - 1) * PER;
         $("rows").innerHTML = list.length ? list.slice(start, start + PER).map(r => {
-          const n = parseInt(r.result);
+          const resultNumber = String(r.result || "").match(/\d+/);
+          const n = resultNumber ? parseInt(resultNumber[0], 10) : NaN;
           const c = n == 1 ? "r1" : n == 2 ? "r2" : n == 3 ? "r3" : "";
           const key = eventKey(r);
           const ribbon = key === nextKey ? '<span class="race-ribbon next-race">NEXT RACE</span>' : key === previousKey ? '<span class="race-ribbon previous-race">PREVIOUS RACE</span>' : "";
