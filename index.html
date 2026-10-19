@@ -9,12 +9,15 @@
 <link rel="canonical" href="https://www.alracing.nl/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.alracing.nl/">
-<meta property="og:image" content="https://www.alracing.nl/images/portrait.jpg">
-<meta property="og:image:alt" content="Andreas Lazaridis, karting driver">
+<meta property="og:image" content="https://www.alracing.nl/images/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:alt" content="Andreas Lazaridis, karting driver, alracing.nl">
 <meta property="og:title" content="Andreas Lazaridis | Karting Driver">
 <meta property="og:description" content="Race results, onboard videos and the karting journey of Andreas Lazaridis across the Netherlands and Europe.">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://www.alracing.nl/images/portrait.jpg">
+<meta name="twitter:image" content="https://www.alracing.nl/images/og-image.jpg">
 <meta name="twitter:title" content="Andreas Lazaridis | Karting Driver">
 <meta name="twitter:description" content="Race results, onboard videos and the karting journey of Andreas Lazaridis across the Netherlands and Europe.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -102,9 +105,9 @@
 <div class="cta"><a class="btn ghost" href="mediakit.pdf">Open media kit</a><button type="button" class="btn ghost" data-place>Sponsor placements</button></div>
 <p class="side mono">Supporter / Partner / Main Partner &nbsp;·&nbsp; Custom packages welcome</p>
 <div class="pk" id="packages">
-<div><h3>Supporter</h3><span class="mono">Investment on request</span><ul><li>Logo in the website partner carousel</li><li>Thank-you Story and tag</li></ul></div>
-<div class="hot"><h3>Partner</h3><span class="mono">Investment on request</span><ul><li>Everything in Supporter</li><li>Small logo on race suit</li><li>1 dedicated Reel per season</li><li>Season results report</li></ul></div>
-<div><h3>Main Partner</h3><span class="mono">Investment on request</span><ul><li>Everything in Partner</li><li>Prominent logo on suit and helmet</li><li>1 dedicated post per month</li></ul></div></div>
+<div><h3>Supporter</h3><span class="mono">Investment on request</span><ul><li>Logo in the website partner carousel</li><li>Thank-you Story and tag</li></ul><a class="btn ghost pk-cta" data-mail data-subject="Supporter package enquiry" href="#">Become a Supporter</a></div>
+<div class="hot"><h3>Partner</h3><span class="mono">Investment on request</span><ul><li>Everything in Supporter</li><li>Small logo on race suit</li><li>1 dedicated Reel per season</li><li>Season results report</li></ul><a class="btn pk-cta" data-mail data-subject="Partner package enquiry" href="#">Become a Partner</a></div>
+<div><h3>Main Partner</h3><span class="mono">Investment on request</span><ul><li>Everything in Partner</li><li>Prominent logo on suit and helmet</li><li>1 dedicated post per month</li></ul><a class="btn ghost pk-cta" data-mail data-subject="Main Partner package enquiry" href="#">Become Main Partner</a></div></div>
 </div>
 </div></section>
 
@@ -112,7 +115,7 @@
 <div class="fcols"><div><span class="mono">Explore</span><a href="#calendar">Calendar</a></div>
 <div><span class="mono">Partner</span><a href="#sponsoring">Packages</a><a href="mediakit.pdf">Media kit</a><a href="documents/Andreas-Lazaridis-Performance-Analysis.pdf" target="_blank" rel="noopener">Performance analysis</a></div>
 <div><span class="mono">Social</span><a data-k="instagram" href="#">Instagram</a><a data-k="tiktok" href="#">TikTok</a><a data-k="youtube" href="#">YouTube</a><a data-mail href="#">Email</a></div></div></div>
-<div class="copy mono"><span>© 2026 Andreas Lazaridis. All rights reserved.</span><span>Media kit — 2026</span></div></div></footer>
+<div class="copy mono"><span>© 2026 Andreas Lazaridis. All rights reserved. · <a href="privacy.html">Privacy</a></span><span>Media kit — 2026</span></div></div></footer>
 
 <script>
 /* ============ EDIT THIS BLOCK ============ */
@@ -216,7 +219,7 @@ const FALLBACK=[["2026-02-22","FK Netherland","Euro Indoor Karting Swalmen","NL"
 /* ========================================= */
 
 const iso=d=>{const m=d.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/);return m?m[3]+"-"+m[2].padStart(2,"0")+"-"+m[1].padStart(2,"0"):d},$=id=>document.getElementById(id), K=["date","race","venue","country","category","result","time"];
-document.querySelectorAll("[data-mail]").forEach(a=>a.href="mailto:"+CFG.email+"?subject=Sponsorship%20enquiry%20-%20Andreas%20Lazaridis");
+document.querySelectorAll("[data-mail]").forEach(a=>a.href="mailto:"+CFG.email+"?subject="+encodeURIComponent((a.dataset.subject||"Sponsorship enquiry")+" - Andreas Lazaridis"));
 document.querySelectorAll("[data-k]").forEach(a=>{a.href=CFG.links[a.dataset.k];a.target="_blank";a.rel="noopener"});
 
 // static blocks
@@ -303,7 +306,7 @@ load().then(all=>{
       const firstUp = all.findIndex(r => !done(r));
       page = firstUp < 0 ? Math.ceil(all.length / PER) : Math.floor(firstUp / PER) + 1;
       for (const id in sel) {
-        $(id).innerHTML = sel[id].map(v => `<option>${v}</option>`).join("");
+        $(id).innerHTML = sel[id].map(v => `<option>${esc(v)}</option>`).join("");
         $(id).onchange = () => { page = 1; draw(); };
       }
       function draw() {
@@ -320,7 +323,7 @@ load().then(all=>{
           const ribbon = key === nextKey ? '<span class="race-ribbon next-race">NEXT RACE</span>' : key === previousKey ? '<span class="race-ribbon previous-race">PREVIOUS RACE</span>' : "";
           const medal = n === 1 ? "🥇 " : n === 2 ? "🥈 " : n === 3 ? "🥉 " : "";
           const result = r.result ? medal + esc(r.result) : (done(r) ? "–" : "Upcoming");
-          return `<tr class="${key === nextKey ? "is-next-race" : key === previousKey ? "is-previous-race" : ""}"><td class="d">${fmt(r.date)}</td><td><div class="race-cell">${r.race}${ribbon}</div></td><td>${r.venue}</td><td>${flagHTML(r.country)}</td><td>${r.category}</td><td class="r ${c}">${result}</td></tr>`;
+          return `<tr class="${key === nextKey ? "is-next-race" : key === previousKey ? "is-previous-race" : ""}"><td class="d">${fmt(r.date)}</td><td><div class="race-cell">${esc(r.race)}${ribbon}</div></td><td>${esc(r.venue)}</td><td>${flagHTML(r.country)}</td><td>${esc(r.category)}</td><td class="r ${c}">${result}</td></tr>`;
         }).join("") : `<tr><td class="empty" colspan="6">No races match these filters.</td></tr>`;
         let nav = "";
         if (pages > 1) {
@@ -354,7 +357,7 @@ load().then(all=>{
     $("lName").textContent=pv.race+" · "+pv.venue;
     $("lMeta").textContent=when(pv).toLocaleDateString("en-GB",{weekday:"long",day:"numeric",month:"long",year:"numeric"}).toUpperCase();
     $("lRes").innerHTML=grp.map(r=>{const n=parseInt(r.result);
-      return `<div class="${n>0&&n<4?"p"+n:""}"><b>${isNaN(n)?r.result:"P"+n}</b><span>${r.category}</span></div>`}).join("");
+      return `<div class="${n>0&&n<4?"p"+n:""}"><b>${isNaN(n)?esc(r.result):"P"+n}</b><span>${esc(r.category)}</span></div>`}).join("");
     $("lRibs").innerHTML=grp.map(r=>parseInt(r.result)).filter(n=>n>0&&n<4).sort().map(n=>`<i class="rib p${n}" role="img" aria-label="Podium: ${n}${["st","nd","rd"][n-1]} place">${n}</i>`).join("");
   }
 });
@@ -476,11 +479,11 @@ loadPartners();
 <section id="analytics-consent" class="analytics-consent" aria-label="Analytics cookie preferences" hidden>
   <div class="analytics-consent__copy">
     <strong>Help improve AL Racing</strong>
-    <p>With your permission, Google Analytics measures website traffic and how visitors use this site. Analytics is optional.</p>
+    <p>With your permission, Google Analytics measures website traffic and how visitors use this site. Analytics is optional. <a href="privacy.html">Privacy statement</a></p>
   </div>
   <div class="analytics-consent__actions">
     <button type="button" class="btn ghost" id="analytics-reject">Reject analytics</button>
-    <button type="button" class="btn" id="analytics-accept">Accept analytics</button>
+    <button type="button" class="btn ghost" id="analytics-accept">Accept analytics</button>
   </div>
 </section>
 <button type="button" id="analytics-settings" class="analytics-settings" hidden>Privacy settings</button>
@@ -531,7 +534,11 @@ loadPartners();
     settings.hidden = true;
   });
 
-  if (choice === "accepted") {
+  const wantsSettings = location.hash === "#cookie-settings";
+  if (wantsSettings) {
+    banner.hidden = false;
+    if (choice === "accepted") loadAnalytics();
+  } else if (choice === "accepted") {
     loadAnalytics();
     settings.hidden = false;
   } else if (choice === "rejected") {
@@ -539,6 +546,9 @@ loadPartners();
   } else {
     banner.hidden = false;
   }
+  window.addEventListener("hashchange", function () {
+    if (location.hash === "#cookie-settings") { banner.hidden = false; settings.hidden = true; }
+  });
 
   document.addEventListener("click", function (event) {
     if (choice !== "accepted" || typeof window.gtag !== "function") return;

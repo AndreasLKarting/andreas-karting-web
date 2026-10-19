@@ -1906,3 +1906,21 @@ td.r.r1, td.r.r2, td.r.r3 {
   box-shadow: 0 0 0 1px var(--accent), 0 8px 30px rgba(91,124,255,.22);
   transform: translateY(-3px);
 }
+
+/* ---- package call-to-action buttons ---- */
+.pk > div { display: flex; flex-direction: column; }
+.pk > div ul { flex: 1; }
+.pk .pk-cta { align-self: flex-start; margin-top: 8px; }
+.analytics-consent__copy a { color: var(--accent); text-decoration: underline; }
+
+/* ---- privacy page ---- */
+.legal { max-width: 820px; padding-top: 64px; padding-bottom: 80px; }
+.legal h1 { font: 400 clamp(36px,6vw,64px)/1 var(--disp); text-transform: uppercase; margin: 8px 0 12px; }
+.legal h2 { font: 400 28px var(--disp); text-transform: uppercase; margin: 44px 0 10px; }
+.legal h3 { font: 700 18px var(--cond); letter-spacing: .04em; text-transform: uppercase; margin: 26px 0 8px; }
+.legal p, .legal li { color: #cfcdc8; line-height: 1.7; }
+.legal ul { padding-left: 20px; }
+.legal a:not(.btn) { color: var(--accent); text-decoration: underline; }
+.legal code { font: 500 13px var(--mono); background: rgba(255,255,255,.06); padding: 1px 6px; border-radius: 3px; }
+.legal .updated { color: var(--muted); margin: 0 0 24px; }
+.legal .back { margin-top: 40px; }
