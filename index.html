@@ -471,5 +471,88 @@ async function loadPartners(){
 loadPartners();
 </script>
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "407db4d2324c4c7baa1e4178b2cdfec7"}'></script><!-- End Cloudflare Web Analytics -->
+
+<!-- Google Analytics 4: load only after explicit analytics consent -->
+<section id="analytics-consent" class="analytics-consent" aria-label="Analytics cookie preferences" hidden>
+  <div class="analytics-consent__copy">
+    <strong>Help improve AL Racing</strong>
+    <p>With your permission, Google Analytics measures website traffic and how visitors use this site. Analytics is optional.</p>
+  </div>
+  <div class="analytics-consent__actions">
+    <button type="button" class="btn ghost" id="analytics-reject">Reject analytics</button>
+    <button type="button" class="btn" id="analytics-accept">Accept analytics</button>
+  </div>
+</section>
+<button type="button" id="analytics-settings" class="analytics-settings" hidden>Privacy settings</button>
+<script>
+(function () {
+  const MEASUREMENT_ID = "G-RCF0ZN0NDQ";
+  const STORAGE_KEY = "alracing-analytics-consent";
+  const banner = document.getElementById("analytics-consent");
+  const settings = document.getElementById("analytics-settings");
+  let choice = null;
+  let loaded = false;
+
+  try { choice = localStorage.getItem(STORAGE_KEY); } catch (e) {}
+
+  function loadAnalytics() {
+    if (loaded) return;
+    loaded = true;
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
+    window.gtag("js", new Date());
+    window.gtag("config", MEASUREMENT_ID);
+    const script = document.createElement("script");
+    script.async = true;
+    script.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(MEASUREMENT_ID);
+    document.head.appendChild(script);
+  }
+
+  function saveChoice(nextChoice) {
+    choice = nextChoice;
+    try { localStorage.setItem(STORAGE_KEY, nextChoice); } catch (e) {}
+    banner.hidden = true;
+    settings.hidden = false;
+    if (nextChoice === "accepted") {
+      loadAnalytics();
+    } else if (loaded && typeof window.gtag === "function") {
+      window.gtag("consent", "update", { analytics_storage: "denied" });
+    }
+  }
+
+  document.getElementById("analytics-accept").addEventListener("click", function () {
+    saveChoice("accepted");
+  });
+  document.getElementById("analytics-reject").addEventListener("click", function () {
+    saveChoice("rejected");
+  });
+  settings.addEventListener("click", function () {
+    banner.hidden = false;
+    settings.hidden = true;
+  });
+
+  if (choice === "accepted") {
+    loadAnalytics();
+    settings.hidden = false;
+  } else if (choice === "rejected") {
+    settings.hidden = false;
+  } else {
+    banner.hidden = false;
+  }
+
+  document.addEventListener("click", function (event) {
+    if (choice !== "accepted" || typeof window.gtag !== "function") return;
+    const link = event.target.closest("a[href]");
+    if (!link) return;
+    const href = link.href;
+    if (/youtube\.com|youtu\.be/i.test(href)) {
+      window.gtag("event", "youtube_click", { link_url: href });
+    } else if (/instagram\.com/i.test(href)) {
+      window.gtag("event", "instagram_click", { link_url: href });
+    }
+  });
+})();
+</script>
+
 </body>
 </html>
