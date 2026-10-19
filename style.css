@@ -1712,7 +1712,6 @@ a.sp:focus-visible img {
   .hero .cta { grid-column: 1; grid-row: 4; margin-top: 32px; }
   .hero .portrait { grid-column: 2; grid-row: 1 / 5; aspect-ratio: auto; align-self: stretch; min-height: 0; }
   .hero .portrait img { position: absolute; inset: 0; object-position: 50% 22%; }
-  .hero .portrait .loc { bottom: auto; top: 18px; }
   .hero .portrait::after { inset: 40% 0 0; }
 }
 
@@ -1924,3 +1923,11 @@ td.r.r1, td.r.r2, td.r.r3 {
 .legal code { font: 500 13px var(--mono); background: rgba(255,255,255,.06); padding: 1px 6px; border-radius: 3px; }
 .legal .updated { color: var(--muted); margin: 0 0 24px; }
 .legal .back { margin-top: 40px; }
+
+.mantra span {
+  display: block;
+  margin-top: 10px;
+  font-size: 12px;
+  letter-spacing: .14em;
+  color: #d8dae3;
+}
