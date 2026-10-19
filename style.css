@@ -1783,3 +1783,48 @@ a.sp:focus-visible img {
     scroll-behavior: auto !important;
   }
 }
+
+
+/* ---- 2027 sponsorship campaign CTA ---- */
+#sponsoring .sponsor-contact {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: 32px;
+  padding: 26px 28px;
+  border: 1px solid var(--edge);
+  border-left: 3px solid var(--accent);
+  background: linear-gradient(120deg, rgba(26,27,34,.92), rgba(15,15,19,.8));
+}
+#sponsoring .sponsor-contact h3 {
+  margin: 0 0 8px;
+  font: 700 clamp(20px, 2vw, 28px)/1.1 var(--cond);
+  text-transform: uppercase;
+}
+#sponsoring .sponsor-contact p {
+  margin: 0 0 8px;
+  color: var(--muted);
+  line-height: 1.55;
+}
+#sponsoring .sponsor-contact .mono {
+  color: var(--accent);
+  font-size: 11px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+#sponsoring .sponsor-contact .btn {
+  flex: 0 0 auto;
+  text-align: center;
+}
+@media (max-width: 900px) {
+  #sponsoring .wrap > .sponsor-contact { order: 8; }
+}
+@media (max-width: 560px) {
+  #sponsoring .sponsor-contact {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 20px;
+  }
+}
