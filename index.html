@@ -290,6 +290,12 @@ const fmt=d=>d.split("-").reverse().join("/");
 load().then(all=>{
   all.sort((a,b)=>when(a)-when(b));
   const now=new Date(), done=r=>new Date(r.date+"T23:59:59")<now;
+  // Mark the previous and next event once per race weekend, even when multiple categories share it.
+  const eventKey=r=>[r.date,r.race,r.venue].join("|");
+  const upcomingEvent=all.find(r=>!done(r));
+  const previousEvent=[...all].reverse().find(r=>done(r)&&r.result);
+  const nextKey=upcomingEvent?eventKey(upcomingEvent):"";
+  const previousKey=previousEvent?eventKey(previousEvent):"";
   // calendar
   const sel={fStatus:["All","Upcoming","Completed"],fYear:["All",...new Set(all.map(r=>r.date.slice(0,4)))],fVenue:["All",...new Set(all.map(r=>r.venue))],fRace:["All",...new Set(all.map(r=>r.race))]};
       const PER = 15;
@@ -309,7 +315,11 @@ load().then(all=>{
         $("rows").innerHTML = list.length ? list.slice(start, start + PER).map(r => {
           const n = parseInt(r.result);
           const c = n == 1 ? "r1" : n == 2 ? "r2" : n == 3 ? "r3" : "";
-          return `<tr><td class="d">${fmt(r.date)}</td><td>${r.race}</td><td>${r.venue}</td><td>${flagHTML(r.country)}</td><td>${r.category}</td><td class="r ${c}">${r.result || (done(r) ? "–" : "Upcoming")}</td></tr>`;
+          const key = eventKey(r);
+          const ribbon = key === nextKey ? '<span class="race-ribbon next-race">NEXT RACE</span>' : key === previousKey ? '<span class="race-ribbon previous-race">PREVIOUS RACE</span>' : "";
+          const medal = n === 1 ? "🥇 " : n === 2 ? "🥈 " : n === 3 ? "🥉 " : "";
+          const result = r.result ? medal + esc(r.result) : (done(r) ? "–" : "Upcoming");
+          return `<tr class="${key === nextKey ? "is-next-race" : key === previousKey ? "is-previous-race" : ""}"><td class="d">${fmt(r.date)}</td><td><div class="race-cell">${r.race}${ribbon}</div></td><td>${r.venue}</td><td>${flagHTML(r.country)}</td><td>${r.category}</td><td class="r ${c}">${result}</td></tr>`;
         }).join("") : `<tr><td class="empty" colspan="6">No races match these filters.</td></tr>`;
         let nav = "";
         if (pages > 1) {
