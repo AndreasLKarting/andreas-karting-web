@@ -1589,14 +1589,17 @@ a.sp:focus-visible img {
 
 .pm-box h3 { margin: 0; font: 400 clamp(32px,5vw,52px) var(--disp); text-transform: uppercase; }
 .pm-lead { margin: 0; color: var(--muted); }
-.pm-fig { display: grid; grid-template-columns: 1.2fr .8fr 1fr 1fr; gap: 12px; align-items: end; }
+.pm-fig { display: grid; gap: 12px; align-items: end; margin: 0 auto; width: 100%; }
+.pm-fig.helmet { grid-template-columns: 1.3fr 1fr 1fr; max-width: 900px; }
+.pm-fig.suit { grid-template-columns: 1fr 1fr; max-width: 520px; }
 .pm-fig figure { margin: 0; }
 .pm-fig img { width: 100%; height: auto; display: block; }
 .pm .note { margin: 0; color: var(--muted); }
 .pm .cta { margin: 0; }
 
 @media (max-width: 900px) {
-  .pm-fig { grid-template-columns: 1fr 1fr; }
+  .pm-fig.helmet { grid-template-columns: 1fr 1fr; }
+  .pm-fig.helmet figure:first-child { grid-column: 1 / -1; max-width: 420px; margin: 0 auto; }
   .legend { grid-template-columns: 1fr 1fr; }
 }
 
