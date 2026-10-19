@@ -1802,3 +1802,48 @@ button.ph:focus-visible,
   border-color: var(--accent);
   box-shadow: 0 0 0 1px var(--accent), 0 8px 30px rgba(91,124,255,.22);
 }
+
+/* ---- Race calendar: previous/next race ribbons and podium medals ---- */
+.race-cell {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 10px;
+}
+.race-ribbon {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  padding: 3px 8px;
+  border: 1px solid var(--accent);
+  border-radius: 2px;
+  font: 700 9px/1.4 var(--mono);
+  letter-spacing: .1em;
+  white-space: nowrap;
+}
+.race-ribbon.next-race {
+  color: #fff;
+  background: var(--blue);
+  border-color: var(--accent);
+}
+.race-ribbon.previous-race {
+  color: var(--accent);
+  background: rgba(91,124,255,.10);
+}
+tr.is-next-race td {
+  background: rgba(91,124,255,.055);
+}
+tr.is-next-race td:first-child {
+  box-shadow: inset 3px 0 0 var(--accent);
+}
+tr.is-previous-race td {
+  background: rgba(154,154,166,.035);
+}
+td.r.r1, td.r.r2, td.r.r3 {
+  white-space: nowrap;
+  font-size: 17px;
+}
+@media (max-width: 700px) {
+  .race-cell { align-items: flex-start; gap: 5px; }
+  .race-ribbon { font-size: 8px; padding: 3px 6px; }
+}
