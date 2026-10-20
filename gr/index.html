@@ -32,59 +32,60 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preload" as="image" href="/images/portrait.jpg" fetchpriority="high">
 <link rel="stylesheet" href="/style.css">
+<script src="/i18n.js" defer></script>
 </head>
 <body>
 <header><svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><symbol id="fl-nl" viewBox="0 0 30 20"><path fill="#AE1C28" d="M0 0h30v7H0z"/><path fill="#fff" d="M0 7h30v6.7H0z"/><path fill="#21468B" d="M0 13.3h30V20H0z"/></symbol><symbol id="fl-en" viewBox="0 0 30 20"><path fill="#012169" d="M0 0h30v20H0z"/><path stroke="#fff" stroke-width="4" d="M0 0l30 20M30 0L0 20"/><path stroke="#C8102E" stroke-width="1.8" d="M0 0l30 20M30 0L0 20"/><path stroke="#fff" stroke-width="6.7" d="M15 0v20M0 10h30"/><path stroke="#C8102E" stroke-width="4" d="M15 0v20M0 10h30"/></symbol><symbol id="fl-gr" viewBox="0 0 30 20"><path fill="#0D5EAF" d="M0 0h30v20H0z"/><path fill="#fff" d="M0 2.22h30v2.22H0zM0 6.67h30v2.22H0zM0 11.1h30v2.22H0zM0 15.56h30v2.22H0z"/><path fill="#0D5EAF" d="M0 0h11.1v11.1H0z"/><path fill="#fff" d="M4.44 0h2.22v11.1H4.44zM0 4.44h11.1v2.22H0z"/></symbol></defs></svg><div class="wrap"><a class="logo" href="#top"><i aria-hidden="true"><b>AL</b></i>Andreas Lazaridis</a>
-<nav><a href="#profile">Προφίλ</a><a href="#achievements">Διακρίσεις</a><a href="#calendar">Ημερολόγιο</a><a href="#media">Πολυμέσα</a><a href="#social">Κοινωνικά δίκτυα</a><a href="#sponsoring">Χορηγίες</a></nav>
-<div class="hdr-end"><div class="lang" id="lang"><button class="lang-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="langMenu" aria-label="Language"><span class="lang-flag"><svg viewBox="0 0 30 20" aria-hidden="true"><use href="#fl-gr"/></svg></span><span class="lang-code">GR</span></button><ul class="lang-menu" id="langMenu" hidden><li><a href="/nl/" hreflang="nl" lang="nl"><span class="lang-flag"><svg viewBox="0 0 30 20" aria-hidden="true"><use href="#fl-nl"/></svg></span><span class="lang-name">Nederlands</span><span class="lang-abbr">NL</span></a></li><li><a href="/en/" hreflang="en" lang="en"><span class="lang-flag"><svg viewBox="0 0 30 20" aria-hidden="true"><use href="#fl-en"/></svg></span><span class="lang-name">English</span><span class="lang-abbr">EN</span></a></li><li><a href="/gr/" hreflang="el" lang="el" aria-current="true"><span class="lang-flag"><svg viewBox="0 0 30 20" aria-hidden="true"><use href="#fl-gr"/></svg></span><span class="lang-name">Ελληνικά</span><span class="lang-abbr">GR</span></a></li></ul></div><a class="btn" data-mail href="#">Συνεργασία</a></div></div></header>
+<nav><a href="#profile" data-i18n="nav_profile">Προφίλ</a><a href="#achievements" data-i18n="nav_achievements">Διακρίσεις</a><a href="#calendar" data-i18n="nav_calendar">Ημερολόγιο</a><a href="#media" data-i18n="nav_media">Πολυμέσα</a><a href="#social" data-i18n="nav_social">Κοινωνικά δίκτυα</a><a href="#sponsoring" data-i18n="nav_sponsoring">Χορηγίες</a></nav>
+<div class="hdr-end"><div class="lang" id="lang"><button class="lang-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="langMenu" aria-label="Language"><span class="lang-flag"><svg viewBox="0 0 30 20" aria-hidden="true"><use href="#fl-gr"/></svg></span><span class="lang-code">GR</span></button><ul class="lang-menu" id="langMenu" hidden><li><a href="/nl/" hreflang="nl" lang="nl"><span class="lang-flag"><svg viewBox="0 0 30 20" aria-hidden="true"><use href="#fl-nl"/></svg></span><span class="lang-name">Nederlands</span><span class="lang-abbr">NL</span></a></li><li><a href="/en/" hreflang="en" lang="en"><span class="lang-flag"><svg viewBox="0 0 30 20" aria-hidden="true"><use href="#fl-en"/></svg></span><span class="lang-name">English</span><span class="lang-abbr">EN</span></a></li><li><a href="/gr/" hreflang="el" lang="el" aria-current="true"><span class="lang-flag"><svg viewBox="0 0 30 20" aria-hidden="true"><use href="#fl-gr"/></svg></span><span class="lang-name">Ελληνικά</span><span class="lang-abbr">GR</span></a></li></ul></div><a class="btn" data-mail data-i18n="btn_work_together" href="#">Συνεργασία</a></div></div></header>
 
 <main id="top" class="wrap">
 <div class="hero"><div>
-<h1>Andreas <span>Lazaridis</span></h1><p class="tag">Οδηγώ με πάθος.</p>
-<blockquote class="quote"><p>Είμαι εδώ για να δείξω τι είναι δυνατό, ξεπερνώντας κάθε όριο στην πίστα, εμπνέοντας και αντλώντας έμπνευση.</p>
+<h1>Andreas <span>Lazaridis</span></h1><p class="tag" data-i18n="hero_tag">Οδηγώ με πάθος.</p>
+<blockquote class="quote"><p data-i18n="hero_quote">Είμαι εδώ για να δείξω τι είναι δυνατό, ξεπερνώντας κάθε όριο στην πίστα, εμπνέοντας και αντλώντας έμπνευση.</p>
 <div class="sig" aria-label="Andreas Lazaridis">Andreas Lazaridis</div></blockquote>
-<div class="cta"><a class="btn" data-mail href="#">Συνεργασία</a><a class="btn ghost" href="/mediakit.pdf">Δείτε το media kit</a><button type="button" class="btn ghost" data-place>Θέσεις χορηγών</button></div></div>
+<div class="cta"><a class="btn" data-mail data-i18n="btn_work_together" href="#">Συνεργασία</a><a class="btn ghost" href="/mediakit.pdf" data-i18n="hero_btn_mediakit">Δείτε το media kit</a><button type="button" class="btn ghost" data-place data-i18n="hero_btn_sponsors">Θέσεις χορηγών</button></div></div>
 <div class="portrait"><img src="/images/portrait.jpg" alt="Andreas Lazaridis holding his helmet" fetchpriority="high" decoding="async" onerror="this.style.display='none'">
-<div class="mantra">Οδηγός καρτ<span class="mono">Ολλανδία · Ελλάδα · Ευρώπη</span></div></div></div>
+<div class="mantra" data-i18n-first="hero_mantra">Οδηγός καρτ<span class="mono" data-i18n="hero_mantra_sub">Ολλανδία · Ελλάδα · Ευρώπη</span></div></div></div>
 
 <div class="strip">
-<div class="next last" id="last" hidden><div><span class="mono">Τελευταίος αγώνας</span><h3 id="lName"></h3><small id="lMeta"></small></div>
+<div class="next last" id="last" hidden><div><span class="mono" data-i18n="strip_last_race">Τελευταίος αγώνας</span><h3 id="lName"></h3><small id="lMeta"></small></div>
 <div class="cd" id="lRes"></div><span class="ribs" id="lRibs"></span></div>
-<div class="next" id="next" hidden><div><span class="mono">Επόμενος αγώνας</span><h3 id="nName"></h3><small id="nMeta"></small></div>
-<div class="cd" id="cd"><div><b id="d">00</b><span>Ημέρες</span></div><div><b id="h">00</b><span>Ώρες</span></div><div><b id="m">00</b><span>Λεπτά</span></div></div></div>
+<div class="next" id="next" hidden><div><span class="mono" data-i18n="strip_next_race">Επόμενος αγώνας</span><h3 id="nName"></h3><small id="nMeta"></small></div>
+<div class="cd" id="cd"><div><b id="d">00</b><span data-i18n="strip_days">Ημέρες</span></div><div><b id="h">00</b><span data-i18n="strip_hours">Ώρες</span></div><div><b id="m">00</b><span data-i18n="strip_minutes">Λεπτά</span></div></div></div>
 </div>
-<div class="spons" aria-label="Partners"><div class="sp-head"><span class="mono">Οι συνεργάτες μας</span><a class="mono" href="#sponsoring">Γίνετε συνεργάτης &rarr;</a></div>
+<div class="spons" aria-label="Partners"><div class="sp-head"><span class="mono" data-i18n="strip_our_partners">Οι συνεργάτες μας</span><a class="mono" href="#sponsoring" data-i18n="strip_become_partner">Γίνετε συνεργάτης &rarr;</a></div>
 <div class="sp-view" id="spView" tabindex="0"><div class="sp-track" id="spTrack"></div></div></div>
 </main>
 
-<section id="profile"><div class="wrap"><span class="eyebrow">01 / Προφίλ οδηγού</span><h2>Ποιος είναι ο Ανδρέας;</h2>
+<section id="profile"><div class="wrap"><span class="eyebrow" data-i18n="profile_eyebrow">01 / Προφίλ οδηγού</span><h2 data-i18n="profile_heading">Ποιος είναι ο Ανδρέας;</h2>
 <div class="two"><div>
-<p>Ο Ανδρέας ξεκίνησε το καρτ το 2023 με την ομάδα <b>KWM Racing</b> και από το 2026 προπονείται και αγωνίζεται με την ομάδα <b>Den Hartog Racing</b>.</p>
-<p>Το 2026 αγωνίζεται στα <b>NK Huurkarten</b> (Junior/Mini), <b>FK Huurkarten</b> (Light/Pupillen) και <b>Dutch Racing Series - DRS</b> (Junior), <b>Sodi World Series - SWS</b> και <b>Dutch Outdoor Karting Championship (DOKC)</b> με θέσεις στο βάθρο στο Circuit Park Berghem, στο Euro Indoor Karting Swalmen και στη σειρά SWS στη Θεσσαλονίκη.</p>
-<p>Στόχος του είναι να διεκδικεί τις πρώτες θέσεις κάθε αγωνιστικό Σαββατοκύριακο και να βελτιώνει συνεχώς τις αγωνιστικές του δεξιότητες. Βιντεοσκοπεί τις onboard διαδρομές του και τις μοιράζεται με ένα ολοένα μεγαλύτερο κοινό φίλων των αγώνων.</p></div>
+<p data-i18n="profile_p1" data-i18n-bold>Ο Ανδρέας ξεκίνησε το καρτ το 2023 με την ομάδα <b>KWM Racing</b> και από το 2026 προπονείται και αγωνίζεται με την ομάδα <b>Den Hartog Racing</b>.</p>
+<p data-i18n="profile_p2" data-i18n-bold>Το 2026 αγωνίζεται στα <b>NK Huurkarten</b> (Junior/Mini), <b>FK Huurkarten</b> (Light/Pupillen) και <b>Dutch Racing Series - DRS</b> (Junior), <b>Sodi World Series - SWS</b> και <b>Dutch Outdoor Karting Championship (DOKC)</b> με θέσεις στο βάθρο στο Circuit Park Berghem, στο Euro Indoor Karting Swalmen και στη σειρά SWS στη Θεσσαλονίκη.</p>
+<p data-i18n="profile_p3" data-i18n-bold>Στόχος του είναι να διεκδικεί τις πρώτες θέσεις κάθε αγωνιστικό Σαββατοκύριακο και να βελτιώνει συνεχώς τις αγωνιστικές του δεξιότητες. Βιντεοσκοπεί τις onboard διαδρομές του και τις μοιράζεται με ένα ολοένα μεγαλύτερο κοινό φίλων των αγώνων.</p></div>
 </div><div class="chips" id="logos"></div></div></section>
 
-<section id="achievements"><div class="wrap"><span class="eyebrow">02 / Διακρίσεις</span><h2>Διακρίσεις</h2>
+<section id="achievements"><div class="wrap"><span class="eyebrow" data-i18n="achievements_eyebrow">02 / Διακρίσεις</span><h2 data-i18n="achievements_heading">Διακρίσεις</h2>
 <div class="res" id="ach"></div>
-<h3 class="sub">Αποτελέσματα 2026</h3>
+<h3 class="sub" data-i18n="achievements_subheading">Αποτελέσματα 2026</h3>
 <div class="res" id="standings"></div></div></section>
 
-<section id="calendar"><div class="wrap"><span class="eyebrow">03 / Ημερολόγιο αγώνων</span><h2>Ημερολόγιο αγώνων</h2>
+<section id="calendar"><div class="wrap"><span class="eyebrow" data-i18n="calendar_eyebrow">03 / Ημερολόγιο αγώνων</span><h2 data-i18n="calendar_heading">Ημερολόγιο αγώνων</h2>
 <div class="filters">
-<label>Κατάσταση<select id="fStatus"></select></label><label>Έτος<select id="fYear"></select></label>
-<label>Πίστα<select id="fVenue"></select></label><label>Αγώνας<select id="fRace"></select></label></div>
-<div class="scroll"><table><thead><tr><th>Ημερομηνία</th><th>Αγώνας</th><th>Πίστα</th><th>Χώρα</th><th>Κατηγορία</th><th style="text-align:center">Αποτέλεσμα</th></tr></thead><tbody id="rows"></tbody></table></div>
+<label><span data-i18n="filter_status">Κατάσταση</span><select id="fStatus"></select></label><label><span data-i18n="filter_year">Έτος</span><select id="fYear"></select></label>
+<label><span data-i18n="filter_venue">Πίστα</span><select id="fVenue"></select></label><label><span data-i18n="filter_race">Αγώνας</span><select id="fRace"></select></label></div>
+<div class="scroll"><table><thead><tr><th data-i18n="table_date">Ημερομηνία</th><th data-i18n="table_race">Αγώνας</th><th data-i18n="table_venue">Πίστα</th><th data-i18n="table_country">Χώρα</th><th data-i18n="table_category">Κατηγορία</th><th style="text-align:center" data-i18n="table_result">Αποτέλεσμα</th></tr></thead><tbody id="rows"></tbody></table></div>
 <div class="pager" id="pager"></div>
 <p class="mono" id="note"></p></div></section>
 
-<section id="media"><div class="wrap"><span class="eyebrow">04 / Πολυμέσα</span><h2>Βίντεο</h2>
-<p style="color:#cfcdc8;margin-top:-12px">Καλώς ήρθατε στο αγωνιστικό μου ταξίδι. Μέσα από αυτά τα βίντεο βρίσκεστε στην πρώτη σειρά στις προπονήσεις μου, στους αγώνες πρωταθλήματος και στις ανακαλύψεις νέων πιστών στην Ολλανδία, στην Ελλάδα και αλλού.</p>
-<div class="vrow"><button type="button" class="va" id="vPrev" aria-label="Scroll videos left">&#8249;</button><div class="vids" id="vids"></div><button type="button" class="va" id="vNext" aria-label="Scroll videos right">&#8250;</button></div><h2>Φωτογραφίες</h2><div class="photos" id="photos"></div><p class="more" id="phMore" hidden><button type="button" class="btn ghost" id="phAll"></button></p></div></section>
+<section id="media"><div class="wrap"><span class="eyebrow" data-i18n="media_eyebrow">04 / Πολυμέσα</span><h2 data-i18n="media_videos_heading">Βίντεο</h2>
+<p style="color:#cfcdc8;margin-top:-12px" data-i18n="media_videos_intro">Καλώς ήρθατε στο αγωνιστικό μου ταξίδι. Μέσα από αυτά τα βίντεο βρίσκεστε στην πρώτη σειρά στις προπονήσεις μου, στους αγώνες πρωταθλήματος και στις ανακαλύψεις νέων πιστών στην Ολλανδία, στην Ελλάδα και αλλού.</p>
+<div class="vrow"><button type="button" class="va" id="vPrev" aria-label="Scroll videos left">&#8249;</button><div class="vids" id="vids"></div><button type="button" class="va" id="vNext" aria-label="Scroll videos right">&#8250;</button></div><h2 data-i18n="media_photos_heading">Φωτογραφίες</h2><div class="photos" id="photos"></div><p class="more" id="phMore" hidden><button type="button" class="btn ghost" id="phAll"></button></p></div></section>
 <div class="pc" id="pc" hidden role="dialog" aria-modal="true" aria-label="Photo gallery"><button type="button" class="pc-x" id="pcClose" aria-label="Close">&times;</button><div class="pc-stage"><button type="button" class="pc-a" id="pcPrev" aria-label="Previous photo">&#8249;</button><img id="pcImg" alt=""><button type="button" class="pc-a" id="pcNext" aria-label="Next photo">&#8250;</button></div><div class="pc-cap"><span class="mono" id="pcDate"></span><h3 id="pcTitle"></h3><span class="mono pc-credit" id="pcCredit"></span><div class="pc-nav"><span class="mono" id="pcCount"></span><div class="pc-dots" id="pcDots"></div></div></div></div><div class="pc" id="vc" hidden role="dialog" aria-modal="true" aria-label="Video gallery"><button type="button" class="pc-x" id="vcClose" aria-label="Close">&times;</button><div class="pc-stage"><button type="button" class="pc-a" id="vcPrev" aria-label="Previous video">&#8249;</button><div class="vc-frame" id="vcFrame"></div><button type="button" class="pc-a" id="vcNext" aria-label="Next video">&#8250;</button></div><div class="pc-cap"><span class="mono" id="vcDate"></span><h3 id="vcTitle"></h3><span class="mono pc-credit" id="vcCredit"></span><div class="pc-nav"><span class="mono" id="vcCount"></span><div class="pc-dots" id="vcDots"></div></div></div></div>
 
 <div class="pm" id="pm" hidden role="dialog" aria-modal="true" aria-labelledby="pmT"><div class="pm-box"><button type="button" class="pc-x" id="pmClose" aria-label="Close">&times;</button>
-<span class="eyebrow">Θέσεις χορηγών</span><h3 id="pmT">Πού εμφανίζεται το brand σας</h3>
-<p class="pm-lead">Εμφανίζεται στο προσωπικό κράνος του Ανδρέα (Zamp RZ-42 Youth) και στη στολή αγώνων.</p>
+<span class="eyebrow" data-i18n="pm_eyebrow">Θέσεις χορηγών</span><h3 id="pmT" data-i18n="pm_title">Πού εμφανίζεται το brand σας</h3>
+<p class="pm-lead" data-i18n="pm_lead">Εμφανίζεται στο προσωπικό κράνος του Ανδρέα (Zamp RZ-42 Youth) και στη στολή αγώνων.</p>
 <div class="pm-fig helmet"><figure><img src="/images/sponsor-helmet-side.svg" alt="Helmet, side view: areas 1, 2, 8, 9, 11 and 12" loading="lazy"></figure><figure><img src="/images/sponsor-helmet-front.svg" alt="Helmet, front view: areas 2 and 11" loading="lazy"></figure><figure><img src="/images/sponsor-helmet-rear.svg" alt="Helmet, rear view: area 9" loading="lazy"></figure></div>
 <div class="pm-fig suit"><figure><img src="/images/sponsor-suit-front.svg" alt="Race suit, front: areas 3 (six small chest logos), 5, 6 and 7" loading="lazy"></figure><figure><img src="/images/sponsor-suit-back.svg" alt="Race suit, back: areas 4, 5, 6 and 10" loading="lazy"></figure></div>
 <ul class="legend">
@@ -92,33 +93,32 @@
 <li><i class="sw part"></i><b>Partner</b><span>3 Στήθος, μικρά λογότυπα (αριστερά και δεξιά)<br>5 · 6 Μανίκια<br>7 Πλαϊνό ποδιών<br>12 Κάτω πλαϊνό κράνους</span></li>
 <li><i class="sw cust"></i><b>Εξατομικευμένο, κατόπιν αιτήματος</b><span>8 Σαγόνι κράνους<br>9 Πίσω μέρος κράνους<br>10 Κάτω μέρος πλάτης</span></li>
 <li><i class="sw sup"></i><b>Supporter</b><span>Ιστότοπος και κοινωνικά δίκτυα<br>(χωρίς φυσική τοποθέτηση)</span></li></ul>
-<p class="mono note">Ενδεικτική διάταξη. Το μέγεθος και οι ακριβείς θέσεις των λογοτύπων συμφωνούνται με κάθε συνεργάτη. Η λωρίδα στο ζελατινάκι υπόκειται στους κανονισμούς της σειράς.</p>
-<div class="cta"><a class="btn" data-mail href="#">Συζητήστε συνεργασίες</a></div></div></div>
+<p class="mono note" data-i18n="pm_note">Ενδεικτική διάταξη. Το μέγεθος και οι ακριβείς θέσεις των λογοτύπων συμφωνούνται με κάθε συνεργάτη. Η λωρίδα στο ζελατινάκι υπόκειται στους κανονισμούς της σειράς.</p>
+<div class="cta"><a class="btn" data-mail data-i18n="pm_cta" href="#">Συζητήστε συνεργασίες</a></div></div></div>
 
-<section id="social"><div class="wrap"><span class="eyebrow">05 / Κοινωνικά δίκτυα</span><h2>Κοινό</h2><div class="soc" id="soc"></div><p class="mono" id="socNote"></p></div></section>
+<section id="social"><div class="wrap"><span class="eyebrow" data-i18n="social_eyebrow">05 / Κοινωνικά δίκτυα</span><h2 data-i18n="social_heading">Κοινό</h2><div class="soc" id="soc"></div><p class="mono" id="socNote"></p></div></section>
 
-<section id="sponsoring"><div class="wrap"><span class="eyebrow">06 / Χορηγίες</span><h2>Κάντε την επόμενη<br>σεζόν να μετρήσει.</h2>
+<section id="sponsoring"><div class="wrap"><span class="eyebrow" data-i18n="sponsoring_eyebrow">06 / Χορηγίες</span><h2 data-i18n="sponsoring_heading">Κάντε την επόμενη<br>σεζόν να μετρήσει.</h2>
 <div class="benefits" aria-label="Why partner with Andreas">
-<div class="benefit"><span class="mono">01 / Προβολή</span><h3>Προβολή στην πίστα</h3><p>Προβάλετε το brand σας στον χώρο των αγώνων με συμφωνημένες τοποθετήσεις λογοτύπου στη στολή, στο κράνος και σε άλλα υλικά.</p></div>
-<div class="benefit"><span class="mono">02 / Εμβέλεια</span><h3>Ψηφιακή προβολή</h3><p>Προσεγγίστε φίλους του μηχανοκίνητου αθλητισμού μέσα από αγωνιστικά βίντεο, περιεχόμενο στο YouTube, αναρτήσεις στο Instagram και ενημερώσεις αγώνων.</p></div>
-<div class="benefit"><span class="mono">03 / Ιστορία</span><h3>Αγωνιστική πορεία</h3><p>Ακολουθήστε την εξέλιξη του Ανδρέα ως οδηγού καρτ, τις προκλήσεις, την πρόοδο και τα αποτελέσματά του σε όλη τη σεζόν.</p></div>
-<div class="benefit"><span class="mono">04 / Διαφάνεια</span><h3>Διαφανής ενημέρωση</h3><p>Λάβετε συμφωνημένες ενημερώσεις για αποτελέσματα αγώνων, απόδοση περιεχομένου και διαθέσιμα στατιστικά κοινού.</p></div>
+<div class="benefit"><span class="mono">01 / Προβολή</span><h3 data-i18n="benefit_1_title">Προβολή στην πίστα</h3><p data-i18n="benefit_1_desc">Προβάλετε το brand σας στον χώρο των αγώνων με συμφωνημένες τοποθετήσεις λογοτύπου στη στολή, στο κράνος και σε άλλα υλικά.</p></div>
+<div class="benefit"><span class="mono">02 / Εμβέλεια</span><h3 data-i18n="benefit_2_title">Ψηφιακή προβολή</h3><p data-i18n="benefit_2_desc">Προσεγγίστε φίλους του μηχανοκίνητου αθλητισμού μέσα από αγωνιστικά βίντεο, περιεχόμενο στο YouTube, αναρτήσεις στο Instagram και ενημερώσεις αγώνων.</p></div>
+<div class="benefit"><span class="mono">03 / Ιστορία</span><h3 data-i18n="benefit_3_title">Αγωνιστική πορεία</h3><p data-i18n="benefit_3_desc">Ακολουθήστε την εξέλιξη του Ανδρέα ως οδηγού καρτ, τις προκλήσεις, την πρόοδο και τα αποτελέσματά του σε όλη τη σεζόν.</p></div>
+<div class="benefit"><span class="mono">04 / Διαφάνεια</span><h3 data-i18n="benefit_4_title">Διαφανής ενημέρωση</h3><p data-i18n="benefit_4_desc">Λάβετε συμφωνημένες ενημερώσεις για αποτελέσματα αγώνων, απόδοση περιεχομένου και διαθέσιμα στατιστικά κοινού.</p></div>
 </div>
-<p class="lead">Στηρίξτε την αγωνιστική πορεία του Ανδρέα. Διατίθενται πακέτα χορηγίας και συνεργασίες προϊόντων για την επόμενη σεζόν.</p>
-<div class="cta"><a class="btn ghost" href="/mediakit.pdf">Ανοίξτε το media kit</a><button type="button" class="btn ghost" data-place>Θέσεις χορηγών</button></div>
-<p class="side mono">Supporter / Partner / Main Partner &nbsp;·&nbsp; Διατίθενται προσαρμοσμένα πακέτα</p>
+<p class="lead" data-i18n="sponsoring_lead">Στηρίξτε την αγωνιστική πορεία του Ανδρέα. Διατίθενται πακέτα χορηγίας και συνεργασίες προϊόντων για την επόμενη σεζόν.</p>
+<div class="cta"><a class="btn ghost" href="/mediakit.pdf" data-i18n="sponsoring_btn_mediakit">Ανοίξτε το media kit</a><button type="button" class="btn ghost" data-place data-i18n="hero_btn_sponsors">Θέσεις χορηγών</button></div>
+<p class="side mono" data-i18n="sponsoring_side_note">Supporter / Partner / Main Partner &nbsp;·&nbsp; Διατίθενται προσαρμοσμένα πακέτα</p>
 <div class="pk" id="packages">
-<div><h3>Supporter</h3><span class="mono">Επένδυση κατόπιν αιτήματος</span><ul><li>Λογότυπο στο carousel συνεργατών του ιστότοπου</li><li>Story ευχαριστίας και tag</li></ul><a class="btn ghost pk-cta" data-mail data-subject="Supporter package enquiry" href="#">Γίνετε Supporter</a></div>
-<div class="hot"><h3>Partner</h3><span class="mono">Επένδυση κατόπιν αιτήματος</span><ul><li>Όλα τα προνόμια του Supporter</li><li>Μικρό λογότυπο στη στολή αγώνων</li><li>1 ειδικό Reel ανά σεζόν</li><li>Αναφορά αποτελεσμάτων σεζόν</li></ul><a class="btn pk-cta" data-mail data-subject="Partner package enquiry" href="#">Γίνετε Partner</a></div>
-<div><h3>Main Partner</h3><span class="mono">Επένδυση κατόπιν αιτήματος</span><ul><li>Όλα τα προνόμια του Partner</li><li>Εμφανές λογότυπο στη στολή και στο κράνος</li><li>1 ειδική ανάρτηση τον μήνα</li></ul><a class="btn ghost pk-cta" data-mail data-subject="Main Partner package enquiry" href="#">Γίνετε Main Partner</a></div></div>
+<div><h3>Supporter</h3><span class="mono" data-i18n="pkg_investment_request">Επένδυση κατόπιν αιτήματος</span><ul><li>Λογότυπο στο carousel συνεργατών του ιστότοπου</li><li>Story ευχαριστίας και tag</li></ul><a class="btn ghost pk-cta" data-mail data-subject="Supporter package enquiry" data-i18n="pkg_supporter_cta" href="#">Γίνετε Supporter</a></div>
+<div class="hot"><h3>Partner</h3><span class="mono" data-i18n="pkg_investment_request">Επένδυση κατόπιν αιτήματος</span><ul><li>Όλα τα προνόμια του Supporter</li><li>Μικρό λογότυπο στη στολή αγώνων</li><li>1 ειδικό Reel ανά σεζόν</li><li>Αναφορά αποτελεσμάτων σεζόν</li></ul><a class="btn pk-cta" data-mail data-subject="Partner package enquiry" data-i18n="pkg_partner_cta" href="#">Γίνετε Partner</a></div>
+<div><h3>Main Partner</h3><span class="mono" data-i18n="pkg_investment_request">Επένδυση κατόπιν αιτήματος</span><ul><li>Όλα τα προνόμια του Partner</li><li>Εμφανές λογότυπο στη στολή και στο κράνος</li><li>1 ειδική ανάρτηση τον μήνα</li></ul><a class="btn ghost pk-cta" data-mail data-subject="Main Partner package enquiry" data-i18n="pkg_main_partner_cta" href="#">Γίνετε Main Partner</a></div></div>
 </div>
 </div></section>
 
-<footer><div class="wrap"><div class="fgrid"><div><div class="logo">ANDREAS LAZARIDIS</div><p>Οδηγός καρτ<br><br>Τα κοινωνικά δίκτυα, ο ιστότοπος και η επικοινωνία διαχειρίζονται από τους γονείς.</p></div>
-<div class="fcols"><div><span class="mono">Περιήγηση</span><a href="#calendar">Ημερολόγιο</a></div>
-<div><span class="mono">Partner</span><a href="#sponsoring">Πακέτα</a><a href="/mediakit.pdf">Media kit</a><a href="/documents/Andreas-Lazaridis-Performance-Analysis.pdf" target="_blank" rel="noopener">Ανάλυση επιδόσεων</a></div>
+<footer><div class="wrap"><div class="fgrid"><div><div class="logo">ANDREAS LAZARIDIS</div><p><span data-i18n="hero_mantra">Οδηγός καρτ</span><br><br><span data-i18n="footer_tagline">Τα κοινωνικά δίκτυα, ο ιστότοπος και η επικοινωνία διαχειρίζονται από τους γονείς.</span></p></div><div class="fcols"><div><span class="mono" data-i18n="footer_explore">Περιήγηση</span><a href="#calendar" data-i18n="footer_calendar">Ημερολόγιο</a></div>
+<div><span class="mono">Partner</span><a href="#sponsoring" data-i18n="footer_packages">Πακέτα</a><a href="/mediakit.pdf" data-i18n="footer_mediakit">Media kit</a><a data-i18n="footer_performance" href="/documents/Andreas-Lazaridis-Performance-Analysis.pdf" target="_blank" rel="noopener">Ανάλυση επιδόσεων</a></div>
 <div><span class="mono">Κοινωνικά δίκτυα</span><a data-k="instagram" href="#">Instagram</a><a data-k="tiktok" href="#">TikTok</a><a data-k="youtube" href="#">YouTube</a><a data-mail href="#">Email</a></div></div></div>
-<div class="copy mono"><span>© 2026 Andreas Lazaridis. Με επιφύλαξη παντός δικαιώματος. · <a href="/privacy.html">Απόρρητο</a></span><span>Παρουσίαση χορηγιών — 2026</span></div></div></footer>
+<div class="copy mono"><span><span data-i18n="footer_rights">© 2026 Andreas Lazaridis. Με επιφύλαξη παντός δικαιώματος.</span> · <a href="/privacy.html" data-i18n="footer_privacy">Απόρρητο</a></span><span>Παρουσίαση χορηγιών — 2026</span></div></div></footer>
 
 <script>
 /* ============ EDIT THIS BLOCK ============ */
@@ -353,7 +353,7 @@ load().then(all=>{
   // next race + countdown
   const nx=all.find(r=>!done(r));
   if(nx){$("next").hidden=false;$("nName").textContent=nx.race+" · "+nx.venue;const cats=all.filter(r=>r.date==nx.date&&r.venue==nx.venue&&r.race==nx.race).map(r=>r.category).join(", ");
-    $("nMeta").textContent=when(nx).toLocaleDateString("en-GB",{weekday:"long",day:"numeric",month:"long",year:"numeric"}).toUpperCase()+" | "+cats.toUpperCase();
+    $("nMeta").textContent=when(nx).toLocaleDateString(UI.dateLocale||"en-GB",{weekday:"long",day:"numeric",month:"long",year:"numeric"}).toUpperCase()+" | "+cats.toUpperCase();
     const p=n=>String(n).padStart(2,"0"),tick=()=>{const d=when(nx)-new Date();if(d<=0){$("cd").innerHTML="<span class='mono'>Race weekend</span>";return}
       $("d").textContent=p(Math.floor(d/864e5));$("h").textContent=p(Math.floor(d%864e5/36e5));$("m").textContent=p(Math.floor(d%36e5/6e4))};
     tick();setInterval(tick,30000)}
@@ -363,7 +363,7 @@ load().then(all=>{
     const grp=all.filter(r=>r.date==pv.date&&r.venue==pv.venue&&r.race==pv.race&&r.result);
     $("last").hidden=false;
     $("lName").textContent=pv.race+" · "+pv.venue;
-    $("lMeta").textContent=when(pv).toLocaleDateString("en-GB",{weekday:"long",day:"numeric",month:"long",year:"numeric"}).toUpperCase();
+    $("lMeta").textContent=when(pv).toLocaleDateString(UI.dateLocale||"en-GB",{weekday:"long",day:"numeric",month:"long",year:"numeric"}).toUpperCase();
     $("lRes").innerHTML=grp.map(r=>{const n=parseInt(r.result);
       return `<div class="${n>0&&n<4?"p"+n:""}"><b>${isNaN(n)?esc(r.result):"P"+n}</b><span>${esc(r.category)}</span></div>`}).join("");
     $("lRibs").innerHTML=grp.map(r=>parseInt(r.result)).filter(n=>n>0&&n<4).sort().map(n=>`<i class="rib p${n}" role="img" aria-label="Podium: ${n}${["st","nd","rd"][n-1]} place">${n}</i>`).join("");
@@ -486,15 +486,15 @@ loadPartners();
 <!-- Google Analytics 4: load only after explicit analytics consent -->
 <section id="analytics-consent" class="analytics-consent" aria-label="Analytics cookie preferences" hidden>
   <div class="analytics-consent__copy">
-    <strong>Βοηθήστε να βελτιωθεί το AL Racing</strong>
-    <p>Με την άδειά σας, το Google Analytics μετρά την επισκεψιμότητα και τον τρόπο χρήσης του ιστότοπου. Η συμμετοχή είναι προαιρετική. <a href="/privacy.html">Δήλωση απορρήτου</a></p>
+    <strong data-i18n="analytics_title">Βοηθήστε να βελτιωθεί το AL Racing</strong>
+    <p><span data-i18n="analytics_p">Με την άδειά σας, το Google Analytics μετρά την επισκεψιμότητα και τον τρόπο χρήσης του ιστότοπου. Η συμμετοχή είναι προαιρετική.</span> <a href="/privacy.html">Δήλωση απορρήτου</a></p>
   </div>
   <div class="analytics-consent__actions">
-    <button type="button" class="btn ghost" id="analytics-reject">Απόρριψη analytics</button>
-    <button type="button" class="btn ghost" id="analytics-accept">Αποδοχή analytics</button>
+    <button type="button" class="btn ghost" id="analytics-reject" data-i18n="analytics_reject">Απόρριψη analytics</button>
+    <button type="button" class="btn ghost" id="analytics-accept" data-i18n="analytics_accept">Αποδοχή analytics</button>
   </div>
 </section>
-<button type="button" id="analytics-settings" class="analytics-settings" hidden>Ρυθμίσεις απορρήτου</button>
+<button type="button" id="analytics-settings" class="analytics-settings" data-i18n="analytics_settings" hidden>Ρυθμίσεις απορρήτου</button>
 <script>
 (function () {
   const MEASUREMENT_ID = "G-RCF0ZN0NDQ";
