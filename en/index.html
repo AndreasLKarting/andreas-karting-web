@@ -32,59 +32,60 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preload" as="image" href="/images/portrait.jpg" fetchpriority="high">
 <link rel="stylesheet" href="/style.css">
+<script src="/i18n.js" defer></script>
 </head>
 <body>
 <header><svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><symbol id="fl-nl" viewBox="0 0 30 20"><path fill="#AE1C28" d="M0 0h30v7H0z"/><path fill="#fff" d="M0 7h30v6.7H0z"/><path fill="#21468B" d="M0 13.3h30V20H0z"/></symbol><symbol id="fl-en" viewBox="0 0 30 20"><path fill="#012169" d="M0 0h30v20H0z"/><path stroke="#fff" stroke-width="4" d="M0 0l30 20M30 0L0 20"/><path stroke="#C8102E" stroke-width="1.8" d="M0 0l30 20M30 0L0 20"/><path stroke="#fff" stroke-width="6.7" d="M15 0v20M0 10h30"/><path stroke="#C8102E" stroke-width="4" d="M15 0v20M0 10h30"/></symbol><symbol id="fl-gr" viewBox="0 0 30 20"><path fill="#0D5EAF" d="M0 0h30v20H0z"/><path fill="#fff" d="M0 2.22h30v2.22H0zM0 6.67h30v2.22H0zM0 11.1h30v2.22H0zM0 15.56h30v2.22H0z"/><path fill="#0D5EAF" d="M0 0h11.1v11.1H0z"/><path fill="#fff" d="M4.44 0h2.22v11.1H4.44zM0 4.44h11.1v2.22H0z"/></symbol></defs></svg><div class="wrap"><a class="logo" href="#top"><i aria-hidden="true"><b>AL</b></i>Andreas Lazaridis</a>
-<nav><a href="#profile">Profile</a><a href="#achievements">Achievements</a><a href="#calendar">Calendar</a><a href="#media">Media</a><a href="#social">Social</a><a href="#sponsoring">Sponsoring</a></nav>
-<div class="hdr-end"><div class="lang" id="lang"><button class="lang-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="langMenu" aria-label="Language"><span class="lang-flag"><svg viewBox="0 0 30 20" aria-hidden="true"><use href="#fl-en"/></svg></span><span class="lang-code">EN</span></button><ul class="lang-menu" id="langMenu" hidden><li><a href="/nl/" hreflang="nl" lang="nl"><span class="lang-flag"><svg viewBox="0 0 30 20" aria-hidden="true"><use href="#fl-nl"/></svg></span><span class="lang-name">Nederlands</span><span class="lang-abbr">NL</span></a></li><li><a href="/en/" hreflang="en" lang="en" aria-current="true"><span class="lang-flag"><svg viewBox="0 0 30 20" aria-hidden="true"><use href="#fl-en"/></svg></span><span class="lang-name">English</span><span class="lang-abbr">EN</span></a></li><li><a href="/gr/" hreflang="el" lang="el"><span class="lang-flag"><svg viewBox="0 0 30 20" aria-hidden="true"><use href="#fl-gr"/></svg></span><span class="lang-name">Ελληνικά</span><span class="lang-abbr">GR</span></a></li></ul></div><a class="btn" data-mail href="#">Work together</a></div></div></header>
+<nav><a href="#profile" data-i18n="nav_profile">Profile</a><a href="#achievements" data-i18n="nav_achievements">Achievements</a><a href="#calendar" data-i18n="nav_calendar">Calendar</a><a href="#media" data-i18n="nav_media">Media</a><a href="#social" data-i18n="nav_social">Social</a><a href="#sponsoring" data-i18n="nav_sponsoring">Sponsoring</a></nav>
+<div class="hdr-end"><div class="lang" id="lang"><button class="lang-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="langMenu" aria-label="Language"><span class="lang-flag"><svg viewBox="0 0 30 20" aria-hidden="true"><use href="#fl-en"/></svg></span><span class="lang-code">EN</span></button><ul class="lang-menu" id="langMenu" hidden><li><a href="/nl/" hreflang="nl" lang="nl"><span class="lang-flag"><svg viewBox="0 0 30 20" aria-hidden="true"><use href="#fl-nl"/></svg></span><span class="lang-name">Nederlands</span><span class="lang-abbr">NL</span></a></li><li><a href="/en/" hreflang="en" lang="en" aria-current="true"><span class="lang-flag"><svg viewBox="0 0 30 20" aria-hidden="true"><use href="#fl-en"/></svg></span><span class="lang-name">English</span><span class="lang-abbr">EN</span></a></li><li><a href="/gr/" hreflang="el" lang="el"><span class="lang-flag"><svg viewBox="0 0 30 20" aria-hidden="true"><use href="#fl-gr"/></svg></span><span class="lang-name">Ελληνικά</span><span class="lang-abbr">GR</span></a></li></ul></div><a class="btn" data-mail data-i18n="btn_work_together" href="#">Work together</a></div></div></header>
 
 <main id="top" class="wrap">
 <div class="hero"><div>
-<h1>Andreas <span>Lazaridis</span></h1><p class="tag">Driving with passion.</p>
-<blockquote class="quote"><p>I'm here to show what's possible, pushing every limit on the track, inspire and get inspired.</p>
+<h1>Andreas <span>Lazaridis</span></h1><p class="tag" data-i18n="hero_tag">Driving with passion.</p>
+<blockquote class="quote"><p data-i18n="hero_quote">I'm here to show what's possible, pushing every limit on the track, inspire and get inspired.</p>
 <div class="sig" aria-label="Andreas Lazaridis">Andreas Lazaridis</div></blockquote>
-<div class="cta"><a class="btn" data-mail href="#">Work together</a><a class="btn ghost" href="/mediakit.pdf">View media kit</a><button type="button" class="btn ghost" data-place>Sponsor placements</button></div></div>
+<div class="cta"><a class="btn" data-mail data-i18n="btn_work_together" href="#">Work together</a><a class="btn ghost" href="/mediakit.pdf" data-i18n="hero_btn_mediakit">View media kit</a><button type="button" class="btn ghost" data-place data-i18n="hero_btn_sponsors">Sponsor placements</button></div></div>
 <div class="portrait"><img src="/images/portrait.jpg" alt="Andreas Lazaridis holding his helmet" fetchpriority="high" decoding="async" onerror="this.style.display='none'">
-<div class="mantra">Karting driver<span class="mono">Netherlands · Greece · Europe</span></div></div></div>
+<div class="mantra" data-i18n-first="hero_mantra">Karting driver<span class="mono" data-i18n="hero_mantra_sub">Netherlands · Greece · Europe</span></div></div></div>
 
 <div class="strip">
-<div class="next last" id="last" hidden><div><span class="mono">Last race</span><h3 id="lName"></h3><small id="lMeta"></small></div>
+<div class="next last" id="last" hidden><div><span class="mono" data-i18n="strip_last_race">Last race</span><h3 id="lName"></h3><small id="lMeta"></small></div>
 <div class="cd" id="lRes"></div><span class="ribs" id="lRibs"></span></div>
-<div class="next" id="next" hidden><div><span class="mono">Next race</span><h3 id="nName"></h3><small id="nMeta"></small></div>
-<div class="cd" id="cd"><div><b id="d">00</b><span>Days</span></div><div><b id="h">00</b><span>Hours</span></div><div><b id="m">00</b><span>Minutes</span></div></div></div>
+<div class="next" id="next" hidden><div><span class="mono" data-i18n="strip_next_race">Next race</span><h3 id="nName"></h3><small id="nMeta"></small></div>
+<div class="cd" id="cd"><div><b id="d">00</b><span data-i18n="strip_days">Days</span></div><div><b id="h">00</b><span data-i18n="strip_hours">Hours</span></div><div><b id="m">00</b><span data-i18n="strip_minutes">Minutes</span></div></div></div>
 </div>
-<div class="spons" aria-label="Partners"><div class="sp-head"><span class="mono">Our partners</span><a class="mono" href="#sponsoring">Become a partner &rarr;</a></div>
+<div class="spons" aria-label="Partners"><div class="sp-head"><span class="mono" data-i18n="strip_our_partners">Our partners</span><a class="mono" href="#sponsoring" data-i18n="strip_become_partner">Become a partner &rarr;</a></div>
 <div class="sp-view" id="spView" tabindex="0"><div class="sp-track" id="spTrack"></div></div></div>
 </main>
 
-<section id="profile"><div class="wrap"><span class="eyebrow">01 / Driver profile</span><h2>Who is Andreas?</h2>
+<section id="profile"><div class="wrap"><span class="eyebrow" data-i18n="profile_eyebrow">01 / Driver profile</span><h2 data-i18n="profile_heading">Who is Andreas?</h2>
 <div class="two"><div>
-<p>Andreas started karting in 2023 with <b>KWM Racing</b> and since 2026 trains and races with <b>Den Hartog Racing</b>.</p>
-<p>In 2026 he competes in the <b>NK Huurkarten</b> (Junior/Mini), <b>FK Huurkarten</b> (Light/Pupillen) and the <b>Dutch Racing Series - DRS</b> (Junior), <b>Sodi World Series - SWS</b> and <b>Dutch Outdoor Karting Championship (DOKC)</b> with podiums at Circuit Park Berghem, Euro Indoor Karting Swalmen and the SWS Series in Thessaloniki.</p>
-<p>His goal is to fight at the front every weekend and keep improving his race craft. He films his onboard sessions and shares them with a growing audience of racing fans.</p></div>
+<p data-i18n="profile_p1" data-i18n-bold>Andreas started karting in 2023 with <b>KWM Racing</b> and since 2026 trains and races with <b>Den Hartog Racing</b>.</p>
+<p data-i18n="profile_p2" data-i18n-bold>In 2026 he competes in the <b>NK Huurkarten</b> (Junior/Mini), <b>FK Huurkarten</b> (Light/Pupillen) and the <b>Dutch Racing Series - DRS</b> (Junior), <b>Sodi World Series - SWS</b> and <b>Dutch Outdoor Karting Championship (DOKC)</b> with podiums at Circuit Park Berghem, Euro Indoor Karting Swalmen and the SWS Series in Thessaloniki.</p>
+<p data-i18n="profile_p3" data-i18n-bold>His goal is to fight at the front every weekend and keep improving his race craft. He films his onboard sessions and shares them with a growing audience of racing fans.</p></div>
 </div><div class="chips" id="logos"></div></div></section>
 
-<section id="achievements"><div class="wrap"><span class="eyebrow">02 / Achievements</span><h2>Achievements</h2>
+<section id="achievements"><div class="wrap"><span class="eyebrow" data-i18n="achievements_eyebrow">02 / Achievements</span><h2 data-i18n="achievements_heading">Achievements</h2>
 <div class="res" id="ach"></div>
-<h3 class="sub">2026 Results</h3>
+<h3 class="sub" data-i18n="achievements_subheading">2026 Results</h3>
 <div class="res" id="standings"></div></div></section>
 
-<section id="calendar"><div class="wrap"><span class="eyebrow">03 / Results calendar</span><h2>Race Calendar</h2>
+<section id="calendar"><div class="wrap"><span class="eyebrow" data-i18n="calendar_eyebrow">03 / Results calendar</span><h2 data-i18n="calendar_heading">Race Calendar</h2>
 <div class="filters">
-<label>Status<select id="fStatus"></select></label><label>Year<select id="fYear"></select></label>
-<label>Venue<select id="fVenue"></select></label><label>Race<select id="fRace"></select></label></div>
-<div class="scroll"><table><thead><tr><th>Date</th><th>Race</th><th>Venue</th><th>Country</th><th>Category</th><th style="text-align:center">Result</th></tr></thead><tbody id="rows"></tbody></table></div>
+<label><span data-i18n="filter_status">Status</span><select id="fStatus"></select></label><label><span data-i18n="filter_year">Year</span><select id="fYear"></select></label>
+<label><span data-i18n="filter_venue">Venue</span><select id="fVenue"></select></label><label><span data-i18n="filter_race">Race</span><select id="fRace"></select></label></div>
+<div class="scroll"><table><thead><tr><th data-i18n="table_date">Date</th><th data-i18n="table_race">Race</th><th data-i18n="table_venue">Venue</th><th data-i18n="table_country">Country</th><th data-i18n="table_category">Category</th><th style="text-align:center" data-i18n="table_result">Result</th></tr></thead><tbody id="rows"></tbody></table></div>
 <div class="pager" id="pager"></div>
 <p class="mono" id="note"></p></div></section>
 
-<section id="media"><div class="wrap"><span class="eyebrow">04 / Media</span><h2>Videos</h2>
-<p style="color:#cfcdc8;margin-top:-12px">Welcome to my racing journey. Through these videos, you get a front-row seat to my practice sessions, championship races, and new track explorations across the Netherlands, Greece, and wherever my wheels take me.</p>
-<div class="vrow"><button type="button" class="va" id="vPrev" aria-label="Scroll videos left">&#8249;</button><div class="vids" id="vids"></div><button type="button" class="va" id="vNext" aria-label="Scroll videos right">&#8250;</button></div><h2>Photos</h2><div class="photos" id="photos"></div><p class="more" id="phMore" hidden><button type="button" class="btn ghost" id="phAll"></button></p></div></section>
+<section id="media"><div class="wrap"><span class="eyebrow" data-i18n="media_eyebrow">04 / Media</span><h2 data-i18n="media_videos_heading">Videos</h2>
+<p style="color:#cfcdc8;margin-top:-12px" data-i18n="media_videos_intro">Welcome to my racing journey. Through these videos, you get a front-row seat to my practice sessions, championship races, and new track explorations across the Netherlands, Greece, and wherever my wheels take me.</p>
+<div class="vrow"><button type="button" class="va" id="vPrev" aria-label="Scroll videos left">&#8249;</button><div class="vids" id="vids"></div><button type="button" class="va" id="vNext" aria-label="Scroll videos right">&#8250;</button></div><h2 data-i18n="media_photos_heading">Photos</h2><div class="photos" id="photos"></div><p class="more" id="phMore" hidden><button type="button" class="btn ghost" id="phAll"></button></p></div></section>
 <div class="pc" id="pc" hidden role="dialog" aria-modal="true" aria-label="Photo gallery"><button type="button" class="pc-x" id="pcClose" aria-label="Close">&times;</button><div class="pc-stage"><button type="button" class="pc-a" id="pcPrev" aria-label="Previous photo">&#8249;</button><img id="pcImg" alt=""><button type="button" class="pc-a" id="pcNext" aria-label="Next photo">&#8250;</button></div><div class="pc-cap"><span class="mono" id="pcDate"></span><h3 id="pcTitle"></h3><span class="mono pc-credit" id="pcCredit"></span><div class="pc-nav"><span class="mono" id="pcCount"></span><div class="pc-dots" id="pcDots"></div></div></div></div><div class="pc" id="vc" hidden role="dialog" aria-modal="true" aria-label="Video gallery"><button type="button" class="pc-x" id="vcClose" aria-label="Close">&times;</button><div class="pc-stage"><button type="button" class="pc-a" id="vcPrev" aria-label="Previous video">&#8249;</button><div class="vc-frame" id="vcFrame"></div><button type="button" class="pc-a" id="vcNext" aria-label="Next video">&#8250;</button></div><div class="pc-cap"><span class="mono" id="vcDate"></span><h3 id="vcTitle"></h3><span class="mono pc-credit" id="vcCredit"></span><div class="pc-nav"><span class="mono" id="vcCount"></span><div class="pc-dots" id="vcDots"></div></div></div></div>
 
 <div class="pm" id="pm" hidden role="dialog" aria-modal="true" aria-labelledby="pmT"><div class="pm-box"><button type="button" class="pc-x" id="pmClose" aria-label="Close">&times;</button>
-<span class="eyebrow">Sponsor placements</span><h3 id="pmT">Where your brand appears</h3>
-<p class="pm-lead">Shown on Andreas’s own helmet (Zamp RZ-42 Youth) and race suit.</p>
+<span class="eyebrow" data-i18n="pm_eyebrow">Sponsor placements</span><h3 id="pmT" data-i18n="pm_title">Where your brand appears</h3>
+<p class="pm-lead" data-i18n="pm_lead">Shown on Andreas’s own helmet (Zamp RZ-42 Youth) and race suit.</p>
 <div class="pm-fig helmet"><figure><img src="/images/sponsor-helmet-side.svg" alt="Helmet, side view: areas 1, 2, 8, 9, 11 and 12" loading="lazy"></figure><figure><img src="/images/sponsor-helmet-front.svg" alt="Helmet, front view: areas 2 and 11" loading="lazy"></figure><figure><img src="/images/sponsor-helmet-rear.svg" alt="Helmet, rear view: area 9" loading="lazy"></figure></div>
 <div class="pm-fig suit"><figure><img src="/images/sponsor-suit-front.svg" alt="Race suit, front: areas 3 (six small chest logos), 5, 6 and 7" loading="lazy"></figure><figure><img src="/images/sponsor-suit-back.svg" alt="Race suit, back: areas 4, 5, 6 and 10" loading="lazy"></figure></div>
 <ul class="legend">
@@ -92,33 +93,32 @@
 <li><i class="sw part"></i><b>Partner</b><span>3 Chest, small logos (left and right)<br>5 · 6 Sleeves<br>7 Side of the legs<br>12 Helmet lower side</span></li>
 <li><i class="sw cust"></i><b>Custom, on request</b><span>8 Helmet chin<br>9 Helmet rear<br>10 Lower back</span></li>
 <li><i class="sw sup"></i><b>Supporter</b><span>Website and social media<br>(no physical placement)</span></li></ul>
-<p class="mono note">Indicative layout. Logo sizes and exact positions are agreed per partner. The visor strip is subject to series rules.</p>
-<div class="cta"><a class="btn" data-mail href="#">Talk partnerships</a></div></div></div>
+<p class="mono note" data-i18n="pm_note">Indicative layout. Logo sizes and exact positions are agreed per partner. The visor strip is subject to series rules.</p>
+<div class="cta"><a class="btn" data-mail data-i18n="pm_cta" href="#">Talk partnerships</a></div></div></div>
 
-<section id="social"><div class="wrap"><span class="eyebrow">05 / Social</span><h2>Audience</h2><div class="soc" id="soc"></div><p class="mono" id="socNote"></p></div></section>
+<section id="social"><div class="wrap"><span class="eyebrow" data-i18n="social_eyebrow">05 / Social</span><h2 data-i18n="social_heading">Audience</h2><div class="soc" id="soc"></div><p class="mono" id="socNote"></p></div></section>
 
-<section id="sponsoring"><div class="wrap"><span class="eyebrow">06 / Sponsoring</span><h2>Make the next<br>season count.</h2>
+<section id="sponsoring"><div class="wrap"><span class="eyebrow" data-i18n="sponsoring_eyebrow">06 / Sponsoring</span><h2 data-i18n="sponsoring_heading">Make the next<br>season count.</h2>
 <div class="benefits" aria-label="Why partner with Andreas">
-<div class="benefit"><span class="mono">01 / Exposure</span><h3>Trackside Presence</h3><p>Put your brand in the racing environment through agreed logo placements on racewear, helmet and other materials.</p></div>
-<div class="benefit"><span class="mono">02 / Reach</span><h3>Digital Visibility</h3><p>Reach motorsport fans through race videos, YouTube content, Instagram posts and event updates.</p></div>
-<div class="benefit"><span class="mono">03 / Story</span><h3>Racing Journey</h3><p>Follow Andreas’s development as a kart racer, including the challenges, progress and results throughout the season.</p></div>
-<div class="benefit"><span class="mono">04 / Accountability</span><h3>Transparent Reporting</h3><p>Receive agreed updates on race results, content performance and available audience metrics.</p></div>
+<div class="benefit"><span class="mono">01 / Exposure</span><h3 data-i18n="benefit_1_title">Trackside Presence</h3><p data-i18n="benefit_1_desc">Put your brand in the racing environment through agreed logo placements on racewear, helmet and other materials.</p></div>
+<div class="benefit"><span class="mono">02 / Reach</span><h3 data-i18n="benefit_2_title">Digital Visibility</h3><p data-i18n="benefit_2_desc">Reach motorsport fans through race videos, YouTube content, Instagram posts and event updates.</p></div>
+<div class="benefit"><span class="mono">03 / Story</span><h3 data-i18n="benefit_3_title">Racing Journey</h3><p data-i18n="benefit_3_desc">Follow Andreas’s development as a kart racer, including the challenges, progress and results throughout the season.</p></div>
+<div class="benefit"><span class="mono">04 / Accountability</span><h3 data-i18n="benefit_4_title">Transparent Reporting</h3><p data-i18n="benefit_4_desc">Receive agreed updates on race results, content performance and available audience metrics.</p></div>
 </div>
-<p class="lead">Support Andreas’s racing journey. Sponsorship packages and product partnerships are available for the coming season.</p>
-<div class="cta"><a class="btn ghost" href="/mediakit.pdf">Open media kit</a><button type="button" class="btn ghost" data-place>Sponsor placements</button></div>
-<p class="side mono">Supporter / Partner / Main Partner &nbsp;·&nbsp; Custom packages welcome</p>
+<p class="lead" data-i18n="sponsoring_lead">Support Andreas’s racing journey. Sponsorship packages and product partnerships are available for the coming season.</p>
+<div class="cta"><a class="btn ghost" href="/mediakit.pdf" data-i18n="sponsoring_btn_mediakit">Open media kit</a><button type="button" class="btn ghost" data-place data-i18n="hero_btn_sponsors">Sponsor placements</button></div>
+<p class="side mono" data-i18n="sponsoring_side_note">Supporter / Partner / Main Partner &nbsp;·&nbsp; Custom packages welcome</p>
 <div class="pk" id="packages">
-<div><h3>Supporter</h3><span class="mono">Investment on request</span><ul><li>Logo in the website partner carousel</li><li>Thank-you Story and tag</li></ul><a class="btn ghost pk-cta" data-mail data-subject="Supporter package enquiry" href="#">Become a Supporter</a></div>
-<div class="hot"><h3>Partner</h3><span class="mono">Investment on request</span><ul><li>Everything in Supporter</li><li>Small logo on race suit</li><li>1 dedicated Reel per season</li><li>Season results report</li></ul><a class="btn pk-cta" data-mail data-subject="Partner package enquiry" href="#">Become a Partner</a></div>
-<div><h3>Main Partner</h3><span class="mono">Investment on request</span><ul><li>Everything in Partner</li><li>Prominent logo on suit and helmet</li><li>1 dedicated post per month</li></ul><a class="btn ghost pk-cta" data-mail data-subject="Main Partner package enquiry" href="#">Become Main Partner</a></div></div>
+<div><h3>Supporter</h3><span class="mono" data-i18n="pkg_investment_request">Investment on request</span><ul><li>Logo in the website partner carousel</li><li>Thank-you Story and tag</li></ul><a class="btn ghost pk-cta" data-mail data-subject="Supporter package enquiry" data-i18n="pkg_supporter_cta" href="#">Become a Supporter</a></div>
+<div class="hot"><h3>Partner</h3><span class="mono" data-i18n="pkg_investment_request">Investment on request</span><ul><li>Everything in Supporter</li><li>Small logo on race suit</li><li>1 dedicated Reel per season</li><li>Season results report</li></ul><a class="btn pk-cta" data-mail data-subject="Partner package enquiry" data-i18n="pkg_partner_cta" href="#">Become a Partner</a></div>
+<div><h3>Main Partner</h3><span class="mono" data-i18n="pkg_investment_request">Investment on request</span><ul><li>Everything in Partner</li><li>Prominent logo on suit and helmet</li><li>1 dedicated post per month</li></ul><a class="btn ghost pk-cta" data-mail data-subject="Main Partner package enquiry" data-i18n="pkg_main_partner_cta" href="#">Become Main Partner</a></div></div>
 </div>
 </div></section>
 
-<footer><div class="wrap"><div class="fgrid"><div><div class="logo">ANDREAS LAZARIDIS</div><p>Karting Driver<br><br>Social Media, Web and Communication are maintained by parents.</p></div>
-<div class="fcols"><div><span class="mono">Explore</span><a href="#calendar">Calendar</a></div>
-<div><span class="mono">Partner</span><a href="#sponsoring">Packages</a><a href="/mediakit.pdf">Media kit</a><a href="/documents/Andreas-Lazaridis-Performance-Analysis.pdf" target="_blank" rel="noopener">Performance analysis</a></div>
+<footer><div class="wrap"><div class="fgrid"><div><div class="logo">ANDREAS LAZARIDIS</div><p><span data-i18n="hero_mantra">Karting Driver</span><br><br><span data-i18n="footer_tagline">Social Media, Web and Communication are maintained by parents.</span></p></div><div class="fcols"><div><span class="mono" data-i18n="footer_explore">Explore</span><a href="#calendar" data-i18n="footer_calendar">Calendar</a></div>
+<div><span class="mono">Partner</span><a href="#sponsoring" data-i18n="footer_packages">Packages</a><a href="/mediakit.pdf" data-i18n="footer_mediakit">Media kit</a><a data-i18n="footer_performance" href="/documents/Andreas-Lazaridis-Performance-Analysis.pdf" target="_blank" rel="noopener">Performance analysis</a></div>
 <div><span class="mono">Social</span><a data-k="instagram" href="#">Instagram</a><a data-k="tiktok" href="#">TikTok</a><a data-k="youtube" href="#">YouTube</a><a data-mail href="#">Email</a></div></div></div>
-<div class="copy mono"><span>© 2026 Andreas Lazaridis. All rights reserved. · <a href="/privacy.html">Privacy</a></span><span>Media kit — 2026</span></div></div></footer>
+<div class="copy mono"><span><span data-i18n="footer_rights">© 2026 Andreas Lazaridis. All rights reserved.</span> · <a href="/privacy.html" data-i18n="footer_privacy">Privacy</a></span><span>Media kit — 2026</span></div></div></footer>
 
 <script>
 /* ============ EDIT THIS BLOCK ============ */
@@ -353,7 +353,7 @@ load().then(all=>{
   // next race + countdown
   const nx=all.find(r=>!done(r));
   if(nx){$("next").hidden=false;$("nName").textContent=nx.race+" · "+nx.venue;const cats=all.filter(r=>r.date==nx.date&&r.venue==nx.venue&&r.race==nx.race).map(r=>r.category).join(", ");
-    $("nMeta").textContent=when(nx).toLocaleDateString("en-GB",{weekday:"long",day:"numeric",month:"long",year:"numeric"}).toUpperCase()+" | "+cats.toUpperCase();
+    $("nMeta").textContent=when(nx).toLocaleDateString(UI.dateLocale||"en-GB",{weekday:"long",day:"numeric",month:"long",year:"numeric"}).toUpperCase()+" | "+cats.toUpperCase();
     const p=n=>String(n).padStart(2,"0"),tick=()=>{const d=when(nx)-new Date();if(d<=0){$("cd").innerHTML="<span class='mono'>Race weekend</span>";return}
       $("d").textContent=p(Math.floor(d/864e5));$("h").textContent=p(Math.floor(d%864e5/36e5));$("m").textContent=p(Math.floor(d%36e5/6e4))};
     tick();setInterval(tick,30000)}
@@ -363,7 +363,7 @@ load().then(all=>{
     const grp=all.filter(r=>r.date==pv.date&&r.venue==pv.venue&&r.race==pv.race&&r.result);
     $("last").hidden=false;
     $("lName").textContent=pv.race+" · "+pv.venue;
-    $("lMeta").textContent=when(pv).toLocaleDateString("en-GB",{weekday:"long",day:"numeric",month:"long",year:"numeric"}).toUpperCase();
+    $("lMeta").textContent=when(pv).toLocaleDateString(UI.dateLocale||"en-GB",{weekday:"long",day:"numeric",month:"long",year:"numeric"}).toUpperCase();
     $("lRes").innerHTML=grp.map(r=>{const n=parseInt(r.result);
       return `<div class="${n>0&&n<4?"p"+n:""}"><b>${isNaN(n)?esc(r.result):"P"+n}</b><span>${esc(r.category)}</span></div>`}).join("");
     $("lRibs").innerHTML=grp.map(r=>parseInt(r.result)).filter(n=>n>0&&n<4).sort().map(n=>`<i class="rib p${n}" role="img" aria-label="Podium: ${n}${["st","nd","rd"][n-1]} place">${n}</i>`).join("");
@@ -486,15 +486,15 @@ loadPartners();
 <!-- Google Analytics 4: load only after explicit analytics consent -->
 <section id="analytics-consent" class="analytics-consent" aria-label="Analytics cookie preferences" hidden>
   <div class="analytics-consent__copy">
-    <strong>Help improve AL Racing</strong>
-    <p>With your permission, Google Analytics measures website traffic and how visitors use this site. Analytics is optional. <a href="/privacy.html">Privacy statement</a></p>
+    <strong data-i18n="analytics_title">Help improve AL Racing</strong>
+    <p><span data-i18n="analytics_p">With your permission, Google Analytics measures website traffic and how visitors use this site. Analytics is optional.</span> <a href="/privacy.html">Privacy statement</a></p>
   </div>
   <div class="analytics-consent__actions">
-    <button type="button" class="btn ghost" id="analytics-reject">Reject analytics</button>
-    <button type="button" class="btn ghost" id="analytics-accept">Accept analytics</button>
+    <button type="button" class="btn ghost" id="analytics-reject" data-i18n="analytics_reject">Reject analytics</button>
+    <button type="button" class="btn ghost" id="analytics-accept" data-i18n="analytics_accept">Accept analytics</button>
   </div>
 </section>
-<button type="button" id="analytics-settings" class="analytics-settings" hidden>Privacy settings</button>
+<button type="button" id="analytics-settings" class="analytics-settings" data-i18n="analytics_settings" hidden>Privacy settings</button>
 <script>
 (function () {
   const MEASUREMENT_ID = "G-RCF0ZN0NDQ";
