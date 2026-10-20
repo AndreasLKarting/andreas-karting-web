@@ -1931,3 +1931,30 @@ td.r.r1, td.r.r2, td.r.r3 {
   letter-spacing: .14em;
   color: #d8dae3;
 }
+
+
+/* Language selector */
+.language-control { display: inline-flex; align-items: center; flex: 0 0 auto; }
+.language-control select {
+  appearance: none;
+  min-width: 62px;
+  padding: 10px 25px 10px 11px;
+  color: var(--text);
+  background: rgba(26,27,34,.9);
+  border: 1px solid var(--edge);
+  border-radius: 2px;
+  font: 700 11px var(--mono);
+  letter-spacing: .08em;
+  cursor: pointer;
+}
+.language-control select:hover,
+.language-control select:focus-visible { border-color: var(--accent); outline-offset: 3px; }
+.language-control select option { background: #1a1b22; color: #fff; }
+@media (max-width: 900px) {
+  header .wrap { gap: 12px; }
+  .language-control select { min-width: 54px; padding: 9px 18px 9px 8px; }
+}
+@media (max-width: 620px) {
+  header .wrap { flex-wrap: wrap; }
+  header .language-control { margin-left: auto; }
+}
