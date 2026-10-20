@@ -708,6 +708,20 @@ loadPartners();
     const raw = node.nodeValue;
     const trimmed = raw.trim();
     if (!trimmed) return;
+    const photoCount = trimmed.match(/^View all (\\d+) photos$/);
+    if (photoCount) {
+      const count = photoCount[1];
+      const value = lang === "en" ? trimmed : lang === "nl" ? "Bekijk alle " + count + " foto's" : "Bekijk alle " + count + " foto's";
+      const localized = lang === "gr" ? "Προβολή και των " + count + " φωτογραφιών" : value;
+      if (localized !== trimmed) node.nodeValue = raw.replace(trimmed, localized);
+      return;
+    }
+    const missingImage = trimmed.match(/^Add (.+)$/);
+    if (missingImage) {
+      const value = lang === "en" ? trimmed : lang === "nl" ? "Voeg toe: " + missingImage[1] : "Προσθήκη: " + missingImage[1];
+      if (value !== trimmed) node.nodeValue = raw.replace(trimmed, value);
+      return;
+    }
     let key = trimmed;
     if (lang === "en") key = reverse[trimmed] || trimmed;
     else if (!dictionary[key]) key = reverse[trimmed] || trimmed;
