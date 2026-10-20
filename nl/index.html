@@ -34,9 +34,9 @@
 <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-<header><div class="wrap"><a class="logo" href="#top"><i aria-hidden="true"><b>AL</b></i>Andreas Lazaridis</a>
+<header><svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><symbol id="fl-nl" viewBox="0 0 30 20"><path fill="#AE1C28" d="M0 0h30v7H0z"/><path fill="#fff" d="M0 7h30v6.7H0z"/><path fill="#21468B" d="M0 13.3h30V20H0z"/></symbol><symbol id="fl-en" viewBox="0 0 30 20"><path fill="#012169" d="M0 0h30v20H0z"/><path stroke="#fff" stroke-width="4" d="M0 0l30 20M30 0L0 20"/><path stroke="#C8102E" stroke-width="1.8" d="M0 0l30 20M30 0L0 20"/><path stroke="#fff" stroke-width="6.7" d="M15 0v20M0 10h30"/><path stroke="#C8102E" stroke-width="4" d="M15 0v20M0 10h30"/></symbol><symbol id="fl-gr" viewBox="0 0 30 20"><path fill="#0D5EAF" d="M0 0h30v20H0z"/><path fill="#fff" d="M0 2.22h30v2.22H0zM0 6.67h30v2.22H0zM0 11.1h30v2.22H0zM0 15.56h30v2.22H0z"/><path fill="#0D5EAF" d="M0 0h11.1v11.1H0z"/><path fill="#fff" d="M4.44 0h2.22v11.1H4.44zM0 4.44h11.1v2.22H0z"/></symbol></defs></svg><div class="wrap"><a class="logo" href="#top"><i aria-hidden="true"><b>AL</b></i>Andreas Lazaridis</a>
 <nav><a href="#profile">Profiel</a><a href="#achievements">Prestaties</a><a href="#calendar">Kalender</a><a href="#media">Media</a><a href="#social">Sociale media</a><a href="#sponsoring">Sponsoring</a></nav>
-<label class="language-control"><span class="sr-only">Language</span><select id="languageSelect" aria-label="Language"><option value="nl" selected>NL</option><option value="en">EN</option><option value="gr">GR</option></select></label><a class="btn" data-mail href="#">Samenwerken</a></div></header>
+<div class="hdr-end"><div class="lang" id="lang"><button class="lang-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="langMenu" aria-label="Language"><span class="lang-flag"><svg viewBox="0 0 30 20" aria-hidden="true"><use href="#fl-nl"/></svg></span><span class="lang-code">NL</span></button><ul class="lang-menu" id="langMenu" hidden><li><a href="/nl/" hreflang="nl" lang="nl" aria-current="true"><span class="lang-flag"><svg viewBox="0 0 30 20" aria-hidden="true"><use href="#fl-nl"/></svg></span><span class="lang-name">Nederlands</span><span class="lang-abbr">NL</span></a></li><li><a href="/en/" hreflang="en" lang="en"><span class="lang-flag"><svg viewBox="0 0 30 20" aria-hidden="true"><use href="#fl-en"/></svg></span><span class="lang-name">English</span><span class="lang-abbr">EN</span></a></li><li><a href="/gr/" hreflang="el" lang="el"><span class="lang-flag"><svg viewBox="0 0 30 20" aria-hidden="true"><use href="#fl-gr"/></svg></span><span class="lang-name">Ελληνικά</span><span class="lang-abbr">GR</span></a></li></ul></div><a class="btn" data-mail href="#">Samenwerken</a></div></div></header>
 
 <main id="top" class="wrap">
 <div class="hero"><div>
@@ -570,6 +570,6 @@ loadPartners();
 
 
 
-<script>const languageSelect=document.getElementById("languageSelect");if(languageSelect){languageSelect.value="nl";languageSelect.addEventListener("change",function(){window.location.href="/"+this.value+"/";});}</script>
+<script>(function(){var box=document.getElementById("lang");if(!box)return;var btn=box.querySelector(".lang-btn"),menu=document.getElementById("langMenu");function set(o){btn.setAttribute("aria-expanded",o?"true":"false");menu.hidden=!o}btn.addEventListener("click",function(){set(menu.hidden)});document.addEventListener("click",function(e){if(!box.contains(e.target))set(false)});document.addEventListener("keydown",function(e){if(e.key==="Escape"&&!menu.hidden){set(false);btn.focus()}});})();</script>
 </body>
 </html>
