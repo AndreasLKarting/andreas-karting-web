@@ -25,7 +25,27 @@
     <lastmod>2026-10-20</lastmod><changefreq>weekly</changefreq><priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.alracing.nl/privacy.html</loc>
-    <lastmod>2026-10-19</lastmod><changefreq>yearly</changefreq><priority>0.3</priority>
+    <loc>https://www.alracing.nl/nl/privacy.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.alracing.nl/nl/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.alracing.nl/en/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="el" href="https://www.alracing.nl/gr/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.alracing.nl/nl/privacy.html"/>
+    <lastmod>2026-10-20</lastmod><changefreq>yearly</changefreq><priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://www.alracing.nl/en/privacy.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.alracing.nl/nl/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.alracing.nl/en/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="el" href="https://www.alracing.nl/gr/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.alracing.nl/nl/privacy.html"/>
+    <lastmod>2026-10-20</lastmod><changefreq>yearly</changefreq><priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://www.alracing.nl/gr/privacy.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.alracing.nl/nl/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.alracing.nl/en/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="el" href="https://www.alracing.nl/gr/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.alracing.nl/nl/privacy.html"/>
+    <lastmod>2026-10-20</lastmod><changefreq>yearly</changefreq><priority>0.3</priority>
   </url>
 </urlset>
