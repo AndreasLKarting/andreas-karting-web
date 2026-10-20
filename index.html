@@ -691,7 +691,10 @@ loadPartners();
     "View all ": ["Bekijk alle ", "Προβολή όλων των "],
     " photos": [" foto's", " φωτογραφίες"],
     "Add ": ["Voeg toe: ", "Προσθήκη: "],
-    "Video ID missing": ["Video-ID ontbreekt", "Λείπει το ID του βίντεο"]
+    "Video ID missing": ["Video-ID ontbreekt", "Λείπει το ID του βίντεο"],
+    "NEXT RACE": ["VOLGENDE RACE", "ΕΠΟΜΕΝΟΣ ΑΓΩΝΑΣ"],
+    "PREVIOUS RACE": ["VORIGE RACE", "ΠΡΟΗΓΟΥΜΕΝΟΣ ΑΓΩΝΑΣ"],
+    "Your logo can be here": ["Jouw logo kan hier staan", "Το λογότυπό σας μπορεί να είναι εδώ"]
   };
   const langKey = "alracing-language";
   const select = document.getElementById("languageSelect");
@@ -711,6 +714,7 @@ loadPartners();
     const values = dictionary[key];
     if (!values) return;
     const value = lang === "en" ? key : values[lang === "nl" ? 0 : 1];
+    if (node.parentElement && node.parentElement.tagName === "OPTION") node.parentElement.value = key;
     if (value !== trimmed) node.nodeValue = raw.replace(trimmed, value);
   }
   function applyLanguage(lang) {
