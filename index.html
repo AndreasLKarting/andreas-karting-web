@@ -53,7 +53,7 @@
 <div class="next" id="next" hidden><div><span class="mono">Volgende race</span><h3 id="nName"></h3><small id="nMeta"></small></div>
 <div class="cd" id="cd"><div><b id="d">00</b><span>Dagen</span></div><div><b id="h">00</b><span>Uren</span></div><div><b id="m">00</b><span>Minuten</span></div></div></div>
 </div>
-<div class="spons" aria-label="Partners"><div class="sp-head"><span class="mono">Onze partners</span><a class="mono" href="#sponsoring">Become a partner &rarr;</a></div>
+<div class="spons" aria-label="Partners"><div class="sp-head"><span class="mono">Onze partners</span><a class="mono" href="#sponsoring">Word partner &rarr;</a></div>
 <div class="sp-view" id="spView" tabindex="0"><div class="sp-track" id="spTrack"></div></div></div>
 </main>
 
@@ -106,7 +106,7 @@
 </div>
 <p class="lead">Steun Andreas' race-avontuur. Sponsorpakketten en productpartnerschappen zijn beschikbaar voor het komende seizoen.</p>
 <div class="cta"><a class="btn ghost" href="/mediakit.pdf">Open de mediakit</a><button type="button" class="btn ghost" data-place>Sponsormogelijkheden</button></div>
-<p class="side mono">Supporter / Partner / Main Partner &nbsp;·&nbsp; Custom packages welcome</p>
+<p class="side mono">Supporter / Partner / Main Partner &nbsp;·&nbsp; Maatwerkpakketten mogelijk</p>
 <div class="pk" id="packages">
 <div><h3>Supporter</h3><span class="mono">Investering op aanvraag</span><ul><li>Logo in de partnercarrousel op de website</li><li>Bedank-Story en tag</li></ul><a class="btn ghost pk-cta" data-mail data-subject="Supporter package enquiry" href="#">Word Supporter</a></div>
 <div class="hot"><h3>Partner</h3><span class="mono">Investering op aanvraag</span><ul><li>Alles van Supporter</li><li>Klein logo op het racepak</li><li>1 speciale Reel per seizoen</li><li>Seizoensrapport met resultaten</li></ul><a class="btn pk-cta" data-mail data-subject="Partner package enquiry" href="#">Word Partner</a></div>
@@ -118,7 +118,7 @@
 <div class="fcols"><div><span class="mono">Ontdek</span><a href="#calendar">Kalender</a></div>
 <div><span class="mono">Partner</span><a href="#sponsoring">Pakketten</a><a href="/mediakit.pdf">Mediakit</a><a href="/documents/Andreas-Lazaridis-Performance-Analysis.pdf" target="_blank" rel="noopener">Prestatieanalyse</a></div>
 <div><span class="mono">Sociale media</span><a data-k="instagram" href="#">Instagram</a><a data-k="tiktok" href="#">TikTok</a><a data-k="youtube" href="#">YouTube</a><a data-mail href="#">E-mail</a></div></div></div>
-<div class="copy mono"><span>© 2026 Andreas Lazaridis. Alle rechten voorbehouden. · <a href="/privacy.html">Privacy</a></span><span>Media kit — 2026</span></div></div></footer>
+<div class="copy mono"><span>© 2026 Andreas Lazaridis. Alle rechten voorbehouden. · <a href="/privacy.html">Privacy</a></span><span>Mediakit — 2026</span></div></div></footer>
 
 <script>
 /* ============ EDIT THIS BLOCK ============ */
@@ -135,6 +135,11 @@ const CFG={
   photosSheet:"https://docs.google.com/spreadsheets/d/e/2PACX-1vTrQTYaoqWvwmPKYbInqhbu4hII_DbV8_bhokbmEGP2MNCJb8efUMAeSUDZZZQDEM2u_l4HOSiRgwo5/pub?gid=930260858&single=true&output=csv",   // "Photos" tab of the same Google Sheet, published as CSV (columns: file,title,date,location,credits; see tools/README.md). Leave "" to use the PHOTOS list below.
   defaultTime:"10:00"                             // used when a race row has no time
 };
+const UI=(()=>{const dictionaries={
+  nl:{all:"Alle",upcoming:"Aankomend",completed:"Verreden",noRaces:"Geen races gevonden voor deze filters.",prev:"Vorige",next:"Volgende",previousPage:"Vorige pagina",nextPage:"Volgende pagina",of:"van",nextRace:"VOLGENDE RACE",previousRace:"VORIGE RACE",viewAll:"Bekijk alle",photos:"foto's",add:"Toevoegen",updated:"Bijgewerkt",yourLogo:"Jouw logo kan hier staan",contactUs:"neem contact op",photo:"Foto:",dateLocale:"nl-NL"},
+  en:{all:"All",upcoming:"Upcoming",completed:"Completed",noRaces:"No races match these filters.",prev:"Prev",next:"Next",previousPage:"Previous page",nextPage:"Next page",of:"of",nextRace:"NEXT RACE",previousRace:"PREVIOUS RACE",viewAll:"View all",photos:"photos",add:"Add",updated:"Updated",yourLogo:"Your logo can be here",contactUs:"contact us",photo:"Photo:",dateLocale:"en-GB"},
+  el:{all:"Όλα",upcoming:"Προσεχείς",completed:"Ολοκληρωμένοι",noRaces:"Δεν υπάρχουν αγώνες που να ταιριάζουν στα φίλτρα.",prev:"Προηγ.",next:"Επόμ.",previousPage:"Προηγούμενη σελίδα",nextPage:"Επόμενη σελίδα",of:"από",nextRace:"ΕΠΟΜΕΝΟΣ ΑΓΩΝΑΣ",previousRace:"ΠΡΟΗΓΟΥΜΕΝΟΣ ΑΓΩΝΑΣ",viewAll:"Προβολή όλων",photos:"φωτογραφιών",add:"Προσθήκη",updated:"Ενημερώθηκε",yourLogo:"Το λογότυπό σας μπορεί να εμφανιστεί εδώ",contactUs:"επικοινωνήστε μαζί μας",photo:"Φωτογραφία:",dateLocale:"el-GR"}
+};return dictionaries[document.documentElement.lang]||dictionaries.en;})();
 const LOGO_DIR="/images/logos/";   // folder that holds the logo files (shown when you hover a link)
 const CHIPS=[ // [label, logo file, link]  leave the link "" for no link
  ["Den Hartog Racing","denhartoglogo.png","https://denhartogracing.com/"],
@@ -227,7 +232,7 @@ document.querySelectorAll("[data-k]").forEach(a=>{a.href=CFG.links[a.dataset.k];
 
 // static blocks
 $("logos").innerHTML=CHIPS.map(c=>{const inner=`<em>${c[0]}</em><img src="${LOGO_DIR}${c[1]}" alt="" loading="lazy" decoding="async" onerror="this.remove()">`;
-  return c[2]?`<a class="chip" href="/${c[2]}" target="_blank" rel="noopener noreferrer" aria-label="${c[0]} (opens in a new tab)">${inner}</a>`:`<span class="chip pl">${inner}</span>`}).join("");
+  return c[2]?`<a class="chip" href="${c[2]}" target="_blank" rel="noopener noreferrer" aria-label="${c[0]} (opens in a new tab)">${inner}</a>`:`<span class="chip pl">${inner}</span>`}).join("");
 const ord=s=>{const m=String(s).match(/^(\d+)(?:st|nd|rd|th)\b/i);return m?+m[1]:0};
 const NUMW={one:1,two:2,three:3,four:4,five:5,six:6,seven:7,eight:8,nine:9,ten:10};
 const MEDALS={gold:1,silver:2,bronze:3};
@@ -267,7 +272,7 @@ const flagHTML=v=>{const c=flagCode(v),f=FLAGS[c];return f?`<span class="flag" r
 function renderSocial(sheet){ // sheet = {platform(lowercase): [[metric,value],...]}; falls back to SOCIAL above
   $("soc").innerHTML=SOCIAL.map(s=>{const sh=(sheet&&sheet[s[0].toLowerCase()])||[],m=s[2].map(x=>{const f=sh.find(y=>y[0].toLowerCase()==x[0].toLowerCase());return [x[0],f?f[1]:x[1]]});
     sh.forEach(y=>{if(!m.some(x=>x[0].toLowerCase()==y[0].toLowerCase()))m.push(y)});
-    return `<a class="plat" href="/${CFG.links[s[0].toLowerCase()]}" target="_blank" rel="noopener noreferrer" aria-label="${s[0]} (opens in a new tab)"><div class="ph-h"><img class="avatar" src="${(CFG.avatars&&CFG.avatars[s[0].toLowerCase()])||"/images/avatar.png"}" alt="" width="64" height="64" loading="lazy" decoding="async"><div><h3><span class="ico">${ICONS[s[0]]}</span>${s[0]}</h3><span class="mono">${s[1]}</span></div></div><div class="row">${m.map(x=>`<div><b>${esc(fmtNum(x[1]))}</b><span class="mono">${esc(x[0])}</span></div>`).join("")}</div></a>`}).join("")}
+    return `<a class="plat" href="${CFG.links[s[0].toLowerCase()]}" target="_blank" rel="noopener noreferrer" aria-label="${s[0]} (opens in a new tab)"><div class="ph-h"><img class="avatar" src="${(CFG.avatars&&CFG.avatars[s[0].toLowerCase()])||"/images/avatar.png"}" alt="" width="64" height="64" loading="lazy" decoding="async"><div><h3><span class="ico">${ICONS[s[0]]}</span>${s[0]}</h3><span class="mono">${s[1]}</span></div></div><div class="row">${m.map(x=>`<div><b>${esc(fmtNum(x[1]))}</b><span class="mono">${esc(x[0])}</span></div>`).join("")}</div></a>`}).join("")}
 renderSocial();
 async function fetchText(url){const response=await fetch(url);if(!response.ok)throw new Error("Request failed: "+response.status);return response.text()}
 async function loadSocial(){ // numbers come from the Google Sheet "Social" tab: platform, metric, value, updated
@@ -276,7 +281,7 @@ async function loadSocial(){ // numbers come from the Google Sheet "Social" tab:
     if(pi<0||mi<0||vi<0)return;
     const out={};let latest="";
     r.slice(1).filter(x=>x[pi]&&x[pi].trim()&&x[mi]&&x[mi].trim()&&(x[vi]||"").trim()!=="").forEach(x=>{(out[x[pi].trim().toLowerCase()]=out[x[pi].trim().toLowerCase()]||[]).push([x[mi].trim(),x[vi].trim()]);const u=ui>=0?(x[ui]||"").trim().slice(0,10):"";if(u>latest&&/^\d{4}-\d{2}-\d{2}$/.test(u))latest=u});
-    if(Object.keys(out).length){renderSocial(out);if(latest)$("socNote").textContent="Updated "+fmt(latest)}}catch(e){}
+    if(Object.keys(out).length){renderSocial(out);if(latest)$("socNote").textContent=UI.updated+" "+fmt(latest)}}catch(e){}
 }
 loadSocial();
 
@@ -303,7 +308,7 @@ load().then(all=>{
   const nextKey=upcomingEvent?eventKey(upcomingEvent):"";
   const previousKey=previousEvent?eventKey(previousEvent):"";
   // calendar
-  const sel={fStatus:["All","Upcoming","Completed"],fYear:["All",...new Set(all.map(r=>r.date.slice(0,4)))],fVenue:["All",...new Set(all.map(r=>r.venue))],fRace:["All",...new Set(all.map(r=>r.race))]};
+  const sel={fStatus:[UI.all,UI.upcoming,UI.completed],fYear:[UI.all,...new Set(all.map(r=>r.date.slice(0,4)))],fVenue:[UI.all,...new Set(all.map(r=>r.venue))],fRace:[UI.all,...new Set(all.map(r=>r.race))]};
       const PER = 15;
       let page = 1;
       const firstUp = all.findIndex(r => !done(r));
@@ -314,7 +319,7 @@ load().then(all=>{
       }
       function draw() {
         const s = $("fStatus").value, y = $("fYear").value, v = $("fVenue").value, rc = $("fRace").value;
-        const list = all.filter(r => (s == "All" || (s == "Completed") == done(r)) && (y == "All" || r.date.startsWith(y)) && (v == "All" || r.venue == v) && (rc == "All" || r.race == rc));
+        const list = all.filter(r => (s == UI.all || (s == UI.completed) == done(r)) && (y == UI.all || r.date.startsWith(y)) && (v == UI.all || r.venue == v) && (rc == UI.all || r.race == rc));
         const pages = Math.max(1, Math.ceil(list.length / PER));
         if (page > pages) page = pages;
         const start = (page - 1) * PER;
@@ -323,17 +328,17 @@ load().then(all=>{
           const n = resultNumber ? parseInt(resultNumber[0], 10) : NaN;
           const c = n == 1 ? "r1" : n == 2 ? "r2" : n == 3 ? "r3" : "";
           const key = eventKey(r);
-          const ribbon = key === nextKey ? '<span class="race-ribbon next-race">NEXT RACE</span>' : key === previousKey ? '<span class="race-ribbon previous-race">PREVIOUS RACE</span>' : "";
+          const ribbon = key === nextKey ? `<span class="race-ribbon next-race">${UI.nextRace}</span>` : key === previousKey ? `<span class="race-ribbon previous-race">${UI.previousRace}</span>` : "";
           const medal = n === 1 ? "🥇 " : n === 2 ? "🥈 " : n === 3 ? "🥉 " : "";
-          const result = r.result ? medal + esc(r.result) : (done(r) ? "–" : "Upcoming");
+          const result = r.result ? medal + esc(r.result) : (done(r) ? "–" : UI.upcoming);
           return `<tr class="${key === nextKey ? "is-next-race" : key === previousKey ? "is-previous-race" : ""}"><td class="d">${fmt(r.date)}</td><td><div class="race-cell">${esc(r.race)}${ribbon}</div></td><td>${esc(r.venue)}</td><td>${flagHTML(r.country)}</td><td>${esc(r.category)}</td><td class="r ${c}">${result}</td></tr>`;
-        }).join("") : `<tr><td class="empty" colspan="6">No races match these filters.</td></tr>`;
+        }).join("") : `<tr><td class="empty" colspan="6">${UI.noRaces}</td></tr>`;
         let nav = "";
         if (pages > 1) {
-          nav = `<button data-p="${page - 1}" ${page == 1 ? "disabled" : ""} aria-label="Previous page">‹ Prev</button>`;
+          nav = `<button data-p="${page - 1}" ${page == 1 ? "disabled" : ""} aria-label="${UI.previousPage}">‹ ${UI.prev}</button>`;
           for (let i = 1; i <= pages; i++) nav += `<button data-p="${i}" ${i == page ? 'aria-current="page"' : ""}>${i}</button>`;
-          nav += `<button data-p="${page + 1}" ${page == pages ? "disabled" : ""} aria-label="Next page">Next ›</button>`;
-          nav += `<span class="info">${start + 1}–${Math.min(start + PER, list.length)} of ${list.length}</span>`;
+          nav += `<button data-p="${page + 1}" ${page == pages ? "disabled" : ""} aria-label="${UI.nextPage}">${UI.next} ›</button>`;
+          nav += `<span class="info">${start + 1}–${Math.min(start + PER, list.length)} ${UI.of} ${list.length}</span>`;
         }
         $("pager").innerHTML = nav;
       }
@@ -367,16 +372,16 @@ load().then(all=>{
 
 // photos: grid + carousel. Data from the Sheet "Photos" tab (file, title, date, location, credits) or the PHOTOS list
 let phList=PHOTOS.map(p=>({title:p[0],file:p[1],date:p[2],loc:p[3],credit:p[4]})),phIdx=0;
-const phSrc=f=>"/images/race/"+(/\.(jpe?g|png|webp)$/i.test(f)?f:f+".jpg"),phDate=d=>/^\d{4}-\d{2}-\d{2}$/.test(d)?new Date(d+"T12:00:00").toLocaleDateString("en-GB",{day:"numeric",month:"long",year:"numeric"}):d;
+const phSrc=f=>"/images/race/"+(/\.(jpe?g|png|webp)$/i.test(f)?f:f+".jpg"),phDate=d=>/^\d{4}-\d{2}-\d{2}$/.test(d)?new Date(d+"T12:00:00").toLocaleDateString(UI.dateLocale,{day:"numeric",month:"long",year:"numeric"}):d;
 const PH_SHOWN=5; // the grid shows the first 5 (1 tall + 4 wide); the rest are only in the carousel
 function renderPhotos(){
-  $("photos").innerHTML=phList.slice(0,PH_SHOWN).map((p,i)=>`<figure><span class="mono">${esc(p.title)}${p.date?" · "+esc(phDate(p.date)):""}</span><button type="button" class="ph" data-i="${i}" aria-label="Open photo: ${esc(p.title)}"><img loading="lazy" decoding="async" src="${esc(phSrc(p.file))}" alt="${esc(p.title)}" onload="this.nextElementSibling.remove()" onerror="this.remove()"><span class="ph-t">Add ${esc(phSrc(p.file))}</span></button></figure>`).join("");
-  const extra=phList.length-PH_SHOWN;$("phMore").hidden=extra<=0;if(extra>0)$("phAll").textContent="View all "+phList.length+" photos";
+  $("photos").innerHTML=phList.slice(0,PH_SHOWN).map((p,i)=>`<figure><span class="mono">${esc(p.title)}${p.date?" · "+esc(phDate(p.date)):""}</span><button type="button" class="ph" data-i="${i}" aria-label="Open photo: ${esc(p.title)}"><img loading="lazy" decoding="async" src="${esc(phSrc(p.file))}" alt="${esc(p.title)}" onload="this.nextElementSibling.remove()" onerror="this.remove()"><span class="ph-t">${UI.add} ${esc(phSrc(p.file))}</span></button></figure>`).join("");
+  const extra=phList.length-PH_SHOWN;$("phMore").hidden=extra<=0;if(extra>0)$("phAll").textContent=UI.viewAll+" "+phList.length+" "+UI.photos;
 }
 function showPhoto(i){
   phIdx=(i+phList.length)%phList.length;const p=phList[phIdx];
   $("pcImg").src=phSrc(p.file);$("pcImg").alt=p.title;
-  $("pcTitle").textContent=p.title;$("pcDate").textContent=[phDate(p.date),p.loc].filter(Boolean).join(" · ");$("pcCredit").textContent=p.credit?"Photo: "+p.credit:"";
+  $("pcTitle").textContent=p.title;$("pcDate").textContent=[phDate(p.date),p.loc].filter(Boolean).join(" · ");$("pcCredit").textContent=p.credit?UI.photo+" "+p.credit:"";
   $("pcCount").textContent=(phIdx+1)+" / "+phList.length;
   $("pcDots").innerHTML=phList.map((_,k)=>`<button type="button" data-k="${k}" aria-label="Photo ${k+1}"${k==phIdx?' class="on"':""}></button>`).join("");
 }
@@ -452,9 +457,9 @@ document.addEventListener("keydown",e=>{if(!$("pm").hidden&&e.key=="Escape")pmSh
 // hero partner carousel: 4 tiles in view, free slots show "Your logo can be here", auto-advances (pauses on hover/touch/focus)
 function renderHeroPartners(){
   const ord={main:0,part:1,sup:2},items=[...pList].sort((a,b)=>ord[pTier(a.tier)]-ord[pTier(b.tier)]);
-  const slot=`<a class="sp slot" href="/${MAILTO}" aria-label="Your logo can be here: contact us"><img src="/images/partners/your-logo-here.svg" alt="Your logo can be here" loading="lazy" decoding="async"></a>`;
+  const slot=`<a class="sp slot" href="${MAILTO}" aria-label="${UI.yourLogo}: ${UI.contactUs}"><img src="/images/partners/your-logo-here.svg" alt="${UI.yourLogo}" loading="lazy" decoding="async"></a>`;
   let html=items.map(p=>{const src=pLogo(p.logo),lk=pLink(p.link),img=src?`<img src="${esc(src)}" alt="${esc(p.name)}" loading="lazy" decoding="async" onerror="this.replaceWith(document.createTextNode(this.alt))">`:esc(p.name);
-    return lk?`<a class="sp" href="/${esc(lk)}" target="_blank" rel="noopener noreferrer" aria-label="${esc(p.name)} (opens in a new tab)">${img}</a>`:`<span class="sp">${img}</span>`}).join("");
+    return lk?`<a class="sp" href="${esc(lk)}" target="_blank" rel="noopener noreferrer" aria-label="${esc(p.name)} (opens in a new tab)">${img}</a>`:`<span class="sp">${img}</span>`}).join("");
   for(let i=items.length;i<4;i++)html+=slot;
   if(items.length>=4)html+=slot;
   $("spTrack").innerHTML=html;$("spView").scrollLeft=0;
