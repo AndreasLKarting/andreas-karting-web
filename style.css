@@ -1933,28 +1933,166 @@ td.r.r1, td.r.r2, td.r.r3 {
 }
 
 
-/* Language selector */
-.language-control { display: inline-flex; align-items: center; flex: 0 0 auto; }
-.language-control select {
-  appearance: none;
-  min-width: 62px;
-  padding: 10px 25px 10px 11px;
+/* Language switcher (flag + dropdown) */
+header .hdr-end {
+  display: flex;
+  align-items: stretch;      /* the switcher takes the same height as the button */
+  justify-content: flex-end;
+  gap: 14px;
+  justify-self: end;
+}
+
+.lang {
+  position: relative;
+  display: flex;
+}
+
+.lang-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 14px;
   color: var(--text);
   background: rgba(26,27,34,.9);
   border: 1px solid var(--edge);
   border-radius: 2px;
   font: 700 11px var(--mono);
-  letter-spacing: .08em;
+  letter-spacing: .12em;
+  text-transform: uppercase;
   cursor: pointer;
+  transition: border-color .15s, background .15s;
 }
-.language-control select:hover,
-.language-control select:focus-visible { border-color: var(--accent); outline-offset: 3px; }
-.language-control select option { background: #1a1b22; color: #fff; }
-@media (max-width: 900px) {
-  header .wrap { gap: 12px; }
-  .language-control select { min-width: 54px; padding: 9px 18px 9px 8px; }
+
+.lang-btn::after {
+  content: "";
+  width: 6px;
+  height: 6px;
+  margin: -3px 0 0 2px;
+  border-right: 1.5px solid var(--muted);
+  border-bottom: 1.5px solid var(--muted);
+  transform: rotate(45deg);
+  transition: transform .15s;
 }
-@media (max-width: 620px) {
-  header .wrap { flex-wrap: wrap; }
-  header .language-control { margin-left: auto; }
+
+.lang-btn[aria-expanded="true"]::after {
+  margin-top: 3px;
+  transform: rotate(-135deg);
+}
+
+.lang-btn:hover,
+.lang-btn:focus-visible,
+.lang-btn[aria-expanded="true"] {
+  border-color: var(--accent);
+  background: rgba(35,64,255,.12);
+}
+
+.lang-flag {
+  display: inline-block;
+  line-height: 0;
+}
+
+.lang-flag svg {
+  width: 24px;
+  height: 16px;
+  display: block;
+  border-radius: 2px;
+  box-shadow: 0 0 0 1px rgba(255,255,255,.18);
+}
+
+.lang-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 20;
+  width: max-content;
+  min-width: 100%;
+  margin: 0;
+  padding: 6px;
+  list-style: none;
+  background: #1a1b22;
+  border: 1px solid var(--edge);
+  border-radius: 2px;
+  box-shadow: 0 16px 36px rgba(0,0,0,.55);
+}
+
+.lang-menu[hidden] {
+  display: none;
+}
+
+.lang-menu a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  color: #c9ccd6;
+  text-decoration: none;
+  border-left: 2px solid transparent;
+  font: 500 14px "Space Grotesk",system-ui,sans-serif;
+  transition: background .15s, color .15s;
+}
+
+.lang-menu a:hover,
+.lang-menu a:focus-visible {
+  color: #fff;
+  background: rgba(91,124,255,.14);
+  outline: none;
+}
+
+.lang-menu a[aria-current="true"] {
+  color: #fff;
+  border-left-color: var(--accent);
+}
+
+.lang-abbr {
+  margin-left: auto;
+  padding-left: 14px;
+  color: var(--muted);
+  font: 700 10px var(--mono);
+  letter-spacing: .12em;
+}
+
+@media (max-width: 560px) {
+  header .hdr-end { gap: 8px; }
+  .lang-code { display: none; }               /* flag only on phones */
+  .lang-btn { padding: 0 10px; gap: 8px; }
+  header .btn { padding: 13px 12px; font-size: 10px; letter-spacing: .04em; }
+  header .btn::after { display: none; }
+  header .logo { font-size: 11px; letter-spacing: .06em; gap: 8px; }
+}
+
+@media (max-width: 389px) {
+  header .logo { font-size: 0; gap: 0; }      /* very small screens: keep only the AL badge */
+}
+
+/* header layout with the switcher: logo and right side keep their natural width, nav sits in the middle */
+header .logo { white-space: nowrap; }
+
+@media (min-width: 1201px) {
+  header .wrap { grid-template-columns: auto 1fr auto; }
+  header nav { justify-self: center; gap: 22px; }
+  header nav a { font-size: 11px; letter-spacing: .12em; white-space: nowrap; }
+}
+
+/* medium screens: the nav no longer fits next to the switcher, so it moves to its own scrollable row (same as on phones) */
+@media (min-width: 901px) and (max-width: 1200px) {
+  header .wrap {
+    height: auto;
+    min-height: 76px;
+    grid-template-columns: minmax(0, 1fr) auto;
+    row-gap: 0;
+    padding-top: 12px;
+  }
+  header nav {
+    display: flex;
+    grid-column: 1 / -1;
+    grid-row: 2;
+    gap: 22px;
+    width: 100%;
+    min-width: 0;
+    overflow-x: auto;
+    padding: 4px 0 12px;
+    scrollbar-width: none;
+  }
+  header nav::-webkit-scrollbar { display: none; }
+  header nav a { flex: 0 0 auto; white-space: nowrap; }
 }
