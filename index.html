@@ -34,9 +34,9 @@
 <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-<header><div class="wrap"><a class="logo" href="#top"><i aria-hidden="true"><b>AL</b></i>Andreas Lazaridis</a>
+<header><svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><symbol id="fl-nl" viewBox="0 0 30 20"><path fill="#AE1C28" d="M0 0h30v7H0z"/><path fill="#fff" d="M0 7h30v6.7H0z"/><path fill="#21468B" d="M0 13.3h30V20H0z"/></symbol><symbol id="fl-en" viewBox="0 0 30 20"><path fill="#012169" d="M0 0h30v20H0z"/><path stroke="#fff" stroke-width="4" d="M0 0l30 20M30 0L0 20"/><path stroke="#C8102E" stroke-width="1.8" d="M0 0l30 20M30 0L0 20"/><path stroke="#fff" stroke-width="6.7" d="M15 0v20M0 10h30"/><path stroke="#C8102E" stroke-width="4" d="M15 0v20M0 10h30"/></symbol><symbol id="fl-gr" viewBox="0 0 30 20"><path fill="#0D5EAF" d="M0 0h30v20H0z"/><path fill="#fff" d="M0 2.22h30v2.22H0zM0 6.67h30v2.22H0zM0 11.1h30v2.22H0zM0 15.56h30v2.22H0z"/><path fill="#0D5EAF" d="M0 0h11.1v11.1H0z"/><path fill="#fff" d="M4.44 0h2.22v11.1H4.44zM0 4.44h11.1v2.22H0z"/></symbol></defs></svg><div class="wrap"><a class="logo" href="#top"><i aria-hidden="true"><b>AL</b></i>Andreas Lazaridis</a>
 <nav><a href="#profile">Profiel</a><a href="#achievements">Prestaties</a><a href="#calendar">Kalender</a><a href="#media">Media</a><a href="#social">Sociale media</a><a href="#sponsoring">Sponsoring</a></nav>
-<label class="language-control"><span class="sr-only">Language</span><select id="languageSelect" aria-label="Language"><option value="nl" selected>NL</option><option value="en">EN</option><option value="gr">GR</option></select></label><a class="btn" data-mail href="#">Samenwerken</a></div></header>
+<div class="hdr-end"><div class="lang" id="lang"><button class="lang-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="langMenu" aria-label="Language"><span class="lang-flag"><svg viewBox="0 0 30 20" aria-hidden="true"><use href="#fl-nl"/></svg></span><span class="lang-code">NL</span></button><ul class="lang-menu" id="langMenu" hidden><li><a href="/nl/" hreflang="nl" lang="nl" aria-current="true"><span class="lang-flag"><svg viewBox="0 0 30 20" aria-hidden="true"><use href="#fl-nl"/></svg></span><span class="lang-name">Nederlands</span><span class="lang-abbr">NL</span></a></li><li><a href="/en/" hreflang="en" lang="en"><span class="lang-flag"><svg viewBox="0 0 30 20" aria-hidden="true"><use href="#fl-en"/></svg></span><span class="lang-name">English</span><span class="lang-abbr">EN</span></a></li><li><a href="/gr/" hreflang="el" lang="el"><span class="lang-flag"><svg viewBox="0 0 30 20" aria-hidden="true"><use href="#fl-gr"/></svg></span><span class="lang-name">Ελληνικά</span><span class="lang-abbr">GR</span></a></li></ul></div><a class="btn" data-mail href="#">Samenwerken</a></div></div></header>
 
 <main id="top" class="wrap">
 <div class="hero"><div>
@@ -226,7 +226,7 @@ document.querySelectorAll("[data-mail]").forEach(a=>a.href="mailto:"+CFG.email+"
 document.querySelectorAll("[data-k]").forEach(a=>{a.href=CFG.links[a.dataset.k];a.target="_blank";a.rel="noopener"});
 
 // static blocks
-$("logos").innerHTML=CHIPS.map(c=>{const inner=`<em>${c[0]}</em><img src="/${LOGO_DIR}${c[1]}" alt="" loading="lazy" decoding="async" onerror="this.remove()">`;
+$("logos").innerHTML=CHIPS.map(c=>{const inner=`<em>${c[0]}</em><img src="${LOGO_DIR}${c[1]}" alt="" loading="lazy" decoding="async" onerror="this.remove()">`;
   return c[2]?`<a class="chip" href="/${c[2]}" target="_blank" rel="noopener noreferrer" aria-label="${c[0]} (opens in a new tab)">${inner}</a>`:`<span class="chip pl">${inner}</span>`}).join("");
 const ord=s=>{const m=String(s).match(/^(\d+)(?:st|nd|rd|th)\b/i);return m?+m[1]:0};
 const NUMW={one:1,two:2,three:3,four:4,five:5,six:6,seven:7,eight:8,nine:9,ten:10};
@@ -267,7 +267,7 @@ const flagHTML=v=>{const c=flagCode(v),f=FLAGS[c];return f?`<span class="flag" r
 function renderSocial(sheet){ // sheet = {platform(lowercase): [[metric,value],...]}; falls back to SOCIAL above
   $("soc").innerHTML=SOCIAL.map(s=>{const sh=(sheet&&sheet[s[0].toLowerCase()])||[],m=s[2].map(x=>{const f=sh.find(y=>y[0].toLowerCase()==x[0].toLowerCase());return [x[0],f?f[1]:x[1]]});
     sh.forEach(y=>{if(!m.some(x=>x[0].toLowerCase()==y[0].toLowerCase()))m.push(y)});
-    return `<a class="plat" href="/${CFG.links[s[0].toLowerCase()]}" target="_blank" rel="noopener noreferrer" aria-label="${s[0]} (opens in a new tab)"><div class="ph-h"><img class="avatar" src="/${(CFG.avatars&&CFG.avatars[s[0].toLowerCase()])||"/images/avatar.png"}" alt="" width="64" height="64" loading="lazy" decoding="async"><div><h3><span class="ico">${ICONS[s[0]]}</span>${s[0]}</h3><span class="mono">${s[1]}</span></div></div><div class="row">${m.map(x=>`<div><b>${esc(fmtNum(x[1]))}</b><span class="mono">${esc(x[0])}</span></div>`).join("")}</div></a>`}).join("")}
+    return `<a class="plat" href="/${CFG.links[s[0].toLowerCase()]}" target="_blank" rel="noopener noreferrer" aria-label="${s[0]} (opens in a new tab)"><div class="ph-h"><img class="avatar" src="${(CFG.avatars&&CFG.avatars[s[0].toLowerCase()])||"/images/avatar.png"}" alt="" width="64" height="64" loading="lazy" decoding="async"><div><h3><span class="ico">${ICONS[s[0]]}</span>${s[0]}</h3><span class="mono">${s[1]}</span></div></div><div class="row">${m.map(x=>`<div><b>${esc(fmtNum(x[1]))}</b><span class="mono">${esc(x[0])}</span></div>`).join("")}</div></a>`}).join("")}
 renderSocial();
 async function fetchText(url){const response=await fetch(url);if(!response.ok)throw new Error("Request failed: "+response.status);return response.text()}
 async function loadSocial(){ // numbers come from the Google Sheet "Social" tab: platform, metric, value, updated
@@ -370,7 +370,7 @@ let phList=PHOTOS.map(p=>({title:p[0],file:p[1],date:p[2],loc:p[3],credit:p[4]})
 const phSrc=f=>"/images/race/"+(/\.(jpe?g|png|webp)$/i.test(f)?f:f+".jpg"),phDate=d=>/^\d{4}-\d{2}-\d{2}$/.test(d)?new Date(d+"T12:00:00").toLocaleDateString("en-GB",{day:"numeric",month:"long",year:"numeric"}):d;
 const PH_SHOWN=5; // the grid shows the first 5 (1 tall + 4 wide); the rest are only in the carousel
 function renderPhotos(){
-  $("photos").innerHTML=phList.slice(0,PH_SHOWN).map((p,i)=>`<figure><span class="mono">${esc(p.title)}${p.date?" · "+esc(phDate(p.date)):""}</span><button type="button" class="ph" data-i="${i}" aria-label="Open photo: ${esc(p.title)}"><img loading="lazy" decoding="async" src="/${esc(phSrc(p.file))}" alt="${esc(p.title)}" onload="this.nextElementSibling.remove()" onerror="this.remove()"><span class="ph-t">Add ${esc(phSrc(p.file))}</span></button></figure>`).join("");
+  $("photos").innerHTML=phList.slice(0,PH_SHOWN).map((p,i)=>`<figure><span class="mono">${esc(p.title)}${p.date?" · "+esc(phDate(p.date)):""}</span><button type="button" class="ph" data-i="${i}" aria-label="Open photo: ${esc(p.title)}"><img loading="lazy" decoding="async" src="${esc(phSrc(p.file))}" alt="${esc(p.title)}" onload="this.nextElementSibling.remove()" onerror="this.remove()"><span class="ph-t">Add ${esc(phSrc(p.file))}</span></button></figure>`).join("");
   const extra=phList.length-PH_SHOWN;$("phMore").hidden=extra<=0;if(extra>0)$("phAll").textContent="View all "+phList.length+" photos";
 }
 function showPhoto(i){
@@ -453,7 +453,7 @@ document.addEventListener("keydown",e=>{if(!$("pm").hidden&&e.key=="Escape")pmSh
 function renderHeroPartners(){
   const ord={main:0,part:1,sup:2},items=[...pList].sort((a,b)=>ord[pTier(a.tier)]-ord[pTier(b.tier)]);
   const slot=`<a class="sp slot" href="/${MAILTO}" aria-label="Your logo can be here: contact us"><img src="/images/partners/your-logo-here.svg" alt="Your logo can be here" loading="lazy" decoding="async"></a>`;
-  let html=items.map(p=>{const src=pLogo(p.logo),lk=pLink(p.link),img=src?`<img src="/${src}" alt="${esc(p.name)}" loading="lazy" decoding="async" onerror="this.replaceWith(document.createTextNode(this.alt))">`:esc(p.name);
+  let html=items.map(p=>{const src=pLogo(p.logo),lk=pLink(p.link),img=src?`<img src="${esc(src)}" alt="${esc(p.name)}" loading="lazy" decoding="async" onerror="this.replaceWith(document.createTextNode(this.alt))">`:esc(p.name);
     return lk?`<a class="sp" href="/${esc(lk)}" target="_blank" rel="noopener noreferrer" aria-label="${esc(p.name)} (opens in a new tab)">${img}</a>`:`<span class="sp">${img}</span>`}).join("");
   for(let i=items.length;i<4;i++)html+=slot;
   if(items.length>=4)html+=slot;
@@ -570,6 +570,6 @@ loadPartners();
 
 
 
-<script>const languageSelect=document.getElementById("languageSelect");if(languageSelect){languageSelect.value="nl";languageSelect.addEventListener("change",function(){window.location.href="/"+this.value+"/";});}</script>
+<script>(function(){var box=document.getElementById("lang");if(!box)return;var btn=box.querySelector(".lang-btn"),menu=document.getElementById("langMenu");function set(o){btn.setAttribute("aria-expanded",o?"true":"false");menu.hidden=!o}btn.addEventListener("click",function(){set(menu.hidden)});document.addEventListener("click",function(e){if(!box.contains(e.target))set(false)});document.addEventListener("keydown",function(e){if(e.key==="Escape"&&!menu.hidden){set(false);btn.focus()}});})();</script>
 </body>
 </html>
