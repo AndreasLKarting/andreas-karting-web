@@ -32,7 +32,7 @@
 <body>
 <header><div class="wrap"><a class="logo" href="#top"><i aria-hidden="true"><b>AL</b></i>Andreas Lazaridis</a>
 <nav><a href="#profile">Profile</a><a href="#achievements">Achievements</a><a href="#calendar">Calendar</a><a href="#media">Media</a><a href="#social">Social</a><a href="#sponsoring">Sponsoring</a></nav>
-<a class="btn" data-mail href="#">Work together</a></div></header>
+<label class="language-control"><span class="sr-only">Language</span><select id="languageSelect" aria-label="Language"><option value="nl">NL</option><option value="en">EN</option><option value="gr">GR</option></select></label><a class="btn" data-mail href="#">Work together</a></div></header>
 
 <main id="top" class="wrap">
 <div class="hero"><div>
@@ -560,6 +560,199 @@ loadPartners();
       window.gtag("event", "instagram_click", { link_url: href });
     }
   });
+})();
+</script>
+
+
+<!-- Language switcher: Dutch is the default; English and Greek are also available. -->
+<script>
+(function () {
+  const dictionary = {
+    "Profile": ["Profiel", "Προφίλ"],
+    "Achievements": ["Prestaties", "Διακρίσεις"],
+    "Calendar": ["Kalender", "Ημερολόγιο"],
+    "Media": ["Media", "Πολυμέσα"],
+    "Social": ["Sociale media", "Κοινωνικά δίκτυα"],
+    "Sponsoring": ["Sponsoring", "Χορηγίες"],
+    "Work together": ["Samenwerken", "Συνεργασία"],
+    "Driving with passion.": ["Rijden met passie.", "Οδηγώ με πάθος."],
+    "I'm here to show what's possible, pushing every limit on the track, inspire and get inspired.": ["Ik wil laten zien wat mogelijk is: grenzen verleggen op de baan, anderen inspireren en zelf geïnspireerd worden.", "Είμαι εδώ για να δείξω τι είναι δυνατό, ξεπερνώντας κάθε όριο στην πίστα, εμπνέοντας και αντλώντας έμπνευση."],
+    "View media kit": ["Bekijk de mediakit", "Δείτε το media kit"],
+    "Sponsor placements": ["Sponsormogelijkheden", "Θέσεις χορηγών"],
+    "Karting driver": ["Kartcoureur", "Οδηγός καρτ"],
+    "Netherlands · Greece · Europe": ["Nederland · Griekenland · Europa", "Ολλανδία · Ελλάδα · Ευρώπη"],
+    "Last race": ["Laatste race", "Τελευταίος αγώνας"],
+    "Next race": ["Volgende race", "Επόμενος αγώνας"],
+    "Days": ["Dagen", "Ημέρες"],
+    "Hours": ["Uren", "Ώρες"],
+    "Minutes": ["Minuten", "Λεπτά"],
+    "Our partners": ["Onze partners", "Οι συνεργάτες μας"],
+    "Become a partner →": ["Word partner →", "Γίνετε συνεργάτης →"],
+    "01 / Driver profile": ["01 / Coureursprofiel", "01 / Προφίλ οδηγού"],
+    "Who is Andreas?": ["Wie is Andreas?", "Ποιος είναι ο Ανδρέας;"],
+    "Andreas started karting in 2023 with": ["Andreas begon in 2023 met karten bij", "Ο Ανδρέας ξεκίνησε το καρτ το 2023 με την ομάδα"],
+    "and since 2026 trains and races with": ["en traint en racet sinds 2026 bij", "και από το 2026 προπονείται και αγωνίζεται με την ομάδα"],
+    "In 2026 he competes in the": ["In 2026 rijdt hij in", "Το 2026 αγωνίζεται στα"],
+    "(Junior/Mini),": ["(Junior/Mini),", "(Junior/Mini),"],
+    "(Light/Pupillen) and the": ["(Light/Pupillen) en", "(Light/Pupillen) και"],
+    "(Junior),": ["(Junior),", "(Junior),"],
+    "with podiums at Circuit Park Berghem, Euro Indoor Karting Swalmen and the SWS Series in Thessaloniki.": ["met podiumplaatsen op Circuit Park Berghem, Euro Indoor Karting Swalmen en de SWS Series in Thessaloniki.", "με θέσεις στο βάθρο στο Circuit Park Berghem, στο Euro Indoor Karting Swalmen και στη σειρά SWS στη Θεσσαλονίκη."],
+    "His goal is to fight at the front every weekend and keep improving his race craft. He films his onboard sessions and shares them with a growing audience of racing fans.": ["Zijn doel is om elk raceweekend vooraan mee te strijden en zijn racevaardigheid te blijven verbeteren. Hij filmt zijn onboard-sessies en deelt ze met een groeiend publiek van racefans.", "Στόχος του είναι να διεκδικεί τις πρώτες θέσεις κάθε αγωνιστικό Σαββατοκύριακο και να βελτιώνει συνεχώς τις αγωνιστικές του δεξιότητες. Βιντεοσκοπεί τις onboard διαδρομές του και τις μοιράζεται με ένα ολοένα μεγαλύτερο κοινό φίλων των αγώνων."],
+    "02 / Achievements": ["02 / Prestaties", "02 / Διακρίσεις"],
+    "2026 Results": ["Resultaten 2026", "Αποτελέσματα 2026"],
+    "03 / Results calendar": ["03 / Racekalender", "03 / Ημερολόγιο αγώνων"],
+    "Race Calendar": ["Racekalender", "Ημερολόγιο αγώνων"],
+    "Status": ["Status", "Κατάσταση"],
+    "Year": ["Jaar", "Έτος"],
+    "Venue": ["Circuit", "Πίστα"],
+    "Race": ["Race", "Αγώνας"],
+    "Date": ["Datum", "Ημερομηνία"],
+    "Country": ["Land", "Χώρα"],
+    "Category": ["Categorie", "Κατηγορία"],
+    "Result": ["Resultaat", "Αποτέλεσμα"],
+    "04 / Media": ["04 / Media", "04 / Πολυμέσα"],
+    "Videos": ["Video's", "Βίντεο"],
+    "Welcome to my racing journey. Through these videos, you get a front-row seat to my practice sessions, championship races, and new track explorations across the Netherlands, Greece, and wherever my wheels take me.": ["Welkom bij mijn race-avontuur. Deze video's geven je een plek op de eerste rij bij mijn trainingen, kampioenschapsraces en ontdekkingen van nieuwe circuits in Nederland, Griekenland en daarbuiten.", "Καλώς ήρθατε στο αγωνιστικό μου ταξίδι. Μέσα από αυτά τα βίντεο βρίσκεστε στην πρώτη σειρά στις προπονήσεις μου, στους αγώνες πρωταθλήματος και στις ανακαλύψεις νέων πιστών στην Ολλανδία, στην Ελλάδα και αλλού."],
+    "Photos": ["Foto's", "Φωτογραφίες"],
+    "Where your brand appears": ["Waar jouw merk zichtbaar is", "Πού εμφανίζεται το brand σας"],
+    "Shown on Andreas’s own helmet (Zamp RZ-42 Youth) and race suit.": ["Getoond op Andreas' eigen helm (Zamp RZ-42 Youth) en racepak.", "Εμφανίζεται στο προσωπικό κράνος του Ανδρέα (Zamp RZ-42 Youth) και στη στολή αγώνων."],
+    "1 Helmet side": ["1 Zijkant helm", "1 Πλαϊνό κράνους"],
+    "2 Helmet top and forehead": ["2 Bovenkant helm en voorhoofd", "2 Πάνω μέρος κράνους και μέτωπο"],
+    "4 Suit back": ["4 Achterkant racepak", "4 Πίσω μέρος στολής"],
+    "11 Visor top strip": ["11 Bovenrand vizier", "11 Πάνω λωρίδα ζελατίνας"],
+    "3 Chest, small logos (left and right)": ["3 Borst, kleine logo's (links en rechts)", "3 Στήθος, μικρά λογότυπα (αριστερά και δεξιά)"],
+    "5 · 6 Sleeves": ["5 · 6 Mouwen", "5 · 6 Μανίκια"],
+    "7 Side of the legs": ["7 Zijkant benen", "7 Πλαϊνό ποδιών"],
+    "12 Helmet lower side": ["12 Onderzijde zijkant helm", "12 Κάτω πλαϊνό κράνους"],
+    "Custom, on request": ["Maatwerk op aanvraag", "Εξατομικευμένο, κατόπιν αιτήματος"],
+    "8 Helmet chin": ["8 Kin van de helm", "8 Σαγόνι κράνους"],
+    "9 Helmet rear": ["9 Achterkant helm", "9 Πίσω μέρος κράνους"],
+    "10 Lower back": ["10 Onderrug", "10 Κάτω μέρος πλάτης"],
+    "Website and social media": ["Website en sociale media", "Ιστότοπος και κοινωνικά δίκτυα"],
+    "(no physical placement)": ["(geen fysieke plaatsing)", "(χωρίς φυσική τοποθέτηση)"],
+    "Indicative layout. Logo sizes and exact positions are agreed per partner. The visor strip is subject to series rules.": ["Indicatieve indeling. Logogrootte en exacte posities worden per partner afgesproken. De vizierstrook is afhankelijk van de reglementen van de serie.", "Ενδεικτική διάταξη. Το μέγεθος και οι ακριβείς θέσεις των λογοτύπων συμφωνούνται με κάθε συνεργάτη. Η λωρίδα στο ζελατινάκι υπόκειται στους κανονισμούς της σειράς."],
+    "Talk partnerships": ["Bespreek sponsoring", "Συζητήστε συνεργασίες"],
+    "05 / Social": ["05 / Sociale media", "05 / Κοινωνικά δίκτυα"],
+    "Audience": ["Bereik", "Κοινό"],
+    "06 / Sponsoring": ["06 / Sponsoring", "06 / Χορηγίες"],
+    "Make the next": ["Maak het volgende", "Κάντε την επόμενη"],
+    "season count.": ["seizoen onvergetelijk.", "σεζόν να μετρήσει."],
+    "01 / Exposure": ["01 / Zichtbaarheid", "01 / Προβολή"],
+    "Trackside Presence": ["Zichtbaarheid op het circuit", "Προβολή στην πίστα"],
+    "Put your brand in the racing environment through agreed logo placements on racewear, helmet and other materials.": ["Breng je merk onder de aandacht in de racewereld met afgesproken logoplaatsingen op racekleding, helm en andere materialen.", "Προβάλετε το brand σας στον χώρο των αγώνων με συμφωνημένες τοποθετήσεις λογοτύπου στη στολή, στο κράνος και σε άλλα υλικά."],
+    "02 / Reach": ["02 / Bereik", "02 / Εμβέλεια"],
+    "Digital Visibility": ["Digitale zichtbaarheid", "Ψηφιακή προβολή"],
+    "Reach motorsport fans through race videos, YouTube content, Instagram posts and event updates.": ["Bereik motorsportfans via racevideo's, YouTube-content, Instagram-posts en evenementupdates.", "Προσεγγίστε φίλους του μηχανοκίνητου αθλητισμού μέσα από αγωνιστικά βίντεο, περιεχόμενο στο YouTube, αναρτήσεις στο Instagram και ενημερώσεις αγώνων."],
+    "03 / Story": ["03 / Verhaal", "03 / Ιστορία"],
+    "Racing Journey": ["Race-avontuur", "Αγωνιστική πορεία"],
+    "Follow Andreas’s development as a kart racer, including the challenges, progress and results throughout the season.": ["Volg Andreas' ontwikkeling als karter, met de uitdagingen, vooruitgang en resultaten gedurende het seizoen.", "Ακολουθήστε την εξέλιξη του Ανδρέα ως οδηγού καρτ, τις προκλήσεις, την πρόοδο και τα αποτελέσματά του σε όλη τη σεζόν."],
+    "04 / Accountability": ["04 / Transparantie", "04 / Διαφάνεια"],
+    "Transparent Reporting": ["Transparante rapportage", "Διαφανής ενημέρωση"],
+    "Receive agreed updates on race results, content performance and available audience metrics.": ["Ontvang afgesproken updates over race-resultaten, contentprestaties en beschikbare publieksstatistieken.", "Λάβετε συμφωνημένες ενημερώσεις για αποτελέσματα αγώνων, απόδοση περιεχομένου και διαθέσιμα στατιστικά κοινού."],
+    "Support Andreas’s racing journey. Sponsorship packages and product partnerships are available for the coming season.": ["Steun Andreas' race-avontuur. Sponsorpakketten en productpartnerschappen zijn beschikbaar voor het komende seizoen.", "Στηρίξτε την αγωνιστική πορεία του Ανδρέα. Διατίθενται πακέτα χορηγίας και συνεργασίες προϊόντων για την επόμενη σεζόν."],
+    "Open media kit": ["Open de mediakit", "Ανοίξτε το media kit"],
+    "Supporter / Partner / Main Partner · Custom packages welcome": ["Supporter / Partner / Main Partner · Maatwerk welkom", "Supporter / Partner / Main Partner · Δυνατότητα εξατομικευμένων πακέτων"],
+    "Investment on request": ["Investering op aanvraag", "Επένδυση κατόπιν αιτήματος"],
+    "Logo in the website partner carousel": ["Logo in de partnercarrousel op de website", "Λογότυπο στο carousel συνεργατών του ιστότοπου"],
+    "Thank-you Story and tag": ["Bedank-Story en tag", "Story ευχαριστίας και tag"],
+    "Become a Supporter": ["Word Supporter", "Γίνετε Supporter"],
+    "Everything in Supporter": ["Alles van Supporter", "Όλα τα προνόμια του Supporter"],
+    "Small logo on race suit": ["Klein logo op het racepak", "Μικρό λογότυπο στη στολή αγώνων"],
+    "1 dedicated Reel per season": ["1 speciale Reel per seizoen", "1 ειδικό Reel ανά σεζόν"],
+    "Season results report": ["Seizoensrapport met resultaten", "Αναφορά αποτελεσμάτων σεζόν"],
+    "Become a Partner": ["Word Partner", "Γίνετε Partner"],
+    "Everything in Partner": ["Alles van Partner", "Όλα τα προνόμια του Partner"],
+    "Prominent logo on suit and helmet": ["Prominent logo op racepak en helm", "Εμφανές λογότυπο στη στολή και στο κράνος"],
+    "1 dedicated post per month": ["1 speciale post per maand", "1 ειδική ανάρτηση τον μήνα"],
+    "Become Main Partner": ["Word Main Partner", "Γίνετε Main Partner"],
+    "Karting Driver": ["Kartcoureur", "Οδηγός καρτ"],
+    "Social Media, Web and Communication are maintained by parents.": ["Social media, website en communicatie worden door de ouders beheerd.", "Τα κοινωνικά δίκτυα, ο ιστότοπος και η επικοινωνία διαχειρίζονται από τους γονείς."],
+    "Explore": ["Ontdek", "Περιήγηση"],
+    "Packages": ["Pakketten", "Πακέτα"],
+    "Media kit": ["Mediakit", "Media kit"],
+    "Performance analysis": ["Prestatieanalyse", "Ανάλυση επιδόσεων"],
+    "Email": ["E-mail", "Email"],
+    "© 2026 Andreas Lazaridis. All rights reserved. ·": ["© 2026 Andreas Lazaridis. Alle rechten voorbehouden. ·", "© 2026 Andreas Lazaridis. Με επιφύλαξη παντός δικαιώματος. ·"],
+    "Privacy": ["Privacy", "Απόρρητο"],
+    "Help improve AL Racing": ["Help AL Racing verbeteren", "Βοηθήστε να βελτιωθεί το AL Racing"],
+    "With your permission, Google Analytics measures website traffic and how visitors use this site. Analytics is optional.": ["Met jouw toestemming meet Google Analytics het websiteverkeer en hoe bezoekers de site gebruiken. Analytics is optioneel.", "Με την άδειά σας, το Google Analytics μετρά την επισκεψιμότητα και τον τρόπο χρήσης του ιστότοπου. Η συμμετοχή είναι προαιρετική."],
+    "Privacy statement": ["Privacyverklaring", "Δήλωση απορρήτου"],
+    "Reject analytics": ["Analytics weigeren", "Απόρριψη analytics"],
+    "Accept analytics": ["Analytics accepteren", "Αποδοχή analytics"],
+    "Privacy settings": ["Privacyinstellingen", "Ρυθμίσεις απορρήτου"],
+    "All": ["Alles", "Όλα"],
+    "Upcoming": ["Aankomend", "Προσεχείς"],
+    "Completed": ["Afgerond", "Ολοκληρωμένοι"],
+    "No races match these filters.": ["Geen races gevonden met deze filters.", "Δεν βρέθηκαν αγώνες με αυτά τα φίλτρα."],
+    "Prev": ["Vorige", "Προηγ."],
+    "Next": ["Volgende", "Επόμενο"],
+    "Race weekend": ["Raceweekend", "Αγωνιστικό Σαββατοκύριακο"],
+    "No races": ["Geen races", "Δεν υπάρχουν αγώνες"],
+    "View all ": ["Bekijk alle ", "Προβολή όλων των "],
+    " photos": [" foto's", " φωτογραφίες"],
+    "Add ": ["Voeg toe: ", "Προσθήκη: "],
+    "Video ID missing": ["Video-ID ontbreekt", "Λείπει το ID του βίντεο"]
+  };
+  const langKey = "alracing-language";
+  const select = document.getElementById("languageSelect");
+  if (!select) return;
+  const reverse = {};
+  Object.entries(dictionary).forEach(([en, values]) => {
+    reverse[values[0]] = en;
+    reverse[values[1]] = en;
+  });
+  function translateTextNode(node, lang) {
+    const raw = node.nodeValue;
+    const trimmed = raw.trim();
+    if (!trimmed) return;
+    let key = trimmed;
+    if (lang === "en") key = reverse[trimmed] || trimmed;
+    else if (!dictionary[key]) key = reverse[trimmed] || trimmed;
+    const values = dictionary[key];
+    if (!values) return;
+    const value = lang === "en" ? key : values[lang === "nl" ? 0 : 1];
+    if (value !== trimmed) node.nodeValue = raw.replace(trimmed, value);
+  }
+  function applyLanguage(lang) {
+    document.documentElement.lang = lang === "gr" ? "el" : lang;
+    document.querySelectorAll("[data-lang-label]").forEach(el => {
+      el.textContent = lang.toUpperCase();
+    });
+    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+    const nodes = [];
+    while (walker.nextNode()) nodes.push(walker.currentNode);
+    nodes.forEach(node => translateTextNode(node, lang));
+    const titleMap = {
+      nl: "Andreas Lazaridis | Karting",
+      en: "Andreas Lazaridis | Karting",
+      gr: "Andreas Lazaridis | Καρτ"
+    };
+    document.title = titleMap[lang];
+    try { localStorage.setItem(langKey, lang); } catch (e) {}
+  }
+  let current = "nl";
+  try { current = localStorage.getItem(langKey) || "nl"; } catch (e) {}
+  if (!["nl", "en", "gr"].includes(current)) current = "nl";
+  select.value = current;
+  applyLanguage(current);
+  select.addEventListener("change", () => applyLanguage(select.value));
+  const observer = new MutationObserver(records => {
+    for (const record of records) {
+      if (record.type === "characterData") translateTextNode(record.target, current);
+      record.addedNodes && record.addedNodes.forEach(node => {
+        if (node.nodeType === Node.TEXT_NODE) translateTextNode(node, current);
+        else if (node.nodeType === Node.ELEMENT_NODE) {
+          const walker = document.createTreeWalker(node, NodeFilter.SHOW_TEXT);
+          const nodes = [];
+          while (walker.nextNode()) nodes.push(walker.currentNode);
+          nodes.forEach(n => translateTextNode(n, current));
+        }
+      });
+    }
+  });
+  observer.observe(document.body, { subtree: true, childList: true, characterData: true });
+  const originalApply = applyLanguage;
+  applyLanguage = function (lang) { current = lang; originalApply(lang); };
 })();
 </script>
 
