@@ -2135,3 +2135,10 @@ header .logo { white-space: nowrap; }
   .two { grid-template-columns: 1fr; gap: 24px; }
   .facts > div { grid-template-columns: 1fr; gap: 2px; padding: 11px 16px; }
 }
+
+/* profile: "Driving style" button sits in the gap under the story, level with the bottom of the facts grid */
+.two > div:last-child { display: flex; flex-direction: column; align-self: stretch; }
+.two .facts-cta { margin-top: auto; align-self: flex-end; }
+@media (max-width: 800px) {
+  .two .facts-cta { margin-top: 4px; align-self: flex-start; }
+}
