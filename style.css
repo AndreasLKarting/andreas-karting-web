@@ -2096,3 +2096,42 @@ header .logo { white-space: nowrap; }
   header nav::-webkit-scrollbar { display: none; }
   header nav a { flex: 0 0 auto; white-space: nowrap; }
 }
+
+/* profile: facts grid + story side by side */
+.two {
+  display: grid;
+  grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+  gap: 40px;
+  align-items: start;
+}
+.facts {
+  margin: 0;
+  border: 1px solid var(--edge);
+  border-left: 3px solid var(--blue);
+  background: rgba(255,255,255,.02);
+}
+.facts > div {
+  display: grid;
+  grid-template-columns: minmax(110px, 34%) 1fr;
+  gap: 16px;
+  padding: 13px 18px;
+  border-bottom: 1px solid var(--line);
+}
+.facts > div:last-child { border-bottom: 0; }
+.facts dt {
+  font: 700 11px var(--mono);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  align-self: center;
+}
+.facts dd {
+  margin: 0;
+  color: var(--text);
+  font-weight: 500;
+  overflow-wrap: anywhere;
+}
+@media (max-width: 800px) {
+  .two { grid-template-columns: 1fr; gap: 24px; }
+  .facts > div { grid-template-columns: 1fr; gap: 2px; padding: 11px 16px; }
+}
