@@ -2143,16 +2143,32 @@ header .logo { white-space: nowrap; }
   .two .facts-cta { margin-top: 4px; align-self: flex-start; }
 }
 
-/* PDF links show a document icon instead of the arrow */
-.btn[href$=".pdf"]::after,
-footer a[href$=".pdf"]::after {
+/* links to downloadable documents (pdf, word, excel, ...) show a document icon instead of the arrow */
+.btn[href$=".pdf" i]::after,
+.btn[href$=".doc" i]::after,
+.btn[href$=".docx" i]::after,
+.btn[href$=".xls" i]::after,
+.btn[href$=".xlsx" i]::after,
+.btn[href$=".ppt" i]::after,
+.btn[href$=".pptx" i]::after,
+.btn[href$=".csv" i]::after,
+.btn[href$=".zip" i]::after,
+footer a[href$=".pdf" i]::after,
+footer a[href$=".doc" i]::after,
+footer a[href$=".docx" i]::after,
+footer a[href$=".xls" i]::after,
+footer a[href$=".xlsx" i]::after,
+footer a[href$=".ppt" i]::after,
+footer a[href$=".pptx" i]::after,
+footer a[href$=".csv" i]::after,
+footer a[href$=".zip" i]::after {
   content: "";
   display: inline-block;
-  width: 1.15em;
+  width: 1.2em;
   height: 1.4em;
-  margin-left: 8px;
-  vertical-align: -.32em;
+  margin-left: 10px;
+  vertical-align: -.3em;
   background: currentColor;
-  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='3 1 18 22'%3E%3Cpath d='M4.5 2h9.5l5.5 5.5v14.5h-15z M14 2v5.5h5.5' fill='none' stroke='black' stroke-width='1.7' stroke-linejoin='round'/%3E%3Ctext x='12' y='18' font-family='Arial,Helvetica,sans-serif' font-weight='800' font-size='8' text-anchor='middle' fill='black'%3EPDF%3C/text%3E%3C/svg%3E") center / contain no-repeat;
-  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='3 1 18 22'%3E%3Cpath d='M4.5 2h9.5l5.5 5.5v14.5h-15z M14 2v5.5h5.5' fill='none' stroke='black' stroke-width='1.7' stroke-linejoin='round'/%3E%3Ctext x='12' y='18' font-family='Arial,Helvetica,sans-serif' font-weight='800' font-size='8' text-anchor='middle' fill='black'%3EPDF%3C/text%3E%3C/svg%3E") center / contain no-repeat;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='3 1 18 22'%3E%3Cpath d='M5 2h9l5 5v15H5z M14 2v5h5 M8.5 12.5h7 M8.5 16h7 M8.5 19.5h4' fill='none' stroke='black' stroke-width='1.8' stroke-linejoin='round' stroke-linecap='round'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='3 1 18 22'%3E%3Cpath d='M5 2h9l5 5v15H5z M14 2v5h5 M8.5 12.5h7 M8.5 16h7 M8.5 19.5h4' fill='none' stroke='black' stroke-width='1.8' stroke-linejoin='round' stroke-linecap='round'/%3E%3C/svg%3E") center / contain no-repeat;
 }
