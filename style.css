@@ -2142,3 +2142,17 @@ header .logo { white-space: nowrap; }
 @media (max-width: 800px) {
   .two .facts-cta { margin-top: 4px; align-self: flex-start; }
 }
+
+/* PDF links show a document icon instead of the arrow */
+.btn[href$=".pdf"]::after,
+footer a[href$=".pdf"]::after {
+  content: "";
+  display: inline-block;
+  width: 1.15em;
+  height: 1.4em;
+  margin-left: 8px;
+  vertical-align: -.32em;
+  background: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='3 1 18 22'%3E%3Cpath d='M4.5 2h9.5l5.5 5.5v14.5h-15z M14 2v5.5h5.5' fill='none' stroke='black' stroke-width='1.7' stroke-linejoin='round'/%3E%3Ctext x='12' y='18' font-family='Arial,Helvetica,sans-serif' font-weight='800' font-size='8' text-anchor='middle' fill='black'%3EPDF%3C/text%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='3 1 18 22'%3E%3Cpath d='M4.5 2h9.5l5.5 5.5v14.5h-15z M14 2v5.5h5.5' fill='none' stroke='black' stroke-width='1.7' stroke-linejoin='round'/%3E%3Ctext x='12' y='18' font-family='Arial,Helvetica,sans-serif' font-weight='800' font-size='8' text-anchor='middle' fill='black'%3EPDF%3C/text%3E%3C/svg%3E") center / contain no-repeat;
+}
