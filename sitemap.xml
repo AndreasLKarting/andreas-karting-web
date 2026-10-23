@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://www.alracing.nl/</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.alracing.nl/nl/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.alracing.nl/en/"/>
+    <xhtml:link rel="alternate" hreflang="el" href="https://www.alracing.nl/gr/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.alracing.nl/nl/"/>
+    <lastmod>2026-10-23</lastmod><changefreq>weekly</changefreq><priority>1.0</priority>
+  </url>
+  <url>
     <loc>https://www.alracing.nl/nl/</loc>
     <xhtml:link rel="alternate" hreflang="nl" href="https://www.alracing.nl/nl/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.alracing.nl/en/"/>
