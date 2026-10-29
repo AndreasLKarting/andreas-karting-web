@@ -1,8 +1,7 @@
 # Social metrics: automatic numbers for the website
 
-The Audience section reads its numbers from a **"Social"** tab in the Google Sheet. YouTube is
-filled in automatically every day; Instagram and TikTok are typed in by hand (a column per metric,
-one row each) until they are automated.
+The Audience section reads its numbers from a **"Social"** tab in the Google Sheet. YouTube and Instagram are
+filled in automatically every day; TikTok is typed in by hand (one row per metric).
 
 ## Sheet layout (tab name: `Social`)
 
@@ -30,11 +29,35 @@ one row each) until they are automated.
 After that the site shows the Sheet numbers; if the Sheet cannot be reached it falls back to the numbers
 written in `index.html`.
 
-## Later: Instagram and TikTok
+## Instagram (automatic)
 
-Add a function like `updateYouTube()` that calls the platform's API and uses `setMetric_()` to write rows.
-Instagram needs a Creator or Business account linked to a Facebook Page, a Meta app and a token that is
-renewed about every 60 days. TikTok needs an approved developer app.
+The script also fills four Instagram figures every day: **Followers**, **Views (30 days)**,
+**Accounts reached (30 days)** and **Interactions (30 days)**. It uses Meta's official Instagram API
+(Instagram Login) and replaces the old hand-typed Instagram rows (Posts, Profile activity, Views (month)).
+
+One-time setup (about 20 minutes):
+
+1. The Instagram account must be a **professional account** (Creator or Business): Instagram > Settings > Account type and tools.
+2. Go to developers.facebook.com, create a free app (type *Business*), add the product **Instagram**
+   and open *API setup with Instagram login*.
+3. Add the Instagram account (*Add account*) and log in with it. Request the permissions
+   `instagram_business_basic` and `instagram_business_manage_insights`. While the app stays in
+   development mode this works for your own account without app review.
+4. Click **Generate token** for the account and copy it. If it is a short-lived token, exchange it for a
+   long-lived (60 day) one as described in the Meta documentation.
+5. In Apps Script > Project Settings > Script properties add `IG_TOKEN` with that token. Paste the newest
+   `social-metrics.gs`, then run `setup()` again (it also switches the daily trigger to `updateAll`).
+
+The script renews the token itself about once a week, so it does not expire as long as it keeps running.
+If the Instagram numbers stop updating, check Apps Script > Executions for the error; a token that has
+expired is replaced by generating a new one (step 4).
+
+Two notes: Instagram only reports views, reach and interactions for accounts with more than 100
+followers, and the numbers are a rolling 30-day window, which is why the labels say "(30 days)".
+
+## TikTok
+
+Still typed in by hand: TikTok needs an approved developer app for automatic numbers.
 
 # Photos: titles, dates and descriptions from the Sheet
 
