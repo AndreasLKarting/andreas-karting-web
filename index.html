@@ -134,13 +134,13 @@
 <div class="benefit"><span class="mono">04 / Transparantie</span><h3 data-i18n="benefit_4_title">Transparante rapportage</h3><p data-i18n="benefit_4_desc">Ontvang afgesproken updates over race-resultaten, contentprestaties en beschikbare publieksstatistieken.</p></div>
 </div>
 <p class="lead" data-i18n="sponsoring_lead">Steun Andreas' race-avontuur. Sponsorpakketten en productpartnerschappen zijn beschikbaar voor het komende seizoen.</p>
-<div class="cta"><a class="btn ghost" href="/mediakit.pdf" target="_blank" rel="noopener" data-i18n="sponsoring_btn_mediakit">Open de mediakit</a><button type="button" class="btn ghost" data-place data-i18n="hero_btn_sponsors">Sponsormogelijkheden</button><button type="button" class="btn" id="ppOpen" data-i18n="pp_open">Bekijk de pakketten</button></div>
+<div class="cta"><a class="btn ghost" href="/mediakit.pdf" target="_blank" rel="noopener" data-i18n="sponsoring_btn_mediakit">Open de mediakit</a><button type="button" class="btn ghost" data-place data-i18n="hero_btn_sponsors">Sponsormogelijkheden</button></div>
 <p class="side mono" data-i18n="sponsoring_side_note">Supporter / Race Partner / Partner / Main Partner &nbsp;·&nbsp; Maatwerkpakketten mogelijk</p>
 <div class="pk" id="packages">
-<div><h3>Supporter</h3><div class="pk-price"><span data-i18n="pp_sup_price">€200</span><small data-i18n="pp_sup_dur">1 jaar</small></div><p class="pk-tag" data-i18n="pp_sup_tag">Digitaal &amp; community</p><a class="btn ghost pk-cta" data-mail data-subject="Supporter package enquiry" data-i18n="pkg_supporter_cta" href="#">Word Supporter</a></div>
-<div><h3>Race Partner</h3><div class="pk-price"><span data-i18n="pp_race_price">€200</span><small data-i18n="pp_race_dur">1 raceweekend</small></div><p class="pk-tag" data-i18n="pp_race_tag">Eenmalig evenement</p><a class="btn ghost pk-cta" data-mail data-subject="Race Partner package enquiry" data-i18n="pkg_race_partner_cta" href="#">Word Race Partner</a></div>
-<div class="hot"><h3>Partner</h3><div class="pk-price"><span data-i18n="pp_par_price">€500–1.000</span><small data-i18n="pp_par_dur">seizoen</small></div><p class="pk-tag" data-i18n="pp_par_tag">Schaalbaar voor bedrijven</p><a class="btn  pk-cta" data-mail data-subject="Partner package enquiry" data-i18n="pkg_partner_cta" href="#">Word Partner</a></div>
-<div><h3>Main Partner</h3><div class="pk-price"><span data-i18n="pp_main_price">€2.500+</span><small data-i18n="pp_main_dur">seizoen</small></div><p class="pk-tag" data-i18n="pp_main_tag">Maximale zichtbaarheid</p><a class="btn ghost pk-cta" data-mail data-subject="Main Partner package enquiry" data-i18n="pkg_main_partner_cta" href="#">Word Main Partner</a></div></div>
+<div><h3>Supporter</h3><p class="pk-tag" data-i18n="pp_sup_tag">Digitaal &amp; community</p><p class="pk-desc" data-i18n="pk_sup_desc">Je naam een heel jaar op de website en in de posts van het seizoen.</p><button type="button" class="btn ghost pk-cta" data-pp-open data-i18n="pp_open">Bekijk de pakketten</button></div>
+<div><h3>Race Partner</h3><p class="pk-tag" data-i18n="pp_race_tag">Eenmalig evenement</p><p class="pk-desc" data-i18n="pk_race_desc">Betaal het inschrijfgeld van één raceweekend en krijg de naamrechten op dat weekend.</p><button type="button" class="btn ghost pk-cta" data-pp-open data-i18n="pp_open">Bekijk de pakketten</button></div>
+<div class="hot"><h3>Partner</h3><p class="pk-tag" data-i18n="pp_par_tag">Schaalbaar voor bedrijven</p><p class="pk-desc" data-i18n="pk_par_desc">Je logo op de website, in de posts en op het racepak, in drie stappen.</p><button type="button" class="btn pk-cta" data-pp-open data-i18n="pp_open">Bekijk de pakketten</button></div>
+<div><h3>Main Partner</h3><p class="pk-tag" data-i18n="pp_main_tag">Maximale zichtbaarheid</p><p class="pk-desc" data-i18n="pk_main_desc">De hoofdpositie op racepak en helm en in elke post van het raceweekend.</p><button type="button" class="btn ghost pk-cta" data-pp-open data-i18n="pp_open">Bekijk de pakketten</button></div></div>
 </div>
 </div></section>
 
@@ -603,10 +603,10 @@ loadPartners();
 
 
 <script>(function(){var box=document.getElementById("lang");if(!box)return;var btn=box.querySelector(".lang-btn"),menu=document.getElementById("langMenu");function set(o){btn.setAttribute("aria-expanded",o?"true":"false");menu.hidden=!o}btn.addEventListener("click",function(){set(menu.hidden)});document.addEventListener("click",function(e){if(!box.contains(e.target))set(false)});document.addEventListener("keydown",function(e){if(e.key==="Escape"&&!menu.hidden){set(false);btn.focus()}});menu.querySelectorAll("a").forEach(function(a){a.addEventListener("click",function(){try{localStorage.setItem("alracing-lang",a.getAttribute("href").replace(/\//g,""))}catch(e){}})});})();
-(()=>{const pp=document.getElementById("pp"),o=document.getElementById("ppOpen");if(!pp||!o)return;let from;
+(()=>{const pp=document.getElementById("pp"),os=document.querySelectorAll("[data-pp-open]");if(!pp||!os.length)return;let from;
 const open=()=>{from=document.activeElement;pp.hidden=false;document.body.style.overflow="hidden";document.getElementById("ppClose").focus()},
 shut=()=>{pp.hidden=true;document.body.style.overflow="";if(from)from.focus()};
-o.addEventListener("click",open);document.getElementById("ppClose").addEventListener("click",shut);
+os.forEach(o=>o.addEventListener("click",open));document.getElementById("ppClose").addEventListener("click",shut);
 pp.addEventListener("click",e=>{if(e.target===pp)shut()});
 document.addEventListener("keydown",e=>{if(!pp.hidden&&e.key=="Escape")shut()});
 pp.querySelectorAll("[data-pp-place]").forEach(b=>b.addEventListener("click",()=>{pp.hidden=true;document.getElementById("pm").hidden=false;document.getElementById("pmClose").focus()}))})();

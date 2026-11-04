@@ -2202,3 +2202,7 @@ footer a[href$=".zip" i]::after {
 #sponsoring .pk h3 { font-size: 24px; white-space: nowrap; }
 .pk-price { white-space: nowrap; font-size: 30px; }
 .pk .pk-cta { align-self: stretch; margin-top: auto; text-align: center; justify-content: center; white-space: nowrap; padding-left: 12px; padding-right: 12px; }
+
+/* summary cards: description instead of price */
+.pk-tag { flex: none; margin-bottom: 6px; }
+.pk-desc { flex: 1; margin: 0 0 14px; color: #cfcdc8; font-size: 15px; line-height: 1.5; }
