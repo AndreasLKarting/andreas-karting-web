@@ -13,7 +13,7 @@
  */
 
 const HANDLE = '@AndreasLazaridis.Karting';   // YouTube channel handle (used only if CHANNEL_ID is empty)
-const CHANNEL_ID = '';                         // paste the channel ID (UC...) here: more reliable than the handle
+const CHANNEL_ID = 'UC0MeHXdDhLF814x2ey1p_Wg';   // channel ID from the channel URL (more reliable than the handle)
 const TAB = 'Social';
 const HEADER = ['platform', 'metric', 'value', 'updated'];
 
