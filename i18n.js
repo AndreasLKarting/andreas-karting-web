@@ -59,6 +59,8 @@
       var n = el.firstChild;
       if (n && n.nodeType === 3) n.nodeValue = v; else el.insertBefore(document.createTextNode(v), el.firstChild);
     });
+    window.I18N = d;   // lets the page build rows from keys (results, achievements)
+    document.dispatchEvent(new CustomEvent("i18n", { detail: d }));
     if (d.page_title) {
       document.title = d.page_title;
       meta('meta[property="og:title"]', "content", d.page_title);
