@@ -2206,3 +2206,13 @@ footer a[href$=".zip" i]::after {
 /* summary cards: description instead of price */
 .pk-tag { flex: none; margin-bottom: 6px; }
 .pk-desc { flex: 1; margin: 0 0 14px; color: #cfcdc8; font-size: 15px; line-height: 1.5; }
+
+/* last race card: each podium result carries its own ribbon; chips stay on one row beside the title */
+.next.last > div:first-child { min-width: 0; flex: 1; }
+.next.last .cd { flex: none; flex-wrap: nowrap; }
+.next.last .cd div { position: relative; }
+.next.last .cd .rib { position: absolute; top: -1px; right: 8px; }
+@media (max-width: 700px) {
+  .next.last .cd { flex-wrap: wrap; justify-content: flex-start; }
+}
+.next.last .cd div.p1, .next.last .cd div.p2, .next.last .cd div.p3 { padding-top: 22px; }  /* room for the ribbon above the result */

@@ -58,7 +58,7 @@
 
 <div class="strip">
 <div class="next last" id="last" hidden><div><span class="mono" data-i18n="strip_last_race">Laatste race</span><h3 id="lName"></h3><small id="lMeta"></small></div>
-<div class="cd" id="lRes"></div><span class="ribs" id="lRibs"></span></div>
+<div class="cd" id="lRes"></div></div>
 <div class="next" id="next" hidden><div><span class="mono" data-i18n="strip_next_race">Volgende race</span><h3 id="nName"></h3><small id="nMeta"></small></div>
 <div class="cd" id="cd"><div><b id="d">00</b><span data-i18n="strip_days">Dagen</span></div><div><b id="h">00</b><span data-i18n="strip_hours">Uren</span></div><div><b id="m">00</b><span data-i18n="strip_minutes">Minuten</span></div></div></div>
 </div>
@@ -391,8 +391,7 @@ load().then(all=>{
     $("lName").textContent=pv.race+" · "+pv.venue;
     $("lMeta").textContent=when(pv).toLocaleDateString(UI.dateLocale||"en-GB",{weekday:"long",day:"numeric",month:"long",year:"numeric"}).toUpperCase();
     $("lRes").innerHTML=grp.map(r=>{const n=parseInt(r.result);
-      return `<div class="${n>0&&n<4?"p"+n:""}"><b>${isNaN(n)?esc(r.result):"P"+n}</b><span>${esc(r.category)}</span></div>`}).join("");
-    $("lRibs").innerHTML=grp.map(r=>parseInt(r.result)).filter(n=>n>0&&n<4).sort().map(n=>`<i class="rib p${n}" role="img" aria-label="Podium: ${n}${["st","nd","rd"][n-1]} place">${n}</i>`).join("");
+      return `<div class="${n>0&&n<4?"p"+n:""}">${n>0&&n<4?`<i class="rib p${n}" role="img" aria-label="Podium: ${n}${["st","nd","rd"][n-1]} place">${n}</i>`:""}<b>${isNaN(n)?esc(r.result):"P"+n}</b><span>${esc(r.category)}</span></div>`}).join("");
   }
 });
 
