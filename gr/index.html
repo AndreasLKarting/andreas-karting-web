@@ -186,14 +186,14 @@ const ICONS={ // simple inline logos, shown left of each metric row
  Instagram:'<svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="ig" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#feda75"/><stop offset=".35" stop-color="#fa7e1e"/><stop offset=".6" stop-color="#d62976"/><stop offset=".85" stop-color="#962fbf"/><stop offset="1" stop-color="#4f5bd5"/></linearGradient></defs><rect x="4" y="4" width="56" height="56" rx="16" fill="url(#ig)"/><circle cx="32" cy="32" r="12.5" fill="none" stroke="#fff" stroke-width="4"/><circle cx="46" cy="18" r="3.2" fill="#fff"/></svg>',
  TikTok:'<svg viewBox="0 0 64 64" aria-hidden="true"><rect x="4" y="4" width="56" height="56" rx="14" fill="#000" stroke="#3a3a44" stroke-width="2"/><g fill="none" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M34 16v24.5a6.5 6.5 0 1 1-6.5-6.5M34 16c.8 6 5 10 11 10.5" stroke="#25f4ee" transform="translate(-2 -1.5)"/><path d="M34 16v24.5a6.5 6.5 0 1 1-6.5-6.5M34 16c.8 6 5 10 11 10.5" stroke="#fe2c55" transform="translate(2 1.5)"/><path d="M34 16v24.5a6.5 6.5 0 1 1-6.5-6.5M34 16c.8 6 5 10 11 10.5" stroke="#fff"/></g></svg>'
 };
-const STANDINGS=[ // [title, [result lines], small note]
- ["FK Light 2026",["3rd (Overall)","2nd (Pupillen)"],"Raced 7 of 7 completed (10 races in total)"],
- ["NK Junior 2026",["13th (Overall)","6th (Mini)"],"Raced 6 of 8 completed, 2 missed (10 races in total)"],
- ["DRS Junior 2026",["22nd (Overall)"],"Raced 5 of 8 completed, 3 missed (10 races in total)"],
- ["SWS Series 2026",["8th (NL)","514th (World)"],""]];
-const ACH=[ // [title, caption, result]
- ["FK Nederland · 2025","Pupillen championship","3rd"],
- ["DOKC · 2026","Future Stars championship","2nd"]]; // podium counts per series and year are added automatically from the calendar (see autoAch)
+const STANDINGS=[ // [title, [result lines], small note]; used until the page text sheet has the res_ keys
+ ["FK Light 2026",["3η (Γενική)", "2η (Pupillen)"],"7 από 7 ολοκληρωμένους αγώνες (10 αγώνες συνολικά)"],
+ ["NK Junior 2026",["13η (Γενική)", "6η (Mini)"],"6 από 8 ολοκληρωμένους αγώνες, 2 χωρίς συμμετοχή (10 αγώνες συνολικά)"],
+ ["DRS Junior 2026",["22η (Γενική)"],"5 από 8 ολοκληρωμένους αγώνες, 3 χωρίς συμμετοχή (10 αγώνες συνολικά)"],
+ ["SWS Series 2026",["8η (NL)", "514η (Παγκόσμια)"],""]];
+const ACH=[ // [title, caption, result]; used until the page text sheet has the ach_ keys
+ ["FK Nederland · 2025","Πρωτάθλημα Pupillen","3η"],
+ ["DOKC · 2026","Πρωτάθλημα Future Stars","2η"]];
 const SOCIAL=[["YouTube","AndreasLazaridis.Karting",[["Subscribers","134"],["Views","165.3K"],["Watch time (hours)","1.2K"],["Videos","147"]]],
  ["Instagram","andreas.lazaridis.karting",[["Followers","753"],["Posts","167"],["Profile activity (month)","480"],["Views (month)","33.4K"]]],
  ["TikTok","Andreas.Lazaridis.Karting",[["Followers","466"],["Posts","36"],["Profile views (month)","215"],["Views (month)","8.8K"]]]];
@@ -257,7 +257,7 @@ document.querySelectorAll("[data-k]").forEach(a=>{a.href=CFG.links[a.dataset.k];
 // static blocks
 $("logos").innerHTML=CHIPS.map(c=>{const inner=`<em>${c[0]}</em><img src="${LOGO_DIR}${c[1]}" alt="" loading="lazy" decoding="async" onerror="this.remove()">`;
   return c[2]?`<a class="chip" href="${c[2]}" target="_blank" rel="noopener noreferrer" aria-label="${c[0]} (opens in a new tab)">${inner}</a>`:`<span class="chip pl">${inner}</span>`}).join("");
-const ord=s=>{const m=String(s).match(/^(\d+)(?:st|nd|rd|th)\b/i);return m?+m[1]:0};
+const ord=s=>ordN(s);
 const NUMW={one:1,two:2,three:3,four:4,five:5,six:6,seven:7,eight:8,nine:9,ten:10};
 const MEDALS={gold:1,silver:2,bronze:3};
 const podsFromCaption=c=>{const p=[];String(c||"").replace(/(\d+|one|two|three|four|five|six|seven|eight|nine|ten)\s+(gold|silver|bronze)\b/gi,(m,n,k)=>{const q=NUMW[n.toLowerCase()]||+n;for(let i=0;i<q;i++)p.push(MEDALS[k.toLowerCase()])});return p.sort()}; // "Four silver · three bronze" -> [2,2,2,2,3,3,3]
@@ -266,7 +266,6 @@ const rowHTML=(t,c,o,pp)=>{
   const rib=pods.length?`<span class="ribs">${pods.map(n=>`<i class="rib p${n}" role="img" aria-label="Podium: ${n}${["st","nd","rd"][n-1]} place">${n}</i>`).join("")}</span>`:"";
   const lines=o.map(x=>{const n=ord(x);return `<span${n>0&&n<4?` class="p${n}"`:""}>${x}</span>`}).join("");
   return `<div class="row">${rib}<div><h3>${t}</h3>${c?`<small>${c}</small>`:""}</div><div class="out">${lines}</div></div>`};
-$("ach").innerHTML=ACH.map(a=>rowHTML(a[0],a[1],[a[2]])).join("");
 const SERIES_LABEL={"FK Netherland":"FK Nederland"};  // calendar name -> name shown in the achievements
 function autoAch(all){ // podium counts per series and year, straight from the calendar results (1st-3rd place)
   const m={};
@@ -276,7 +275,16 @@ function autoAch(all){ // podium counts per series and year, straight from the c
     const tot=x.c[0]+x.c[1]+x.c[2],names=[UI.gold,UI.silver,UI.bronze],pods=[];
     x.c.forEach((q,i)=>{for(let j=0;j<q;j++)pods.push(i+1)});
     return rowHTML((SERIES_LABEL[x.race]||x.race)+" · "+x.y,x.c.map((q,i)=>q?q+" "+names[i]:"").filter(Boolean).join(" · "),[tot+" "+(tot==1?UI.podium:UI.podiums)],pods)}).join("")}
-$("standings").innerHTML=STANDINGS.map(x=>rowHTML(x[0],x[2],x[1])).join("");
+const ordN=s=>{const m=String(s).match(/^\s*(\d+)(?:\.|[a-zά-ώ]{1,3})(?![a-zά-ώ0-9])/i);return m?+m[1]:0};  // "3rd", "3e", "3η", "3." -> 3 (not "7 podiums")
+function fromKeys(d,p,fields,max){ // rows typed in the page text sheet: <p><n>_title, <p><n>_<field>...
+  const out=[];for(let n=1;n<=max;n++){const t=d[p+n+"_title"];if(!t)continue;out.push([t].concat(fields.map(f=>d[p+n+"_"+f]||"")))}return out}
+let autoRows="";
+function paintAch(){
+  const d=window.I18N||{};
+  const ach=fromKeys(d,"ach_",["caption","result"],8),std=fromKeys(d,"res_",["note","1","2","3","4"],8).map(x=>[x[0],x.slice(2).filter(Boolean),x[1]]);
+  $("ach").innerHTML=(ach.length?ach:ACH).map(a=>rowHTML(a[0],a[1],[a[2]])).join("")+autoRows;
+  $("standings").innerHTML=(std.length?std:STANDINGS).map(x=>rowHTML(x[0],x[2],x[1])).join("")}
+paintAch();document.addEventListener("i18n",paintAch);
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"})[c]);
 const fmtNum=v=>{const n=Number(String(v).replace(/[ ,]/g,""));if(v===""||isNaN(n))return v;return n>=1e6?(n/1e6).toFixed(1).replace(/\.0$/,"")+"M":n>=1e4?(n/1e3).toFixed(1).replace(/\.0$/,"")+"K":n>=1e3?(n/1e3).toFixed(1).replace(/\.0$/,"")+"K":String(n)};
 // country flags for the calendar table: small built-in SVGs, so they show on every device (emoji flags do not show on Windows)
@@ -333,7 +341,7 @@ const fmt=d=>d.split("-").reverse().join("/");
 
 load().then(all=>{
   all.sort((a,b)=>when(a)-when(b));
-  $("ach").insertAdjacentHTML("beforeend",autoAch(all));
+  autoRows=autoAch(all);paintAch();
   const now=new Date(), done=r=>new Date(r.date+"T23:59:59")<now;
   // Mark the previous and next event once per race weekend, even when multiple categories share it.
   const eventKey=r=>[r.date,r.race,r.venue].join("|");
