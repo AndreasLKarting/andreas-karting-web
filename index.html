@@ -165,9 +165,9 @@ const CFG={
   defaultTime:"10:00"                             // used when a race row has no time
 };
 const UI=(()=>{const dictionaries={
-  nl:{all:"Alle",upcoming:"Aankomend",completed:"Verreden",noRaces:"Geen races gevonden voor deze filters.",prev:"Vorige",next:"Volgende",previousPage:"Vorige pagina",nextPage:"Volgende pagina",of:"van",nextRace:"VOLGENDE RACE",previousRace:"VORIGE RACE",viewAll:"Bekijk alle",photos:"foto's",add:"Toevoegen",updated:"Bijgewerkt",yourLogo:"Jouw logo kan hier staan",contactUs:"neem contact op",photo:"Foto:",dateLocale:"nl-NL"},
-  en:{all:"All",upcoming:"Upcoming",completed:"Completed",noRaces:"No races match these filters.",prev:"Prev",next:"Next",previousPage:"Previous page",nextPage:"Next page",of:"of",nextRace:"NEXT RACE",previousRace:"PREVIOUS RACE",viewAll:"View all",photos:"photos",add:"Add",updated:"Updated",yourLogo:"Your logo can be here",contactUs:"contact us",photo:"Photo:",dateLocale:"en-GB"},
-  el:{all:"Όλα",upcoming:"Προσεχείς",completed:"Ολοκληρωμένοι",noRaces:"Δεν υπάρχουν αγώνες που να ταιριάζουν στα φίλτρα.",prev:"Προηγ.",next:"Επόμ.",previousPage:"Προηγούμενη σελίδα",nextPage:"Επόμενη σελίδα",of:"από",nextRace:"ΕΠΟΜΕΝΟΣ ΑΓΩΝΑΣ",previousRace:"ΠΡΟΗΓΟΥΜΕΝΟΣ ΑΓΩΝΑΣ",viewAll:"Προβολή όλων",photos:"φωτογραφιών",add:"Προσθήκη",updated:"Ενημερώθηκε",yourLogo:"Το λογότυπό σας μπορεί να εμφανιστεί εδώ",contactUs:"επικοινωνήστε μαζί μας",photo:"Φωτογραφία:",dateLocale:"el-GR"}
+  nl:{all:"Alle",upcoming:"Aankomend",completed:"Verreden",noRaces:"Geen races gevonden voor deze filters.",prev:"Vorige",next:"Volgende",previousPage:"Vorige pagina",nextPage:"Volgende pagina",of:"van",nextRace:"VOLGENDE RACE",previousRace:"VORIGE RACE",viewAll:"Bekijk alle",photos:"foto's",add:"Toevoegen",updated:"Bijgewerkt",yourLogo:"Jouw logo kan hier staan",contactUs:"neem contact op",photo:"Foto:",gold:"goud",silver:"zilver",bronze:"brons",podium:"podium",podiums:"podiums",dateLocale:"nl-NL"},
+  en:{all:"All",upcoming:"Upcoming",completed:"Completed",noRaces:"No races match these filters.",prev:"Prev",next:"Next",previousPage:"Previous page",nextPage:"Next page",of:"of",nextRace:"NEXT RACE",previousRace:"PREVIOUS RACE",viewAll:"View all",photos:"photos",add:"Add",updated:"Updated",yourLogo:"Your logo can be here",contactUs:"contact us",photo:"Photo:",gold:"gold",silver:"silver",bronze:"bronze",podium:"podium",podiums:"podiums",dateLocale:"en-GB"},
+  el:{all:"Όλα",upcoming:"Προσεχείς",completed:"Ολοκληρωμένοι",noRaces:"Δεν υπάρχουν αγώνες που να ταιριάζουν στα φίλτρα.",prev:"Προηγ.",next:"Επόμ.",previousPage:"Προηγούμενη σελίδα",nextPage:"Επόμενη σελίδα",of:"από",nextRace:"ΕΠΟΜΕΝΟΣ ΑΓΩΝΑΣ",previousRace:"ΠΡΟΗΓΟΥΜΕΝΟΣ ΑΓΩΝΑΣ",viewAll:"Προβολή όλων",photos:"φωτογραφιών",add:"Προσθήκη",updated:"Ενημερώθηκε",yourLogo:"Το λογότυπό σας μπορεί να εμφανιστεί εδώ",contactUs:"επικοινωνήστε μαζί μας",photo:"Φωτογραφία:",gold:"χρυσά",silver:"ασημένια",bronze:"χάλκινα",podium:"βάθρο",podiums:"βάθρα",dateLocale:"el-GR"}
 };return dictionaries[document.documentElement.lang]||dictionaries.en;})();
 const LOGO_DIR="/images/logos/";   // folder that holds the logo files (shown when you hover a link)
 const CHIPS=[ // [label, logo file, link]  leave the link "" for no link
@@ -195,9 +195,7 @@ const STANDINGS=[ // [title, [result lines], small note]
  ["SWS Series 2026",["8th (NL)","514th (World)"],""]];
 const ACH=[ // [title, caption, result]
  ["FK Nederland · 2025","Pupillen championship","3rd"],
- ["DOKC · 2026","Future Stars championship","2nd"],
- ["FK Nederland · 2026","Four silver · three bronze","7 podiums"],
- ["NK Huurkarten · 2026","Two silver · three bronze","5 podiums"]];
+ ["DOKC · 2026","Future Stars championship","2nd"]]; // podium counts per series and year are added automatically from the calendar (see autoAch)
 const SOCIAL=[["YouTube","AndreasLazaridis.Karting",[["Subscribers","134"],["Views","165.3K"],["Watch time (hours)","1.2K"],["Videos","147"]]],
  ["Instagram","andreas.lazaridis.karting",[["Followers","753"],["Posts","167"],["Profile activity (month)","480"],["Views (month)","33.4K"]]],
  ["TikTok","Andreas.Lazaridis.Karting",[["Followers","466"],["Posts","36"],["Profile views (month)","215"],["Views (month)","8.8K"]]]];
@@ -265,12 +263,21 @@ const ord=s=>{const m=String(s).match(/^(\d+)(?:st|nd|rd|th)\b/i);return m?+m[1]
 const NUMW={one:1,two:2,three:3,four:4,five:5,six:6,seven:7,eight:8,nine:9,ten:10};
 const MEDALS={gold:1,silver:2,bronze:3};
 const podsFromCaption=c=>{const p=[];String(c||"").replace(/(\d+|one|two|three|four|five|six|seven|eight|nine|ten)\s+(gold|silver|bronze)\b/gi,(m,n,k)=>{const q=NUMW[n.toLowerCase()]||+n;for(let i=0;i<q;i++)p.push(MEDALS[k.toLowerCase()])});return p.sort()}; // "Four silver · three bronze" -> [2,2,2,2,3,3,3]
-const rowHTML=(t,c,o)=>{
-  let pods=o.map(ord).filter(n=>n>0&&n<4);if(!pods.length)pods=podsFromCaption(c).slice(0,12);
+const rowHTML=(t,c,o,pp)=>{
+  let pods=pp||o.map(ord).filter(n=>n>0&&n<4);if(!pods.length)pods=podsFromCaption(c).slice(0,12);
   const rib=pods.length?`<span class="ribs">${pods.map(n=>`<i class="rib p${n}" role="img" aria-label="Podium: ${n}${["st","nd","rd"][n-1]} place">${n}</i>`).join("")}</span>`:"";
   const lines=o.map(x=>{const n=ord(x);return `<span${n>0&&n<4?` class="p${n}"`:""}>${x}</span>`}).join("");
   return `<div class="row">${rib}<div><h3>${t}</h3>${c?`<small>${c}</small>`:""}</div><div class="out">${lines}</div></div>`};
 $("ach").innerHTML=ACH.map(a=>rowHTML(a[0],a[1],[a[2]])).join("");
+const SERIES_LABEL={"FK Netherland":"FK Nederland"};  // calendar name -> name shown in the achievements
+function autoAch(all){ // podium counts per series and year, straight from the calendar results (1st-3rd place)
+  const m={};
+  all.forEach(r=>{const n=parseInt(r.result),y=String(r.date||"").slice(0,4);if(!(n>0&&n<4)||!/^\d{4}$/.test(y))return;
+    const k=y+"|"+r.race;(m[k]=m[k]||{y,race:r.race,c:[0,0,0]}).c[n-1]++});
+  return Object.values(m).sort((a,b)=>b.y-a.y||a.race.localeCompare(b.race)).slice(0,6).map(x=>{
+    const tot=x.c[0]+x.c[1]+x.c[2],names=[UI.gold,UI.silver,UI.bronze],pods=[];
+    x.c.forEach((q,i)=>{for(let j=0;j<q;j++)pods.push(i+1)});
+    return rowHTML((SERIES_LABEL[x.race]||x.race)+" · "+x.y,x.c.map((q,i)=>q?q+" "+names[i]:"").filter(Boolean).join(" · "),[tot+" "+(tot==1?UI.podium:UI.podiums)],pods)}).join("")}
 $("standings").innerHTML=STANDINGS.map(x=>rowHTML(x[0],x[2],x[1])).join("");
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"})[c]);
 const fmtNum=v=>{const n=Number(String(v).replace(/[ ,]/g,""));if(v===""||isNaN(n))return v;return n>=1e6?(n/1e6).toFixed(1).replace(/\.0$/,"")+"M":n>=1e4?(n/1e3).toFixed(1).replace(/\.0$/,"")+"K":n>=1e3?(n/1e3).toFixed(1).replace(/\.0$/,"")+"K":String(n)};
@@ -328,6 +335,7 @@ const fmt=d=>d.split("-").reverse().join("/");
 
 load().then(all=>{
   all.sort((a,b)=>when(a)-when(b));
+  $("ach").insertAdjacentHTML("beforeend",autoAch(all));
   const now=new Date(), done=r=>new Date(r.date+"T23:59:59")<now;
   // Mark the previous and next event once per race weekend, even when multiple categories share it.
   const eventKey=r=>[r.date,r.race,r.venue].join("|");
