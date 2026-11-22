@@ -2216,3 +2216,31 @@ footer a[href$=".zip" i]::after {
   .next.last .cd { flex-wrap: wrap; justify-content: flex-start; }
 }
 .next.last .cd div.p1, .next.last .cd div.p2, .next.last .cd div.p3 { padding-top: 22px; }  /* room for the ribbon above the result */
+
+
+/* hero stat bar */
+.hstats { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 10px 28px; margin: 0 0 22px; }
+.hstats[hidden] { display: none; }
+.hstats div { display: flex; flex-direction: column; }
+.hstats b { font: 400 clamp(28px,3.6vw,42px)/1 var(--disp); color: var(--text); }
+.hstats span { font: 500 11px/1.3 var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: .06em; margin-top: 4px; }
+.hstats small { flex-basis: 100%; color: var(--muted); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; }
+@media (min-width: 901px) {
+  .hero .hstats { grid-column: 1; grid-row: 2; }
+  .hero .tag { grid-row: 3; }
+  .hero .quote { grid-row: 4; }
+  .hero .cta { grid-row: 5; }
+  .hero .portrait { grid-row: 1 / 6; }
+}
+.spons[hidden] { display: none; }
+
+/* last race: several legs of one race in a single tile */
+.cd .legs b { display: flex; gap: 8px; justify-content: center; font: 400 26px/1.1 Anton,Impact,sans-serif; }
+.cd .legs em { font-style: normal; }
+.cd .legs em.p1 { color: #f5c542; }
+.cd .legs em.p2 { color: #b9c8dc; }
+.cd .legs em.p3 { color: #d98e5a; }
+.next.last .cd .legs { min-width: 0; }
+
+/* per-platform update date on the social cards */
+.soc .plat .upd { display: block; margin-top: 10px; color: var(--muted); font-size: 10px; }

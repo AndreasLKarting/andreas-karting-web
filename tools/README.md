@@ -112,3 +112,13 @@ no partners it shows three open "Your logo here" slots that open an email.
 4. In `index.html`, paste it into `partnersSheet:"..."` inside `CFG`. Commit it.
 
 Only add a partner's logo once they have agreed to appear on the site.
+
+## Races tab: several legs in one row
+
+When a race weekend has several legs (heats/finals), put them in the **Result** cell of ONE row, separated by `/`:
+
+| Date | Title | Venue | Country | Category | Result |
+|---|---|---|---|---|---|
+| 08/11/2026 | FK Netherland | Karting Spa-Francorchamps | BE | Pupillen | 3 / 1 / 2 |
+
+The site shows them on one line (🥇 1 · 🥈 2 · 🥉 3 with medals), as one tile in the "Laatste race" card, and counts every leg in the podium totals and the hero stat bar. Rows that repeat the same date, title, venue and category are merged automatically, so older sheets keep working.
