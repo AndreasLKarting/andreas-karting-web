@@ -49,7 +49,7 @@
 
 <main id="top" class="wrap">
 <div class="hero"><div>
-<h1>Andreas <span>Lazaridis</span></h1><p class="tag" data-i18n="hero_tag">Rijden met passie.</p>
+<h1>Andreas <span>Lazaridis</span></h1><div class="hstats" id="hstats" hidden></div><p class="tag" data-i18n="hero_tag">Rijden met passie.</p>
 <blockquote class="quote"><p data-i18n="hero_quote">Ik wil laten zien wat mogelijk is: grenzen verleggen op de baan, anderen inspireren en zelf geïnspireerd worden.</p>
 <div class="sig" aria-label="Andreas Lazaridis">Andreas Lazaridis</div></blockquote>
 <div class="cta"><a class="btn" data-mail data-i18n="btn_work_together" href="#">Samenwerken</a><a class="btn ghost" href="/documents/Andreas_Lazaridis_Sponsoring_Deck_NL.pdf" target="_blank" rel="noopener" data-i18n="hero_btn_mediakit">Bekijk de mediakit</a><button type="button" class="btn ghost" data-place data-i18n="hero_btn_sponsors">Sponsormogelijkheden</button></div></div>
@@ -163,9 +163,9 @@ const CFG={
   defaultTime:"10:00"                             // used when a race row has no time
 };
 const UI=(()=>{const dictionaries={
-  nl:{all:"Alle",upcoming:"Aankomend",completed:"Verreden",noRaces:"Geen races gevonden voor deze filters.",prev:"Vorige",next:"Volgende",previousPage:"Vorige pagina",nextPage:"Volgende pagina",of:"van",nextRace:"VOLGENDE RACE",previousRace:"VORIGE RACE",viewAll:"Bekijk alle",photos:"foto's",add:"Toevoegen",updated:"Bijgewerkt",yourLogo:"Jouw logo kan hier staan",contactUs:"neem contact op",photo:"Foto:",gold:"goud",silver:"zilver",bronze:"brons",podium:"podium",podiums:"podiums",dateLocale:"nl-NL"},
-  en:{all:"All",upcoming:"Upcoming",completed:"Completed",noRaces:"No races match these filters.",prev:"Prev",next:"Next",previousPage:"Previous page",nextPage:"Next page",of:"of",nextRace:"NEXT RACE",previousRace:"PREVIOUS RACE",viewAll:"View all",photos:"photos",add:"Add",updated:"Updated",yourLogo:"Your logo can be here",contactUs:"contact us",photo:"Photo:",gold:"gold",silver:"silver",bronze:"bronze",podium:"podium",podiums:"podiums",dateLocale:"en-GB"},
-  el:{all:"Όλα",upcoming:"Προσεχείς",completed:"Ολοκληρωμένοι",noRaces:"Δεν υπάρχουν αγώνες που να ταιριάζουν στα φίλτρα.",prev:"Προηγ.",next:"Επόμ.",previousPage:"Προηγούμενη σελίδα",nextPage:"Επόμενη σελίδα",of:"από",nextRace:"ΕΠΟΜΕΝΟΣ ΑΓΩΝΑΣ",previousRace:"ΠΡΟΗΓΟΥΜΕΝΟΣ ΑΓΩΝΑΣ",viewAll:"Προβολή όλων",photos:"φωτογραφιών",add:"Προσθήκη",updated:"Ενημερώθηκε",yourLogo:"Το λογότυπό σας μπορεί να εμφανιστεί εδώ",contactUs:"επικοινωνήστε μαζί μας",photo:"Φωτογραφία:",gold:"χρυσά",silver:"ασημένια",bronze:"χάλκινα",podium:"βάθρο",podiums:"βάθρα",dateLocale:"el-GR"}
+  nl:{all:"Alle",upcoming:"Aankomend",completed:"Verreden",noRaces:"Geen races gevonden voor deze filters.",prev:"Vorige",next:"Volgende",previousPage:"Vorige pagina",nextPage:"Volgende pagina",of:"van",nextRace:"VOLGENDE RACE",previousRace:"VORIGE RACE",viewAll:"Bekijk alle",photos:"foto's",add:"Toevoegen",updated:"Bijgewerkt",yourLogo:"Jouw logo kan hier staan",contactUs:"neem contact op",photo:"Foto:",gold:"goud",silver:"zilver",bronze:"brons",podium:"podium",podiums:"podiums",statWin:"overwinning",statWins:"overwinningen",statCountry:"land",statCountries:"landen",statViews:"YouTube-views",statSeason:"Seizoen",updatedOn:"Bijgewerkt",dateLocale:"nl-NL"},
+  en:{all:"All",upcoming:"Upcoming",completed:"Completed",noRaces:"No races match these filters.",prev:"Prev",next:"Next",previousPage:"Previous page",nextPage:"Next page",of:"of",nextRace:"NEXT RACE",previousRace:"PREVIOUS RACE",viewAll:"View all",photos:"photos",add:"Add",updated:"Updated",yourLogo:"Your logo can be here",contactUs:"contact us",photo:"Photo:",gold:"gold",silver:"silver",bronze:"bronze",podium:"podium",podiums:"podiums",statWin:"win",statWins:"wins",statCountry:"country",statCountries:"countries",statViews:"YouTube views",statSeason:"Season",updatedOn:"Updated",dateLocale:"en-GB"},
+  el:{all:"Όλα",upcoming:"Προσεχείς",completed:"Ολοκληρωμένοι",noRaces:"Δεν υπάρχουν αγώνες που να ταιριάζουν στα φίλτρα.",prev:"Προηγ.",next:"Επόμ.",previousPage:"Προηγούμενη σελίδα",nextPage:"Επόμενη σελίδα",of:"από",nextRace:"ΕΠΟΜΕΝΟΣ ΑΓΩΝΑΣ",previousRace:"ΠΡΟΗΓΟΥΜΕΝΟΣ ΑΓΩΝΑΣ",viewAll:"Προβολή όλων",photos:"φωτογραφιών",add:"Προσθήκη",updated:"Ενημερώθηκε",yourLogo:"Το λογότυπό σας μπορεί να εμφανιστεί εδώ",contactUs:"επικοινωνήστε μαζί μας",photo:"Φωτογραφία:",gold:"χρυσά",silver:"ασημένια",bronze:"χάλκινα",podium:"βάθρο",podiums:"βάθρα",statWin:"νίκη",statWins:"νίκες",statCountry:"χώρα",statCountries:"χώρες",statViews:"προβολές YouTube",statSeason:"Σεζόν",updatedOn:"Ενημέρωση",dateLocale:"el-GR"}
 };return dictionaries[document.documentElement.lang]||dictionaries.en;})();
 const LOGO_DIR="/images/logos/";   // folder that holds the logo files (shown when you hover a link)
 const CHIPS=[ // [label, logo file, link]  leave the link "" for no link
@@ -250,7 +250,7 @@ const FALLBACK=[["2026-02-22","FK Netherland","Euro Indoor Karting Swalmen","NL"
 ["2026-12-13","FK Netherland","Kartcentrum Lelystad","NL","Pupillen",""]];
 /* ========================================= */
 
-const iso=d=>{const m=d.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/);return m?m[3]+"-"+m[2].padStart(2,"0")+"-"+m[1].padStart(2,"0"):d},$=id=>document.getElementById(id), K=["date","race","venue","country","category","result","time"];
+const iso=d=>{const m=d.match(/^(\d{1,2})[\/.](\d{1,2})[\/.](\d{4})$/);if(!m)return d;let a=+m[1],b=+m[2];if(b>12&&a<=12)[a,b]=[b,a]; /* 10/25/2026 (month first) is read as 25 Oct */ return m[3]+"-"+String(b).padStart(2,"0")+"-"+String(a).padStart(2,"0")},$=id=>document.getElementById(id), K=["date","race","venue","country","category","result","time"];
 document.querySelectorAll("[data-mail]").forEach(a=>a.href="mailto:"+CFG.email+"?subject="+encodeURIComponent((a.dataset.subject||"Sponsorship enquiry")+" - Andreas Lazaridis"));
 document.querySelectorAll("[data-k]").forEach(a=>{a.href=CFG.links[a.dataset.k];a.target="_blank";a.rel="noopener"});
 
@@ -267,10 +267,17 @@ const rowHTML=(t,c,o,pp)=>{
   const lines=o.map(x=>{const n=ord(x);return `<span${n>0&&n<4?` class="p${n}"`:""}>${x}</span>`}).join("");
   return `<div class="row">${rib}<div><h3>${t}</h3>${c?`<small>${c}</small>`:""}</div><div class="out">${lines}</div></div>`};
 const SERIES_LABEL={"FK Netherland":"FK Nederland"};  // calendar name -> name shown in the achievements
+const legsOf=v=>String(v||"").split(/\s*[\/·|;]\s*/).map(x=>x.trim()).filter(Boolean); // "3 / 1 / 2" -> the legs of one race
+const podN=x=>{const n=parseInt(x,10);return n>0&&n<4?n:0};
+function mergeLegs(all){ // rows with the same date, race, venue and category are legs of one race: show them as one row ("3 / 1 / 2")
+  const m=new Map(),out=[];
+  all.forEach(r=>{const k=[r.date,r.race,r.venue,r.category].join("|"),g=m.get(k);
+    if(!g){const c={...r};m.set(k,c);out.push(c)}else if(r.result)g.result=g.result?g.result+" / "+r.result:r.result});
+  return out}
 function autoAch(all){ // podium counts per series and year, straight from the calendar results (1st-3rd place)
   const m={};
-  all.forEach(r=>{const n=parseInt(r.result),y=String(r.date||"").slice(0,4);if(!(n>0&&n<4)||!/^\d{4}$/.test(y))return;
-    const k=y+"|"+r.race;(m[k]=m[k]||{y,race:r.race,c:[0,0,0]}).c[n-1]++});
+  all.forEach(r=>{const y=String(r.date||"").slice(0,4);if(!/^\d{4}$/.test(y))return;
+    legsOf(r.result).forEach(l=>{const n=podN(l);if(!n)return;const k=y+"|"+r.race;(m[k]=m[k]||{y,race:r.race,c:[0,0,0]}).c[n-1]++})});
   return Object.values(m).sort((a,b)=>b.y-a.y||a.race.localeCompare(b.race)).slice(0,6).map(x=>{
     const tot=x.c[0]+x.c[1]+x.c[2],names=[UI.gold,UI.silver,UI.bronze],pods=[];
     x.c.forEach((q,i)=>{for(let j=0;j<q;j++)pods.push(i+1)});
@@ -310,19 +317,30 @@ const CNAMES={netherlands:"NL",holland:"NL",belgium:"BE",germany:"DE",deutschlan
 const flagCode=v=>{v=String(v||"").trim();const re=[...v].filter(ch=>{const c=ch.codePointAt(0);return c>=0x1F1E6&&c<=0x1F1FF}).map(ch=>String.fromCharCode(ch.codePointAt(0)-0x1F1E6+65)).join("");
   return re.length==2?re:(/^[A-Za-z]{2}$/.test(v)&&!CNAMES[v.toLowerCase()]?v.toUpperCase():CNAMES[v.toLowerCase()]||v.toUpperCase())};
 const flagHTML=v=>{const c=flagCode(v),f=FLAGS[c];return f?`<span class="flag" role="img" aria-label="${f[0]}" title="${f[0]}"><svg viewBox="0 0 30 20" aria-hidden="true">${f[1]}</svg></span>`:esc(v||"")}; // unknown country: show the text as typed
-function renderSocial(sheet){ // sheet = {platform(lowercase): [[metric,value],...]}; falls back to SOCIAL above
+function renderSocial(sheet,upd){ // sheet = {platform(lowercase): [[metric,value],...]}; falls back to SOCIAL above
   $("soc").innerHTML=SOCIAL.map(s=>{const sh=(sheet&&sheet[s[0].toLowerCase()])||[],m=s[2].map(x=>{const f=sh.find(y=>y[0].toLowerCase()==x[0].toLowerCase());return [x[0],f?f[1]:x[1]]});
     sh.forEach(y=>{if(!m.some(x=>x[0].toLowerCase()==y[0].toLowerCase()))m.push(y)});
-    return `<a class="plat" href="${CFG.links[s[0].toLowerCase()]}" target="_blank" rel="noopener noreferrer" aria-label="${s[0]} (opens in a new tab)"><div class="ph-h"><img class="avatar" src="${(CFG.avatars&&CFG.avatars[s[0].toLowerCase()])||"/images/avatar.png"}" alt="" width="64" height="64" loading="lazy" decoding="async"><div><h3><span class="ico">${ICONS[s[0]]}</span>${s[0]}</h3><span class="mono">${s[1]}</span></div></div><div class="row">${m.map(x=>`<div><b>${esc(fmtNum(x[1]))}</b><span class="mono">${esc(x[0])}</span></div>`).join("")}</div></a>`}).join("")}
+    m.sort((a,b)=>(/^views/i.test(b[0])?1:0)-(/^views/i.test(a[0])?1:0)); // lead with views: big numbers first
+    const ud=upd&&upd[s[0].toLowerCase()];
+    return `<a class="plat" href="${CFG.links[s[0].toLowerCase()]}" target="_blank" rel="noopener noreferrer" aria-label="${s[0]} (opens in a new tab)"><div class="ph-h"><img class="avatar" src="${(CFG.avatars&&CFG.avatars[s[0].toLowerCase()])||"/images/avatar.png"}" alt="" width="64" height="64" loading="lazy" decoding="async"><div><h3><span class="ico">${ICONS[s[0]]}</span>${s[0]}</h3><span class="mono">${s[1]}</span></div></div><div class="row">${m.map(x=>`<div><b>${esc(fmtNum(x[1]))}</b><span class="mono">${esc(x[0])}</span></div>`).join("")}</div>${ud?`<span class="mono upd">${UI.updatedOn} ${fmt(ud)}</span>`:""}</a>`}).join("")}
 renderSocial();
+function paintStats(){ // hero stat bar; shows nothing until the calendar results are in
+  const h=window.HSTAT,el=$("hstats");if(!h||!el||!(h.pod>0))return;
+  const v=Number(String(window.YTV||"").replace(/[ ,]/g,"")),views=v>0?(v>=1e4?Math.round(v/1e3)+"K":fmtNum(String(v))):"";
+  const it=[[h.pod,h.pod==1?UI.podium:UI.podiums]];
+  if(h.win)it.push([h.win,h.win==1?UI.statWin:UI.statWins]);
+  if(h.cty)it.push([h.cty,h.cty==1?UI.statCountry:UI.statCountries]);
+  if(views)it.push([views,UI.statViews]);
+  el.innerHTML=it.map(x=>`<div><b>${esc(String(x[0]))}</b><span>${esc(x[1])}</span></div>`).join("")+`<small class="mono">${UI.statSeason} ${h.y}</small>`;
+  el.hidden=false}
 async function fetchText(url){const response=await fetch(url);if(!response.ok)throw new Error("Request failed: "+response.status);return response.text()}
 async function loadSocial(){ // numbers come from the Google Sheet "Social" tab: platform, metric, value, updated
   if(!CFG.socialSheet)return;
   try{const r=csv(await fetchText(CFG.socialSheet)),hd=r[0].map(x=>x.trim().toLowerCase()),pi=hd.indexOf("platform"),mi=hd.indexOf("metric"),vi=hd.indexOf("value"),ui=hd.indexOf("updated");
     if(pi<0||mi<0||vi<0)return;
-    const out={};let latest="";
-    r.slice(1).filter(x=>x[pi]&&x[pi].trim()&&x[mi]&&x[mi].trim()&&(x[vi]||"").trim()!=="").forEach(x=>{(out[x[pi].trim().toLowerCase()]=out[x[pi].trim().toLowerCase()]||[]).push([x[mi].trim(),x[vi].trim()]);const u=ui>=0?(x[ui]||"").trim().slice(0,10):"";if(u>latest&&/^\d{4}-\d{2}-\d{2}$/.test(u))latest=u});
-    if(Object.keys(out).length){renderSocial(out);if(latest)$("socNote").textContent=UI.updated+" "+fmt(latest)}}catch(e){}
+    const out={},upd={};let latest="";
+    r.slice(1).filter(x=>x[pi]&&x[pi].trim()&&x[mi]&&x[mi].trim()&&(x[vi]||"").trim()!=="").forEach(x=>{(out[x[pi].trim().toLowerCase()]=out[x[pi].trim().toLowerCase()]||[]).push([x[mi].trim(),x[vi].trim()]);const u=ui>=0?(x[ui]||"").trim().slice(0,10):"";if(/^\d{4}-\d{2}-\d{2}$/.test(u)){if(u>latest)latest=u;const p=x[pi].trim().toLowerCase();if(u>(upd[p]||""))upd[p]=u}});
+    if(Object.keys(out).length){renderSocial(out,upd);const yv=(out.youtube||[]).find(y=>/^views$/i.test(y[0]));if(yv){window.YTV=yv[1];paintStats()}}}catch(e){}
 }
 loadSocial();
 
@@ -340,6 +358,7 @@ const when=r=>new Date(r.date+"T"+(r.time||CFG.defaultTime)+":00");
 const fmt=d=>d.split("-").reverse().join("/");
 
 load().then(all=>{
+  all=mergeLegs(all);
   all.sort((a,b)=>when(a)-when(b));
   autoRows=autoAch(all);paintAch();
   const now=new Date(), done=r=>new Date(r.date+"T23:59:59")<now;
@@ -368,11 +387,13 @@ load().then(all=>{
         $("rows").innerHTML = list.length ? list.slice(start, start + PER).map(r => {
           const resultNumber = String(r.result || "").match(/\d+/);
           const n = resultNumber ? parseInt(resultNumber[0], 10) : NaN;
-          const c = n == 1 ? "r1" : n == 2 ? "r2" : n == 3 ? "r3" : "";
+          const c = legsOf(r.result).length > 1 ? "" : n == 1 ? "r1" : n == 2 ? "r2" : n == 3 ? "r3" : "";
           const key = eventKey(r);
           const ribbon = key === nextKey ? `<span class="race-ribbon next-race">${UI.nextRace}</span>` : key === previousKey ? `<span class="race-ribbon previous-race">${UI.previousRace}</span>` : "";
           const medal = n === 1 ? "🥇 " : n === 2 ? "🥈 " : n === 3 ? "🥉 " : "";
-          const result = r.result ? medal + esc(r.result) : (done(r) ? "–" : UI.upcoming);
+          const lg = legsOf(r.result);
+          const medalOf = x => { const q = String(x).match(/\d+/), k = q ? parseInt(q[0], 10) : NaN; return k === 1 ? "🥇 " : k === 2 ? "🥈 " : k === 3 ? "🥉 " : ""; };
+          const result = r.result ? (lg.length > 1 ? lg.map(x => medalOf(x) + esc(x)).join(" · ") : medal + esc(r.result)) : (done(r) ? "–" : UI.upcoming);
           return `<tr class="${key === nextKey ? "is-next-race" : key === previousKey ? "is-previous-race" : ""}"><td class="d">${fmt(r.date)}</td><td><div class="race-cell">${esc(r.race)}${ribbon}</div></td><td>${esc(r.venue)}</td><td>${flagHTML(r.country)}</td><td>${esc(r.category)}</td><td class="r ${c}">${result}</td></tr>`;
         }).join("") : `<tr><td class="empty" colspan="6">${UI.noRaces}</td></tr>`;
         let nav = "";
@@ -392,6 +413,11 @@ load().then(all=>{
         document.querySelector(".filters").scrollIntoView({ behavior: "smooth", block: "start" });
       };
       draw();
+  // hero stat bar: podiums, wins and countries of the latest season with results (every leg counts), plus YouTube views
+  {const y=String((previousEvent||{}).date||"").slice(0,4);
+   if(y){let pod=0,win=0;const cs=new Set();
+    all.forEach(r=>{if(!r.date.startsWith(y)||!r.result||!done(r))return;if(r.country)cs.add(flagCode(r.country));legsOf(r.result).forEach(l=>{const n=podN(l);if(n)pod++;if(n==1)win++})});
+    window.HSTAT={y,pod,win,cty:cs.size};paintStats()}}
   // next race + countdown
   const nx=all.find(r=>!done(r));
   if(nx){$("next").hidden=false;$("nName").textContent=nx.race+" · "+nx.venue;const cats=all.filter(r=>r.date==nx.date&&r.venue==nx.venue&&r.race==nx.race).map(r=>r.category).join(", ");
@@ -406,7 +432,9 @@ load().then(all=>{
     $("last").hidden=false;
     $("lName").textContent=pv.race+" · "+pv.venue;
     $("lMeta").textContent=when(pv).toLocaleDateString(UI.dateLocale||"en-GB",{weekday:"long",day:"numeric",month:"long",year:"numeric"}).toUpperCase();
-    $("lRes").innerHTML=grp.map(r=>{const n=parseInt(r.result);
+    $("lRes").innerHTML=grp.map(r=>{const lg=legsOf(r.result);
+      if(lg.length>1)return `<div class="legs"><b>${lg.map(x=>{const q=podN(x),v=parseInt(x,10);return `<em${q?` class="p${q}"`:""}>${isNaN(v)?esc(x):"P"+v}</em>`}).join("")}</b><span>${esc(r.category)}</span></div>`;
+      const n=parseInt(r.result);
       return `<div class="${n>0&&n<4?"p"+n:""}">${n>0&&n<4?`<i class="rib p${n}" role="img" aria-label="Podium: ${n}${["st","nd","rd"][n-1]} place">${n}</i>`:""}<b>${isNaN(n)?esc(r.result):"P"+n}</b><span>${esc(r.category)}</span></div>`}).join("");
   }
 });
@@ -498,6 +526,8 @@ document.addEventListener("keydown",e=>{if(!$("pm").hidden&&e.key=="Escape")pmSh
 // hero partner carousel: 4 tiles in view, free slots show "Your logo can be here", auto-advances (pauses on hover/touch/focus)
 function renderHeroPartners(){
   const ord={main:0,part:1,sup:2},items=[...pList].sort((a,b)=>ord[pTier(a.tier)]-ord[pTier(b.tier)]);
+  const strip=document.querySelector(".spons");if(strip)strip.hidden=!items.length; // no partners yet: hide the strip instead of showing empty slots
+  if(!items.length){clearInterval(spTimer);return}
   const slot=`<a class="sp slot" href="${MAILTO}" aria-label="${UI.yourLogo}: ${UI.contactUs}"><img src="/images/partners/your-logo-here.svg" width="500" height="200" alt="${UI.yourLogo}" loading="lazy" decoding="async"></a>`;
   let html=items.map(p=>{const src=pLogo(p.logo),lk=pLink(p.link),img=src?`<img src="${esc(src)}" alt="${esc(p.name)}" loading="lazy" decoding="async" onerror="this.replaceWith(document.createTextNode(this.alt))">`:esc(p.name);
     return lk?`<a class="sp" href="${esc(lk)}" target="_blank" rel="noopener noreferrer" aria-label="${esc(p.name)} (opens in a new tab)">${img}</a>`:`<span class="sp">${img}</span>`}).join("");
