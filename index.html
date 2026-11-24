@@ -332,7 +332,6 @@ function paintStats(){ // hero stat bar; shows nothing until the calendar result
   const it=[[h.pod,h.pod==1?UI.podium:UI.podiums]];
   if(h.win)it.push([h.win,h.win==1?UI.statWin:UI.statWins]);
   if(h.cty)it.push([h.cty,h.cty==1?UI.statCountry:UI.statCountries]);
-  if(views)it.push([views,UI.statViews]);
   el.innerHTML=it.map(x=>`<div><b>${esc(String(x[0]))}</b><span>${esc(x[1])}</span></div>`).join("")+`<small class="mono">${UI.statSeason} ${h.y}</small>`;
   el.hidden=false}
 async function fetchText(url){const response=await fetch(url);if(!response.ok)throw new Error("Request failed: "+response.status);return response.text()}
