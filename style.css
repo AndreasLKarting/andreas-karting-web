@@ -2218,20 +2218,13 @@ footer a[href$=".zip" i]::after {
 .next.last .cd div.p1, .next.last .cd div.p2, .next.last .cd div.p3 { padding-top: 22px; }  /* room for the ribbon above the result */
 
 
-/* hero stat bar */
-.hstats { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 10px 28px; margin: 0 0 22px; }
+/* hero stat bar: season recap on top of the photo */
+.hstats { position: absolute; z-index: 2; top: 0; left: 0; right: 0; display: flex; flex-wrap: wrap; align-items: flex-end; gap: 6px 26px; padding: 18px 22px 40px; background: linear-gradient(rgba(8,8,11,.88),transparent); }
 .hstats[hidden] { display: none; }
+.hstats small { flex-basis: 100%; color: #d8dae3; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; }
 .hstats div { display: flex; flex-direction: column; }
-.hstats b { font: 400 clamp(28px,3.6vw,42px)/1 var(--disp); color: var(--text); }
-.hstats span { font: 500 11px/1.3 var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: .06em; margin-top: 4px; }
-.hstats small { flex-basis: 100%; color: var(--muted); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; }
-@media (min-width: 901px) {
-  .hero .hstats { grid-column: 1; grid-row: 2; }
-  .hero .tag { grid-row: 3; }
-  .hero .quote { grid-row: 4; }
-  .hero .cta { grid-row: 5; }
-  .hero .portrait { grid-row: 1 / 6; }
-}
+.hstats b { font: 400 clamp(26px,3vw,38px)/1 var(--disp); color: var(--text); }
+.hstats span { font: 500 10px/1.3 var(--mono); color: #d8dae3; text-transform: uppercase; letter-spacing: .06em; margin-top: 3px; }
 .spons[hidden] { display: none; }
 
 /* last race: several legs of one race in a single tile */

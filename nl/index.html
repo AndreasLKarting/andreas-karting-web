@@ -49,12 +49,12 @@
 
 <main id="top" class="wrap">
 <div class="hero"><div>
-<h1>Andreas <span>Lazaridis</span></h1><div class="hstats" id="hstats" hidden></div><p class="tag" data-i18n="hero_tag">Rijden met passie.</p>
+<h1>Andreas <span>Lazaridis</span></h1><p class="tag" data-i18n="hero_tag">Rijden met passie.</p>
 <blockquote class="quote"><p data-i18n="hero_quote">Ik wil laten zien wat mogelijk is: grenzen verleggen op de baan, anderen inspireren en zelf geïnspireerd worden.</p>
 <div class="sig" aria-label="Andreas Lazaridis">Andreas Lazaridis</div></blockquote>
 <div class="cta"><a class="btn" data-mail data-i18n="btn_work_together" href="#">Samenwerken</a><a class="btn ghost" href="/documents/Andreas_Lazaridis_Sponsoring_Deck_NL.pdf" target="_blank" rel="noopener" data-i18n="hero_btn_mediakit">Bekijk de mediakit</a><button type="button" class="btn ghost" data-place data-i18n="hero_btn_sponsors">Sponsormogelijkheden</button></div></div>
 <div class="portrait"><img src="/images/portrait.jpg" width="850" height="1164" alt="Andreas Lazaridis holding his helmet" fetchpriority="high" decoding="async" onerror="this.style.display='none'">
-<div class="mantra" data-i18n-first="hero_mantra">Kartcoureur<span class="mono" data-i18n="hero_mantra_sub">Nederland · Griekenland · Europa</span></div></div></div>
+<div class="hstats" id="hstats" hidden></div><div class="mantra" data-i18n-first="hero_mantra">Kartcoureur<span class="mono" data-i18n="hero_mantra_sub">Nederland · Griekenland · Europa</span></div></div></div>
 
 <div class="strip">
 <div class="next last" id="last" hidden><div><span class="mono" data-i18n="strip_last_race">Laatste race</span><h3 id="lName"></h3><small id="lMeta"></small></div>
@@ -163,9 +163,9 @@ const CFG={
   defaultTime:"10:00"                             // used when a race row has no time
 };
 const UI=(()=>{const dictionaries={
-  nl:{all:"Alle",upcoming:"Aankomend",completed:"Verreden",noRaces:"Geen races gevonden voor deze filters.",prev:"Vorige",next:"Volgende",previousPage:"Vorige pagina",nextPage:"Volgende pagina",of:"van",nextRace:"VOLGENDE RACE",previousRace:"VORIGE RACE",viewAll:"Bekijk alle",photos:"foto's",add:"Toevoegen",updated:"Bijgewerkt",yourLogo:"Jouw logo kan hier staan",contactUs:"neem contact op",photo:"Foto:",gold:"goud",silver:"zilver",bronze:"brons",podium:"podium",podiums:"podiums",statRace:"Race",statWin:"overwinning",statWins:"overwinningen",statCountry:"land",statCountries:"landen",statViews:"YouTube-views",statSeason:"Seizoen",updatedOn:"Bijgewerkt",dateLocale:"nl-NL"},
-  en:{all:"All",upcoming:"Upcoming",completed:"Completed",noRaces:"No races match these filters.",prev:"Prev",next:"Next",previousPage:"Previous page",nextPage:"Next page",of:"of",nextRace:"NEXT RACE",previousRace:"PREVIOUS RACE",viewAll:"View all",photos:"photos",add:"Add",updated:"Updated",yourLogo:"Your logo can be here",contactUs:"contact us",photo:"Photo:",gold:"gold",silver:"silver",bronze:"bronze",podium:"podium",podiums:"podiums",statRace:"Race",statWin:"win",statWins:"wins",statCountry:"country",statCountries:"countries",statViews:"YouTube views",statSeason:"Season",updatedOn:"Updated",dateLocale:"en-GB"},
-  el:{all:"Όλα",upcoming:"Προσεχείς",completed:"Ολοκληρωμένοι",noRaces:"Δεν υπάρχουν αγώνες που να ταιριάζουν στα φίλτρα.",prev:"Προηγ.",next:"Επόμ.",previousPage:"Προηγούμενη σελίδα",nextPage:"Επόμενη σελίδα",of:"από",nextRace:"ΕΠΟΜΕΝΟΣ ΑΓΩΝΑΣ",previousRace:"ΠΡΟΗΓΟΥΜΕΝΟΣ ΑΓΩΝΑΣ",viewAll:"Προβολή όλων",photos:"φωτογραφιών",add:"Προσθήκη",updated:"Ενημερώθηκε",yourLogo:"Το λογότυπό σας μπορεί να εμφανιστεί εδώ",contactUs:"επικοινωνήστε μαζί μας",photo:"Φωτογραφία:",gold:"χρυσά",silver:"ασημένια",bronze:"χάλκινα",podium:"βάθρο",podiums:"βάθρα",statRace:"Αγώνας",statWin:"νίκη",statWins:"νίκες",statCountry:"χώρα",statCountries:"χώρες",statViews:"προβολές YouTube",statSeason:"Σεζόν",updatedOn:"Ενημέρωση",dateLocale:"el-GR"}
+  nl:{all:"Alle",upcoming:"Aankomend",completed:"Verreden",noRaces:"Geen races gevonden voor deze filters.",prev:"Vorige",next:"Volgende",previousPage:"Vorige pagina",nextPage:"Volgende pagina",of:"van",nextRace:"VOLGENDE RACE",previousRace:"VORIGE RACE",viewAll:"Bekijk alle",photos:"foto's",add:"Toevoegen",updated:"Bijgewerkt",yourLogo:"Jouw logo kan hier staan",contactUs:"neem contact op",photo:"Foto:",gold:"goud",silver:"zilver",bronze:"brons",podium:"podium",podiums:"podiums",statRace:"Race",statRecap:"overzicht",statWin:"overwinning",statWins:"overwinningen",statCountry:"land",statCountries:"landen",statViews:"YouTube-views",statSeason:"Seizoen",updatedOn:"Bijgewerkt",dateLocale:"nl-NL"},
+  en:{all:"All",upcoming:"Upcoming",completed:"Completed",noRaces:"No races match these filters.",prev:"Prev",next:"Next",previousPage:"Previous page",nextPage:"Next page",of:"of",nextRace:"NEXT RACE",previousRace:"PREVIOUS RACE",viewAll:"View all",photos:"photos",add:"Add",updated:"Updated",yourLogo:"Your logo can be here",contactUs:"contact us",photo:"Photo:",gold:"gold",silver:"silver",bronze:"bronze",podium:"podium",podiums:"podiums",statRace:"Race",statRecap:"recap",statWin:"win",statWins:"wins",statCountry:"country",statCountries:"countries",statViews:"YouTube views",statSeason:"Season",updatedOn:"Updated",dateLocale:"en-GB"},
+  el:{all:"Όλα",upcoming:"Προσεχείς",completed:"Ολοκληρωμένοι",noRaces:"Δεν υπάρχουν αγώνες που να ταιριάζουν στα φίλτρα.",prev:"Προηγ.",next:"Επόμ.",previousPage:"Προηγούμενη σελίδα",nextPage:"Επόμενη σελίδα",of:"από",nextRace:"ΕΠΟΜΕΝΟΣ ΑΓΩΝΑΣ",previousRace:"ΠΡΟΗΓΟΥΜΕΝΟΣ ΑΓΩΝΑΣ",viewAll:"Προβολή όλων",photos:"φωτογραφιών",add:"Προσθήκη",updated:"Ενημερώθηκε",yourLogo:"Το λογότυπό σας μπορεί να εμφανιστεί εδώ",contactUs:"επικοινωνήστε μαζί μας",photo:"Φωτογραφία:",gold:"χρυσά",silver:"ασημένια",bronze:"χάλκινα",podium:"βάθρο",podiums:"βάθρα",statRace:"Αγώνας",statRecap:"απολογισμός",statWin:"νίκη",statWins:"νίκες",statCountry:"χώρα",statCountries:"χώρες",statViews:"προβολές YouTube",statSeason:"Σεζόν",updatedOn:"Ενημέρωση",dateLocale:"el-GR"}
 };return dictionaries[document.documentElement.lang]||dictionaries.en;})();
 const LOGO_DIR="/images/logos/";   // folder that holds the logo files (shown when you hover a link)
 const CHIPS=[ // [label, logo file, link]  leave the link "" for no link
@@ -330,8 +330,7 @@ function paintStats(){ // hero stat bar; shows nothing until the calendar result
   const it=[[h.pod,h.pod==1?UI.podium:UI.podiums]];
   if(h.win)it.push([h.win,h.win==1?UI.statWin:UI.statWins]);
   if(h.cty)it.push([h.cty,h.cty==1?UI.statCountry:UI.statCountries]);
-  if(views)it.push([views,UI.statViews]);
-  el.innerHTML=it.map(x=>`<div><b>${esc(String(x[0]))}</b><span>${esc(x[1])}</span></div>`).join("")+`<small class="mono">${UI.statSeason} ${h.y}</small>`;
+  el.innerHTML=`<small class="mono">${UI.statSeason} ${h.y} ${UI.statRecap}</small>`+it.map(x=>`<div><b>${esc(String(x[0]))}</b><span>${esc(x[1])}</span></div>`).join("");
   el.hidden=false}
 async function fetchText(url){const response=await fetch(url);if(!response.ok)throw new Error("Request failed: "+response.status);return response.text()}
 async function loadSocial(){ // numbers come from the Google Sheet "Social" tab: platform, metric, value, updated
