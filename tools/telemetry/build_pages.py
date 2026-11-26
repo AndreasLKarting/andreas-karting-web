@@ -29,13 +29,14 @@ BODY = '''<main>
 <p id="rdEmpty" class="wrap rd-err" hidden></p>
 </main>
 '''
+pth = lambda l: '/rd-%s/' % SLUG if l == 'nl' else '/%s/rd-%s/' % (l, SLUG)  # Dutch (the main language) sits at the shortest URL
 LANGSCRIPT = None
 for lang, c in L.items():
     s = open(os.path.join(ROOT, c['src']), encoding='utf-8').read()
     if LANGSCRIPT is None:
         LANGSCRIPT = re.search(r'<script>\(function\(\)\{var box=document.getElementById\("lang"\).*?</script>', s, re.S).group(0)
     head = s[:s.index('</head>')]
-    url = 'https://www.alracing.nl/%s/rd-%s/' % (lang, SLUG)
+    url = 'https://www.alracing.nl' + pth(lang)
     head = re.sub(r'<title>.*?</title>', '<title>%s</title>' % c['title'], head)
     head = re.sub(r'(<meta name="description" content=")[^"]*', r'\g<1>' + c['desc'], head)
     head = re.sub(r'(<meta property="og:description" content=")[^"]*', r'\g<1>' + c['desc'], head)
@@ -52,10 +53,11 @@ for lang, c in L.items():
     hdr = re.sub(r'href="#(profile|achievements|calendar|media|social|sponsoring)"', r'href="/%s/#\1"' % lang, hdr)
     hdr = hdr.replace('<a class="logo" href="#top">', '<a class="logo" href="/%s/">' % lang)
     for l2 in ('nl', 'en', 'gr'):
-        hdr = hdr.replace('<a href="/%s/" hreflang' % l2, '<a href="/%s/rd-%s/" hreflang' % (l2, SLUG))
+        hdr = hdr.replace('<a href="/%s/" hreflang' % l2, '<a href="%s" hreflang' % pth(l2))
     ftr = s[s.index('<footer>'):s.index('</footer>') + 9]
     ftr = re.sub(r'href="#(calendar|sponsoring)"', r'href="/%s/#\1"' % lang, ftr)
     out = head + '</head>\n<body>\n' + hdr + '\n' + BODY + ftr + '\n' + LANGSCRIPT + '\n<script src="/racedata.js"></script>\n</body>\n</html>\n'
-    os.makedirs(os.path.join(ROOT, lang, 'rd-' + SLUG), exist_ok=True)
-    open(os.path.join(ROOT, lang, 'rd-' + SLUG, 'index.html'), 'w', encoding='utf-8').write(out)
+    d = os.path.join(ROOT, *pth(lang).strip('/').split('/'))
+    os.makedirs(d, exist_ok=True)
+    open(os.path.join(d, 'index.html'), 'w', encoding='utf-8').write(out)
 print('ok')

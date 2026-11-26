@@ -1,6 +1,6 @@
 # Race data page
 
-Pages: `/nl/rd-5vu19xn8kj/`, `/en/rd-5vu19xn8kj/`, `/gr/rd-5vu19xn8kj/` (hidden: not linked, not in the sitemap, noindex) (made by `build_pages.py`, logic in `/racedata.js`, styling in `/racedata.css`).
+Pages: `/rd-5vu19xn8kj/`, `/en/rd-5vu19xn8kj/`, `/gr/rd-5vu19xn8kj/` (hidden: not linked, not in the sitemap, noindex) (made by `build_pages.py`, logic in `/racedata.js`, styling in `/racedata.css`).
 
 ## Add a session
 1. In RaceChrono: export the session as **CSV** (format 2 or 3, all channels).
