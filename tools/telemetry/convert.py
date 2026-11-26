@@ -85,8 +85,14 @@ def convert(path, outdir):
             'best': best, 'top': round(top, 1), 'laps': laps}
     os.makedirs(outdir, exist_ok=True)
     with open(os.path.join(outdir, sid + '.json'), 'w') as f: json.dump(data, f, separators=(',', ':'))
+    bp = np.array(laps[best]['p']).reshape(-1, 4)[::4, :2] / 10.0           # best lap, every 4th point, metres
+    lo, hi = bp.min(axis=0), bp.max(axis=0); sc = 84.0 / max(hi - lo)         # fit in a 100x100 box (thumbnail on the session list)
+    off = (100 - (hi - lo) * sc) / 2
+    o = []
+    for px, py in bp:
+        o += [int(round(((px - lo[0]) * sc + off[0]) * 10)), int(round((100 - ((py - lo[1]) * sc + off[1])) * 10))]
     return {'id': sid, 'track': data['track'], 'date': date, 'fastest': laps[best]['t'], 'laps': len(laps), 'top': data['top'],
-            'title': meta.get('Session title', '')}
+            'title': meta.get('Session title', ''), 'o': o}
 
 def main():
     args = sys.argv[1:]; outdir = 'data/rd-5vu19xn8kj'

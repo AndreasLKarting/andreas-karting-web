@@ -10,20 +10,20 @@ L = {'nl': dict(html='nl', src='nl/index.html', nav='Racedata', title='Racedata 
      'gr': dict(html='el', src='gr/index.html', nav='Δεδομένα αγώνων', title='Δεδομένα αγώνων | Andreas Lazaridis',
                 desc='Δεδομένα αγώνων γύρο προς γύρο από τον Andreas Lazaridis: ιδανική γραμμή, ταχύτητα, δυνάμεις G και χρόνοι γύρου από μετρήσεις GPS.', loc='el_GR')}
 BODY = '''<main>
-<section class="rd-hero"><svg id="rdBg" class="rd-bg" aria-hidden="true" preserveAspectRatio="xMaxYMid meet"></svg><div class="wrap"><span class="eyebrow">Andreas Lazaridis</span><h1 id="rdH1"></h1><p id="rdIntro" class="rd-intro"></p><div class="rd-stats" id="rdStats"></div></div></section>
+<section class="rd-hero"><div class="wrap"><div class="rd-top"><div><span class="eyebrow">Andreas Lazaridis</span><h1 id="rdH1"></h1><p id="rdIntro" class="rd-intro"></p></div><div class="rd-stats" id="rdStats"></div></div></div></section>
 <section id="rdDash" class="rd-dash"><div class="wrap"><h2 id="rdTitle"></h2><p id="rdErr" class="rd-err"></p>
-<div class="rd-tiles" id="rdTiles"></div>
-<div class="rd-grid">
+<div class="rd-sb" id="rdTiles"></div>
+<div class="rd-stage">
+<div class="rd-card rd-tw-card"><div class="rd-twh"><span class="k" id="rdTowerT"></span><div class="rd-sort"><button type="button" data-sort="lap" class="on" id="rdSortLap"></button><button type="button" data-sort="time" id="rdSortFast"></button></div></div><div class="rd-tower" id="rdTower"></div></div>
 <div class="rd-card rd-mapc"><div class="rd-maph"><div class="rd-lapsel"><button type="button" id="rdPrev">&lsaquo;</button><b id="rdLapNo"></b><button type="button" id="rdNext">&rsaquo;</button></div><span id="rdBadge" class="rd-badge"></span></div>
 <svg id="rdMap" class="rd-map" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Racing line"></svg>
-<div class="rd-legend"><span><i style="background:#d4ff3a"></i><em id="rdLeg1"></em></span><span><i style="background:#4d74ff"></i><em id="rdLeg2"></em></span><span><i style="background:#ff4b5c"></i><em id="rdLeg3"></em></span></div>
+<div class="rd-legend"><span><i style="background:#eaf0ff"></i><em id="rdLeg1"></em></span><span><i style="background:#3b7bff"></i><em id="rdLeg2"></em></span><span><i style="background:#ff6a3d"></i><em id="rdLeg3"></em></span></div>
 <div class="rd-ctl"><button type="button" id="rdPlay" class="rd-play">&#10074;&#10074;</button><input id="rdSlider" type="range" min="0" max="60" step="0.001" value="0" aria-label="Lap time"><span id="rdTime" class="rd-time"></span><div class="rd-rates"><button type="button" data-rate="0.5">0.5&times;</button><button type="button" data-rate="1" class="on">1&times;</button><button type="button" data-rate="2">2&times;</button></div></div></div>
 <div class="rd-side">
-<div class="rd-card"><span class="k" id="rdSpeedT"></span><div class="rd-v"><b id="rdV">0</b><small id="rdKm"></small></div><div class="rd-bar"><i id="rdVbar"></i></div><div class="rd-vs"><span id="rdVsT"></span> <b id="rdDelta">+0.00</b></div></div>
+<div class="rd-card"><span class="k" id="rdSpeedT"></span><div class="rd-gauge"><svg viewBox="0 0 140 86" aria-hidden="true"><path class="bg" d="M10 76 A60 60 0 0 1 130 76"/><path id="rdArc" class="fg" d="M10 76 A60 60 0 0 1 130 76"/></svg><div class="rd-gv"><b id="rdV">0</b><small id="rdKm"></small></div></div><div class="rd-vs"><span id="rdVsT"></span> <b id="rdDelta">+0.00</b></div></div>
 <div class="rd-card"><span class="k" id="rdGT"></span><svg viewBox="0 0 100 100" class="rd-gd" aria-hidden="true"><circle cx="50" cy="50" r="42"/><circle cx="50" cy="50" r="21"/><line x1="8" y1="50" x2="92" y2="50"/><line x1="50" y1="8" x2="50" y2="92"/><circle id="rdGdot" cx="50" cy="50" r="3.6" class="dot"/></svg><div class="rd-gl"><span><em id="rdGLatT"></em> <b id="rdGlat">0.0</b> G</span><span><em id="rdGLonT"></em> <b id="rdGlon">0.0</b> G</span></div></div>
 </div></div>
-<div class="rd-card"><span class="k" id="rdSpChartT"></span><svg id="rdSpChart" class="rd-chart rd-drag" viewBox="0 0 800 210"></svg></div>
-<div class="rd-card"><span class="k" id="rdLapChartT"></span><svg id="rdLapChart" class="rd-chart" viewBox="0 0 800 200"></svg></div>
+<div class="rd-card rd-spc"><span class="k" id="rdSpChartT"></span><svg id="rdSpChart" class="rd-chart rd-drag" viewBox="0 0 800 210"></svg></div>
 <p class="rd-note" id="rdNote"></p></div></section>
 <section id="rdAll"><div class="wrap"><div class="rd-allh"><h2 id="rdAllT"></h2><button type="button" id="rdTop" class="btn ghost"></button></div><div class="rd-cards" id="rdCards"></div></div></section>
 <p id="rdEmpty" class="wrap rd-err" hidden></p>
