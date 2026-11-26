@@ -23,6 +23,7 @@ BODY = '''<main>
 <div class="rd-card"><span class="k" id="rdSpeedT"></span><div class="rd-gauge"><svg viewBox="0 0 140 86" aria-hidden="true"><path class="bg" d="M10 76 A60 60 0 0 1 130 76"/><path id="rdArc" class="fg" d="M10 76 A60 60 0 0 1 130 76"/></svg><div class="rd-gv"><b id="rdV">0</b><small id="rdKm"></small></div></div><div class="rd-vs"><span id="rdVsT"></span> <b id="rdDelta">+0.00</b></div></div>
 <div class="rd-card"><span class="k" id="rdGT"></span><svg viewBox="0 0 100 100" class="rd-gd" aria-hidden="true"><circle cx="50" cy="50" r="42"/><circle cx="50" cy="50" r="21"/><line x1="8" y1="50" x2="92" y2="50"/><line x1="50" y1="8" x2="50" y2="92"/><circle id="rdGdot" cx="50" cy="50" r="3.6" class="dot"/></svg><div class="rd-gl"><span><em id="rdGLatT"></em> <b id="rdGlat">0.0</b> G</span><span><em id="rdGLonT"></em> <b id="rdGlon">0.0</b> G</span></div></div>
 </div></div>
+<div class="rd-card rd-vid" id="rdVid" hidden><span class="k" id="rdVidT"></span><div class="rd-vbox" id="rdVbox"></div></div>
 <div class="rd-card rd-spc"><span class="k" id="rdSpChartT"></span><svg id="rdSpChart" class="rd-chart rd-drag" viewBox="0 0 800 210"></svg></div>
 <p class="rd-note" id="rdNote"></p></div></section>
 <section id="rdAll"><div class="wrap"><div class="rd-allh"><h2 id="rdAllT"></h2><button type="button" id="rdTop" class="btn ghost"></button></div><div class="rd-cards" id="rdCards"></div></div></section>
