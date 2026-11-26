@@ -5,7 +5,7 @@
    Without the sheet, every session in /data/rd-5vu19xn8kj/index.json is shown. */
 (function () {
   "use strict";
-  var SESSIONS_CSV = ""; // "Sessions" tab, File > Share > Publish to web > CSV
+  var SESSIONS_CSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTrQTYaoqWvwmPKYbInqhbu4hII_DbV8_bhokbmEGP2MNCJb8efUMAeSUDZZZQDEM2u_l4HOSiRgwo5/pub?gid=2063501786&single=true&output=csv"; // "Sessions" tab, File > Share > Publish to web > CSV
   var EMAIL = "info@alracing.nl";
   var LINKS = { instagram: "https://www.instagram.com/andreas.lazaridis.karting/", tiktok: "https://www.tiktok.com/@andreaskarting", youtube: "https://www.youtube.com/channel/UC0MeHXdDhLF814x2ey1p_Wg" };
   var DATA = "/data/rd-5vu19xn8kj/";
