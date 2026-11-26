@@ -19,6 +19,8 @@ Pages: `/rd-5vu19xn8kj/`, `/en/rd-5vu19xn8kj/`, `/gr/rd-5vu19xn8kj/` (hidden: no
 | show | yes / no, a session with `no` is hidden |
 | notes | free text, not shown |
 | title_en, title_el | optional titles per language |
+| video | optional: YouTube link (or the 11-character id) of the onboard video; the "Onboard" block only shows when this is filled |
+| video_start | optional: start second of the video |
 
 5. Publish the tab (File > Share > Publish to web > Sessions > CSV) and paste the link in `SESSIONS_CSV` at the top of `/racedata.js`. Until then the page shows every session in `index.json`.
 

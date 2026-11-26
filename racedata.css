@@ -135,3 +135,13 @@
 @media (max-width: 480px) {
   .rd-side { grid-template-columns: 1fr; }
 }
+
+/* optional onboard video */
+.rd-vid { margin-bottom: 12px; }
+.rd-vid[hidden] { display: none; }
+.rd-vbox { position: relative; margin-top: 10px; aspect-ratio: 16/9; max-width: 860px; background: #000; overflow: hidden; }
+.rd-vbox iframe, .rd-vplay { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.rd-vplay { all: unset; position: absolute; inset: 0; cursor: pointer; display: block; }
+.rd-vplay img { width: 100%; height: 100%; object-fit: cover; display: block; opacity: .85; }
+.rd-vplay span { position: absolute; left: 14px; bottom: 14px; background: #fff; color: #0a0a0c; font: 700 12px var(--mono); padding: 8px 14px; text-transform: uppercase; letter-spacing: .05em; }
+.rd-vplay:hover img, .rd-vplay:focus-visible img { opacity: 1; }
