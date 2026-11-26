@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Convert RaceChrono CSV exports (format 2 and 3) into small JSON files for the Race data page.
 
-Usage:  python3 tools/telemetry/convert.py session1.csv [session2.csv ...] [--out data/telemetry]
+Usage:  python3 tools/telemetry/convert.py session1.csv [session2.csv ...] [--out data/rd-5vu19xn8kj]
 
 Writes <out>/<id>.json for every session and refreshes <out>/index.json (id, track, date, fastest lap, laps).
 No GPS coordinates are published: positions are converted to metres relative to the session centre.
@@ -89,7 +89,7 @@ def convert(path, outdir):
             'title': meta.get('Session title', '')}
 
 def main():
-    args = sys.argv[1:]; outdir = 'data/telemetry'
+    args = sys.argv[1:]; outdir = 'data/rd-5vu19xn8kj'
     if '--out' in args:
         i = args.index('--out'); outdir = args[i + 1]; del args[i:i + 2]
     idx_path = os.path.join(outdir, 'index.json')

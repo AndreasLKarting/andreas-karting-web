@@ -1,11 +1,11 @@
 # Race data page
 
-Pages: `/nl/racedata/`, `/en/racedata/`, `/gr/racedata/` (made by `build_pages.py`, logic in `/racedata.js`, styling in `/racedata.css`).
+Pages: `/nl/rd-5vu19xn8kj/`, `/en/rd-5vu19xn8kj/`, `/gr/rd-5vu19xn8kj/` (hidden: not linked, not in the sitemap, noindex) (made by `build_pages.py`, logic in `/racedata.js`, styling in `/racedata.css`).
 
 ## Add a session
 1. In RaceChrono: export the session as **CSV** (format 2 or 3, all channels).
-2. `python3 tools/telemetry/convert.py path/to/session_....csv` (needs python3, numpy, pandas). It writes `data/telemetry/<id>.json` (the id is printed, e.g. `2026-08-pista-park`) and updates `data/telemetry/index.json`. No GPS coordinates are published.
-3. Commit the new files in `data/telemetry/`.
+2. `python3 tools/telemetry/convert.py path/to/session_....csv` (needs python3, numpy, pandas). It writes `data/rd-5vu19xn8kj/<id>.json` (the id is printed, e.g. `2026-08-pista-park`) and updates `data/rd-5vu19xn8kj/index.json`. No GPS coordinates are published.
+3. Commit the new files in `data/rd-5vu19xn8kj/`.
 4. Add a row to the **Sessions** tab of the Google Sheet (see `sessions-template.csv`):
 
 | Column | Meaning |

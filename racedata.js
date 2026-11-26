@@ -1,14 +1,14 @@
 /* Race data page: lap-by-lap telemetry from RaceChrono sessions.
    Session list: Google Sheet tab "Sessions" (columns: date, title, track, country, type, file, show, notes;
    optional title_en / title_el), published as CSV and pasted in SESSIONS_CSV below.
-   Telemetry: /data/telemetry/<file>.json, made with tools/telemetry/convert.py.
-   Without the sheet, every session in /data/telemetry/index.json is shown. */
+   Telemetry: /data/rd-5vu19xn8kj/<file>.json, made with tools/telemetry/convert.py.
+   Without the sheet, every session in /data/rd-5vu19xn8kj/index.json is shown. */
 (function () {
   "use strict";
   var SESSIONS_CSV = ""; // "Sessions" tab, File > Share > Publish to web > CSV
   var EMAIL = "info@alracing.nl";
   var LINKS = { instagram: "https://www.instagram.com/andreas.lazaridis.karting/", tiktok: "https://www.tiktok.com/@andreaskarting", youtube: "https://www.youtube.com/channel/UC0MeHXdDhLF814x2ey1p_Wg" };
-  var DATA = "/data/telemetry/";
+  var DATA = "/data/rd-5vu19xn8kj/";
   var LANG = document.documentElement.lang || "nl";
   var TX = {
     nl: { title: "Racedata", intro: "Elke sessie ronde voor ronde: racelijn, snelheid en de snelste ronde. Kies een sessie en rijd mee.", sessions: "Sessies", laps: "Gereden ronden", circuits: "Circuits", top: "Topsnelheid", latest: "Laatste sessie", chosen: "Sessie", fastest: "Snelste ronde", lapWord: "Ronde", avg: "Gemiddelde ronde", avgSub: "zonder trage ronden", count: "Ronden", countSub: "in deze sessie", topSub: "hoogst gemeten", straight: "Rechtdoor", bend: "Bocht", brake: "Remmen", speed: "Snelheid", vs: "t.o.v. snelste ronde", g: "G-krachten", lat: "zijwaarts", lon: "lengte", spChart: "Snelheid over de ronde · klik of sleep om te springen", lapChart: "Alle rondetijden · klik op een ronde om mee te rijden", note: "Gemeten met GPS. G-krachten zijn berekend uit de racelijn en snelheid.", all: "Alle sessies", ride: "Rijd mee →", toTop: "Naar boven", rounds: "ronden", fl: "Snelste ronde", fastBadge: "Snelste ronde", play: "Afspelen", pause: "Pauzeren", prev: "Vorige ronde", next: "Volgende ronde", empty: "Nog geen sessies.", err: "De data kon niet geladen worden.", loading: "Laden…", slow: "trager dan de grafiek toont", km: "km/u" },

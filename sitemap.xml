@@ -48,25 +48,4 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.alracing.nl/nl/privacy.html"/>
     <lastmod>2026-10-20</lastmod><changefreq>yearly</changefreq><priority>0.3</priority>
   </url>
-  <url>
-    <loc>https://www.alracing.nl/nl/racedata/</loc>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://www.alracing.nl/nl/racedata/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.alracing.nl/en/racedata/"/>
-    <xhtml:link rel="alternate" hreflang="el" href="https://www.alracing.nl/gr/racedata/"/>
-    <lastmod>2026-11-26</lastmod><changefreq>monthly</changefreq><priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.alracing.nl/en/racedata/</loc>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://www.alracing.nl/nl/racedata/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.alracing.nl/en/racedata/"/>
-    <xhtml:link rel="alternate" hreflang="el" href="https://www.alracing.nl/gr/racedata/"/>
-    <lastmod>2026-11-26</lastmod><changefreq>monthly</changefreq><priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.alracing.nl/gr/racedata/</loc>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://www.alracing.nl/nl/racedata/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.alracing.nl/en/racedata/"/>
-    <xhtml:link rel="alternate" hreflang="el" href="https://www.alracing.nl/gr/racedata/"/>
-    <lastmod>2026-11-26</lastmod><changefreq>monthly</changefreq><priority>0.6</priority>
-  </url>
 </urlset>

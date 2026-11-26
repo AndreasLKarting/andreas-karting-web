@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
-"""Generate /nl/racedata/, /en/racedata/ and /gr/racedata/ from the existing language pages (header, footer, head)."""
+"""Generate the hidden, unindexed pages /nl|en|gr/rd-5vu19xn8kj/ from the existing language pages (header, footer, head)."""
 import re, os
+SLUG = '5vu19xn8kj'  # secret part of the URL; the pages are not linked, not in the sitemap and noindex
 ROOT = os.path.join(os.path.dirname(__file__), '..', '..')
 L = {'nl': dict(html='nl', src='nl/index.html', nav='Racedata', title='Racedata | Andreas Lazaridis',
                 desc='Ronde voor ronde racedata van Andreas Lazaridis: racelijn, snelheid, G-krachten en rondetijden uit GPS-metingen.', loc='nl_NL'),
@@ -34,37 +35,27 @@ for lang, c in L.items():
     if LANGSCRIPT is None:
         LANGSCRIPT = re.search(r'<script>\(function\(\)\{var box=document.getElementById\("lang"\).*?</script>', s, re.S).group(0)
     head = s[:s.index('</head>')]
-    url = 'https://www.alracing.nl/%s/racedata/' % lang
+    url = 'https://www.alracing.nl/%s/rd-%s/' % (lang, SLUG)
     head = re.sub(r'<title>.*?</title>', '<title>%s</title>' % c['title'], head)
     head = re.sub(r'(<meta name="description" content=")[^"]*', r'\g<1>' + c['desc'], head)
     head = re.sub(r'(<meta property="og:description" content=")[^"]*', r'\g<1>' + c['desc'], head)
     head = re.sub(r'(<meta name="twitter:description" content=")[^"]*', r'\g<1>' + c['desc'], head)
     head = re.sub(r'(<meta property="og:title" content=")[^"]*', r'\g<1>' + c['title'], head)
     head = re.sub(r'(<meta name="twitter:title" content=")[^"]*', r'\g<1>' + c['title'], head)
-    head = re.sub(r'(<link rel="canonical" href=")[^"]*', r'\g<1>' + url, head)
     head = re.sub(r'(<meta property="og:url" content=")[^"]*', r'\g<1>' + url, head)
-    for hl, path in (('nl', '/nl/racedata/'), ('en', '/en/racedata/'), ('el', '/gr/racedata/'), ('x-default', '/nl/racedata/')):
-        head = re.sub(r'(<link rel="alternate" hreflang="%s" href=")[^"]*' % hl, r'\g<1>https://www.alracing.nl' + path, head)
+    head = re.sub(r'<link rel="canonical"[^>]*>\n?', '', head)
+    head = re.sub(r'<link rel="alternate" hreflang[^>]*>\n?', '', head)
     head = re.sub(r'<script type="application/ld\+json">.*?</script>\n?', '', head, flags=re.S)
     head = re.sub(r'<script>\(function\(\)\{try\{if\(/bot.*?</script>\n?', '', head, flags=re.S)
-    head += '<link rel="stylesheet" href="/racedata.css">\n'
+    head += '<meta name="robots" content="noindex, nofollow, noarchive">\n<link rel="stylesheet" href="/racedata.css">\n'
     hdr = s[s.index('<header>'):s.index('</header>') + 9]
     hdr = re.sub(r'href="#(profile|achievements|calendar|media|social|sponsoring)"', r'href="/%s/#\1"' % lang, hdr)
     hdr = hdr.replace('<a class="logo" href="#top">', '<a class="logo" href="/%s/">' % lang)
     for l2 in ('nl', 'en', 'gr'):
-        hdr = hdr.replace('<a href="/%s/" hreflang' % l2, '<a href="/%s/racedata/" hreflang' % l2)
-    hdr = hdr.replace('</nav>', '<a href="/%s/racedata/" aria-current="page">%s</a></nav>' % (lang, c['nav']), 1)
+        hdr = hdr.replace('<a href="/%s/" hreflang' % l2, '<a href="/%s/rd-%s/" hreflang' % (l2, SLUG))
     ftr = s[s.index('<footer>'):s.index('</footer>') + 9]
     ftr = re.sub(r'href="#(calendar|sponsoring)"', r'href="/%s/#\1"' % lang, ftr)
-    ftr = re.sub(r'(<a href="/%s/#calendar" data-i18n="footer_calendar">[^<]*</a>)' % lang, r'\1<a href="/%s/racedata/">%s</a>' % (lang, c['nav']), ftr, 1)
     out = head + '</head>\n<body>\n' + hdr + '\n' + BODY + ftr + '\n' + LANGSCRIPT + '\n<script src="/racedata.js"></script>\n</body>\n</html>\n'
-    os.makedirs(os.path.join(ROOT, lang, 'racedata'), exist_ok=True)
-    open(os.path.join(ROOT, lang, 'racedata', 'index.html'), 'w', encoding='utf-8').write(out)
-    # nav + footer link on the home page
-    for page in ([c['src'], 'index.html'] if lang == 'nl' else [c['src']]):
-        pth = os.path.join(ROOT, page); h = open(pth, encoding='utf-8').read()
-        if '/racedata/' not in h:
-            h = h.replace('</nav>', '<a href="/%s/racedata/">%s</a></nav>' % (lang, c['nav']), 1)
-            h = re.sub(r'(<a href="#calendar" data-i18n="footer_calendar">[^<]*</a>)', r'\1<a href="/%s/racedata/">%s</a>' % (lang, c['nav']), h, 1)
-            open(pth, 'w', encoding='utf-8').write(h)
+    os.makedirs(os.path.join(ROOT, lang, 'rd-' + SLUG), exist_ok=True)
+    open(os.path.join(ROOT, lang, 'rd-' + SLUG, 'index.html'), 'w', encoding='utf-8').write(out)
 print('ok')
