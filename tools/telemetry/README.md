@@ -27,3 +27,5 @@ Pages: `/rd-5vu19xn8kj/`, `/en/rd-5vu19xn8kj/`, `/gr/rd-5vu19xn8kj/` (hidden: no
 ## Notes
 - Only complete laps are used (in/out laps are dropped automatically).
 - Segment colours and G-forces are calculated from the GPS racing line and speed, so they read lower than a real accelerometer.
+
+Optional columns (info chips under the session title, empty = hidden): `city`, `kart`, `event`, `conditions`, `track_temp`, `direction`.
