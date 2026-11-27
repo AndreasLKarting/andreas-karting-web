@@ -1,5 +1,5 @@
-date,title,track,country,type,file,show,notes,title_en,title_el,video,video_start
-13/08/2026,Pista Park,Pista Park,GR,training,2026-08-pista-park,yes,,,,,
-14/07/2026,Serres,Serres Racing Kart Circuit,GR,training,2026-07-serres,yes,,,,,
-03/05/2026,Megara Karting,Megara Karting,GR,training,2026-05-megara-karting,yes,,,,,
-19/04/2026,Session 2 - Oldenzaal,Kartbaan Oldenzaal,NL,training,2026-04-session-2-oldenzaal,yes,,,,,
+date,title,track,country,type,file,show,notes,title_en,title_el,video,video_start,city,kart,event,conditions,track_temp,direction
+13/08/2026,Pista Park,Pista Park,GR,training,2026-08-pista-park,yes,,,,,,,,,,,
+14/07/2026,Serres,Serres Racing Kart Circuit,GR,training,2026-07-serres,yes,,,,,,Serres,Rental 4-stroke 390cc,SerreSpeed Karting,Dry 31 °C,,Clockwise
+03/05/2026,Megara Karting,Megara Karting,GR,training,2026-05-megara-karting,yes,,,,,,,,,,,
+19/04/2026,Session 2 - Oldenzaal,Kartbaan Oldenzaal,NL,training,2026-04-session-2-oldenzaal,yes,,,,,,,,,,,
