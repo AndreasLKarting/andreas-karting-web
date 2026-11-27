@@ -56,27 +56,28 @@
   }
 
   // ---------- corners (found on the fastest lap, same index windows on every lap) and three equal-distance sectors
-  function findCorners(q) {
-    var n = q.n, v = q.v, vm = 0, i, k, w = 5; for (i = 0; i < n; i++) vm = Math.max(vm, v[i]);
-    var thr = Math.max(4, vm * 0.085), c = [];
-    for (i = 2; i < n - 2; i++) {
-      var lo = true; for (k = Math.max(0, i - w); k <= Math.min(n - 1, i + w); k++) if (v[k] < v[i]) { lo = false; break; }
-      if (lo && (v[i] < v[i - 1] || v[i] < v[i + 1] || i === 2)) { if (c.length && i - c[c.length - 1] <= w) continue; c.push(i); }
+  function findCorners(q) { // a corner = a stretch where the racing line keeps turning the same way; apex = slowest point in it
+    var n = q.n, v = q.v, i, k, ad = function (a) { while (a > Math.PI) a -= 2 * Math.PI; while (a < -Math.PI) a += 2 * Math.PI; return a; };
+    var sm = function (a) { var b = new Float32Array(n); for (var r = 0; r < 2; r++) { for (i = 0; i < n; i++) b[i] = (a[Math.max(0, i - 1)] + a[i] + a[Math.min(n - 1, i + 1)]) / 3; a = Float32Array.from(b); } return a; };
+    var sx = sm(q.x), sy = sm(q.y), th = new Float32Array(n);
+    for (i = 1; i < n - 1; i++) th[i] = Math.atan2(sy[i + 1] - sy[i - 1], sx[i + 1] - sx[i - 1]);
+    th[0] = th[1]; th[n - 1] = th[n - 2];
+    var fl = new Int8Array(n);
+    for (i = 3; i < n - 3; i++) { var tr = ad(th[i + 2] - th[i - 2]); fl[i] = Math.abs(tr) > 0.3 ? (tr > 0 ? 1 : -1) : 0; }
+    var gs = [], cur = null;
+    for (i = 0; i < n; i++) {
+      if (!fl[i]) continue;
+      if (cur && cur.s === fl[i] && i - cur.last <= 6) cur.last = i; else { if (cur) gs.push(cur); cur = { s: fl[i], first: i, last: i }; }
     }
-    var out, again = true;
-    while (again) {
-      again = false; out = [];
-      for (var j = 0; j < c.length; j++) {
-        var L = j ? c[j - 1] : 0, R = j < c.length - 1 ? c[j + 1] : n - 1, e = c[j], x = c[j];
-        for (k = L; k <= c[j]; k++) if (v[k] >= v[e]) e = k;
-        for (k = c[j]; k <= R; k++) if (v[k] >= v[x]) x = k;
-        out.push({ e: e, c: c[j], x: x, pr: Math.min(v[e], v[x]) - v[c[j]] });
-      }
-      var weak = -1, wp = thr; out.forEach(function (o, j) { if (o.pr < wp) { wp = o.pr; weak = j; } });
-      if (weak >= 0) { c.splice(weak, 1); again = true; }
-    }
-    if (out.length > 14) { out.sort(function (a, b) { return b.pr - a.pr; }); out = out.slice(0, 14); out.sort(function (a, b) { return a.c - b.c; }); }
-    return out;
+    if (cur) gs.push(cur);
+    gs = gs.filter(function (g) { return Math.abs(ad(th[Math.min(n - 2, g.last + 2)] - th[Math.max(1, g.first - 2)])) >= 0.6; });
+    return gs.map(function (g, j) {
+      var c = g.first; for (k = g.first; k <= g.last; k++) if (v[k] < v[c]) c = k;
+      var lo = Math.max(j ? gs[j - 1].last : 0, g.first - 6), hi = Math.min(j < gs.length - 1 ? gs[j + 1].first : n - 1, g.last + 6), e = lo, x = hi;
+      for (k = lo; k <= c; k++) if (v[k] >= v[e]) e = k;
+      x = c; for (k = c; k <= hi; k++) if (v[k] >= v[x]) x = k;
+      return { e: e, c: c, x: x, pr: 0 };
+    });
   }
   function sectorTimes(l, u) {
     var q = decode(l, u), n = q.n, b1 = Math.round((n - 1) / 3), b2 = Math.round(2 * (n - 1) / 3), t0 = q.t[0];
