@@ -56,26 +56,29 @@
   }
 
   // ---------- corners (found on the fastest lap, same index windows on every lap) and three equal-distance sectors
-  function findCorners(q) { // a corner = a stretch where the racing line keeps turning the same way; apex = slowest point in it
+  function findCorners(q) { // one corner per peak of the racing line's turning rate; neighbours turning the same way without a clear easing-off between them are merged
     var n = q.n, v = q.v, i, k, ad = function (a) { while (a > Math.PI) a -= 2 * Math.PI; while (a < -Math.PI) a += 2 * Math.PI; return a; };
     var sm = function (a) { var b = new Float32Array(n); for (var r = 0; r < 2; r++) { for (i = 0; i < n; i++) b[i] = (a[Math.max(0, i - 1)] + a[i] + a[Math.min(n - 1, i + 1)]) / 3; a = Float32Array.from(b); } return a; };
-    var sx = sm(q.x), sy = sm(q.y), th = new Float32Array(n);
+    var sx = sm(q.x), sy = sm(q.y), th = new Float32Array(n), tr = new Float32Array(n);
     for (i = 1; i < n - 1; i++) th[i] = Math.atan2(sy[i + 1] - sy[i - 1], sx[i + 1] - sx[i - 1]);
     th[0] = th[1]; th[n - 1] = th[n - 2];
-    var fl = new Int8Array(n);
-    for (i = 3; i < n - 3; i++) { var tr = ad(th[i + 2] - th[i - 2]); fl[i] = Math.abs(tr) > 0.3 ? (tr > 0 ? 1 : -1) : 0; }
-    var gs = [], cur = null;
-    for (i = 0; i < n; i++) {
-      if (!fl[i]) continue;
-      if (cur && cur.s === fl[i] && i - cur.last <= 6) cur.last = i; else { if (cur) gs.push(cur); cur = { s: fl[i], first: i, last: i }; }
-    }
-    if (cur) gs.push(cur);
-    gs = gs.filter(function (g) { return Math.abs(ad(th[Math.min(n - 2, g.last + 2)] - th[Math.max(1, g.first - 2)])) >= 0.6; });
-    return gs.map(function (g, j) {
-      var c = g.first; for (k = g.first; k <= g.last; k++) if (v[k] < v[c]) c = k;
-      var lo = Math.max(j ? gs[j - 1].last : 0, g.first - 6), hi = Math.min(j < gs.length - 1 ? gs[j + 1].first : n - 1, g.last + 6), e = lo, x = hi;
+    for (i = 0; i < n; i++) tr[i] = ad(th[Math.min(n - 1, i + 2)] - th[Math.max(0, i - 2)]);
+    var pk = [];
+    for (i = 2; i < n - 2; i++) { var a = Math.abs(tr[i]); if (a >= 0.48 && a >= Math.abs(tr[i - 1]) && a > Math.abs(tr[i + 1]) && a >= Math.abs(tr[i - 2]) && a >= Math.abs(tr[i + 2])) pk.push(i); }
+    var out = [];
+    pk.forEach(function (p) {
+      var last = out[out.length - 1];
+      if (last && Math.sign(tr[last.p]) === Math.sign(tr[p])) {
+        var dip = 1e9, di = last.p; for (k = last.p; k <= p; k++) { var d = Math.sign(tr[p]) * tr[k]; if (d < dip) { dip = d; di = k; } }
+        if (p - last.p < 7 || dip > 0.9 * Math.min(Math.abs(tr[last.p]), Math.abs(tr[p]))) { if (Math.abs(tr[p]) > Math.abs(tr[last.p])) last.p = p; return; }
+      }
+      out.push({ p: p });
+    });
+    return out.map(function (o, j) {
+      var c = Math.max(0, o.p - 4); for (k = c; k <= Math.min(n - 1, o.p + 4); k++) if (v[k] < v[c]) c = k;
+      var lo = Math.max(j ? out[j - 1].p + 1 : 0, o.p - 9), hi = Math.min(j < out.length - 1 ? out[j + 1].p - 1 : n - 1, o.p + 9), e = lo, x = c;
       for (k = lo; k <= c; k++) if (v[k] >= v[e]) e = k;
-      x = c; for (k = c; k <= hi; k++) if (v[k] >= v[x]) x = k;
+      for (k = c; k <= hi; k++) if (v[k] >= v[x]) x = k;
       return { e: e, c: c, x: x, pr: 0 };
     });
   }
