@@ -56,27 +56,31 @@
   }
 
   // ---------- corners (found on the fastest lap, same index windows on every lap) and three equal-distance sectors
-  function findCorners(q) {
-    var n = q.n, v = q.v, vm = 0, i, k, w = 5; for (i = 0; i < n; i++) vm = Math.max(vm, v[i]);
-    var thr = Math.max(4, vm * 0.085), c = [];
-    for (i = 2; i < n - 2; i++) {
-      var lo = true; for (k = Math.max(0, i - w); k <= Math.min(n - 1, i + w); k++) if (v[k] < v[i]) { lo = false; break; }
-      if (lo && (v[i] < v[i - 1] || v[i] < v[i + 1] || i === 2)) { if (c.length && i - c[c.length - 1] <= w) continue; c.push(i); }
-    }
-    var out, again = true;
-    while (again) {
-      again = false; out = [];
-      for (var j = 0; j < c.length; j++) {
-        var L = j ? c[j - 1] : 0, R = j < c.length - 1 ? c[j + 1] : n - 1, e = c[j], x = c[j];
-        for (k = L; k <= c[j]; k++) if (v[k] >= v[e]) e = k;
-        for (k = c[j]; k <= R; k++) if (v[k] >= v[x]) x = k;
-        out.push({ e: e, c: c[j], x: x, pr: Math.min(v[e], v[x]) - v[c[j]] });
+  function findCorners(q) { // one corner per peak of the racing line's turning rate; neighbours turning the same way without a clear easing-off between them are merged
+    var n = q.n, v = q.v, i, k, ad = function (a) { while (a > Math.PI) a -= 2 * Math.PI; while (a < -Math.PI) a += 2 * Math.PI; return a; };
+    var sm = function (a) { var b = new Float32Array(n); for (var r = 0; r < 2; r++) { for (i = 0; i < n; i++) b[i] = (a[Math.max(0, i - 1)] + a[i] + a[Math.min(n - 1, i + 1)]) / 3; a = Float32Array.from(b); } return a; };
+    var sx = sm(q.x), sy = sm(q.y), th = new Float32Array(n), tr = new Float32Array(n);
+    for (i = 1; i < n - 1; i++) th[i] = Math.atan2(sy[i + 1] - sy[i - 1], sx[i + 1] - sx[i - 1]);
+    th[0] = th[1]; th[n - 1] = th[n - 2];
+    for (i = 0; i < n; i++) tr[i] = ad(th[Math.min(n - 1, i + 2)] - th[Math.max(0, i - 2)]);
+    var pk = [];
+    for (i = 2; i < n - 2; i++) { var a = Math.abs(tr[i]); if (a >= 0.48 && a >= Math.abs(tr[i - 1]) && a > Math.abs(tr[i + 1]) && a >= Math.abs(tr[i - 2]) && a >= Math.abs(tr[i + 2])) pk.push(i); }
+    var out = [];
+    pk.forEach(function (p) {
+      var last = out[out.length - 1];
+      if (last && Math.sign(tr[last.p]) === Math.sign(tr[p])) {
+        var dip = 1e9, di = last.p; for (k = last.p; k <= p; k++) { var d = Math.sign(tr[p]) * tr[k]; if (d < dip) { dip = d; di = k; } }
+        if (p - last.p < 7 || dip > 0.9 * Math.min(Math.abs(tr[last.p]), Math.abs(tr[p]))) { if (Math.abs(tr[p]) > Math.abs(tr[last.p])) last.p = p; return; }
       }
-      var weak = -1, wp = thr; out.forEach(function (o, j) { if (o.pr < wp) { wp = o.pr; weak = j; } });
-      if (weak >= 0) { c.splice(weak, 1); again = true; }
-    }
-    if (out.length > 14) { out.sort(function (a, b) { return b.pr - a.pr; }); out = out.slice(0, 14); out.sort(function (a, b) { return a.c - b.c; }); }
-    return out;
+      out.push({ p: p });
+    });
+    return out.map(function (o, j) {
+      var c = Math.max(0, o.p - 4); for (k = c; k <= Math.min(n - 1, o.p + 4); k++) if (v[k] < v[c]) c = k;
+      var lo = Math.max(j ? out[j - 1].p + 1 : 0, o.p - 9), hi = Math.min(j < out.length - 1 ? out[j + 1].p - 1 : n - 1, o.p + 9), e = lo, x = c;
+      for (k = lo; k <= c; k++) if (v[k] >= v[e]) e = k;
+      for (k = c; k <= hi; k++) if (v[k] >= v[x]) x = k;
+      return { e: e, c: c, x: x, pr: 0 };
+    });
   }
   function sectorTimes(l, u) {
     var q = decode(l, u), n = q.n, b1 = Math.round((n - 1) / 3), b2 = Math.round(2 * (n - 1) / 3), t0 = q.t[0];
