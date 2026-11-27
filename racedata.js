@@ -249,11 +249,13 @@
     $("rdCards").innerHTML = S.list.map(function (s) {
       return "<button type='button' class='rd-row" + (S.cur && s.id === S.cur.id ? " on" : "") + "' data-id='" + esc(s.id) + "'>" + thumb(s.o) +
         "<span class='who'><em>" + esc(fmtDate(s.date)) + (s.track ? " · " + esc(s.track) : "") + "</em><h3>" + esc(s.title) + "</h3></span>" +
-        "<span class='c'><small>" + esc(T.fl) + "</small><b class='gd'>" + (s.fastest ? fmtT(s.fastest) : "–") + "</b></span>" +
+        "<span class='stats'><span class='c'><small>" + esc(T.fl) + "</small><b class='gd'>" + (s.fastest ? fmtT(s.fastest) : "–") + "</b></span>" +
         "<span class='c'><small>" + esc(T.count) + "</small><b>" + (s.laps || "–") + "</b></span>" +
-        "<span class='c'><small>" + esc(T.top) + "</small><b>" + (s.top ? s.top + " <i>" + T.km + "</i>" : "–") + "</b></span>" +
+        "<span class='c'><small>" + esc(T.top) + "</small><b>" + (s.top ? s.top + " <i>" + T.km + "</i>" : "–") + "</b></span></span>" +
         "<span class='go'>" + esc(T.ride) + "</span></button>";
     }).join("");
+    var on = $("rdCards").querySelector(".rd-row.on");
+    if (on) $("rdCards").scrollTo({ left: on.offsetLeft - ($("rdCards").clientWidth - on.offsetWidth) / 2, behavior: "smooth" });
   }
 
   function pointerFrac(el, e) { var r = el.getBoundingClientRect(); return (e.clientX - r.left) / r.width; }
@@ -268,6 +270,7 @@
     $("rdTower").addEventListener("click", function (e) { var b = e.target.closest("[data-i]"); if (b) setLap(+b.dataset.i); });
     document.querySelectorAll("[data-sort]").forEach(function (b) { b.onclick = function () { S.sort = b.dataset.sort; if (S.data) { renderTower(); towerSelect(); } }; });
     $("rdCards").addEventListener("click", function (e) { var b = e.target.closest("[data-id]"); if (b) selectSession(b.dataset.id, true); });
+    document.querySelectorAll("[data-cscroll]").forEach(function (b) { b.onclick = function () { var t = $("rdCards"); t.scrollBy({ left: +b.dataset.cscroll * Math.max(260, t.clientWidth * .8), behavior: "smooth" }); }; });
     $("rdTop").onclick = function () { window.scrollTo({ top: 0, behavior: "smooth" }); };
     document.addEventListener("visibilitychange", function () { if (!document.hidden && S.playing && !raf) { lastTs = performance.now(); raf = requestAnimationFrame(tick); } });
     document.addEventListener("keydown", function (e) { if (e.key === " " && e.target === document.body) { e.preventDefault(); play(!S.playing); } if (S.data && e.target === document.body) { if (e.key === "ArrowLeft") setLap(S.sel - 1); if (e.key === "ArrowRight") setLap(S.sel + 1); } });
