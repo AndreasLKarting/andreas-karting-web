@@ -136,23 +136,12 @@
   .rd-side { grid-template-columns: 1fr; }
 }
 
-/* onboard video carousel */
-#rdVids { padding-top: 48px; }
-#rdVids[hidden] { display: none; }
-.rd-arrows { display: flex; gap: 6px; }
-.rd-arrows button { width: 38px; height: 38px; background: #0f0f13; border: 1px solid var(--line); color: var(--text); font-size: 22px; line-height: 1; cursor: pointer; }
-.rd-arrows button:hover { border-color: #3b7bff; }
-.rd-vtrack { display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 8px; scrollbar-width: thin; scrollbar-color: #2a2a32 transparent; }
-.rd-slide { flex: 0 0 min(82vw,380px); scroll-snap-align: start; background: rgba(21,21,25,.92); border: 1px solid var(--line); }
-.rd-slide.on { border-color: #f5c542; }
-.rd-vbox { position: relative; aspect-ratio: 16/9; background: #000; overflow: hidden; }
+/* optional onboard video */
+.rd-vid { margin-bottom: 12px; }
+.rd-vid[hidden] { display: none; }
+.rd-vbox { position: relative; margin-top: 10px; aspect-ratio: 16/9; max-width: 860px; background: #000; overflow: hidden; }
 .rd-vbox iframe, .rd-vplay { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 .rd-vplay { all: unset; position: absolute; inset: 0; cursor: pointer; display: block; }
 .rd-vplay img { width: 100%; height: 100%; object-fit: cover; display: block; opacity: .85; }
-.rd-vplay span { position: absolute; left: 12px; bottom: 12px; background: #fff; color: #0a0a0c; font: 700 11px var(--mono); padding: 7px 12px; text-transform: uppercase; letter-spacing: .05em; }
+.rd-vplay span { position: absolute; left: 14px; bottom: 14px; background: #fff; color: #0a0a0c; font: 700 12px var(--mono); padding: 8px 14px; text-transform: uppercase; letter-spacing: .05em; }
 .rd-vplay:hover img, .rd-vplay:focus-visible img { opacity: 1; }
-.rd-slide .cap { padding: 12px 14px 14px; display: grid; gap: 4px; }
-.rd-slide .cap em { font: 700 10px/1.4 var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: .06em; font-style: normal; }
-.rd-slide .cap h3 { font: 400 20px/1.1 var(--disp); text-transform: uppercase; margin: 0; }
-.rd-slide .go { all: unset; cursor: pointer; font: 700 11px var(--mono); color: #6f8dff; margin-top: 4px; }
-.rd-slide.on .go { color: #f5c542; }

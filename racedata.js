@@ -11,9 +11,9 @@
   var DATA = "/data/rd-5vu19xn8kj/";
   var LANG = document.documentElement.lang || "nl";
   var TX = {
-    nl: { title: "Racedata", intro: "Elke sessie ronde voor ronde: racelijn, snelheid en de snelste ronde. Kies een sessie en rijd mee.", sessions: "Sessies", laps: "Gereden ronden", circuits: "Circuits", top: "Topsnelheid", latest: "Laatste sessie", chosen: "Sessie", fastest: "Snelste ronde", lapWord: "Ronde", avg: "Gemiddelde ronde", avgSub: "zonder trage ronden", count: "Ronden", countSub: "in deze sessie", topSub: "hoogst gemeten", straight: "Rechtdoor", bend: "Bocht", brake: "Remmen", speed: "Snelheid", vs: "t.o.v. snelste ronde", g: "G-krachten", lat: "zijwaarts", lon: "lengte", spChart: "Snelheid over de ronde · klik of sleep om te springen", lapChart: "Alle rondetijden · klik op een ronde om mee te rijden", note: "Gemeten met GPS. G-krachten zijn berekend uit de racelijn en snelheid.", onboard: "Onboard", vids: "Onboard-video's", watch: "Bekijk de onboard", sortLap: "Volgorde", sortFast: "Snelste eerst", all: "Alle sessies", ride: "Rijd mee →", toTop: "Naar boven", rounds: "ronden", fl: "Snelste ronde", fastBadge: "Snelste ronde", play: "Afspelen", pause: "Pauzeren", prev: "Vorige ronde", next: "Volgende ronde", empty: "Nog geen sessies.", err: "De data kon niet geladen worden.", loading: "Laden…", slow: "trager dan de grafiek toont", km: "km/u" },
-    en: { title: "Race data", intro: "Every session lap by lap: racing line, speed and the fastest lap. Choose a session and ride along.", sessions: "Sessions", laps: "Laps completed", circuits: "Circuits", top: "Top speed", latest: "Latest session", chosen: "Session", fastest: "Fastest lap", lapWord: "Lap", avg: "Average lap", avgSub: "excluding slow laps", count: "Laps", countSub: "in this session", topSub: "highest measured", straight: "Straight ahead", bend: "Bend", brake: "Brakes", speed: "Speed", vs: "compared to fastest", g: "G-forces", lat: "lateral", lon: "longitudinal", spChart: "Speed over the lap · click or drag to jump", lapChart: "All lap times · click a lap to ride along", note: "Measured with GPS. G-forces are calculated from the racing line and speed.", onboard: "Onboard", vids: "Onboard videos", watch: "Watch the onboard", sortLap: "Order", sortFast: "Fastest first", all: "All sessions", ride: "Ride along →", toTop: "Top", rounds: "laps", fl: "Fastest lap", fastBadge: "Fastest lap", play: "Play", pause: "Pause", prev: "Previous lap", next: "Next lap", empty: "No sessions yet.", err: "The data could not be loaded.", loading: "Loading…", slow: "slower than the chart shows", km: "km/h" },
-    el: { title: "Δεδομένα αγώνων", intro: "Κάθε συνεδρία γύρο προς γύρο: ιδανική γραμμή, ταχύτητα και ο ταχύτερος γύρος. Επιλέξτε μια συνεδρία και ακολουθήστε τον γύρο.", sessions: "Συνεδρίες", laps: "Ολοκληρωμένοι γύροι", circuits: "Πίστες", top: "Μέγιστη ταχύτητα", latest: "Τελευταία συνεδρία", chosen: "Συνεδρία", fastest: "Ταχύτερος γύρος", lapWord: "Γύρος", avg: "Μέσος γύρος", avgSub: "χωρίς αργούς γύρους", count: "Γύροι", countSub: "σε αυτή τη συνεδρία", topSub: "υψηλότερη μέτρηση", straight: "Ευθεία", bend: "Στροφή", brake: "Φρένα", speed: "Ταχύτητα", vs: "σε σχέση με τον ταχύτερο", g: "Δυνάμεις G", lat: "πλάγια", lon: "διαμήκης", spChart: "Ταχύτητα στον γύρο · κάντε κλικ ή σύρετε για να μεταβείτε", lapChart: "Όλοι οι χρόνοι γύρου · κάντε κλικ σε έναν γύρο", note: "Μετρήσεις με GPS. Οι δυνάμεις G υπολογίζονται από την ιδανική γραμμή και την ταχύτητα.", onboard: "Onboard", vids: "Βίντεο onboard", watch: "Δες το onboard", sortLap: "Σειρά", sortFast: "Ταχύτεροι πρώτα", all: "Όλες οι συνεδρίες", ride: "Δες τον γύρο →", toTop: "Επάνω", rounds: "γύροι", fl: "Ταχύτερος γύρος", fastBadge: "Ταχύτερος γύρος", play: "Αναπαραγωγή", pause: "Παύση", prev: "Προηγούμενος γύρος", next: "Επόμενος γύρος", empty: "Δεν υπάρχουν ακόμη συνεδρίες.", err: "Δεν ήταν δυνατή η φόρτωση των δεδομένων.", loading: "Φόρτωση…", slow: "πιο αργός από όσο δείχνει το γράφημα", km: "χλμ/ώρα" }
+    nl: { title: "Racedata", intro: "Elke sessie ronde voor ronde: racelijn, snelheid en de snelste ronde. Kies een sessie en rijd mee.", sessions: "Sessies", laps: "Gereden ronden", circuits: "Circuits", top: "Topsnelheid", latest: "Laatste sessie", chosen: "Sessie", fastest: "Snelste ronde", lapWord: "Ronde", avg: "Gemiddelde ronde", avgSub: "zonder trage ronden", count: "Ronden", countSub: "in deze sessie", topSub: "hoogst gemeten", straight: "Rechtdoor", bend: "Bocht", brake: "Remmen", speed: "Snelheid", vs: "t.o.v. snelste ronde", g: "G-krachten", lat: "zijwaarts", lon: "lengte", spChart: "Snelheid over de ronde · klik of sleep om te springen", lapChart: "Alle rondetijden · klik op een ronde om mee te rijden", note: "Gemeten met GPS. G-krachten zijn berekend uit de racelijn en snelheid.", onboard: "Onboard", watch: "Bekijk de onboard", sortLap: "Volgorde", sortFast: "Snelste eerst", all: "Alle sessies", ride: "Rijd mee →", toTop: "Naar boven", rounds: "ronden", fl: "Snelste ronde", fastBadge: "Snelste ronde", play: "Afspelen", pause: "Pauzeren", prev: "Vorige ronde", next: "Volgende ronde", empty: "Nog geen sessies.", err: "De data kon niet geladen worden.", loading: "Laden…", slow: "trager dan de grafiek toont", km: "km/u" },
+    en: { title: "Race data", intro: "Every session lap by lap: racing line, speed and the fastest lap. Choose a session and ride along.", sessions: "Sessions", laps: "Laps completed", circuits: "Circuits", top: "Top speed", latest: "Latest session", chosen: "Session", fastest: "Fastest lap", lapWord: "Lap", avg: "Average lap", avgSub: "excluding slow laps", count: "Laps", countSub: "in this session", topSub: "highest measured", straight: "Straight ahead", bend: "Bend", brake: "Brakes", speed: "Speed", vs: "compared to fastest", g: "G-forces", lat: "lateral", lon: "longitudinal", spChart: "Speed over the lap · click or drag to jump", lapChart: "All lap times · click a lap to ride along", note: "Measured with GPS. G-forces are calculated from the racing line and speed.", onboard: "Onboard", watch: "Watch the onboard", sortLap: "Order", sortFast: "Fastest first", all: "All sessions", ride: "Ride along →", toTop: "Top", rounds: "laps", fl: "Fastest lap", fastBadge: "Fastest lap", play: "Play", pause: "Pause", prev: "Previous lap", next: "Next lap", empty: "No sessions yet.", err: "The data could not be loaded.", loading: "Loading…", slow: "slower than the chart shows", km: "km/h" },
+    el: { title: "Δεδομένα αγώνων", intro: "Κάθε συνεδρία γύρο προς γύρο: ιδανική γραμμή, ταχύτητα και ο ταχύτερος γύρος. Επιλέξτε μια συνεδρία και ακολουθήστε τον γύρο.", sessions: "Συνεδρίες", laps: "Ολοκληρωμένοι γύροι", circuits: "Πίστες", top: "Μέγιστη ταχύτητα", latest: "Τελευταία συνεδρία", chosen: "Συνεδρία", fastest: "Ταχύτερος γύρος", lapWord: "Γύρος", avg: "Μέσος γύρος", avgSub: "χωρίς αργούς γύρους", count: "Γύροι", countSub: "σε αυτή τη συνεδρία", topSub: "υψηλότερη μέτρηση", straight: "Ευθεία", bend: "Στροφή", brake: "Φρένα", speed: "Ταχύτητα", vs: "σε σχέση με τον ταχύτερο", g: "Δυνάμεις G", lat: "πλάγια", lon: "διαμήκης", spChart: "Ταχύτητα στον γύρο · κάντε κλικ ή σύρετε για να μεταβείτε", lapChart: "Όλοι οι χρόνοι γύρου · κάντε κλικ σε έναν γύρο", note: "Μετρήσεις με GPS. Οι δυνάμεις G υπολογίζονται από την ιδανική γραμμή και την ταχύτητα.", onboard: "Onboard", watch: "Δες το onboard", sortLap: "Σειρά", sortFast: "Ταχύτεροι πρώτα", all: "Όλες οι συνεδρίες", ride: "Δες τον γύρο →", toTop: "Επάνω", rounds: "γύροι", fl: "Ταχύτερος γύρος", fastBadge: "Ταχύτερος γύρος", play: "Αναπαραγωγή", pause: "Παύση", prev: "Προηγούμενος γύρος", next: "Επόμενος γύρος", empty: "Δεν υπάρχουν ακόμη συνεδρίες.", err: "Δεν ήταν δυνατή η φόρτωση των δεδομένων.", loading: "Φόρτωση…", slow: "πιο αργός από όσο δείχνει το γράφημα", km: "χλμ/ώρα" }
   };
   var T = TX[LANG] || TX.en, DATEL = { nl: "nl-NL", en: "en-GB", el: "el-GR" }[LANG] || "en-GB";
   var COL = { straight: "#eaf0ff", bend: "#3b7bff", brake: "#ff6a3d", best: "#f5c542" };
@@ -57,16 +57,14 @@
 
   // ---------- onboard video (optional "video" column in the Sessions tab: YouTube link or id; "video_start" in seconds)
   function ytId(v) { v = String(v || "").trim(); var m = v.match(/(?:v=|youtu\.be\/|embed\/|shorts\/)([\w-]{11})/); return m ? m[1] : /^[\w-]{11}$/.test(v) ? v : ""; }
-  function renderVideos() { // carousel of the onboard videos of all listed sessions (click a thumbnail to play)
-    var items = S.list.filter(function (x) { return ytId(x.video); }), sec = $("rdVids");
-    if (!items.length) { sec.hidden = true; return; }
-    $("rdVtrack").innerHTML = items.map(function (x) {
-      var id = ytId(x.video);
-      return "<article class='rd-slide' data-id='" + esc(x.id) + "' data-v='" + id + "' data-st='" + (parseInt(x.vstart, 10) > 0 ? parseInt(x.vstart, 10) : 0) + "'><div class='rd-vbox'><button type='button' class='rd-vplay' aria-label='" + esc(T.watch + ": " + x.title) + "'><img src='https://i.ytimg.com/vi/" + id + "/hqdefault.jpg' alt='' loading='lazy'><span>▶ " + esc(T.watch) + "</span></button></div><div class='cap'><em>" + esc(fmtDate(x.date)) + (x.track ? " · " + esc(x.track) : "") + "</em><h3>" + esc(x.title) + "</h3><button type='button' class='go' data-ride='" + esc(x.id) + "'>" + esc(T.ride) + "</button></div></article>";
-    }).join("");
-    sec.hidden = false; markVideos();
+  function renderVideo(s) {
+    var id = ytId(s.video), box = $("rdVbox"), card = $("rdVid");
+    if (!id) { card.hidden = true; box.innerHTML = ""; return; }
+    var st = parseInt(s.vstart, 10) > 0 ? parseInt(s.vstart, 10) : 0;
+    box.innerHTML = "<button type='button' class='rd-vplay' aria-label='" + esc(T.watch) + "'><img src='https://i.ytimg.com/vi/" + id + "/hqdefault.jpg' alt='' loading='lazy'><span>▶ " + esc(T.watch) + "</span></button>";
+    box.firstChild.onclick = function () { box.innerHTML = "<iframe src='https://www.youtube-nocookie.com/embed/" + id + "?autoplay=1&rel=0" + (st ? "&start=" + st : "") + "' title='" + esc(s.title) + "' allow='accelerometer; autoplay; encrypted-media; picture-in-picture' allowfullscreen referrerpolicy='strict-origin-when-cross-origin'></iframe>"; };
+    card.hidden = false;
   }
-  function markVideos() { document.querySelectorAll(".rd-slide").forEach(function (a) { a.classList.toggle("on", !!S.cur && a.dataset.id === S.cur.id); }); }
 
   // ---------- loading
   function loadList() {
@@ -113,7 +111,7 @@
       for (var i = 0; i < b.n; i++) { minX = Math.min(minX, b.x[i]); maxX = Math.max(maxX, b.x[i]); minY = Math.min(minY, b.y[i]); maxY = Math.max(maxY, b.y[i]); }
       S.bounds = [minX, minY, maxX, maxY]; S.vmax = Math.ceil(vmax / 20) * 20 + 0;
       s.fastest = d.laps[d.best].t; s.laps = d.laps.length; s.top = d.top;
-      buildDash(); setLap(d.best, true); markVideos();
+      buildDash(); setLap(d.best, true); renderVideo(s);
       $("rdDash").classList.remove("loading");
       renderCards();
       if (scroll) $("rdDash").scrollIntoView({ behavior: "smooth", block: "start" });
@@ -269,12 +267,6 @@
     sp.addEventListener("pointermove", function (e) { if (drag) jump(e); }); sp.addEventListener("pointerup", function () { drag = false; });
     $("rdTower").addEventListener("click", function (e) { var b = e.target.closest("[data-i]"); if (b) setLap(+b.dataset.i); });
     document.querySelectorAll("[data-sort]").forEach(function (b) { b.onclick = function () { S.sort = b.dataset.sort; if (S.data) { renderTower(); towerSelect(); } }; });
-    $("rdVtrack").addEventListener("click", function (e) {
-      var go = e.target.closest("[data-ride]"); if (go) { selectSession(go.dataset.ride, true); return; }
-      var pl = e.target.closest(".rd-vplay"); if (!pl) return; var a = pl.closest(".rd-slide"), st = +a.dataset.st;
-      pl.parentNode.innerHTML = "<iframe src='https://www.youtube-nocookie.com/embed/" + a.dataset.v + "?autoplay=1&rel=0" + (st ? "&start=" + st : "") + "' title='" + esc(a.querySelector("h3").textContent) + "' allow='accelerometer; autoplay; encrypted-media; picture-in-picture' allowfullscreen referrerpolicy='strict-origin-when-cross-origin'></iframe>";
-    });
-    document.querySelectorAll("[data-vscroll]").forEach(function (b) { b.onclick = function () { var t = $("rdVtrack"); t.scrollBy({ left: +b.dataset.vscroll * Math.max(280, t.clientWidth * .8), behavior: "smooth" }); }; });
     $("rdCards").addEventListener("click", function (e) { var b = e.target.closest("[data-id]"); if (b) selectSession(b.dataset.id, true); });
     $("rdTop").onclick = function () { window.scrollTo({ top: 0, behavior: "smooth" }); };
     document.addEventListener("visibilitychange", function () { if (!document.hidden && S.playing && !raf) { lastTs = performance.now(); raf = requestAnimationFrame(tick); } });
@@ -282,7 +274,7 @@
   }
 
   function labels() {
-    var m = { rdH1: T.title, rdIntro: T.intro, rdLeg1: T.straight, rdLeg2: T.bend, rdLeg3: T.brake, rdSpeedT: T.speed, rdVsT: T.vs, rdGT: T.g, rdGLatT: T.lat, rdGLonT: T.lon, rdVidsT: T.vids, rdSpChartT: T.spChart, rdTowerT: T.lapChart, rdSortLap: T.sortLap, rdSortFast: T.sortFast, rdNote: T.note, rdAllT: T.all, rdTop: T.toTop, rdKm: T.km };
+    var m = { rdH1: T.title, rdIntro: T.intro, rdLeg1: T.straight, rdLeg2: T.bend, rdLeg3: T.brake, rdSpeedT: T.speed, rdVsT: T.vs, rdGT: T.g, rdGLatT: T.lat, rdGLonT: T.lon, rdVidT: T.onboard, rdSpChartT: T.spChart, rdTowerT: T.lapChart, rdSortLap: T.sortLap, rdSortFast: T.sortFast, rdNote: T.note, rdAllT: T.all, rdTop: T.toTop, rdKm: T.km };
     Object.keys(m).forEach(function (k) { if ($(k)) $(k).textContent = m[k]; });
     $("rdPrev").setAttribute("aria-label", T.prev); $("rdNext").setAttribute("aria-label", T.next);
   }
@@ -291,7 +283,7 @@
     $("rdDash").classList.add("loading");
     loadList().then(function (list) {
       if (!list.length) { $("rdDash").hidden = true; $("rdAll").hidden = true; $("rdEmpty").hidden = false; $("rdEmpty").textContent = T.empty; renderHero(); return; }
-      S.latestId = list[0].id; renderHero(); renderCards(); renderVideos();
+      S.latestId = list[0].id; renderHero(); renderCards();
       selectSession(list[0].id, false);
     }).catch(function () { $("rdDash").classList.remove("loading"); $("rdEmpty").hidden = false; $("rdEmpty").textContent = T.err; });
   }
